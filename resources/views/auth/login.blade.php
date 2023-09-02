@@ -46,11 +46,11 @@
 											<div class="row">
 												<div class="col-sm-12 col-xs-12">
 													<div class="form-wrap">
-														<form action="#">
+														<form>
 															<div class="form-group">
 																<label class="control-label mb-10" for="email">Username</label>
 																<div class="input-group">
-																	<input type="text" class="form-control" required="" id="name" name="name" placeholder="Enter email">
+																	<input type="text" class="form-control" required="" id="email" name="email" placeholder="Enter email">
 																	<div class="input-group-addon"><i class="icon-envelope-open"></i></div>
 																</div>
 															</div>

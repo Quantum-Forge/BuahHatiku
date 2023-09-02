@@ -22,4 +22,4 @@ class UsersTableSeeder extends Seeder
             'updated_at' => null,
         ]);
     }
-}
+} 
