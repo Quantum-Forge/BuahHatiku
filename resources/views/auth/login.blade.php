@@ -48,16 +48,16 @@
 													<div class="form-wrap">
 														<form action="#">
 															<div class="form-group">
-																<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>
+																<label class="control-label mb-10" for="email">Username</label>
 																<div class="input-group">
-																	<input type="email" class="form-control" required="" id="exampleInputEmail_2" placeholder="Enter email">
+																	<input type="text" class="form-control" required="" id="name" name="name" placeholder="Enter email">
 																	<div class="input-group-addon"><i class="icon-envelope-open"></i></div>
 																</div>
 															</div>
 															<div class="form-group">
-																<label class="control-label mb-10" for="exampleInputpwd_2">Password</label>
+																<label class="control-label mb-10" for="password">Password</label>
 																<div class="input-group">
-																	<input type="password" class="form-control" required="" id="exampleInputpwd_2" placeholder="Enter pwd">
+																	<input type="password" class="form-control" required="" id="password" placeholder="Enter Password">
 																	<div class="input-group-addon"><i class="icon-lock"></i></div>
 																</div>
 															</div>
