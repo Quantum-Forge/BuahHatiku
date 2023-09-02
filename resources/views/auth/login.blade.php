@@ -46,33 +46,37 @@
 											<div class="row">
 												<div class="col-sm-12 col-xs-12">
 													<div class="form-wrap">
-														<form method="POST" action="">
-															@csrf
+														<form action="#">
 															<div class="form-group">
-																<label class="control-label mb-10" for="username">Username</label>
+																<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>
 																<div class="input-group">
-																	<input type="text" class="form-control" required="" id="username" name="name" placeholder="Enter username">
-																	<div class="input-group-addon"><i class="icon-user"></i></div>
+																	<input type="email" class="form-control" required="" id="exampleInputEmail_2" placeholder="Enter email">
+																	<div class="input-group-addon"><i class="icon-envelope-open"></i></div>
 																</div>
 															</div>
 															<div class="form-group">
-																<label class="control-label mb-10" for="password">Password</label>
+																<label class="control-label mb-10" for="exampleInputpwd_2">Password</label>
 																<div class="input-group">
-																	<input type="password" class="form-control" required="" id="password" name="password" placeholder="Enter password">
+																	<input type="password" class="form-control" required="" id="exampleInputpwd_2" placeholder="Enter pwd">
 																	<div class="input-group-addon"><i class="icon-lock"></i></div>
 																</div>
 															</div>
 															
 															<div class="form-group">
 																<div class="checkbox checkbox-success pr-10 pull-left">
-																	<input id="remember" type="checkbox" name="remember">
-																	<label for="remember"> Keep me logged in </label>
+																	<input id="checkbox_2" required="" type="checkbox">
+																	<label for="checkbox_2"> keep me logged in </label>
 																</div>
+																<a class="capitalize-font txt-danger block pt-5 pull-right" href="#">forgot password</a>
 																<div class="clearfix"></div>
 															</div>
 															<div class="form-group">
-																<button type="submit" class="btn btn-success btn-block">Sign In</button>
+																<button type="submit" class="btn btn-success btn-block">sign in</button>
 															</div>
+															<div class="form-group mb-0">
+																<span class="inline-block pr-5">Don't have an account?</span>
+																<a class="inline-block txt-danger" href="signup-page.html">Sign Up</a>
+															</div>	
 														</form>
 													</div>
 												</div>	
