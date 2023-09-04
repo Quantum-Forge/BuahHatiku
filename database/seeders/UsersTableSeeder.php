@@ -11,15 +11,23 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'id' => 2345123,
-            'name' => 'aldosentosa',
-            'email' => 'aldosentosa@gmail.com',
-            'role' => 'Owner',
-            'email_verified_at' => null,
-            'password' => Hash::make('aldosentosa'), // Hashing password
-            'remember_token' => null,
-            'created_at' => null,
-            'updated_at' => null,
+            'NoIdentitas' => 2345123,
+            'role' => 1,
+            // 1 = Owner (Super Admin)
+            // 2 = Administrasi (Admin)
+            // 3 = Terapis (User) tolong tanya Brian atau Agus mengenai hal ini
+            'Nama' => 'Owner',
+            'Alamat' => 'Alamat Anda',
+            'NoHP' => 'No HP Anda',
+            'StatusAktif' => 1, // Sesuaikan dengan status aktif yang sesuai
+            'Username' => 'owner',
+            'Password' => Hash::make('Owner'),
+            'email' => 'owner@gmail.com',
+            'email_verified_at' => null, // Jika Anda ingin memasukkan data ini
+            'remember_token' => null, // Jika Anda ingin memasukkan data ini
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
+        
     }
 } 
