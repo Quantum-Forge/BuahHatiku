@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,12 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('auth/login');
+});
+Route::post('/login', function (Request $request) {
+    return AuthController::login($request);
+});
+Route::get('/logout', function () {
+    return AuthController::logout();
 });
 
 Route::get('/dashboard',function(){

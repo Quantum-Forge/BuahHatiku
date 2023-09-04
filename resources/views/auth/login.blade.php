@@ -46,7 +46,8 @@
 											<div class="row">
 												<div class="col-sm-12 col-xs-12">
 													<div class="form-wrap">
-														<form>
+														<form method="POST" action="/login">
+															{{ csrf_field() }}
 															<div class="form-group">
 																<label class="control-label mb-10" for="email">Username</label>
 																<div class="input-group">
@@ -57,14 +58,14 @@
 															<div class="form-group">
 																<label class="control-label mb-10" for="password">Password</label>
 																<div class="input-group">
-																	<input type="password" class="form-control" required="" id="password" placeholder="Enter Password">
+																	<input type="password" class="form-control" required="" id="password" name="password" placeholder="Enter Password">
 																	<div class="input-group-addon"><i class="icon-lock"></i></div>
 																</div>
 															</div>
 															
 															<div class="form-group">
 																<div class="checkbox checkbox-success pr-10 pull-left">
-																	<input id="checkbox_2" required="" type="checkbox">
+																	<input id="checkbox_2" name="remember_me" type="checkbox">
 																	<label for="checkbox_2"> keep me logged in </label>
 																</div>
 																<a class="capitalize-font txt-danger block pt-5 pull-right" href="#">forgot password</a>

@@ -147,7 +147,7 @@
 								<a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 									<i class="fa fa-fw fa-power-off"></i> Log Out
 								</a>
-								<form id="logout-form" action="" method="POST" style="display: none;">
+								<form id="logout-form" action="/logout" method="GET" style="display: none;">
 									
 								</form>
 							</li>
