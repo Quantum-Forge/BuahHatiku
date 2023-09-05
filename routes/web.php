@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('auth/login');
-});
+})->name('login');
 Route::post('/login', function (Request $request) {
     return AuthController::login($request);
 });
@@ -29,10 +30,14 @@ Route::get('/logout', function () {
     return AuthController::logout();
 });
 
-Route::get('/dashboard',function(){
-    return view('dashboard');
-});
-
-Route::get('/user_form',function(){
-    return view('userform');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard',function(){
+        return view('dashboard');
+    });
+    Route::get('/user_form',function(){
+        return view('userform');
+    });
+    Route::post('/user_form',function(Request $request){
+        return UserController::insert($request);
+    });
 });

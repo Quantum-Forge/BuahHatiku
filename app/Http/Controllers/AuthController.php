@@ -17,7 +17,9 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         $remember_me = $request->has('remember_me') ? true : false ;
-        $user  = User::where('Email' , $request->email )->first();
+        $user  = User::where('Email' , $request->email )
+                        ->where('StatusAktif', 1)
+                        ->first();
         if($user){
             $password  = $request->password;
             if (Hash::check($password, $user->Password)) { 

@@ -49,7 +49,7 @@
 														<form method="POST" action="/login">
 															{{ csrf_field() }}
 															<div class="form-group">
-																<label class="control-label mb-10" for="email">Username</label>
+																<label class="control-label mb-10" for="email">Email</label>
 																<div class="input-group">
 																	<input type="text" class="form-control" required="" id="email" name="email" placeholder="Enter email">
 																	<div class="input-group-addon"><i class="icon-envelope-open"></i></div>
