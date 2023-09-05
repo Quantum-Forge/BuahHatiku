@@ -32,3 +32,7 @@ Route::get('/logout', function () {
 Route::get('/dashboard',function(){
     return view('dashboard');
 });
+
+Route::get('/user_form',function(){
+    return view('userform');
+});
