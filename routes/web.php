@@ -41,6 +41,6 @@ Route::middleware(['auth'])->group(function () {
         return UserController::insert($request);
     });
     Route::get('/user_view',function(){
-        return view('userview');
+        return UserController::view();
     });
 });

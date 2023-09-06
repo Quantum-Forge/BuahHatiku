@@ -48,18 +48,28 @@
 										<th>Action</th>
 									</tr>
 									<tbody>
-										<tr>
-											<td width="50">1</td>
-											<td>Brian</td>
-											<td>Halo</td>
-											<td>Admin</td>
-											<td>Admin</td>
-											<td><input type="checkbox" checked class="js-switch" data-color="#FAAB15" data-size="small"></td>
+										@foreach ($users as $user)
+										<tr>	
+											<td width="50">{{ $loop->index + 1 }}</td>
+											<td>{{ $user->Nama }}</td>
+											<td>{{ $user->Email }}</td>
+											<td>{{ $user->NoHP }}</td>
+											<td>
+												@if($user->Role == 1 )
+													Owner
+												@elseif($user->Role == 2 )
+													Admin
+												@elseif($user->Role == 3 )
+													Terapis
+												@endif
+											</td>
+											<td><input type="checkbox" @if($user->StatusAktif ==  1) checked @else '' @endif class="js-switch" data-color="#FAAB15" data-size="small"></td>
 											<td width="80">
 												<button class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
 												<button class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 											</td>
 										</tr>
+										@endforeach
 									</tbody>
 								</thead>
 							</table>

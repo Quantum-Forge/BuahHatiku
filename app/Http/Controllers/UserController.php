@@ -10,6 +10,11 @@ use App\Models\User;
 class UserController extends Controller
 {
     //
+    public static function view(){
+        $users = User::all();
+        return view('userview')->with('users', $users);
+    }
+
     public static function insert(Request $request)
     {
         // Validate the request...
@@ -23,9 +28,6 @@ class UserController extends Controller
             'Password' => 'required',
             'Email' => 'required|email',
         ]);
-
-        dd($validated);
-
         if($validated){
             $user = new User;
  
