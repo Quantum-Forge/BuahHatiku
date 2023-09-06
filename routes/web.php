@@ -40,4 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user_form',function(Request $request){
         return UserController::insert($request);
     });
+    Route::get('/user_view',function(){
+        return view('userview');
+    });
 });
