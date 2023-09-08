@@ -42,11 +42,62 @@ class UserController extends Controller
             $user->StatusAktif = 1;
     
             $user->save();
-            return redirect('dashboard');
+            return redirect('user_view');
         }
         return back()->withErrors([
             'error' => 'Email atau password tidak sesuai',
         ]);
         
+    }
+
+    public static function update_view($NoIdentitas){
+        $user = User::where('NoIdentitas', $NoIdentitas)->first();
+        return view('useredit')->with('user', $user);
+    }
+
+    public static function update(Request $request)
+    {
+        // Validate the request...
+        $validated = $request->validate([
+            // 'NoIdentitas' => 'required|unique:users|max:16',
+            'Role' => 'required',
+            'Nama' => 'required',
+            'Alamat' => 'required',
+            'NoHP' => 'required|numeric',
+            'Username' => 'required',
+            // 'Password' => 'required',
+            'Email' => 'required|email',
+        ]);
+        if($validated){
+            $user = User::where('NoIdentitas', $request->NoIdentitas)->first();
+            
+            $user->Role = $request->Role;
+            $user->Nama = $request->Nama;
+            $user->Alamat = $request->Alamat;
+            $user->NoHP = $request->NoHP;
+            $user->Username = $request->Username;
+            // $user->Password = Hash::make($request->Password);
+            $user->Email = $request->Email;
+    
+            $user->save();
+            return redirect('user_view');
+        }
+        return back()->withErrors([
+            'error' => 'Email atau password tidak sesuai',
+        ]);
+        
+    }
+
+    public static function update_status($NoIdentitas){
+        $user = User::where('NoIdentitas', $NoIdentitas)->first();
+        $user->StatusAktif = $user->StatusAktif == 1 ? 0 : 1 ;
+        $user->save();
+        return redirect('user_view');
+    }
+
+    public static function delete($NoIdentitas){
+        $user = User::where('NoIdentitas', $NoIdentitas)->first();
+        $user->delete();
+        return redirect('user_view');
     }
 }

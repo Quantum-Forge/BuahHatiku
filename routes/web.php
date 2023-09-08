@@ -34,16 +34,25 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',function(){
         return view('dashboard');
     });
+    Route::get('/user_view',function(){
+        return UserController::view();
+    });
     Route::get('/user_form',function(){
         return view('userform');
     });
     Route::post('/user_form',function(Request $request){
         return UserController::insert($request);
     });
-    Route::get('/user_view',function(){
-        return UserController::view();
+    Route::get('/user_toggle_status/{NoIdentitas}',function($NoIdentitas){
+        return UserController::update_status($NoIdentitas);
+    });    
+    Route::get('/user_edit/{NoIdentitas}',function($NoIdentitas){
+        return UserController::update_view($NoIdentitas);
     });
-    Route::get('/user_edit',function(){
-        return view('useredit');
+    Route::post('/user_edit',function(Request $request){
+        return UserController::update($request);
+    });
+    Route::post('/user_delete/{NoIdentitas}',function($NoIdentitas){
+        return UserController::delete($NoIdentitas);
     });
 });

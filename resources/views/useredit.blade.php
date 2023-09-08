@@ -35,22 +35,23 @@
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
 					<div class="form-wrap">
-						<form action="" method="POST">
+						<form action="/user_edit" method="POST">
+							{{ csrf_field() }}
 							<div class="form-group col-6">
 								<label class="control-label mb-10 text-left">Nama</label>
-								<input type="text" class="form-control" name="Nama" placeholder="Masukkan Nama Anda...">
+								<input type="text" class="form-control" name="Nama" placeholder="Masukkan Nama Anda..." value="{{$user->Nama}}">
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left">NIK</label>
-								<input type="number" class="form-control" name="NoIdentitas" placeholder="Masukkan NIK Anda...">
+								<input type="number" readonly class="form-control" name="NoIdentitas" placeholder="Masukkan NIK Anda..." value="{{$user->NoIdentitas}}">
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left" for="example-email">Username</label>
-								<input type="text" id="example-email" name="Username" class="form-control" placeholder="Username">
+								<input type="text" id="example-email" name="Username" class="form-control" placeholder="Username" value="{{$user->Username}}">
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left" for="example-email">Email</label>
-								<input type="email" id="example-email" name="Email" class="form-control" placeholder="Email">
+								<input type="email" id="example-email" name="Email" class="form-control" placeholder="Email" value="{{$user->Email}}">
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left">Password</label>
@@ -59,19 +60,19 @@
 							<div class="form-group">
 								<label class="control-label mb-10 text-left">Role</label>
 								<select class="form-control" name="Role">
-									<option disabled selected>Choose...</option>
-									<option value="1">Owner</option>
-									<option value="2">Admin</option>
-									<option value="3">Terapis</option>
+									<option disabled >Choose...</option>
+									<option value="1" @if ($user->Role == 1) selected @endif >Owner</option>
+									<option value="2" @if ($user->Role == 2) selected @endif >Admin</option>
+									<option value="3" @if ($user->Role == 3) selected @endif >Terapis</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left" for="no_hp">Nomor HP</label>
-								<input type="number" id="no_hp" name="NoHP" class="form-control" placeholder="Nomor HP">
+								<input type="number" id="no_hp" name="NoHP" class="form-control" placeholder="Nomor HP" value="{{$user->NoHP}}">
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left">Alamat</label>
-								<textarea class="form-control" rows="5" name="Alamat" placeholder="Alamat"></textarea>
+								<textarea class="form-control" rows="5" name="Alamat" placeholder="Alamat">{{$user->Alamat}}</textarea>
 							</div>
 							<button class="btn btn-block btn-success">Submit</button>
 						</form>
