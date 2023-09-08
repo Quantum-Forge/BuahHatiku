@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             // 3 = Terapis (User) tolong tanya Brian atau Agus mengenai hal ini
             'Nama' => 'Owner',
             'Alamat' => 'Alamat Anda',
-            'NoHP' => 'No HP Anda',
+            'NoHP' => '081456456456',
             'StatusAktif' => 1, // Sesuaikan dengan status aktif yang sesuai
             'Username' => 'owner',
             'Password' => Hash::make('Owner'),
