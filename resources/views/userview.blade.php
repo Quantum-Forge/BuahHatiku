@@ -66,9 +66,26 @@
 											<td><input type="checkbox" @if($user->StatusAktif ==  1) checked @else '' @endif class="js-switch" data-color="#FAAB15" data-size="small"></td>
 											<td width="80">
 												<button class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
-												<button class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+												<button  data-toggle="modal" data-target="#responsive-modal" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 											</td>
 										</tr>
+										<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+														<h5 class="modal-title">Delete User</h5>
+													</div>
+													<div class="modal-body">
+														Are you sure to delete this user ?
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+														<button type="button" class="btn btn-danger">Yes</button>
+													</div>
+												</div>
+											</div>
+										</div>
 										@endforeach
 									</tbody>
 								</thead>

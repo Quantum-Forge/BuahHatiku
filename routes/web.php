@@ -43,4 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user_view',function(){
         return UserController::view();
     });
+    Route::get('/user_edit',function(){
+        return view('useredit');
+    });
 });

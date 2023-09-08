@@ -12,6 +12,9 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
+    <!-- xeditable css -->
+	<link href="{{ asset('vendors/bower_components/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css') }}" rel="stylesheet" />
+
     <!-- Bootstrap Colorpicker CSS -->
     <link href="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet" type="text/css"/>
 
@@ -81,6 +84,10 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendors/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
+
+    <!-- Form-xeditable Init JavaScript -->
+	<script src="{{ asset('dist/js/form-xeditable-data.js') }}"></script>
 
     <!-- Moment JavaScript -->
     <script src="{{ asset('vendors/bower_components/moment/min/moment-with-locales.min.js') }}"></script>
