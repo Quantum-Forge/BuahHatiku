@@ -16,20 +16,21 @@ class CreateBiodataTable extends Migration
             $table->integer('AnakKe');
             $table->string('TempatLahir', 100);
             $table->date('TglLahir');
-            $table->integer('IdPend');
-            $table->integer('IdDiagnosa');
+            $table->string('Diagnosa', 200);
             $table->integer('IdTerapis');
             $table->string('NamaBapa', 100);
             $table->string('NamaIbu', 100);
             $table->date('TglLahirOrtu');
             $table->string('Alamat', 200);
-            $table->string('NoTelpon', 45);
             $table->string('NoHP', 45);
             $table->string('Email', 100);
-            $table->string('PandBapak', 45);
-            $table->string('PandIbu', 45);
+            $table->string('PendBapak', 45);
+            $table->string('PendIbu', 45);
             $table->string('PekerjaanOrtu', 45);
             $table->timestamps();
+            $table->string('Photo', 200)->nullable();
+            $table->date('TglMasuk')->nullable();
+            $table->date('TglKeluar')->nullable();
         });
     }
 
