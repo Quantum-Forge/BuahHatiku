@@ -13,7 +13,7 @@ class CreateJadwalRollingTable extends Migration
      */
     public function up()
     {
-        Schema::create('jadwalrolling', function (Blueprint $table) {
+        Schema::create('jadwal_rolling', function (Blueprint $table) {
             $table->bigIncrements('IdJadwal');
             $table->integer('IdAnak');
             $table->string('NoIdentitas', 45);

@@ -46,34 +46,39 @@
 									</tr>
 								</thead>
 								<tbody>
+									@foreach($biodatas as $biodata)
 									<tr>
 										<td style="width: 7%;">1</td>
 										<td style="width: 7%;"><img src="dist/img/chair.jpg" alt="iMac" width="80"></td>
-										<td>Brian</td>
-										<td>17-Aug-2023</td>
-										<td>Data_1@yahoo</td>
+										<td>{{$biodata->Nama}}</td>
+										<td>{{$biodata->TglLahir}}</td>
+										<td>{{$biodata->Email}}</td>
 										<td width="80">
-											<button class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
-											<button data-toggle="modal" data-target="#responsive-modal" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+											<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/biodata_edit/{{$biodata->IdAnak}}';"><i class="fa fa-pencil"></i></button>
+											<button data-toggle="modal" data-target="#responsive-modal{{$biodata->IdAnak}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 										</td>
 									</tr>
-									<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+									<div id="responsive-modal{{$biodata->IdAnak}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+										<form action="/biodata_delete/{{$biodata->IdAnak}}" method="POST">
+										{{ csrf_field() }}
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-													<h5 class="modal-title">Delete Bio</h5>
+													<h5 class="modal-title">Delete Data Anak</h5>
 												</div>
 												<div class="modal-body">
-													Are you sure to delete this Bio ?
+													Are you sure to delete {{$biodata->Nama}} ?
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-													<button type="button" class="btn btn-danger">Yes</button>
+													<button type="submit" class="btn btn-danger">Yes</button>
 												</div>
 											</div>
 										</div>
+										</form>
 									</div>
+									@endforeach
 								</tbody>
 							</table>
 						</div>

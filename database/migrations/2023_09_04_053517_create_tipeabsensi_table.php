@@ -13,7 +13,7 @@ class CreateTipeabsensiTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipeabsensi', function (Blueprint $table) {
+        Schema::create('tipe_absensi', function (Blueprint $table) {
             $table->bigIncrements('IdTipe');
             $table->string('JenisAbsensi', 150);
             $table->double('Harga');

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BiodataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +59,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/biodata_insert',function(){
         return view('biodatainsert');
     });
+    Route::post('/biodata_insert',function(Request $request){
+        return BiodataController::insert($request);
+    });
     Route::get('/biodata_view',function(){
-        return view('biodataview');
+        return BiodataController::view();
+    });
+    Route::get('/biodata_edit/{IdAnak}',function($IdAnak){
+        return BiodataController::update_view($IdAnak);
+    });
+    Route::post('/biodata_edit',function(Request $request){
+        return BiodataController::update($request);
+    });
+    Route::post('/biodata_delete/{IdAnak}',function($IdAnak){
+        return BiodataController::delete($IdAnak);
     });
 });

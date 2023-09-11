@@ -13,7 +13,7 @@ class CreateParentalquestionaireTable extends Migration
      */
     public function up()
     {
-        Schema::create('parentalquestionaire', function (Blueprint $table) {
+        Schema::create('parental_questionaire', function (Blueprint $table) {
             $table->bigIncrements('IdParental');
             $table->integer('IdAnak');
             $table->integer('IdQuestionaire');

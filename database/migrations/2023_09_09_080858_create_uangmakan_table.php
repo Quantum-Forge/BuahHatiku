@@ -13,7 +13,7 @@ class CreateUangmakanTable extends Migration
      */
     public function up()
     {
-        Schema::create('uangmakan', function (Blueprint $table) {
+        Schema::create('uang_makan', function (Blueprint $table) {
             $table->id('IdUang'); // Kolom ID
             $table->string('NoIdentitas', 45); // Kolom NoIdentitas dengan tipe VARCHAR
             $table->double('Jumlah'); // Kolom Jumlah dengan tipe DOUBLE

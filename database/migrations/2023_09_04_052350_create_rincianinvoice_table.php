@@ -13,7 +13,7 @@ class CreateRincianinvoiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('rincianinvoice', function (Blueprint $table) {
+        Schema::create('rincian_invoice', function (Blueprint $table) {
             $table->bigIncrements('IdRincian');
             $table->integer('NoInvoice');
             $table->integer('JenisTransaksi');

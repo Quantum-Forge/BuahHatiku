@@ -13,7 +13,7 @@ class CreateJenisquestionaireTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenisquestionaire', function (Blueprint $table) {
+        Schema::create('jenis_questionaire', function (Blueprint $table) {
             $table->bigIncrements('IdJenis');
             $table->string('NamaJenis', 150);
             $table->timestamps();
