@@ -55,4 +55,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user_delete/{NoIdentitas}',function($NoIdentitas){
         return UserController::delete($NoIdentitas);
     });
+    Route::get('/biodata_insert',function(){
+        return view('biodatainsert');
+    });
+    Route::get('/biodata_view',function(){
+        return view('biodataview');
+    });
 });

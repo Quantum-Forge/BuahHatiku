@@ -42,6 +42,8 @@
     <!-- Bootstrap Datetimepicker CSS -->
     <link href="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css"/>
 
+    <!-- Bootstrap Dropify CSS -->
+	<link href="{{ asset('vendors/bower_components/dropify/dist/css/dropify.min.css') }}" rel="stylesheet" type="text/css"/>
 
     <!-- Morris Charts CSS -->
     <link href="{{ asset('vendors/bower_components/morris.js/morris.css') }}" rel="stylesheet" type="text/css"/>
@@ -141,6 +143,12 @@
     <!-- Progressbar Animation JavaScript -->
     <script src="{{ asset('vendors/bower_components/waypoints/lib/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('vendors/bower_components/Counter-Up/jquery.counterup.min.js') }}"></script>
+
+    <!-- Bootstrap Daterangepicker JavaScript -->
+	<script src="{{ asset('vendors/bower_components/dropify/dist/js/dropify.min.js') }}"></script>
+
+    <!-- Form Flie Upload Data JavaScript -->
+    <script src="{{ asset('dist/js/form-file-upload-data.js') }}"></script>
 
     <!-- Fancy Dropdown JS -->
     <script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>

@@ -8,10 +8,10 @@
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#biodata"><i class="icon-folder mr-10"></i>Biodata Anak <span class="pull-right"><span class="label label-success mr-10">4</span><i class="fa fa-fw fa-angle-down"></i></span></a>
 						<ul id="biodata" class="collapse collapse-level-1">
 							<li>
-								<a href="">Create Biodata</a>
+								<a href="/biodata_insert">Create Biodata</a>
 							</li>
 							<li>
-								<a href="">View Biodata</a>
+								<a href="/biodata_view">View Biodata</a>
 							</li>
 						</ul>
 					</li>

@@ -16,9 +16,10 @@ class CreateBiodataTable extends Migration
             $table->integer('AnakKe');
             $table->string('TempatLahir', 100);
             $table->date('TglLahir');
-            $table->string('Diagnosa', 200);
+            $table->integer('IdDiagnosa');
+            $table->string('KeteranganDiagnosa', 200);
             $table->integer('IdTerapis');
-            $table->string('NamaBapa', 100);
+            $table->string('NamaBapak', 100);
             $table->string('NamaIbu', 100);
             $table->date('TglLahirOrtu');
             $table->string('Alamat', 200);
