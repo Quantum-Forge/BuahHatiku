@@ -23,10 +23,7 @@
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#questionnaire"><i class="icon-question mr-10"></i>Questionnaire <span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
 						<ul id="questionnaire" class="collapse collapse-level-1">
 							<li>
-								<a href="#">Create Questionnaire</a>
-							</li>
-							<li>
-								<a href="#">View Questionnaire</a>
+								<a href="/questionnaire_insert">Create Questionnaire</a>
 							</li>
 							<li>
 								<a href="#">Parental Questionnaire</a>

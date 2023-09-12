@@ -74,4 +74,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/biodata_delete/{IdAnak}',function($IdAnak){
         return BiodataController::delete($IdAnak);
     });
+    Route::get('/questionnaire_insert',function(){
+        return view('questionnaire_insert');
+    });
 });
