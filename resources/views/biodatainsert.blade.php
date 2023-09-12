@@ -35,7 +35,7 @@
 					<div class="row">
 						<div class="col-sm-12 col-xs-12">
 							<div class="form-wrap">
-								<form action="/biodata_insert" method="POST">
+								<form action="/biodata_insert" method="POST" enctype="multipart/form-data">
 									{{ csrf_field() }}
 									<div class="form-body">
 										<h6 class="txt-dark capitalize-font"><i class="icon-user mr-10"></i>Informasi Anak</h6>

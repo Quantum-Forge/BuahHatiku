@@ -48,8 +48,8 @@
 								<tbody>
 									@foreach($biodatas as $biodata)
 									<tr>
-										<td style="width: 7%;">1</td>
-										<td style="width: 7%;"><img src="dist/img/chair.jpg" alt="iMac" width="80"></td>
+										<td style="width: 7%;">{{$loop->index+1}}</td>
+										<td style="width: 7%;">{{ asset('storage/'.$biodata->Photo) }}<img src="{{ asset('storage/'.$biodata->Photo) }}" alt="iMac" width="80"></td>
 										<td>{{$biodata->Nama}}</td>
 										<td>{{$biodata->TglLahir}}</td>
 										<td>{{$biodata->Email}}</td>

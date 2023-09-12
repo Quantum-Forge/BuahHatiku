@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Biodata;
+use Illuminate\Support\Facades\Storage;
 
 class BiodataController extends Controller
 {
@@ -33,6 +34,11 @@ class BiodataController extends Controller
         $biodata->TglLahirOrtu = $request->TglLahirOrtu;
         $biodata->NoHP = $request->NoHP;
         $biodata->Email = $request->Email;
+
+        $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
+        Storage::disk('public')->put($imageName, file_get_contents($request->file('photo')));
+        // $path = $request->file('photo')->storeAs('public/photos', $imageName);
+        $biodata->Photo = $imageName;
 
         $biodata->save();
         return redirect('/biodata_insert');

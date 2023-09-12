@@ -36,17 +36,17 @@
 						<div class="col-sm-12 col-xs-12">
 							<div class="form-wrap row">
 								<div class="col-md-6">
-									<form class="form-horizontal">
+									<form class="form-horizontal" action="/questionnaire_insert" method="POST">
+										{{ csrf_field() }}
 										<div class="form-group">
 											<label for="Jenis" class="col-sm-3 control-label">Jenis*</label>
 											<div class="col-sm-9">
 												<div class="input-group">
 													<div class="input-group-addon"><i class="icon-list"></i></div>
-													<select type="text" class="form-control" id="Jenis" placeholder="Username">
-														<option value="1">Speech/Komunikasi</option>
-														<option value="2">Sosialisasi</option>
-														<option value="3">Sensory/Kesadaran Kognitif</option>
-														<option value="4">Kesehatan Fisik Perilaku</option>
+													<select type="text" class="form-control" id="Jenis" name="IdJenis">
+														@foreach($jenis_questionaires as $jenis)
+															<option value="{{$jenis->IdJenis}}">{{$jenis->NamaJenis}}</option>
+														@endforeach
 													</select>
 												</div>
 											</div>
@@ -55,7 +55,7 @@
 											<label  for="Pertanyaan" class="col-sm-3 control-label">Pertanyaan*</label>
 											<div class="col-sm-9">
 												<div class="input-group">
-													<textarea name="" class="form-control" id="" cols="50" rows="10"></textarea>
+													<textarea name="Pertanyaan" class="form-control" id="" cols="50" rows="10"></textarea>
 												</div>
 											</div>
 										</div>
@@ -79,32 +79,37 @@
 													</tr>
 												</thead>
 												<tbody>
+													@foreach($questionnaires as $questionnaire)
 													<tr>
-														<td>1</td>
-														<td>Kesadaran/Kognitif</td>
-														<td>Mengetahui nama sendiri</td>
+														<td>{{ $loop->index+1 }}</td>
+														<td>{{ $questionnaire->jenis->NamaJenis }}</td>
+														<td>{{ $questionnaire->Pertanyaan }}</td>
 														<td width="80">
 															<button class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
-															<button data-toggle="modal" data-target="#responsive-modal" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+															<button data-toggle="modal" data-target="#responsive-modal{{$questionnaire->IdQuestionaire}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 														</td>
 													</tr>
-													<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+													<div id="responsive-modal{{$questionnaire->IdQuestionaire}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+														<form action="/questionnaire_delete/{{$questionnaire->IdQuestionaire}}" method="POST">
+														{{ csrf_field() }}
 														<div class="modal-dialog">
 															<div class="modal-content">
 																<div class="modal-header">
 																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-																	<h5 class="modal-title">Delete Bio</h5>
+																	<h5 class="modal-title">Delete Questionnaire</h5>
 																</div>
 																<div class="modal-body">
-																	Are you sure to delete this Bio ?
+																	Are you sure to delete pertanyaan {{$questionnaire->Pertanyaan}} ?
 																</div>
 																<div class="modal-footer">
 																	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-																	<button type="button" class="btn btn-danger">Yes</button>
+																	<button type="submit" class="btn btn-danger">Yes</button>
 																</div>
 															</div>
 														</div>
+														</form>
 													</div>
+													@endforeach
 												</tbody>
 											</table>
 										</div>
