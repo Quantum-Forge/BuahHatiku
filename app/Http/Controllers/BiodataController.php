@@ -36,8 +36,8 @@ class BiodataController extends Controller
         $biodata->Email = $request->Email;
 
         $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
-        Storage::disk('public')->put($imageName, file_get_contents($request->file('photo')));
-        // $path = $request->file('photo')->storeAs('public/photos', $imageName);
+        $path = $request->file('photo')->storeAs('photos/', $imageName);
+        $biodata->Photo = 'photos/'.$imageName;
         $biodata->Photo = $imageName;
 
         $biodata->save();
