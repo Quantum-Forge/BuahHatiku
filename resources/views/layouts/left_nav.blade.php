@@ -26,7 +26,7 @@
 								<a href="/questionnaire_insert">Create Questionnaire</a>
 							</li>
 							<li>
-								<a href="#">Parental Questionnaire</a>
+								<a href="/parental_questionnaire">Parental Questionnaire</a>
 							</li>
 						</ul>
 					</li>

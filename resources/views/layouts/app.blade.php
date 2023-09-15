@@ -18,6 +18,12 @@
     <!-- Bootstrap Colorpicker CSS -->
     <link href="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet" type="text/css"/>
 
+    <!-- vector map CSS -->
+	<link href="{{ asset('vendors/bower_components/jquery-wizard.js/css/wizard.css') }}" rel="stylesheet" type="text/css"/>
+
+	<!-- jquery-steps css -->
+    <link rel="stylesheet" href="{{ asset('vendors/bower_components/jquery.steps/demo/css/jquery.steps.css') }}">
+
     <!-- select2 CSS -->
     <link href="{{ asset('vendors/bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
 
@@ -90,6 +96,16 @@
 
     <!-- Form-xeditable Init JavaScript -->
 	<script src="{{ asset('dist/js/form-xeditable-data.js') }}"></script>
+
+    <!-- Form Wizard JavaScript -->
+    <script src="{{ asset('vendors/bower_components/jquery.steps/build/jquery.steps.min.js') }}"></script>
+    <script src="{{ asset('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js') }}"></script>
+
+    <!-- Form Wizard Data JavaScript -->
+	<script src="{{ asset('dist/js/form-wizard-data.js') }}"></script>
+
+    <!-- Starrr JavaScript -->
+	<script src="{{ asset('dist/js/starrr.js') }}"></script>
 
     <!-- Moment JavaScript -->
     <script src="{{ asset('vendors/bower_components/moment/min/moment-with-locales.min.js') }}"></script>

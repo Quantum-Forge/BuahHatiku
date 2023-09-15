@@ -19,7 +19,7 @@ class JenisQuestionaireSeeder extends Seeder
             ['NamaJenis' => 'Speech/Komunikasi'],
             ['NamaJenis' => 'Sosialisasi'],
             ['NamaJenis' => 'Sensory/Kesadaran Kognitif'],
-            ['NamaJenis' => 'Kesehatan Fisik Perilaku']
+            ['NamaJenis' => 'Kesehatan/Fisik/Perilaku']
         ]);
     }
 }

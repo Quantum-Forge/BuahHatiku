@@ -20,7 +20,7 @@ $(function(){
 			transitionEffect: "fade",
 			titleTemplate: '#title#',
 			labels: {
-				finish: "place order",
+				finish: "Submit",
 				next: "Next",
 				previous: "Previous",
 			},

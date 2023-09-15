@@ -89,4 +89,7 @@ Route::middleware(['auth'])->group(function () {
         dd(Storage::url('test.txt'));
         return 1;
     });
+    Route::get('/parental_questionnaire',function(){
+        return view('parental_questionnaire');
+    });
 });
