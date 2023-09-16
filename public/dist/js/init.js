@@ -167,5 +167,13 @@ var kenny = function(){
 	/*Slimscroll*/
 	$('.nicescroll-bar').slimscroll({height:'100%',color: '#3cb878',disableFadeOut : true});
 	$('.message-nicescroll-bar').slimscroll({height:'320px',color: '#3cb878'});
+
+	$('a[href="#finish"]').on('click', function(event) {
+		event.preventDefault();
+		// Temukan tombol submit dan simulasikan klik
+		$('button[type="submit"]').click();
+		// Lakukan penyegaran halaman
+		// location.reload();
+	});
 };
 /***** Kenny function end *****/
