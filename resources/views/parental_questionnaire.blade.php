@@ -32,17 +32,21 @@
 			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
-					<form id="example-advanced-form" action="#">
+					<form id="example-advanced-form" action="/parental_questionnaire" method="POST">
+						{{ csrf_field() }}
 						<h3><span class="number"><i class="ti-info txt-black"></i></span><span class="head-font capitalize-font">Nama Anak</span></h3>
 						<fieldset class="form-wrap">
 							<div class="form-horizontal">
 								<div class="form-body">
 									<div class="form-group">
-											<div class="col-md-12">
-												<select name="" class="form-control" id="">
-													<option disabled selected>Silahkan Pilih Nama Anak...</option>
-												</select>
-											</div>
+										<div class="col-md-12">
+											<select name="IdAnak" class="form-control">
+												<option disabled selected>Silahkan Pilih Nama Anak...</option>
+												@foreach( $biodatas as $biodata)
+													<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
+												@endforeach
+											</select>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -54,28 +58,33 @@
 								<div class="col-sm-12">
 									<div class="form-wrap">
 										<div class="form-group">
-											<div class="row">
-												<div class="col-md-12">
-													<label class="control-label mb-10" for="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam a architecto sed, modi error iste eaque! Quidem, dignissimos temporibus. Fuga, quisquam! Veritatis iure nihil repellendus nesciunt eligendi sed possimus excepturi.#1</label>
-													<div class="radio-list">
-														<div class="col-sm-12">
-															<div class="radio">
-																<input type="radio" name="radio" id="radio1" value="option1">
-																<label for="radio1"> Ya </label>
+											@php($counter = 1)
+											@foreach( $questionnaires as $questionnaire)
+												@if($questionnaire->IdJenis == 1)
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label mb-10" for="">{{$counter++}}.{{$questionnaire->Pertanyaan}}</label>
+															<input type="hidden" name="questionnaire[]" value="{{$questionnaire->IdQuestionaire}}">
+															<div class="radio-list">
+																<div class="col-sm-12">
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
+																		<label for="radio1"> Ya </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
+																		<label for="radio2"> Kadang-kadang </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
+																		<label for="radio3"> Tidak </label>
+																	</div>
+																</div>
 															</div>
-															<div class="radio">
-																<input type="radio" name="radio" id="radio2" value="option2">
-																<label for="radio2"> Kadang-kadang </label>
-															</div>
-															<div class="radio">
-																<input type="radio" name="radio" id="radio3" value="option3">
-																<label for="radio3"> Tidak </label>
-															</div>
-															
 														</div>
 													</div>
-												</div>
-											</div>
+												@endif
+											@endforeach
 										</div>
 									</div>
 								</div>
@@ -88,28 +97,33 @@
 								<div class="col-sm-12">
 									<div class="form-wrap">
 										<div class="form-group">
-											<div class="row">
-												<div class="col-md-12">
-													<label class="control-label mb-10" for="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam a architecto sed, modi error iste eaque! Quidem, dignissimos temporibus. Fuga, quisquam! Veritatis iure nihil repellendus nesciunt eligendi sed possimus excepturi.#1</label>
-													<div class="radio-list">
-														<div class="col-sm-12">
-															<div class="radio">
-																<input type="radio" name="radio" id="radio1" value="option1">
-																<label for="radio1"> Ya </label>
+											@php($counter = 1)
+											@foreach( $questionnaires as $questionnaire)
+												@if($questionnaire->IdJenis == 2)
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label mb-10" for="">{{$counter++}}.{{$questionnaire->Pertanyaan}}</label>
+															<input type="hidden" name="questionnaire[]" value="{{$questionnaire->IdQuestionaire}}">
+															<div class="radio-list">
+																<div class="col-sm-12">
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
+																		<label for="radio1"> Ya </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
+																		<label for="radio2"> Kadang-kadang </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
+																		<label for="radio3"> Tidak </label>
+																	</div>
+																</div>
 															</div>
-															<div class="radio">
-																<input type="radio" name="radio" id="radio2" value="option2">
-																<label for="radio2"> Kadang-kadang </label>
-															</div>
-															<div class="radio">
-																<input type="radio" name="radio" id="radio3" value="option3">
-																<label for="radio3"> Tidak </label>
-															</div>
-															
 														</div>
 													</div>
-												</div>
-											</div>
+												@endif
+											@endforeach
 										</div>
 									</div>
 								</div>
@@ -122,28 +136,33 @@
 								<div class="col-sm-12">
 									<div class="form-wrap">
 										<div class="form-group">
-											<div class="row">
-												<div class="col-md-12">
-													<label class="control-label mb-10" for="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam a architecto sed, modi error iste eaque! Quidem, dignissimos temporibus. Fuga, quisquam! Veritatis iure nihil repellendus nesciunt eligendi sed possimus excepturi.#1</label>
-													<div class="radio-list">
-														<div class="col-sm-12">
-															<div class="radio">
-																<input type="radio" name="radio" id="radio1" value="option1">
-																<label for="radio1"> Ya </label>
+											@php($counter = 1)
+											@foreach( $questionnaires as $questionnaire)
+												@if($questionnaire->IdJenis == 3)
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label mb-10" for="">{{$counter++}}.{{$questionnaire->Pertanyaan}}</label>
+															<input type="hidden" name="questionnaire[]" value="{{$questionnaire->IdQuestionaire}}">
+															<div class="radio-list">
+																<div class="col-sm-12">
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
+																		<label for="radio1"> Ya </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
+																		<label for="radio2"> Kadang-kadang </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
+																		<label for="radio3"> Tidak </label>
+																	</div>
+																</div>
 															</div>
-															<div class="radio">
-																<input type="radio" name="radio" id="radio2" value="option2">
-																<label for="radio2"> Kadang-kadang </label>
-															</div>
-															<div class="radio">
-																<input type="radio" name="radio" id="radio3" value="option3">
-																<label for="radio3"> Tidak </label>
-															</div>
-															
 														</div>
 													</div>
-												</div>
-											</div>
+												@endif
+											@endforeach
 										</div>
 									</div>
 								</div>
@@ -156,32 +175,38 @@
 								<div class="col-sm-12">
 									<div class="form-wrap">
 										<div class="form-group">
-											<div class="row">
-												<div class="col-md-12">
-													<label class="control-label mb-10" for="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam a architecto sed, modi error iste eaque! Quidem, dignissimos temporibus. Fuga, quisquam! Veritatis iure nihil repellendus nesciunt eligendi sed possimus excepturi.#1</label>
-													<div class="radio-list">
-														<div class="col-sm-12">
-															<div class="radio">
-																<input type="radio" name="radio" id="radio1" value="option1">
-																<label for="radio1"> Ya </label>
+											@php($counter = 1)
+											@foreach( $questionnaires as $questionnaire)
+												@if($questionnaire->IdJenis == 4)
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label mb-10" for="">{{$counter++}}.{{$questionnaire->Pertanyaan}}</label>
+															<input type="hidden" name="questionnaire[]" value="{{$questionnaire->IdQuestionaire}}">
+															<div class="radio-list">
+																<div class="col-sm-12">
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
+																		<label for="radio1"> Ya </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
+																		<label for="radio2"> Kadang-kadang </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
+																		<label for="radio3"> Tidak </label>
+																	</div>
+																</div>
 															</div>
-															<div class="radio">
-																<input type="radio" name="radio" id="radio2" value="option2">
-																<label for="radio2"> Kadang-kadang </label>
-															</div>
-															<div class="radio">
-																<input type="radio" name="radio" id="radio3" value="option3">
-																<label for="radio3"> Tidak </label>
-															</div>
-															
 														</div>
 													</div>
-												</div>
-											</div>
+												@endif
+											@endforeach
 										</div>
 									</div>
 								</div>
 							</div>
+							<input type="submit">
 						</fieldset>
 					</form>
 				</div>

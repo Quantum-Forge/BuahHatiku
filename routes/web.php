@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\QuestionaireController;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\ParentalQuestionaireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,11 +85,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/questionnaire_delete/{IdQuestionaire}',function($IdQuestionaire){
         return QuestionaireController::delete($IdQuestionaire);
     });
-    Route::get('/test',function(){
-        dd(Storage::url('test.txt'));
-        return 1;
-    });
     Route::get('/parental_questionnaire',function(){
-        return view('parental_questionnaire');
+        return ParentalQuestionaireController::view();
+    });
+    Route::post('/parental_questionnaire',function(Request $request){
+        return ParentalQuestionaireController::insert($request);
     });
 });
