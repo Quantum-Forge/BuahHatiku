@@ -21,4 +21,9 @@ class Biodata extends Model
      * @var string
      */
     protected $primaryKey = 'IdAnak';
+
+    public function parental_questionnaires()
+    {
+        return $this->hasMany(ParentalQuestionnaire::class, 'IdAnak', 'IdAnak');
+    }
 }

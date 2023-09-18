@@ -91,4 +91,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/parental_questionnaire',function(Request $request){
         return ParentalQuestionaireController::insert($request);
     });
+    Route::post('/parental_questionnaire_delete/{IdAnak}',function($IdAnak){
+        return ParentalQuestionaireController::delete($IdAnak);
+    });
 });

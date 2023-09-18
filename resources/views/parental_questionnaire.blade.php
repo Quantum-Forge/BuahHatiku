@@ -228,40 +228,50 @@
 								<thead>
 									<tr>
 										<th>No.</th>
-										<th>ID Parental</th>
 										<th>Nama Anak</th>
 										<th>Diagnosa</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
+									@foreach ($biodatas_filled as $biodata)
 									<tr>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
+										<td>{{ $loop->index+1 }}</td>
+										<td>{{ $biodata->Nama }}</td>
+										<td>
+											@if($biodata->IdDiagnosa == 1) Hiperaktif
+											@elseif($biodata->IdDiagnosa == 2) Autis
+											@elseif($biodata->IdDiagnosa == 3) Speech Delay
+											@elseif($biodata->IdDiagnosa == 4) ADHD
+											@elseif($biodata->IdDiagnosa == 5) Lainnya
+											@endif
+										</td>
 										<td width="80">
 											<button class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-eye"></i></button>
-											<button data-toggle="modal" data-target="#responsive-modal" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+											<button data-toggle="modal" data-target="#responsive-modal{{$biodata->IdAnak}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 										</td>
 									</tr>
-									<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+									<div id="responsive-modal{{$biodata->IdAnak}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-													<h5 class="modal-title">Delete Parental</h5>
+											<form action="/parental_questionnaire_delete/{{$biodata->IdAnak}}" method="POST">
+												{{ csrf_field() }}
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+														<h5 class="modal-title">Delete Parental</h5>
+													</div>
+													<div class="modal-body">
+														Are you sure to delete {{ $biodata->Nama}} parental data ?
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+														<button type="submit" class="btn btn-danger">Yes</button>
+													</div>
 												</div>
-												<div class="modal-body">
-													Are you sure to delete this (ID Parental) ?
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-													<button type="button" class="btn btn-danger">Yes</button>
-												</div>
-											</div>
+											</form>
 										</div>
 									</div>
+									@endforeach
 								</tbody>
 							</table>
 						</div>

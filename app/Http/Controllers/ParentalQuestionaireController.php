@@ -11,11 +11,13 @@ class ParentalQuestionaireController extends Controller
 {
     //
     public static function view(){
-        $biodatas = Biodata::all();
+        $biodatas = Biodata::doesnthave('parental_questionnaires')->get();
         $questionnaires = Questionnaire::all();
+        $biodatas_filled = Biodata::has('parental_questionnaires')->get();
         return view('parental_questionnaire')->with([
             'biodatas' => $biodatas,
-            'questionnaires' => $questionnaires
+            'questionnaires' => $questionnaires,
+            'biodatas_filled' => $biodatas_filled,
         ]);
     }
     
@@ -28,6 +30,11 @@ class ParentalQuestionaireController extends Controller
 
             $parentalQuestionnaire->save();
         }
+        return redirect('/parental_questionnaire');
+    }
+
+    public static function delete($IdAnak){
+        $questionnaire = ParentalQuestionnaire::where('IdAnak', $IdAnak)->delete();
         return redirect('/parental_questionnaire');
     }
 }
