@@ -173,7 +173,7 @@ var kenny = function(){
 		// Temukan tombol submit dan simulasikan klik
 		$('button[type="submit"]').click();
 		// Lakukan penyegaran halaman
-		// location.reload();
+		location.reload();
 	});
 };
 /***** Kenny function end *****/
