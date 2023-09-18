@@ -171,9 +171,9 @@ var kenny = function(){
 	$('a[href="#finish"]').on('click', function(event) {
 		event.preventDefault();
 		// Temukan tombol submit dan simulasikan klik
-		$('button[type="submit"]').click();
-		// Lakukan penyegaran halaman
-		location.reload();
+		// $('button[type="submit"]').click();
+		// // Lakukan penyegaran halaman
+		// location.reload();
 	});
 };
 /***** Kenny function end *****/

@@ -53,7 +53,7 @@ $(function(){
 			},
 			onFinished: function (event, currentIndex)
 			{
-				alert("Submitted!");
+				form_2.trigger( "submit" );
 			}
 		}).validate({
 			errorPlacement: function errorPlacement(error, element) { element.before(error); },
