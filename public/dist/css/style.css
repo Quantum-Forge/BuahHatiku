@@ -2915,7 +2915,7 @@ button.input-group-addon.fc-agendaWeek-button, .owl-theme .owl-nav .input-group-
 }
 .wizard .steps ul > li > a:hover, .wizard .steps ul > li > a:focus, .wizard .steps ul > li > a:active {
   margin: 0;
-  padding: 10px;
+  padding: 14px 20px;
 }
 .wizard .steps ul > li span.number {
   border-radius: 100%;
@@ -3009,7 +3009,7 @@ button.input-group-addon.fc-agendaWeek-button, .owl-theme .owl-nav .input-group-
 }
 .tabcontrol > .steps > ul > li.current > a {
   color: #2f2c2c;
-  padding: 10px;
+  padding: 10px 20px;
   border-bottom: 3px solid #3cb878;
 }
 .tabcontrol > .steps > ul > li.current > a:active, .tabcontrol > .steps > ul > li.current > a:focus, .tabcontrol > .steps > ul > li.current > a:hover {
