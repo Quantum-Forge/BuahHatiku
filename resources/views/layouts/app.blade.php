@@ -93,16 +93,15 @@
     <script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendors/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
-
-    <!-- Form-xeditable Init JavaScript -->
-	<script src="{{ asset('dist/js/form-xeditable-data.js') }}"></script>
-
-    <!-- Form Wizard JavaScript -->
-    <script src="{{ asset('vendors/bower_components/jquery.steps/build/jquery.steps.min.js') }}"></script>
-    <script src="{{ asset('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js') }}"></script>
+    
+    <!-- Data table JavaScript -->
+	<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
 
     <!-- Form Wizard Data JavaScript -->
+    <script src="{{ asset('vendors/bower_components/jquery.steps/build/jquery.steps.min.js') }}"></script>
 	<script src="{{ asset('dist/js/form-wizard-data.js') }}"></script>
+    <script src="{{ asset('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js') }}"></script>
 
     <!-- Starrr JavaScript -->
 	<script src="{{ asset('dist/js/starrr.js') }}"></script>
@@ -139,14 +138,6 @@
 
     <!-- Form Advance Init JavaScript -->
     <script src="{{ asset('dist/js/form-advance-data.js') }}"></script>
-
-
-    <!-- Data table JavaScript -->
-	<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
-
-    <!-- Data table JavaScript -->
-    <script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
 
     <!-- Slimscroll JavaScript -->
     <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
