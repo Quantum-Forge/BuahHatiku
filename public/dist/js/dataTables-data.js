@@ -1,13 +1,10 @@
-$(function() {
-    "use strict";
+/*DataTable Init*/
 
-    // Hapus semua data dan event handler dari DataTable yang sudah ada di tabel dengan ID datable_1
-    var table1 = $('#datable_1').DataTable({ destroy: true});
-    table1.clear().destroy();
+"use strict"; 
 
-    // Kemudian inisialisasi DataTable yang baru di atas tabel dengan ID datable_1
-    $('#datable_1').DataTable({ destroy: true});
-
-    // Inisialisasi DataTable untuk tabel dengan ID datable_2
-    $('#datable_2').DataTable({ "lengthChange": false });
-});
+$(document).ready(function() {
+	"use strict";
+	
+	$('#datable_1').DataTable();
+    $('#datable_2').DataTable({ "lengthChange": false});
+} );
