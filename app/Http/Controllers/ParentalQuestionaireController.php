@@ -23,10 +23,8 @@ class ParentalQuestionaireController extends Controller
 
     public static function view_detail($IdAnak){
         $biodata = Biodata::where('IdAnak', $IdAnak)->first();
-        $questionnaires = Questionnaire::all();
         return view('parental_questionnaire_view')->with([
-            'biodata' => $biodata,
-            'questionnaires' => $questionnaires
+            'biodata' => $biodata
         ]);
     }
     
