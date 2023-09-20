@@ -21,4 +21,9 @@ class ParentalQuestionnaire extends Model
      * @var string
      */
     protected $primaryKey = 'IdParental';
+
+    public function questionnaire()
+    {
+        return $this->belongsTo(Questionnaire::class, 'IdQuestionaire', 'IdQuestionaire');
+    }
 }

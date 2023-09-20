@@ -247,7 +247,7 @@
 											@endif
 										</td>
 										<td width="80">
-											<button class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-eye"></i></button>
+											<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/parental_questionnaire_view/{{$biodata->IdAnak}}';"><i class="fa fa-eye"></i></button>
 											<button data-toggle="modal" data-target="#responsive-modal{{$biodata->IdAnak}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 										</td>
 									</tr>

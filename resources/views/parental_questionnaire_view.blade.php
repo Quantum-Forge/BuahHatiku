@@ -48,7 +48,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Nama:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> John </p>
+																<p class="form-control-static">{{$biodata->Nama}}</p>
 															</div>
 														</div>
 													</div>
@@ -57,7 +57,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Anak ke...:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> Doe </p>
+																<p class="form-control-static">{{$biodata->AnakKe}}</p>
 															</div>
 														</div>
 													</div>
@@ -69,7 +69,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Jenis Kelamin:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> Male </p>
+																<p class="form-control-static">{{$biodata->JenisKelamin}}</p>
 															</div>
 														</div>
 													</div>
@@ -78,7 +78,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Tanggal Lahir:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> 24/05/1990 </p>
+																<p class="form-control-static">{{$biodata->TglLahir}}</p>
 															</div>
 														</div>
 													</div>
@@ -86,7 +86,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Tempat Lahir:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> 24/05/1990 </p>
+																<p class="form-control-static">{{$biodata->TempatLahir}}</p>
 															</div>
 														</div>
 													</div>
@@ -94,7 +94,20 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Pendidikan:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> 24/05/1990 </p>
+																<p class="form-control-static">
+																	@if($biodata->Pendidikan=='PAUD') Pendidikan Anak Usia Dini (PAUD) @endif
+																	@if($biodata->Pendidikan=='SD') Sekolah Dasar (SD) @endif
+																	@if($biodata->Pendidikan=='SMP') Sekolah Menengah Pertama (SMP) @endif
+																	@if($biodata->Pendidikan=='SMA') Sekolah Menengah Atas (SMA) @endif
+																	@if($biodata->Pendidikan=='SMK') Sekolah Menengah Kejuruan (SMK) @endif
+																	@if($biodata->Pendidikan=='Perguruan_Tinggi_S1') Perguruan Tinggi (Sarjana - S1) @endif
+																	@if($biodata->Pendidikan=='Perguruan_Tinggi_S2') Perguruan Tinggi (Magister - S2) @endif
+																	@if($biodata->Pendidikan=='Perguruan_Tinggi_S3') Perguruan Tinggi (Doktor - S3) @endif
+																	@if($biodata->Pendidikan=='Madrasah_Ibtidaiyah') Madrasah Ibtidaiyah (MI) @endif
+																	@if($biodata->Pendidikan=='Madrasah_Tsanawiyah') Madrasah Tsanawiyah (MTs) @endif
+																	@if($biodata->Pendidikan=='Madrasah_Aliyah') Madrasah Aliyah (MA) @endif
+																	@if($biodata->Pendidikan=='Pendidikan_Khusus') Pendidikan Khusus @endif
+																</p>
 															</div>
 														</div>
 													</div>
@@ -106,7 +119,14 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Diagnosa:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> Category1 </p>
+																<p class="form-control-static">
+																@if($biodata->IdDiagnosa == 1) Hiperaktif
+																@elseif($biodata->IdDiagnosa == 2) Autis
+																@elseif($biodata->IdDiagnosa == 3) Speech Delay
+																@elseif($biodata->IdDiagnosa == 4) ADHD
+																@elseif($biodata->IdDiagnosa == 5) Lainnya
+																@endif
+																</p>
 															</div>
 														</div>
 													</div>
@@ -115,7 +135,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Pemeriksa:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> Free </p>
+																<p class="form-control-static">{{$biodata->YangMendiagnosa}}</p>
 															</div>
 														</div>
 													</div>
@@ -132,7 +152,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Ayah:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> 827 Deerfield Ave. Greenwood</p>
+																<p class="form-control-static">{{$biodata->NamaBapak}}</p>
 															</div>
 														</div>
 													</div>
@@ -140,7 +160,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Ibu:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> Los Angeles </p>
+																<p class="form-control-static">{{$biodata->NamaIbu}}</p>
 															</div>
 														</div>
 													</div>
@@ -149,7 +169,20 @@
 														<div class="form-group">
 															<label class="control-label col-md-3"> Pendidikan:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> California</p>
+																<p class="form-control-static">
+																	@if($biodata->PendBapak=='PAUD') Pendidikan Anak Usia Dini (PAUD) @endif
+																	@if($biodata->PendBapak=='SD') Sekolah Dasar (SD) @endif
+																	@if($biodata->PendBapak=='SMP') Sekolah Menengah Pertama (SMP) @endif
+																	@if($biodata->PendBapak=='SMA') Sekolah Menengah Atas (SMA) @endif
+																	@if($biodata->PendBapak=='SMK') Sekolah Menengah Kejuruan (SMK) @endif
+																	@if($biodata->PendBapak=='Perguruan_Tinggi_S1') Perguruan Tinggi (Sarjana - S1) @endif
+																	@if($biodata->PendBapak=='Perguruan_Tinggi_S2') Perguruan Tinggi (Magister - S2) @endif
+																	@if($biodata->PendBapak=='Perguruan_Tinggi_S3') Perguruan Tinggi (Doktor - S3) @endif
+																	@if($biodata->PendBapak=='Madrasah_Ibtidaiyah') Madrasah Ibtidaiyah (MI) @endif
+																	@if($biodata->PendBapak=='Madrasah_Tsanawiyah') Madrasah Tsanawiyah (MTs) @endif
+																	@if($biodata->PendBapak=='Madrasah_Aliyah') Madrasah Aliyah (MA) @endif
+																	@if($biodata->PendBapak=='Pendidikan_Khusus') Pendidikan Khusus @endif
+																</p>
 															</div>
 														</div>
 													</div>
@@ -158,7 +191,20 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Pendidikan:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> 457890 </p>
+																<p class="form-control-static">
+																	@if($biodata->PendIbu=='PAUD') Pendidikan Anak Usia Dini (PAUD) @endif
+																	@if($biodata->PendIbu=='SD') Sekolah Dasar (SD) @endif
+																	@if($biodata->PendIbu=='SMP') Sekolah Menengah Pertama (SMP) @endif
+																	@if($biodata->PendIbu=='SMA') Sekolah Menengah Atas (SMA) @endif
+																	@if($biodata->PendIbu=='SMK') Sekolah Menengah Kejuruan (SMK) @endif
+																	@if($biodata->PendIbu=='Perguruan_Tinggi_S1') Perguruan Tinggi (Sarjana - S1) @endif
+																	@if($biodata->PendIbu=='Perguruan_Tinggi_S2') Perguruan Tinggi (Magister - S2) @endif
+																	@if($biodata->PendIbu=='Perguruan_Tinggi_S3') Perguruan Tinggi (Doktor - S3) @endif
+																	@if($biodata->PendIbu=='Madrasah_Ibtidaiyah') Madrasah Ibtidaiyah (MI) @endif
+																	@if($biodata->PendIbu=='Madrasah_Tsanawiyah') Madrasah Tsanawiyah (MTs) @endif
+																	@if($biodata->PendIbu=='Madrasah_Aliyah') Madrasah Aliyah (MA) @endif
+																	@if($biodata->PendIbu=='Pendidikan_Khusus') Pendidikan Khusus @endif
+																</p>
 															</div>
 														</div>
 													</div>
@@ -167,7 +213,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Alamat:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> USA </p>
+																<p class="form-control-static">{{$biodata->Alamat}}</p>
 															</div>
 														</div>
 													</div>
@@ -175,9 +221,9 @@
 													<!--/span-->
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">DOB Ibu:</label>
+															<label class="control-label col-md-3">DOB Ayah/Ibu:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> USA </p>
+																<p class="form-control-static">{{$biodata->TglLahirOrtu}}</p>
 															</div>
 														</div>
 													</div>
@@ -187,7 +233,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Handphone:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> USA </p>
+																<p class="form-control-static">{{$biodata->NoHP}}</p>
 															</div>
 														</div>
 													</div>
@@ -197,7 +243,7 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Email:</label>
 															<div class="col-md-9">
-																<p class="form-control-static"> USA </p>
+																<p class="form-control-static">{{$biodata->Email}}</p>
 															</div>
 														</div>
 													</div>
@@ -212,135 +258,151 @@
 						</section>
 						<h3><span class="number"><i class="ti-microphone-alt txt-black"></i></span><span class="head-font capitalize-font">Speech</span></h3>
 						<section>
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="form-wrap">
-										<div class="form-group">
-											<div class="row">
-												<div class="col-md-12">
-													<label class="control-label mb-10" for="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam a architecto sed, modi error iste eaque! Quidem, dignissimos temporibus. Fuga, quisquam! Veritatis iure nihil repellendus nesciunt eligendi sed possimus excepturi.#1</label>
-													<div class="radio-list">
-														<div class="col-sm-12">
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio1" value="option1" checked>
-																<label for="radio1"> Ya </label>
+							@php($counter = 1)
+							@foreach( $biodata->parental_questionnaires as $parental)
+								@if($parental->questionnaire->IdJenis == 1)
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="form-wrap">
+												<div class="form-group">
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label mb-10" for="">{{$counter++}}.{{$parental->questionnaire->Pertanyaan}}</label>
+															<div class="radio-list">
+																<div class="col-sm-12">
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio1" value="option1" @if($parental->Jawaban=='Ya') checked @endif>
+																		<label for="radio1"> Ya </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio2" value="option2" @if($parental->Jawaban=='Kadang-kadang') checked @endif>
+																		<label for="radio2"> Kadang-kadang </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio3" value="option3" @if($parental->Jawaban=='Tidak') checked @endif>
+																		<label for="radio3"> Tidak </label>
+																	</div>
+																</div>
 															</div>
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio2" value="option2">
-																<label for="radio2"> Kadang-kadang </label>
-															</div>
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio3" value="option3">
-																<label for="radio3"> Tidak </label>
-															</div>
-															
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+								@endif
+							@endforeach
 						</section>
 						<h3><span class="number"><i class="ti-thought txt-black"></i></span><span class="head-font capitalize-font">Sosialisasi</span></h3>
 						<section>
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="form-wrap">
-										<div class="form-group">
-											<div class="row">
-												<div class="col-md-12">
-													<label class="control-label mb-10" for="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam a architecto sed, modi error iste eaque! Quidem, dignissimos temporibus. Fuga, quisquam! Veritatis iure nihil repellendus nesciunt eligendi sed possimus excepturi.#1</label>
-													<div class="radio-list">
-														<div class="col-sm-12">
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio1" value="option1">
-																<label for="radio1"> Ya </label>
+							@php($counter = 1)
+							@foreach( $biodata->parental_questionnaires as $parental)
+								@if($parental->questionnaire->IdJenis == 2)
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="form-wrap">
+												<div class="form-group">
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label mb-10" for="">{{$counter++}}.{{$parental->questionnaire->Pertanyaan}}</label>
+															<div class="radio-list">
+																<div class="col-sm-12">
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio1" value="option1" @if($parental->Jawaban=='Ya') checked @endif>
+																		<label for="radio1"> Ya </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio2" value="option2" @if($parental->Jawaban=='Kadang-kadang') checked @endif>
+																		<label for="radio2"> Kadang-kadang </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio3" value="option3" @if($parental->Jawaban=='Tidak') checked @endif>
+																		<label for="radio3"> Tidak </label>
+																	</div>
+																</div>
 															</div>
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio2" value="option2">
-																<label for="radio2"> Kadang-kadang </label>
-															</div>
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio3" value="option3">
-																<label for="radio3"> Tidak </label>
-															</div>
-															
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+								@endif
+							@endforeach
 						</section>
 						<h3><span class="number"><i class="ti-rss-alt txt-black"></i></span><span class="head-font capitalize-font">Sensory</span></h3>
 						<section>
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="form-wrap">
-										<div class="form-group">
-											<div class="row">
-												<div class="col-md-12">
-													<label class="control-label mb-10" for="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam a architecto sed, modi error iste eaque! Quidem, dignissimos temporibus. Fuga, quisquam! Veritatis iure nihil repellendus nesciunt eligendi sed possimus excepturi.#1</label>
-													<div class="radio-list">
-														<div class="col-sm-12">
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio1" value="option1">
-																<label for="radio1"> Ya </label>
+							@php($counter = 1)
+							@foreach( $biodata->parental_questionnaires as $parental)
+								@if($parental->questionnaire->IdJenis == 3)
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="form-wrap">
+												<div class="form-group">
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label mb-10" for="">{{$counter++}}.{{$parental->questionnaire->Pertanyaan}}</label>
+															<div class="radio-list">
+																<div class="col-sm-12">
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio1" value="option1" @if($parental->Jawaban=='Ya') checked @endif>
+																		<label for="radio1"> Ya </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio2" value="option2" @if($parental->Jawaban=='Kadang-kadang') checked @endif>
+																		<label for="radio2"> Kadang-kadang </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio3" value="option3" @if($parental->Jawaban=='Tidak') checked @endif>
+																		<label for="radio3"> Tidak </label>
+																	</div>
+																</div>
 															</div>
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio2" value="option2">
-																<label for="radio2"> Kadang-kadang </label>
-															</div>
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio3" value="option3">
-																<label for="radio3"> Tidak </label>
-															</div>
-															
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+								@endif
+							@endforeach
 						</section>
 						<h3><span class="number"><i class="ti-heart-broken txt-black"></i></span><span class="head-font capitalize-font">Kesehatan</span></h3>
 						<section>
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="form-wrap">
-										<div class="form-group">
-											<div class="row">
-												<div class="col-md-12">
-													<label class="control-label mb-10" for="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam a architecto sed, modi error iste eaque! Quidem, dignissimos temporibus. Fuga, quisquam! Veritatis iure nihil repellendus nesciunt eligendi sed possimus excepturi.#1</label>
-													<div class="radio-list">
-														<div class="col-sm-12">
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio1" value="option1">
-																<label for="radio1"> Ya </label>
+							@php($counter = 1)
+							@foreach( $biodata->parental_questionnaires as $parental)
+								@if($parental->questionnaire->IdJenis == 4)
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="form-wrap">
+												<div class="form-group">
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label mb-10" for="">{{$counter++}}.{{$parental->questionnaire->Pertanyaan}}</label>
+															<div class="radio-list">
+																<div class="col-sm-12">
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio1" value="option1" @if($parental->Jawaban=='Ya') checked @endif>
+																		<label for="radio1"> Ya </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio2" value="option2" @if($parental->Jawaban=='Kadang-kadang') checked @endif>
+																		<label for="radio2"> Kadang-kadang </label>
+																	</div>
+																	<div class="radio">
+																		<input type="radio" disabled name="answer[{{$parental->IdQuestionaire}}]" id="radio3" value="option3" @if($parental->Jawaban=='Tidak') checked @endif>
+																		<label for="radio3"> Tidak </label>
+																	</div>
+																</div>
 															</div>
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio2" value="option2">
-																<label for="radio2"> Kadang-kadang </label>
-															</div>
-															<div class="radio">
-																<input type="radio" disabled name="radio" id="radio3" value="option3">
-																<label for="radio3"> Tidak </label>
-															</div>
-															
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+								@endif
+							@endforeach
 						</section>
 					</div>
 				</div>

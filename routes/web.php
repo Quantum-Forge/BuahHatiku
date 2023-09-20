@@ -97,4 +97,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/parental_questionnaire_view',function(){
         return view('parental_questionnaire_view');
     });
+    Route::get('/parental_questionnaire_view/{IdAnak}',function($IdAnak){
+        return ParentalQuestionaireController::view_detail($IdAnak);
+    });
 });
