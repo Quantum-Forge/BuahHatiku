@@ -94,4 +94,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/parental_questionnaire_delete/{IdAnak}',function($IdAnak){
         return ParentalQuestionaireController::delete($IdAnak);
     });
+    Route::get('/parental_questionnaire_view',function(){
+        return view('parental_questionnaire_view');
+    });
 });

@@ -8,8 +8,9 @@ $(function(){
 			headerTag: "h3",
 			bodyTag: "section",
 			transitionEffect: "fade",
-			autoFocus: true,
-			titleTemplate: '<span class="number">#index#</span> #title#',
+			autoFocus: false,
+			titleTemplate: '#title#',
+			enableFinishButton: false,
 		});
 
 	if($('#example-advanced-form').length >0){
@@ -32,10 +33,10 @@ $(function(){
 					return true;
 				}
 				// Forbid next action on "Warning" step if the user is to young
-				if (newIndex === 3 && Number($("#age-2").val()) < 18)
-				{
-					return false;
-				}
+				// if (newIndex === 3 && Number($("#age-2").val()) < 18)
+				// {
+				// 	return false;
+				// }
 				// Needed in some cases if the user went back (clean up)
 				if (currentIndex < newIndex)
 				{
