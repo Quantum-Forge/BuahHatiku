@@ -71,7 +71,13 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Tanggal Lahir</label>
-													<input type="date" class="form-control" name="TglLahir">
+													{{-- <input type="date" class="form-control" name="TglLahir"> --}}
+													<div class="input-group date" name="TglLahir" id="TglLahir">
+														<input type="text" data-mask="99/99/9999" class="form-control">
+														<span class="input-group-addon">
+															<span class="fa fa-calendar"></span>
+														</span>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -222,7 +228,13 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Tanggal Lahir Bapak/Ibu</label>
-													<input type="date" class="form-control" name="TglLahirOrtu">
+													{{-- <input type="date" class="form-control" name="TglLahirOrtu"> --}}
+													<div class="input-group date" name="TglLahirOrtu" id="TglLahirOrtu">
+														<input type="text" data-mask="99/99/9999" class="form-control">
+														<span class="input-group-addon">
+															<span class="fa fa-calendar"></span>
+														</span>
+													</div>
 												</div>
 											</div>
 											<!--/span-->
