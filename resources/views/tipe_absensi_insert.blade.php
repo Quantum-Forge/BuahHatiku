@@ -36,13 +36,14 @@
 						<div class="col-sm-12 col-xs-12">
 							<div class="form-wrap row">
 								<div class="col-md-4">
-									<form class="form-horizontal">
+									<form class="form-horizontal" action="/tipe_absensi_insert" method="POST">
+										{{ csrf_field() }}
 										<div class="form-group">
 											<label for="Jenis" class="col-sm-3 control-label">Jenis*</label>
 											<div class="col-sm-9">
 												<div class="input-group">
 													<div class="input-group-addon"><i class="icon-list"></i></div>
-													<input type="text" class="form-control">
+													<input type="text" name="JenisAbsensi" class="form-control">
 												</div>
 											</div>
 										</div>
@@ -51,14 +52,14 @@
 											<div class="col-sm-9">
 												<div class="input-group">
 													<div class="input-group-addon">Rp.</div>
-													<input type="number" placeholder="Isi Harga..." class="form-control">
+													<input type="number" name="Harga" placeholder="Isi Harga..." class="form-control">
 												</div>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="" class="col-sm-3 control-label">Durasi</label>
 											<div class="col-sm-9">
-												<input placeholder="Isi Durasi Jam..." class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="" style="display: block;">
+												<input placeholder="Isi Durasi Jam..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="" style="display: block;">
 												<span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
 											</div>
 										</div>
@@ -66,7 +67,7 @@
 											<label for="Pertanyaan" class="col-sm-3 control-label">Keterangan*</label>
 											<div class="col-sm-9">
 												<div class="input-group">
-													<textarea name="" class="form-control" id="" cols="50" rows="10"></textarea>
+													<textarea name="Keterangan" class="form-control" id="" cols="50" rows="10"></textarea>
 												</div>
 											</div>
 										</div>
@@ -91,32 +92,37 @@
 													</tr>
 												</thead>
 												<tbody>
+													@foreach( $tipe_absensies as $tipe_absensi)
 													<tr>
-														<td>1</td>
-														<td>Kesadaran/Kognitif</td>
-														<td>Mengetahui nama sendiri</td>
-														<td>1 Jam</td>
+														<td>{{$loop->index+1}}</td>
+														<td>{{$tipe_absensi->JenisAbsensi}}</td>
+														<td>Rp. {{$tipe_absensi->Harga}}</td>
+														<td>{{$tipe_absensi->Durasi}} Jam</td>
 														<td width="100">
-															<button data-toggle="modal" data-target="#responsive-modal" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+															<button data-toggle="modal" data-target="#responsive-modal{{$tipe_absensi->IdTipe}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 														</td>
 													</tr>
-													<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+													<div id="responsive-modal{{$tipe_absensi->IdTipe}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 														<div class="modal-dialog">
-															<div class="modal-content">
-																<div class="modal-header">
-																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-																	<h5 class="modal-title">Delete Bio</h5>
+															<form action="/tipe_absensi_delete/{{$tipe_absensi->IdTipe}}" method="POST">
+																{{ csrf_field() }}
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																		<h5 class="modal-title">Delete Tipe Absensi</h5>
+																	</div>
+																	<div class="modal-body">
+																		Are you sure to delete {{$tipe_absensi->Keterangan}} ?
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+																		<button type="submit" class="btn btn-danger">Yes</button>
+																	</div>
 																</div>
-																<div class="modal-body">
-																	Are you sure to delete this Bio ?
-																</div>
-																<div class="modal-footer">
-																	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-																	<button type="button" class="btn btn-danger">Yes</button>
-																</div>
-															</div>
+															</form>
 														</div>
 													</div>
+													@endforeach
 												</tbody>
 											</table>
 										</div>

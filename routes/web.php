@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ParentalQuestionaireController;
+use App\Http\Controllers\TipeAbsensiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,12 @@ Route::middleware(['auth'])->group(function () {
         return ParentalQuestionaireController::view_detail($IdAnak);
     });
     Route::get('/tipe_absensi_insert',function(){
-        return view('tipe_absensi_insert');
+        return TipeAbsensiController::view();
+    });
+    Route::post('/tipe_absensi_insert',function(Request $request){
+        return TipeAbsensiController::insert($request);
+    });
+    Route::post('/tipe_absensi_delete/{IdTipe}',function($IdTipe){
+        return TipeAbsensiController::delete($IdTipe);
     });
 });
