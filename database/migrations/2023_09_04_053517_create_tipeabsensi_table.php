@@ -16,7 +16,9 @@ class CreateTipeabsensiTable extends Migration
         Schema::create('tipe_absensi', function (Blueprint $table) {
             $table->bigIncrements('IdTipe');
             $table->string('JenisAbsensi', 150);
+            $table->string('Keterangan', 350); 
             $table->double('Harga');
+            $table->double('Durasi'); 
             $table->timestamps();
         });
     }

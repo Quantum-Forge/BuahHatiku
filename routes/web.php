@@ -100,4 +100,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/parental_questionnaire_view/{IdAnak}',function($IdAnak){
         return ParentalQuestionaireController::view_detail($IdAnak);
     });
+    Route::get('/tipe_absensi_insert',function(){
+        return view('tipe_absensi_insert');
+    });
 });

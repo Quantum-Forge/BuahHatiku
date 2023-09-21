@@ -37,15 +37,7 @@
 								<a href="panels-wells.html">Daftar Absensi</a>
 							</li>
 							<li>
-								<a href="javascript:void(0);" data-toggle="collapse" data-target="#tipe_absensi" class="collapsed" aria-expanded="false">Tipe Absensi<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
-								<ul id="tipe_absensi" class="collapse-level-2 collapse" aria-expanded="false" style="height: 0px;">
-									<li>
-										<a href="#">Create Tipe</a>
-									</li>
-									<li>
-										<a href="#">View Tipe</a>
-									</li>
-								</ul>
+								<a href="/tipe_absensi_insert">Tipe Absensi</a>
 							</li>
 
 						</ul>

@@ -11,10 +11,8 @@
 	<!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-
-    <!-- xeditable css -->
-	<link href="{{ asset('vendors/bower_components/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css') }}" rel="stylesheet" />
-
+     <!-- Bootstrap Colorpicker CSS -->
+    <link href="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Bootstrap Colorpicker CSS -->
     <link href="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet" type="text/css"/>
 
@@ -139,6 +137,9 @@
     <!-- Form Advance Init JavaScript -->
     <script src="{{ asset('dist/js/form-advance-data.js') }}"></script>
 
+    <!-- Bootstrap Touchspin JavaScript -->
+    <script src="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
+
     <!-- Slimscroll JavaScript -->
     <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
 
@@ -151,7 +152,7 @@
     <script src="{{ asset('vendors/bower_components/waypoints/lib/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('vendors/bower_components/Counter-Up/jquery.counterup.min.js') }}"></script>
 
-    <!-- Bootstrap Daterangepicker JavaScript -->
+    <!-- Bootstrap Dropify JavaScript -->
 	<script src="{{ asset('vendors/bower_components/dropify/dist/js/dropify.min.js') }}"></script>
 
     <!-- Form Flie Upload Data JavaScript -->
