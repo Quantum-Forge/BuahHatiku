@@ -44,6 +44,7 @@
     <link href="{{ asset('vendors/bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css"/>
 
     <!-- Bootstrap Datetimepicker CSS -->
+    <link href="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css"/>
 
     <!-- Bootstrap Dropify CSS -->
@@ -131,9 +132,6 @@
     <!-- Bootstrap Switch JavaScript -->
     <script src="{{ asset('vendors/bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js') }}"></script>
 
-    <!-- Bootstrap Datetimepicker JavaScript -->
-    <script src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-
     <!-- Form Advance Init JavaScript -->
     <script src="{{ asset('dist/js/form-advance-data.js') }}"></script>
 
@@ -177,6 +175,14 @@
     <!-- Init JavaScript -->
     <script src="{{ asset('dist/js/init.js') }}"></script>
     <script src="{{ asset('dist/js/dashboard-data.js') }}"></script>
+
+    <!-- Bootstrap Datetimepicker JavaScript -->
+    <script src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <!-- Bootstrap Daterangepicker JavaScript -->
+    <script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <!-- Form Picker Init JavaScript -->
+    <script src="{{ asset('dist/js/form-picker-data.js') }}"></script>
+    
 
 </body>
 </html>

@@ -18,7 +18,8 @@ $(document).ready(function() {
 	});
 	
 	/* Datetimepicker Init*/
-	$('#datetimepicker1').datetimepicker({
+	$('#TglLahir, #TglLahirOrtu').datetimepicker({
+			format: 'DD/MM/YYYY',
 			useCurrent: false,
 			icons: {
                     time: "fa fa-clock-o",
