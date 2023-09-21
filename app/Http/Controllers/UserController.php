@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
 
@@ -18,36 +19,35 @@ class UserController extends Controller
     public static function insert(Request $request)
     {
         // Validate the request...
-        $validated = $request->validate([
+        $validator = Validator::make($request->all(), [
             'NoIdentitas' => 'required|unique:users|max:16',
             'Role' => 'required',
             'Nama' => 'required',
             'Alamat' => 'required',
             'NoHP' => 'required|numeric',
-            'Username' => 'required',
+            'Username' => 'required|unique:users',
             'Password' => 'required',
-            'Email' => 'required|email',
+            'Email' => 'required|email|unique:users',
         ]);
-        if($validated){
-            $user = new User;
- 
-            $user->NoIdentitas = $request->NoIdentitas;
-            $user->Role = $request->Role;
-            $user->Nama = $request->Nama;
-            $user->Alamat = $request->Alamat;
-            $user->NoHP = $request->NoHP;
-            $user->Username = $request->Username;
-            $user->Password = Hash::make($request->Password);
-            $user->Email = $request->Email;
-            $user->StatusAktif = 1;
-    
-            $user->save();
-            return redirect('user_view');
+        if ($validator->fails()) {
+            return redirect('/user_form')
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return back()->withErrors([
-            'error' => 'Email atau password tidak sesuai',
-        ]);
-        
+        $user = new User;
+
+        $user->NoIdentitas = $request->NoIdentitas;
+        $user->Role = $request->Role;
+        $user->Nama = $request->Nama;
+        $user->Alamat = $request->Alamat;
+        $user->NoHP = $request->NoHP;
+        $user->Username = $request->Username;
+        $user->Password = Hash::make($request->Password);
+        $user->Email = $request->Email;
+        $user->StatusAktif = 1;
+
+        $user->save();
+        return redirect('user_view');
     }
 
     public static function update_view($NoIdentitas){

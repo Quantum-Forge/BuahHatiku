@@ -39,40 +39,64 @@
 							{{ csrf_field() }}
 							<div class="form-group">
 								<label class="control-label mb-10 text-left">Nama</label>
-								<input type="text" class="form-control" name="Nama" placeholder="Masukkan Nama Anda...">
+								<input type="text" class="form-control" name="Nama" value="{{old('Nama')}}" placeholder="Masukkan Nama Anda...">
+								@error('Nama')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left">NIK</label>
-								<input type="number" class="form-control" name="NoIdentitas" placeholder="Masukkan NIK Anda...">
+								<input type="number" class="form-control" name="NoIdentitas" value="{{old('NoIdentitas')}}" placeholder="Masukkan NIK Anda...">
+								@error('NoIdentitas')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left" for="example-email">Username</label>
-								<input type="text" id="example-email" name="Username" class="form-control" placeholder="Username">
+								<input type="text" id="example-email" name="Username" value="{{old('Username')}}" class="form-control" placeholder="Username">
+								@error('Username')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left" for="example-email">Email</label>
-								<input type="email" id="example-email" name="Email" class="form-control" placeholder="Email">
+								<input type="email" id="example-email" name="Email" value="{{old('Email')}}" class="form-control" placeholder="Email">
+								@error('Email')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left">Password</label>
-								<input type="password" class="form-control" name="Password" placeholder="Masukkan Password">
+								<input type="password" class="form-control" name="Password" value="{{old('Password')}}" placeholder="Masukkan Password">
+								@error('Password')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left">Role</label>
-								<select class="form-control" name="Role">
+								<select class="form-control" name="Role" >
 									<option disabled selected>Choose...</option>
-									<option value="1">Owner</option>
-									<option value="2">Admin</option>
-									<option value="3">Terapis</option>
+									<option value="1" @if(old('Role')==1) selected @endif>Owner</option>
+									<option value="2" @if(old('Role')==2) selected @endif>Admin</option>
+									<option value="3" @if(old('Role')==3) selected @endif>Terapis</option>
 								</select>
+								@error('Role')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left" for="no_hp">Nomor HP</label>
-								<input type="number" id="no_hp" name="NoHP" class="form-control" placeholder="Nomor HP">
+								<input type="number" id="no_hp" name="NoHP" value="{{old('NoHP')}}" class="form-control" placeholder="Nomor HP">
+								@error('NoHP')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</div>
 							<div class="form-group">
 								<label class="control-label mb-10 text-left">Alamat</label>
-								<textarea class="form-control" rows="5" name="Alamat" placeholder="Alamat"></textarea>
+								<textarea class="form-control" rows="5" name="Alamat" placeholder="Alamat">{{old('Alamat')}}</textarea>
+								@error('Alamat')
+									<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
 							</div>
 							<button class="btn btn-block btn-success">Submit</button>
 						</form>
