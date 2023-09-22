@@ -15,7 +15,9 @@
     <link href="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Bootstrap Colorpicker CSS -->
     <link href="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet" type="text/css"/>
-
+      <!-- Bootstrap Datetimepicker CSS -->
+      <link href="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
+      <link href="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- vector map CSS -->
 	<link href="{{ asset('vendors/bower_components/jquery-wizard.js/css/wizard.css') }}" rel="stylesheet" type="text/css"/>
 
@@ -42,10 +44,6 @@
 
     <!-- Bootstrap Switches CSS -->
     <link href="{{ asset('vendors/bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css"/>
-
-    <!-- Bootstrap Datetimepicker CSS -->
-    <link href="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css"/>
 
     <!-- Bootstrap Dropify CSS -->
 	<link href="{{ asset('vendors/bower_components/dropify/dist/css/dropify.min.css') }}" rel="stylesheet" type="text/css"/>
@@ -81,108 +79,6 @@
         @include('layouts.footer')
         </div>
     </div>
-
-
-
-
-    <!-- jQuery -->
-    <script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('vendors/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js') }}"></script>
-    
-    <!-- Data table JavaScript -->
-	<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
-
-    <!-- Form Wizard Data JavaScript -->
-    <script src="{{ asset('vendors/bower_components/jquery.steps/build/jquery.steps.min.js') }}"></script>
-	<script src="{{ asset('dist/js/form-wizard-data.js') }}"></script>
-    <script src="{{ asset('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js') }}"></script>
-
-    <!-- Starrr JavaScript -->
-	<script src="{{ asset('dist/js/starrr.js') }}"></script>
-
-    <!-- Moment JavaScript -->
-    <script src="{{ asset('vendors/bower_components/moment/min/moment-with-locales.min.js') }}"></script>
-
-    <!-- Bootstrap Colorpicker JavaScript -->
-    <script src="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
-
-    <!-- Switchery JavaScript -->
-    <script src="{{ asset('vendors/bower_components/switchery/dist/switchery.min.js') }}"></script>
-
-    <!-- Select2 JavaScript -->
-    <script src="{{ asset('vendors/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-
-    <!-- Bootstrap Select JavaScript -->
-    <script src="{{ asset('vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-
-    <!-- Bootstrap Tagsinput JavaScript -->
-    <script src="{{ asset('vendors/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-
-    <!-- Bootstrap Touchspin JavaScript -->
-    <script src="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
-
-    <!-- Multiselect JavaScript -->
-    <script src="{{ asset('vendors/bower_components/multiselect/js/jquery.multi-select.js') }}"></script>
-
-    <!-- Bootstrap Switch JavaScript -->
-    <script src="{{ asset('vendors/bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js') }}"></script>
-
-    <!-- Form Advance Init JavaScript -->
-    <script src="{{ asset('dist/js/form-advance-data.js') }}"></script>
-
-    <!-- Bootstrap Touchspin JavaScript -->
-    <script src="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
-
-    <!-- Slimscroll JavaScript -->
-    <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
-
-    <!-- simpleWeather JavaScript -->
-    <script src="{{ asset('vendors/bower_components/moment/min/moment.min.js') }}"></script>
-    <script src="{{ asset('vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js') }}"></script>
-    <script src="{{ asset('dist/js/simpleweather-data.js') }}"></script>
-
-    <!-- Progressbar Animation JavaScript -->
-    <script src="{{ asset('vendors/bower_components/waypoints/lib/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('vendors/bower_components/Counter-Up/jquery.counterup.min.js') }}"></script>
-
-    <!-- Bootstrap Dropify JavaScript -->
-	<script src="{{ asset('vendors/bower_components/dropify/dist/js/dropify.min.js') }}"></script>
-
-    <!-- Form Flie Upload Data JavaScript -->
-    <script src="{{ asset('dist/js/form-file-upload-data.js') }}"></script>
-
-    <!-- Fancy Dropdown JS -->
-    <script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
-
-    <!-- Sparkline JavaScript -->
-    <script src="{{ asset('vendors/jquery.sparkline/dist/jquery.sparkline.min.js') }}"></script>
-
-    <!-- ChartJS JavaScript -->
-    <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="{{ asset('vendors/bower_components/raphael/raphael.min.js') }}"></script>
-    <script src="{{ asset('vendors/bower_components/morris.js/morris.min.js') }}"></script>
-    <script src="{{ asset('dist/js/morris-data.js') }}"></script>
-
-    <script src="{{ asset('vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js') }}"></script>
-
-    <!-- Init JavaScript -->
-    <script src="{{ asset('dist/js/init.js') }}"></script>
-    <script src="{{ asset('dist/js/dashboard-data.js') }}"></script>
-
-    <!-- Bootstrap Datetimepicker JavaScript -->
-    <script src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-    <!-- Bootstrap Daterangepicker JavaScript -->
-    <script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-    <!-- Form Picker Init JavaScript -->
-    <script src="{{ asset('dist/js/form-picker-data.js') }}"></script>
-    
-
+    @yield('scripts')
 </body>
 </html>

@@ -273,8 +273,27 @@
 </div>
 <!-- /Row -->
 
+@endsection
 
+@section('scripts')
+<!-- jQuery -->
+<script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
 
+<!-- Slimscroll JavaScript -->
+<script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
+
+<!-- Fancy Dropdown JS -->
+<script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
+<!-- Bootstrap Dropify JavaScript -->
+<script src="{{ asset('vendors/bower_components/dropify/dist/js/dropify.min.js') }}"></script>
+<!-- Form Flie Upload Data JavaScript -->
+<script src="{{ asset('dist/js/form-file-upload-data.js') }}"></script>
+
+<!-- Init JavaScript -->
+<script src="{{ asset('dist/js/init.js') }}"></script>
 
 @endsection

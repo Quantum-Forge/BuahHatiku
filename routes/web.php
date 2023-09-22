@@ -110,4 +110,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/tipe_absensi_delete/{IdTipe}',function($IdTipe){
         return TipeAbsensiController::delete($IdTipe);
     });
+    Route::get('/jadwal_rolling',function(){
+        return view('jadwal_rolling');
+    });
 });

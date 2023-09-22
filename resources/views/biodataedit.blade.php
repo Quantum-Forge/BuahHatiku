@@ -274,8 +274,8 @@
 </div>
 <!-- /Row -->
 
+@endsection
 
-
-
+@section('scripts')
 
 @endsection
