@@ -36,14 +36,14 @@
 						<div class="col-sm-12">
 							<form action="#">
 								<div class="form-body">
-									<h6 class="txt-dark capitalize-font"><i class="ti-calendar mr-10"></i>Pembuatan Jadwal Rolling</h6>
+									<h6 class="txt-dark capitalize-font"><i class="ti-calendar mr-10"></i>Scheduling</h6>
 									<hr>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label mb-10">Tanggal Penjadwalan</label>
-												<div class="input-group date" name="Tanggal" id="Tanggal_rolling">
-													<input type="text" data-mask="99/99/9999" class="form-control">
+												<div class="input-group" name="" id="">
+													<input type="date" id="date-input" class="form-control">
 													<span class="input-group-addon">
 														<span class="fa fa-calendar"></span>
 													</span>
@@ -75,8 +75,27 @@
 										<!--/span-->
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label mb-10">Jam</label>
-												<input type="text" class="form-control input-daterange-timepicker" name="daterange" value="01/01/2016 1:30 PM - 01/01/2016 2:00 PM">
+												<label class="control-label mb-10 text-left">Time Range Pick</label>
+												<div class="row">
+													<div class="col-sm-6">
+														<div class='input-group'>
+															<span class="input-group-addon">
+																<span class="fa fa-clock-o mr-5"></span>
+																Start
+															</span>
+															<input type='time' id="start-time" class="form-control" />
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class='input-group'>
+															<input type='time' id="end-time" class="form-control" />
+															<span class="input-group-addon">
+																<span class="fa fa-clock-o mr-5"></span>
+																 End
+															</span>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 										<!--/span-->
@@ -98,52 +117,47 @@
 @endsection
 
 @section('scripts')
-<!-- jQuery -->
-<script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
+   <!-- jQuery -->
+   <script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-
-<!-- Moment JavaScript -->
-<script src="{{ asset('vendors/bower_components/moment/min/moment-with-locales.min.js') }}"></script>
-
-<!-- Bootstrap Colorpicker JavaScript -->
-<script src="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
-
-<!-- Switchery JavaScript -->
-<script src="{{ asset('vendors/bower_components/switchery/dist/switchery.min.js') }}"></script>
-
-<!-- Select2 JavaScript -->
-<script src="{{ asset('vendors/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-
-<!-- Bootstrap Select JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
-
-<!-- Bootstrap Tagsinput JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-
-<!-- Bootstrap Touchspin JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
-
-<!-- Multiselect JavaScript -->
-<script src="{{ asset('vendors/bower_components/multiselect/js/jquery.multi-select.js') }}"></script>
-
-<!-- Bootstrap Switch JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js') }}"></script>
-
-<!-- Bootstrap Datetimepicker JavaScript -->
-<script src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-
-<!-- Form Advance Init JavaScript -->
-<script src="{{ asset('dist/js/form-advance-data.js') }}"></script>
-
-<!-- Slimscroll JavaScript -->
-<script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
-
-<!-- Init JavaScript -->
-<script src="{{ asset('dist/js/init.js') }}"></script>
-
+   <!-- Bootstrap Core JavaScript -->
+   <script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+   
+   <!-- Data table JavaScript -->
+   <script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+   <script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
+   
+   <!-- Slimscroll JavaScript -->
+   <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
+   
+   <!-- Fancy Dropdown JS -->
+   <script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
+   
+   <!-- Init JavaScript -->
+   <script src="{{ asset('dist/js/init.js') }}"></script>
+<script>
+	$(document).ready(function() {
+		// Mendengarkan perubahan pada input tanggal
+		$("#date-input, #start-time, #end-time").on("change", function() {
+			validateTime();
+		});
+	
+		// Fungsi untuk melakukan validasi
+		function validateTime() {
+			var selectedDate = new Date($("#date-input").val());
+			var today = new Date();
+	
+			if (selectedDate.toDateString() === today.toDateString()) {
+				var startTime = $("#start-time").val();
+				var endTime = $("#end-time").val();
+	
+				if (startTime && endTime && startTime > endTime) {
+					alert("End Time tidak boleh lebih awal daripada Start Time");
+					// Mengosongkan input End Time atau melakukan tindakan lain yang sesuai
+					$("#end-time").val("");
+				}
+			}
+		}
+	});
+</script>
 @endsection

@@ -15,15 +15,13 @@
     <link href="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Bootstrap Colorpicker CSS -->
     <link href="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet" type="text/css"/>
-      <!-- Bootstrap Datetimepicker CSS -->
-      <link href="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
-      <link href="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- vector map CSS -->
 	<link href="{{ asset('vendors/bower_components/jquery-wizard.js/css/wizard.css') }}" rel="stylesheet" type="text/css"/>
-
 	<!-- jquery-steps css -->
     <link rel="stylesheet" href="{{ asset('vendors/bower_components/jquery.steps/demo/css/jquery.steps.css') }}">
-
     <!-- select2 CSS -->
     <link href="{{ asset('vendors/bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
 
@@ -76,9 +74,12 @@
             <div class="container-fluid">
                 @yield('dashboard')
             </div>
-        @include('layouts.footer')
+            @include('layouts.footer')
         </div>
     </div>
+
+
+    
     @yield('scripts')
 </body>
 </html>
