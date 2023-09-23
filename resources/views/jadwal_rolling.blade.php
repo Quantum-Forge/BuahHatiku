@@ -34,7 +34,8 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-12">
-							<form action="#">
+							<form action="/jadwal_rolling" method="POST">
+								{{ csrf_field() }}
 								<div class="form-body">
 									<h6 class="txt-dark capitalize-font"><i class="ti-calendar mr-10"></i>Scheduling</h6>
 									<hr>
@@ -42,8 +43,8 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label mb-10">Tanggal Penjadwalan</label>
-												<div class="input-group" name="" id="">
-													<input type="date" id="date-input" class="form-control">
+												<div class="input-group" id="">
+													<input type="date" name="Tanggal" id="date-input" class="form-control">
 													<span class="input-group-addon">
 														<span class="fa fa-calendar"></span>
 													</span>
@@ -54,8 +55,10 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label mb-10">Terapis</label>
-												<select class="form-control" data-placeholder="Choose Terapis" tabindex="1">
-													<option value=""></option>
+												<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="1">
+													@foreach( $terapises as $terapis)
+														<option value="{{$terapis->NoIdentitas}}">{{$terapis->Nama}}</option>
+													@endforeach
 												</select>
 											</div>
 										</div>
@@ -66,9 +69,10 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label mb-10">Anak</label>
-												<select class="form-control">
-													<option value="">Male</option>
-													<option value="">Female</option>
+												<select class="form-control" name="IdAnak">
+													@foreach($biodatas as $biodata)
+														<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
+													@endforeach
 												</select>
 											</div>
 										</div>
@@ -83,12 +87,12 @@
 																<span class="fa fa-clock-o mr-5"></span>
 																Start
 															</span>
-															<input type='time' id="start-time" class="form-control" />
+															<input type='time' name="WaktuMulai" id="start-time" class="form-control" />
 														</div>
 													</div>
 													<div class="col-sm-6">
 														<div class='input-group'>
-															<input type='time' id="end-time" class="form-control" />
+															<input type='time' name="WaktuSelesai" id="end-time" class="form-control" />
 															<span class="input-group-addon">
 																<span class="fa fa-clock-o mr-5"></span>
 																 End

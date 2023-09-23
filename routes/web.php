@@ -8,6 +8,7 @@ use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ParentalQuestionaireController;
 use App\Http\Controllers\TipeAbsensiController;
+use App\Http\Controllers\JadwalRollingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +112,9 @@ Route::middleware(['auth'])->group(function () {
         return TipeAbsensiController::delete($IdTipe);
     });
     Route::get('/jadwal_rolling',function(){
-        return view('jadwal_rolling');
+        return JadwalRollingController::view();
+    });
+    Route::post('/jadwal_rolling',function(Request $request){
+        return JadwalRollingController::insert($request);
     });
 });
