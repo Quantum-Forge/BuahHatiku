@@ -117,4 +117,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jadwal_rolling',function(Request $request){
         return JadwalRollingController::insert($request);
     });
+
+    Route::get('/daftar_absensi',function(){
+        return view('daftar_absensi');
+    });
 });
