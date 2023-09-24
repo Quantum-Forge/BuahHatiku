@@ -35,13 +35,14 @@
 					<div class="row">
 						<div class="col-sm-12 col-xs-12">
 							<div class="form-wrap">
-								<form class="form-horizontal">
+								<form class="form-horizontal" action="/daftar_absensi" method="POST">
+									{{ csrf_field() }}
 									<div class="form-group">
 										<label for="Jenis" class="col-sm-3 control-label">Tanggal*</label>
 										<div class="col-sm-9">
 											<div class="input-group">
 												<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-												<input type="date" class="form-control">
+												<input type="date" name="Tanggal" class="form-control">
 											</div>
 										</div>
 									</div>
@@ -50,8 +51,23 @@
 										<div class="col-sm-9">
 											<div class="input-group">
 												<div class="input-group-addon"><i class="fa fa-user"></i></div>
-												<select type="text" class="form-control" id="Terapis">
-													<option value=""></option>
+												<select type="text" name="NoIdentitas" class="form-control" id="Terapis">
+													@foreach( $terapises as $terapis)
+														<option value="{{$terapis->NoIdentitas}}">{{$terapis->Nama}}</option>
+													@endforeach
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="Jenis" class="col-sm-3 control-label">Anak*</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<div class="input-group-addon"><i class="fa fa-user"></i></div>
+												<select type="text" name="IdAnak" class="form-control" id="Terapis">
+													@foreach($biodatas as $biodata)
+														<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
+													@endforeach
 												</select>
 											</div>
 										</div>
@@ -59,8 +75,11 @@
 									<div class="form-group">
 										<label  for="Pertanyaan" class="col-sm-3 control-label">Tipe Absensi*</label>
 										<div class="col-sm-9">
-											<select type="text" class="form-control" id="Terapis">
+											<select type="text" name="IdTipe" class="form-control" id="Terapis">
 												<option disabled selected>Choose...</option>
+												@foreach($tipe_absensies as $tipe_absensi)
+													<option value="{{$tipe_absensi->IdTipe}}">{{$tipe_absensi->JenisAbsensi}}</option>
+												@endforeach
 											</select>
 										</div>
 									</div>
@@ -98,18 +117,20 @@
 									</tr>
 								</thead>
 								<tbody>
+									@foreach($absensies as $absensi)
 									<tr>
-										<td>1</td>
-										<td>Brian Cavarel Thomas</td>
+										<td>{{$loop->index+1}}</td>
+										<td>{{$absensi->biodata->Nama}}</td>
 										<td>
 											<div class="checkbox checkbox-success">
-												<input id="status_kehadiran" type="checkbox">
+												<input id="status_kehadiran" type="checkbox" onchange="window.location.href='/absensi_hadir/{{$absensi->IdAbsensi}}';" @if($absensi->Hadir ==  1) checked @else '' @endif>
 												<label for="status_kehadiran">
 													Hadir
 												</label>
 											</div>
 										</td>
 									</tr>
+									@endforeach
 								</tbody>
 							</table>
 						</div>

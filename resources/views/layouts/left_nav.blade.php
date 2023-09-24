@@ -34,7 +34,7 @@
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#absensi"><i class="icon-notebook mr-10"></i>Absensi<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
 						<ul id="absensi" class="collapse collapse-level-1">
 							<li>
-								<a href="">Daftar Absensi</a>
+								<a href="/daftar_absensi">Daftar Absensi</a>
 							</li>
 							<li>
 								<a href="/tipe_absensi_insert">Tipe Absensi</a>

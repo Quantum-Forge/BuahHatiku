@@ -9,6 +9,7 @@ use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ParentalQuestionaireController;
 use App\Http\Controllers\TipeAbsensiController;
 use App\Http\Controllers\JadwalRollingController;
+use App\Http\Controllers\AbsensiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,8 +118,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jadwal_rolling',function(Request $request){
         return JadwalRollingController::insert($request);
     });
-
     Route::get('/daftar_absensi',function(){
-        return view('daftar_absensi');
+        return AbsensiController::view();
+    });
+    Route::post('/daftar_absensi',function(Request $request){
+        return AbsensiController::insert($request);
+    });
+    Route::get('/absensi_hadir/{IdAbsensi}',function($IdAbsensi){
+        return AbsensiController::update_status($IdAbsensi);
     });
 });
