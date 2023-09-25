@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Biodata extends Model
+class Invoice extends Model
 {
     use HasFactory;
 
@@ -14,21 +14,16 @@ class Biodata extends Model
      *
      * @var string
      */
-    protected $table = 'biodata';
+    protected $table = 'invoice';
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'IdAnak';
+    protected $primaryKey = 'NoInvoice';
 
-    public function parental_questionnaires()
+    public function biodata()
     {
-        return $this->hasMany(ParentalQuestionnaire::class, 'IdAnak', 'IdAnak');
-    }
-
-    public function absensies()
-    {
-        return $this->hasMany(Absensi::class, 'IdAnak', 'IdAnak');
+        return $this->belongsTo(Biodata::class, 'IdAnak', 'IdAnak');
     }
 }

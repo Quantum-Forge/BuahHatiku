@@ -10,6 +10,7 @@ use App\Http\Controllers\ParentalQuestionaireController;
 use App\Http\Controllers\TipeAbsensiController;
 use App\Http\Controllers\JadwalRollingController;
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -128,10 +129,19 @@ Route::middleware(['auth'])->group(function () {
         return AbsensiController::update_status($IdAbsensi);
     });
     Route::get('/input_invoice',function(){
-        return view('invoice_input');
+        return InvoiceController::input_view();
+    });
+    Route::get('/input_invoice_form',function(Request $request){
+        return InvoiceController::input_view_selected($request);
+    });
+    Route::get('/input_invoice/{IdAnak}',function($IdAnak){
+        return InvoiceController::input_view_form($IdAnak);
+    });
+    Route::post('/input_invoice',function(Request $request){
+        return InvoiceController::insert($request);
     });
     Route::get('/invoice_archive',function(){
-        return view('invoice_archive');
+        return InvoiceController::view();
     });
     Route::get('/invoice',function(){
         return view('invoice');

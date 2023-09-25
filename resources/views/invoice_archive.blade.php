@@ -47,20 +47,24 @@
 								</thead>
 
 								<tbody>
+									@foreach( $invoices as $invoice)
 									<tr>
-										<td>#5012</td>
-										<td>System Architect</td>
-										<td>$205,500</td>
+										<td>#{{$invoice->NoInvoice}}</td>
+										<td>{{$invoice->biodata->Nama}}</td>
+										<td>Rp. {{number_format($invoice->GrandTotal, 0, ',', '.')}}</td>
 										<td>
-											<span class="label label-success">Lunas</span>
+											@if($invoice->StatusPelunasan == 1) <span class="label label-success">Lunas</span>
+											@else <span class="">Belum Lunas</span>
+											@endif
 										</td>
-										<td>2011/04/25</td>
+										<td>{{$invoice->TglInvoice}}</td>
 										<td>
 											<a href="#">
 												<i class="fa fa-file-text-o" aria-hidden="true"></i>
 											</a>	
 										</td>
 									</tr>
+									@endforeach
 								</tbody>
 							</table>
 						</div>

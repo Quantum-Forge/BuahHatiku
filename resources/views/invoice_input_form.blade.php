@@ -33,17 +33,16 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="panel-wrapper collapse in">
-				<form action="/input_invoice_form" method="GET">
+				<form action="/input_invoice" method="POST">
+					{{ csrf_field() }}
 					<div class="panel-body">
 						<div class="row">
+							<input type="hidden" name="NoIdentitas" value="{{$absensies->first()->NoIdentitas}}">
+							<input type="hidden" name="IdAnak" value="{{$biodata->IdAnak}}">
 							<div class="col-xs-6">
 								<span class="txt-dark head-font inline-block capitalize-font mb-5">Billed to:</span>
 								<div class="">
-									<select name="IdAnak" class="form-control" style="width: 300px; max-width: 100%;">
-										@foreach($biodatas as $biodata)
-											<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
-										@endforeach
-									</select>
+									<div>{{$biodata->Nama}}</div>
 									<img src="{{ asset('dist/img/bca.png') }}" alt="" class="img-responsive" style="max-width: 100%; width: 100px;">
 								</div>
 							</div>
@@ -71,18 +70,81 @@
 								<address>
 									<span class="txt-dark head-font capitalize-font mb-5">Invoice date:</span><br>
 									{{$today}}<br><br>
+									<input type="hidden" name="TglInvoice" value="{{$today}}">
 								</address>
 							</div>
-						</div>
-
-						<div class="pull-right">
-							<button type="submit" class="btn btn-primary mr-10">
-								Submit 
-							</button>
 						</div>
 						
 						<div class="seprator-block"></div>
 						
+						<div class="invoice-bill-table">
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>Tipe Terapi</th>
+											<th>Durasi</th>
+											<th>Harga</th>
+											<th>Total</th>
+										</tr>
+									</thead>
+									<tbody>
+										@php( $subtotal=0 )
+										@foreach( $absensies as $absensi)
+											<tr>
+												<td>{{$absensi->tipe_absensi->JenisAbsensi}}</td>
+												<td>{{$absensi->tipe_absensi->Durasi}} Jam</td>
+												<td>Rp. {{number_format($absensi->tipe_absensi->Harga, 0, ',', '.')}}</td>
+												
+												<td>Rp. {{number_format($absensi->tipe_absensi->Durasi * $absensi->tipe_absensi->Harga, 0, ',', '.')}}</td>
+												@php( $subtotal += $absensi->tipe_absensi->Durasi * $absensi->tipe_absensi->Harga )
+											</tr>
+										@endforeach
+										<thead>
+											<tr>
+												<th colspan="4" class="txt-dark">Pengembalian</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>ABA</td>
+												<td style="width: 20%;">
+													<input placeholder="Isi Durasi Jam..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="" style="display: block;">
+												</td>
+												<td>Rp. 20.000</td>
+												<td>Rp. 20.000</td>
+											</tr>
+										</tbody>
+										<tr class="txt-dark">
+											<td></td>
+											<td></td>
+											<td>Subtotal</td>
+											<td>Rp. {{number_format($subtotal, 0, ',', '.')}}</td>
+											<input type="hidden" name="SubTotal" value="{{$subtotal}}">
+										</tr>
+										<tr class="txt-dark">
+											<td></td>
+											<td></td>
+											<td>Pengembalian</td>
+											<td>Rp. 0</td>
+										</tr>
+										<tr class="txt-dark">
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<td>Rp. {{number_format($subtotal, 0, ',', '.')}}</td>
+											<input type="hidden" name="GrandTotal" value="{{$subtotal}}">
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="pull-right">
+								<button type="submit" class="btn btn-primary mr-10">
+									Submit 
+								</button>
+							</div>
+							<div class="clearfix"></div>
+						</div>
 					</div>
 				</form>
 			</div>
