@@ -127,4 +127,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/absensi_hadir/{IdAbsensi}',function($IdAbsensi){
         return AbsensiController::update_status($IdAbsensi);
     });
+    Route::get('/input_invoice',function(){
+        return view('invoice_input');
+    });
+    Route::get('/invoice_archive',function(){
+        return view('invoice_archive');
+    });
+    Route::get('/invoice',function(){
+        return view('invoice');
+    });
 });

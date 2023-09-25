@@ -46,10 +46,10 @@
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#invoice"><i class=" icon-folder-alt mr-10"></i>Invoice<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
 						<ul id="invoice" class="collapse collapse-level-1">
 							<li>
-								<a href="form-element.html">Input Invoice</a>
+								<a href="/input_invoice">Input Invoice</a>
 							</li>
 							<li>
-								<a href="form-layout.html">Daftar Invoice</a>
+								<a href="/invoice_archive">Daftar Invoice</a>
 							</li>
 						</ul>
 					</li>
