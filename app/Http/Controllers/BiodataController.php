@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Biodata;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class BiodataController extends Controller
 {
@@ -15,6 +16,33 @@ class BiodataController extends Controller
     }
 
     public static function insert(Request $request){
+        $validator = Validator::make($request->all(), [
+            'Nama' => 'required',
+            'AnakKe' => 'required|numeric',
+            'JenisKelamin' => 'required',
+            'TglLahir' => 'required',
+            'TempatLahir' => 'required',
+            'Pendidikan' => 'required',
+            'Diagnosa' => 'required',
+            'YangMendiagnosa' => 'required',
+            'NamaBapak' => 'required',
+            'NamaIbu' => 'required',
+            'PendBapak' => 'required',
+            'PendIbu' => 'required',
+            'Alamat' => 'required',
+            'TglLahirOrtu' => 'required',
+            'NoHP' => 'required|numeric',
+            'Email' => 'required|email',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif'
+        ], [
+            'required' => ':attribute harus diisi'
+        ]);
+        if ($validator->fails()) {
+            return redirect('/biodata_insert')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
         $biodata = new Biodata;
 
         $biodata->Nama = $request->Nama;
@@ -52,6 +80,32 @@ class BiodataController extends Controller
     }
 
     public static function update(Request $request){
+        $validator = Validator::make($request->all(), [
+            'Nama' => 'required',
+            'AnakKe' => 'required|numeric',
+            'JenisKelamin' => 'required',
+            'TglLahir' => 'required',
+            'TempatLahir' => 'required',
+            'Pendidikan' => 'required',
+            'Diagnosa' => 'required',
+            'YangMendiagnosa' => 'required',
+            'NamaBapak' => 'required',
+            'NamaIbu' => 'required',
+            'PendBapak' => 'required',
+            'PendIbu' => 'required',
+            'Alamat' => 'required',
+            'TglLahirOrtu' => 'required',
+            'NoHP' => 'required|numeric',
+            'Email' => 'required|email',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif'
+        ], [
+            'required' => ':attribute harus diisi'
+        ]);
+        if ($validator->fails()) {
+            return redirect('/biodata_edit/'.$request->IdAnak)
+                        ->withErrors($validator)
+                        ->withInput();
+        }
         $biodata = Biodata::where('IdAnak', $request->IdAnak)->first();
 
         $biodata->Nama = $request->Nama;
@@ -71,6 +125,13 @@ class BiodataController extends Controller
         $biodata->TglLahirOrtu = $request->TglLahirOrtu;
         $biodata->NoHP = $request->NoHP;
         $biodata->Email = $request->Email;
+
+        if(!empty($request->file('photo'))){
+            $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
+            $path = $request->file('photo')->storeAs('photos/', $imageName);
+            $biodata->Photo = 'photos/'.$imageName;
+            $biodata->Photo = $imageName;
+        }
 
         $biodata->save();
         return redirect('/biodata_view');

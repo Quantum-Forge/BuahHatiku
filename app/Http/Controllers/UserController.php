@@ -18,7 +18,6 @@ class UserController extends Controller
 
     public static function insert(Request $request)
     {
-        // Validate the request...
         $validator = Validator::make($request->all(), [
             'NoIdentitas' => 'required|unique:users|max:16',
             'Role' => 'required',
@@ -28,6 +27,8 @@ class UserController extends Controller
             'Username' => 'required|unique:users',
             'Password' => 'required',
             'Email' => 'required|email|unique:users',
+        ], [
+            'required' => ':attribute harus diisi'
         ]);
         if ($validator->fails()) {
             return redirect('/user_form')

@@ -111,8 +111,8 @@
 												<td style="width: 20%;">
 													<input placeholder="Isi Durasi Jam..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="" style="display: block;">
 												</td>
-												<td>Rp. 20.000</td>
-												<td>Rp. 20.000</td>
+												<td>Rp. 0</td>
+												<td>Rp. 0</td>
 											</tr>
 										</tbody>
 										<tr class="txt-dark">

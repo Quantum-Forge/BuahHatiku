@@ -16,7 +16,7 @@ class CreateRincianinvoiceTable extends Migration
         Schema::create('rincian_invoice', function (Blueprint $table) {
             $table->bigIncrements('IdRincian');
             $table->integer('NoInvoice');
-            $table->integer('JenisTransaksi');
+            $table->integer('JenisTransaksi')->nullable();
             $table->integer('IdTipe');
             $table->string('Hari', 350);
             $table->integer('JmlhPertemuan');

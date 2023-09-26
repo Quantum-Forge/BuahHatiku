@@ -45,14 +45,20 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Nama</label>
-													<input type="text" id="firstName" class="form-control" name="Nama" placeholder="Isi Nama Anak" value="{{$biodata->Nama}}">
+													<input type="text" id="firstName" class="form-control" name="Nama" placeholder="Isi Nama Anak" value="{{old('Nama', $biodata->Nama)}}">
+													@error('Nama')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Anak Ke...</label>
-													<input type="number" id="lastName" class="form-control" name="AnakKe" placeholder="Anak ke..." value="{{$biodata->AnakKe}}">
+													<input type="number" id="lastName" class="form-control" name="AnakKe" placeholder="Anak ke..." value="{{old('AnakKe', $biodata->AnakKe)}}">
+													@error('AnakKe')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<!--/span-->
@@ -63,16 +69,22 @@
 												<div class="form-group">
 													<label class="control-label mb-10">Jenis Kelamin</label>
 													<select class="form-control" name="JenisKelamin">
-														<option @if ($biodata->JenisKelamin == "Laki-laki") selected @endif value="Laki-laki">Laki-laki</option>
-														<option @if ($biodata->JenisKelamin == "Perempuan") selected @endif value="Perempuan">Perempuan</option>
+														<option @if (old('JenisKelamin', $biodata->JenisKelamin) == "Laki-laki") selected @endif value="Laki-laki">Laki-laki</option>
+														<option @if (old('JenisKelamin', $biodata->JenisKelamin) == "Perempuan") selected @endif value="Perempuan">Perempuan</option>
 													</select>
+													@error('JenisKelamin')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Tanggal Lahir</label>
-													<input type="date" class="form-control" name="TglLahir" value="{{$biodata->TglLahir}}">
+													<input type="date" class="form-control" name="TglLahir" value="{{old('TglLahir', $biodata->TglLahir)}}">
+													@error('TglLahir')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 										</div>
@@ -82,7 +94,10 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Tempat Lahir</label>
-													<input type="text" class="form-control" name="TempatLahir" placeholder="Isi Tempat Lahir" value="{{$biodata->TempatLahir}}">
+													<input type="text" class="form-control" name="TempatLahir" placeholder="Isi Tempat Lahir" value="{{old('TempatLahir', $biodata->TempatLahir)}}">
+													@error('TempatLahir')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<!--/span-->
@@ -91,20 +106,22 @@
 												<div class="form-group">
 													<label class="control-label mb-10">Pendidikan</label>
 													<select name="Pendidikan" class="form-control">
-													<option @if($biodata->Pendidikan == "PAUD") selected @endif value="PAUD">Pendidikan Anak Usia Dini (PAUD)</option>
-													<option @if($biodata->Pendidikan == "SD") selected @endif value="SD">Sekolah Dasar (SD)</option>
-													<option @if($biodata->Pendidikan == "SMP") selected @endif value="SMP">Sekolah Menengah Pertama (SMP)</option>
-													<option @if($biodata->Pendidikan == "SMA") selected @endif value="SMA">Sekolah Menengah Atas (SMA)</option>
-													<option @if($biodata->Pendidikan == "SMK") selected @endif value="SMK">Sekolah Menengah Kejuruan (SMK)</option>
-													<option @if($biodata->Pendidikan == "Perguruan_Tinggi_S1") selected @endif value="Perguruan_Tinggi_S1">Perguruan Tinggi (Sarjana - S1)</option>
-													<option @if($biodata->Pendidikan == "Perguruan_Tinggi_S2") selected @endif value="Perguruan_Tinggi_S2">Perguruan Tinggi (Magister - S2)</option>
-													<option @if($biodata->Pendidikan == "Perguruan_Tinggi_S3") selected @endif value="Perguruan_Tinggi_S3">Perguruan Tinggi (Doktor - S3)</option>
-													<option @if($biodata->Pendidikan == "Madrasah_Ibtidaiyah") selected @endif value="Madrasah_Ibtidaiyah">Madrasah Ibtidaiyah (MI)</option>
-													<option @if($biodata->Pendidikan == "Madrasah_Tsanawiyah") selected @endif value="Madrasah_Tsanawiyah">Madrasah Tsanawiyah (MTs)</option>
-													<option @if($biodata->Pendidikan == "Madrasah_Aliyah") selected @endif value="Madrasah_Aliyah">Madrasah Aliyah (MA)</option>
-													<option @if($biodata->Pendidikan == "Pendidikan_Khusus") selected @endif value="Pendidikan_Khusus">Pendidikan Khusus</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "PAUD") selected @endif value="PAUD">Pendidikan Anak Usia Dini (PAUD)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "SD") selected @endif value="SD">Sekolah Dasar (SD)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "SMP") selected @endif value="SMP">Sekolah Menengah Pertama (SMP)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "SMA") selected @endif value="SMA">Sekolah Menengah Atas (SMA)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "SMK") selected @endif value="SMK">Sekolah Menengah Kejuruan (SMK)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "Perguruan_Tinggi_S1") selected @endif value="Perguruan_Tinggi_S1">Perguruan Tinggi (Sarjana - S1)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "Perguruan_Tinggi_S2") selected @endif value="Perguruan_Tinggi_S2">Perguruan Tinggi (Magister - S2)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "Perguruan_Tinggi_S3") selected @endif value="Perguruan_Tinggi_S3">Perguruan Tinggi (Doktor - S3)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "Madrasah_Ibtidaiyah") selected @endif value="Madrasah_Ibtidaiyah">Madrasah Ibtidaiyah (MI)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "Madrasah_Tsanawiyah") selected @endif value="Madrasah_Tsanawiyah">Madrasah Tsanawiyah (MTs)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "Madrasah_Aliyah") selected @endif value="Madrasah_Aliyah">Madrasah Aliyah (MA)</option>
+														<option @if(old('Pendidikan', $biodata->Pendidikan) == "Pendidikan_Khusus") selected @endif value="Pendidikan_Khusus">Pendidikan Khusus</option>
 													</select>
-													
+													@error('Pendidikan')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<!--/span-->
@@ -115,43 +132,49 @@
 													<div class="radio-list">
 														<div class="radio-inline pl-0">
 															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if($biodata->IdDiagnosa == 1) selected @endif id="hiperaktif" value="1">
+																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 1) checked @endif id="hiperaktif" value="1">
 																<label for="hiperaktif">Hiperaktif</label>
 															</span>
 														</div>
 														<div class="radio-inline">
 															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if($biodata->IdDiagnosa == 2) selected @endif id="autis" value="2">
+																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 2) checked @endif id="autis" value="2">
 														<label for="autis">Autis</label>
 														</span>
 														</div>
 														<div class="radio-inline">
 															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if($biodata->IdDiagnosa == 3) selected @endif id="speech_delay" value="3">
+																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 3) checked @endif id="speech_delay" value="3">
 														<label for="speech_delay">Speech Delay</label>
 														</span>
 														</div>
 														<div class="radio-inline">
 															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if($biodata->IdDiagnosa == 4) selected @endif id="adhd" value="4">
+																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 4) checked @endif id="adhd" value="4">
 														<label for="adhd">ADHD</label>
 														</span>
 														</div>
 														<div class="radio-inline">
 															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if($biodata->IdDiagnosa == 5) selected @endif id="lainnya" value="5">
+																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 5) checked @endif id="lainnya" value="5">
 														<label for="lainnya">Lainnya</label>
 														</span>
 														</div>
+														@error('Diagnosa')
+															<div class="alert alert-danger">{{ $message }}</div>
+														@enderror
 													</div>
-													<textarea name="KeteranganDiagnosa" class="form-control" id="" cols="30" rows="10" placeholder="Keterangan Diagnosa...">{{$biodata->KeteranganDiagnosa}}</textarea>
+													<textarea name="KeteranganDiagnosa" class="form-control" id="" cols="30" rows="10" placeholder="Keterangan Diagnosa...">{{old('KeteranganDiagnosa', $biodata->KeteranganDiagnosa)}}</textarea>
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-12 ">
 												<div class="form-group">
 													<label class="control-label mb-10">Yang Mendiagnosa</label>
-													<input type="text" class="form-control" name="YangMendiagnosa" placeholder="Silahkan Isi Form ini..." value="{{$biodata->YangMendiagnosa}}">
+													<input type="text" class="form-control" name="YangMendiagnosa" placeholder="Silahkan Isi Form ini..." value="{{old('YangMendiagnosa', $biodata->YangMendiagnosa)}}">
+													@error('YangMendiagnosa')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 										</div>
@@ -165,57 +188,72 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Nama Bapak</label>
-													<input type="text" class="form-control" name="NamaBapak" placeholder="Isi Nama Bapak" value="{{$biodata->NamaBapak}}">
+													<input type="text" class="form-control" name="NamaBapak" placeholder="Isi Nama Bapak" value="{{old('NamaBapak', $biodata->NamaBapak)}}">
+													@error('NamaBapak')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Nama Ibu</label>
-													<input type="text" class="form-control" name="NamaIbu" placeholder="Isi Nama Ibu" value="{{$biodata->NamaIbu}}">
+													<input type="text" class="form-control" name="NamaIbu" placeholder="Isi Nama Ibu" value="{{old('NamaIbu', $biodata->NamaIbu)}}">
+													@error('NamaIbu')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Pendidikan Bapak</label>
 													<select name="PendBapak" class="form-control">
-														<option @if($biodata->PendBapak == "PAUD") selected @endif value="PAUD">Pendidikan Anak Usia Dini (PAUD)</option>
-														<option @if($biodata->PendBapak == "SD") selected @endif value="SD">Sekolah Dasar (SD)</option>
-														<option @if($biodata->PendBapak == "SMP") selected @endif value="SMP">Sekolah Menengah Pertama (SMP)</option>
-														<option @if($biodata->PendBapak == "SMA") selected @endif value="SMA">Sekolah Menengah Atas (SMA)</option>
-														<option @if($biodata->PendBapak == "SMK") selected @endif value="SMK">Sekolah Menengah Kejuruan (SMK)</option>
-														<option @if($biodata->PendBapak == "Perguruan_Tinggi_S1") selected @endif value="Perguruan_Tinggi_S1">Perguruan Tinggi (Sarjana - S1)</option>
-														<option @if($biodata->PendBapak == "Perguruan_Tinggi_S2") selected @endif value="Perguruan_Tinggi_S2">Perguruan Tinggi (Magister - S2)</option>
-														<option @if($biodata->PendBapak == "Perguruan_Tinggi_S3") selected @endif value="Perguruan_Tinggi_S3">Perguruan Tinggi (Doktor - S3)</option>
-														<option @if($biodata->PendBapak == "Madrasah_Ibtidaiyah") selected @endif value="Madrasah_Ibtidaiyah">Madrasah Ibtidaiyah (MI)</option>
-														<option @if($biodata->PendBapak == "Madrasah_Tsanawiyah") selected @endif value="Madrasah_Tsanawiyah">Madrasah Tsanawiyah (MTs)</option>
-														<option @if($biodata->PendBapak == "Madrasah_Aliyah") selected @endif value="Madrasah_Aliyah">Madrasah Aliyah (MA)</option>
-														<option @if($biodata->PendBapak == "Pendidikan_Khusus") selected @endif value="Pendidikan_Khusus">Pendidikan Khusus</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "PAUD") selected @endif value="PAUD">Pendidikan Anak Usia Dini (PAUD)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "SD") selected @endif value="SD">Sekolah Dasar (SD)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "SMP") selected @endif value="SMP">Sekolah Menengah Pertama (SMP)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "SMA") selected @endif value="SMA">Sekolah Menengah Atas (SMA)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "SMK") selected @endif value="SMK">Sekolah Menengah Kejuruan (SMK)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "Perguruan_Tinggi_S1") selected @endif value="Perguruan_Tinggi_S1">Perguruan Tinggi (Sarjana - S1)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "Perguruan_Tinggi_S2") selected @endif value="Perguruan_Tinggi_S2">Perguruan Tinggi (Magister - S2)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "Perguruan_Tinggi_S3") selected @endif value="Perguruan_Tinggi_S3">Perguruan Tinggi (Doktor - S3)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "Madrasah_Ibtidaiyah") selected @endif value="Madrasah_Ibtidaiyah">Madrasah Ibtidaiyah (MI)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "Madrasah_Tsanawiyah") selected @endif value="Madrasah_Tsanawiyah">Madrasah Tsanawiyah (MTs)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "Madrasah_Aliyah") selected @endif value="Madrasah_Aliyah">Madrasah Aliyah (MA)</option>
+														<option @if(old('PendBapak', $biodata->PendBapak) == "Pendidikan_Khusus") selected @endif value="Pendidikan_Khusus">Pendidikan Khusus</option>
 													</select>
+													@error('PendBapak')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Pendidikan Ibu</label>
 													<select name="PendIbu" class="form-control">
-														<option @if($biodata->PendIbu == "PAUD") selected @endif value="PAUD">Pendidikan Anak Usia Dini (PAUD)</option>
-														<option @if($biodata->PendIbu == "SD") selected @endif value="SD">Sekolah Dasar (SD)</option>
-														<option @if($biodata->PendIbu == "SMP") selected @endif value="SMP">Sekolah Menengah Pertama (SMP)</option>
-														<option @if($biodata->PendIbu == "SMA") selected @endif value="SMA">Sekolah Menengah Atas (SMA)</option>
-														<option @if($biodata->PendIbu == "SMK") selected @endif value="SMK">Sekolah Menengah Kejuruan (SMK)</option>
-														<option @if($biodata->PendIbu == "Perguruan_Tinggi_S1") selected @endif value="Perguruan_Tinggi_S1">Perguruan Tinggi (Sarjana - S1)</option>
-														<option @if($biodata->PendIbu == "Perguruan_Tinggi_S2") selected @endif value="Perguruan_Tinggi_S2">Perguruan Tinggi (Magister - S2)</option>
-														<option @if($biodata->PendIbu == "Perguruan_Tinggi_S3") selected @endif value="Perguruan_Tinggi_S3">Perguruan Tinggi (Doktor - S3)</option>
-														<option @if($biodata->PendIbu == "Madrasah_Ibtidaiyah") selected @endif value="Madrasah_Ibtidaiyah">Madrasah Ibtidaiyah (MI)</option>
-														<option @if($biodata->PendIbu == "Madrasah_Tsanawiyah") selected @endif value="Madrasah_Tsanawiyah">Madrasah Tsanawiyah (MTs)</option>
-														<option @if($biodata->PendIbu == "Madrasah_Aliyah") selected @endif value="Madrasah_Aliyah">Madrasah Aliyah (MA)</option>
-														<option @if($biodata->PendIbu == "Pendidikan_Khusus") selected @endif value="Pendidikan_Khusus">Pendidikan Khusus</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "PAUD") selected @endif value="PAUD">Pendidikan Anak Usia Dini (PAUD)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "SD") selected @endif value="SD">Sekolah Dasar (SD)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "SMP") selected @endif value="SMP">Sekolah Menengah Pertama (SMP)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "SMA") selected @endif value="SMA">Sekolah Menengah Atas (SMA)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "SMK") selected @endif value="SMK">Sekolah Menengah Kejuruan (SMK)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "Perguruan_Tinggi_S1") selected @endif value="Perguruan_Tinggi_S1">Perguruan Tinggi (Sarjana - S1)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "Perguruan_Tinggi_S2") selected @endif value="Perguruan_Tinggi_S2">Perguruan Tinggi (Magister - S2)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "Perguruan_Tinggi_S3") selected @endif value="Perguruan_Tinggi_S3">Perguruan Tinggi (Doktor - S3)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "Madrasah_Ibtidaiyah") selected @endif value="Madrasah_Ibtidaiyah">Madrasah Ibtidaiyah (MI)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "Madrasah_Tsanawiyah") selected @endif value="Madrasah_Tsanawiyah">Madrasah Tsanawiyah (MTs)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "Madrasah_Aliyah") selected @endif value="Madrasah_Aliyah">Madrasah Aliyah (MA)</option>
+														<option @if(old('PendIbu', $biodata->PendIbu) == "Pendidikan_Khusus") selected @endif value="Pendidikan_Khusus">Pendidikan Khusus</option>
 													</select>
+													@error('PendIbu')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<div class="col-md-12 ">
 												<div class="form-group">
 													<label class="control-label mb-10">Alamat</label>
-													<textarea type="text" class="form-control" rows="7" name="Alamat" placeholder="Silahkan Isi Form ini...">{{$biodata->Alamat}}</textarea>
+													<textarea type="text" class="form-control" rows="7" name="Alamat" placeholder="Silahkan Isi Form ini...">{{old('Alamat', $biodata->Alamat)}}</textarea>
+													@error('Alamat')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 										</div>
@@ -223,7 +261,10 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Tanggal Lahir Bapak/Ibu</label>
-													<input type="date" class="form-control" name="TglLahirOrtu" value="{{$biodata->TglLahirOrtu}}">
+													<input type="date" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu', $biodata->TglLahirOrtu)}}">
+													@error('TglLahirOrtu')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 													{{-- <div class="input-group date" name="TglLahirOrtu" id="TglLahirOrtu">
 														<input type="text" data-mask="99/99/9999" class="form-control">
 														<span class="input-group-addon">
@@ -236,7 +277,10 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Phone Number</label>
-													<input type="number" class="form-control" name="NoHP" value="{{$biodata->NoHP}}">
+													<input type="number" class="form-control" name="NoHP" value="{{old('NoHP', $biodata->NoHP)}}">
+													@error('NoHP')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 											<!--/span-->
@@ -246,12 +290,18 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="control-label mb-10">E-mail</label>
-													<input type="email" class="form-control" name="Email" value="{{$biodata->Email}}">
+													<input type="email" class="form-control" name="Email" value="{{old('Email', $biodata->Email)}}">
+													@error('Email')
+														<div class="alert alert-danger">{{ $message }}</div>
+													@enderror
 												</div>
 											</div>
 										</div>
 										<label class="control-label mb-10">Foto</label>
 										<input type="file" id="input-file-now" class="dropify" name="photo" data-allowed-file-extensions="jpg png jpeg" />
+										@error('photo')
+											<div class="alert alert-danger">{{ $message }}</div>
+										@enderror
 									</div>
 									<div class="form-actions mt-10">
 										<button type="submit" class="btn btn-success  mr-10"> Save</button>
