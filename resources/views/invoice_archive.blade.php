@@ -59,7 +59,7 @@
 										</td>
 										<td>{{$invoice->TglInvoice}}</td>
 										<td>
-											<a href="#">
+											<a href="/invoice_detail/{{$invoice->NoInvoice}}">
 												<i class="fa fa-file-text-o" aria-hidden="true"></i>
 											</a>	
 										</td>

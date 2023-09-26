@@ -29,7 +29,7 @@
 					<h6 class="panel-title txt-dark">Invoice</h6>
 				</div>
 				<div class="pull-right">
-					<h6 class="txt-dark">Order # 12345</h6>
+					<h6 class="txt-dark">Invoice # {{$invoice->NoInvoice}}</h6>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -39,10 +39,9 @@
 						<div class="col-xs-6">
 							<span class="txt-dark head-font inline-block capitalize-font mb-5">Billed to:</span>
 							<address class="mb-15">
-								<span class="address-head mb-5">Fasbook, Inc.</span>
-								795 Folsom Ave, Suite 600 <br>
-								San Francisco, CA 94107 <br>
-								<abbr title="Phone">P:</abbr>(133) 456-7890
+								<span class="address-head mb-5">{{$invoice->biodata->Nama}}</span>
+								{{$invoice->biodata->Alamat}} <br>
+								<abbr title="Phone">P:</abbr>{{$invoice->biodata->NoHP}}
 							</address>
 						</div>
 						<div class="col-xs-6 text-right">
@@ -67,8 +66,8 @@
 						</div>
 						<div class="col-xs-6 text-right">
 							<address>
-								<span class="txt-dark head-font capitalize-font mb-5">order date:</span><br>
-								March 7, 2017<br><br>
+								<span class="txt-dark head-font capitalize-font mb-5">invoice date:</span><br>
+								{{$invoice->TglInvoice}}<br><br>
 							</address>
 						</div>
 					</div>
@@ -87,24 +86,15 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>BS-200</td>
-										<td>2 Jam</td>
-										<td>1</td>
-										<td>$10.99</td>
-									</tr>
-									<tr>
-										<td>BS-400</td>
-										<td>$20.00</td>
-										<td>3</td>
-										<td>$60.00</td>
-									</tr>
-									<tr>
-										<td>BS-1000</td>
-										<td>$600.00</td>
-										<td>1</td>
-										<td>$600.00</td>
-									</tr>
+									@foreach($absensies as $absensi)
+										<tr>
+											<td>{{$absensi->tipe_absensi->JenisAbsensi}}</td>
+											<td>{{$absensi->tipe_absensi->Durasi}} Jam</td>
+											<td>Rp. {{number_format($absensi->tipe_absensi->Harga, 0, ',', '.')}}</td>
+											
+											<td>Rp. {{number_format($absensi->tipe_absensi->Durasi * $absensi->tipe_absensi->Harga, 0, ',', '.')}}</td>
+										</tr>
+									@endforeach
 									<thead>
 										<tr>
 											<th colspan="4" class="txt-dark">Pengembalian</th>
@@ -122,7 +112,7 @@
 										<td></td>
 										<td></td>
 										<td>Subtotal</td>
-										<td>$670.99</td>
+										<td>Rp. {{number_format($invoice->SubTotal, 0, ',', '.')}}</td>
 									</tr>
 									<tr class="txt-dark">
 										<td></td>
@@ -134,7 +124,7 @@
 										<td></td>
 										<td></td>
 										<td>Total</td>
-										<td>$685.99</td>
+										<td>Rp. {{number_format($invoice->GrandTotal, 0, ',', '.')}}</td>
 									</tr>
 								</tbody>
 							</table>

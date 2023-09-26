@@ -143,7 +143,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/invoice_archive',function(){
         return InvoiceController::view();
     });
-    Route::get('/invoice',function(){
-        return view('invoice');
+    Route::get('/invoice_detail/{NoInvoice}',function($NoInvoice){
+        return InvoiceController::view_detail($NoInvoice);
     });
 });

@@ -60,4 +60,13 @@ class InvoiceController extends Controller
             'invoices' => $invoices,
         ]);
     }
+
+    public static function view_detail($NoInvoice){
+        $invoice = Invoice::find($NoInvoice);
+        $absensies = Absensi::where('IdAnak', $invoice->IdAnak)->get();
+        return view('invoice_detail')->with([
+            'invoice' => $invoice,
+            'absensies' => $absensies,
+        ]);
+    }
 }
