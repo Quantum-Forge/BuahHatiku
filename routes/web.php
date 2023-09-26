@@ -146,4 +146,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/invoice_detail/{NoInvoice}',function($NoInvoice){
         return InvoiceController::view_detail($NoInvoice);
     });
+    Route::get('/uang_makan',function(){
+        return view('uang_makan');
+    });
 });
