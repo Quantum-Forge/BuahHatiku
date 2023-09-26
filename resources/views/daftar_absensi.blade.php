@@ -35,6 +35,7 @@
 					<div class="row">
 						<div class="col-sm-12 col-xs-12">
 							<div class="form-wrap">
+								{{-- ini hanya filtering doang --}}
 								<form class="form-horizontal" action="/daftar_absensi" method="POST">
 									{{ csrf_field() }}
 									<div class="form-group">
@@ -85,7 +86,7 @@
 									</div>
 									<div class="form-group mb-0">
 										<div class="col-sm-12">
-											<button type="submit" class="btn btn-info btn-block">Submit</button>
+											<button type="submit" class="btn btn-info btn-block"><i class="fa fa-filter"></i> Filter</button>
 										</div>
 									</div>
 								</form>
@@ -116,6 +117,7 @@
 										<th>Keterangan</th>
 									</tr>
 								</thead>
+								{{-- ini looping jadwal rolling, di tambahkan juga status kehadiran, karena uang makan harus dihitung dari absensi awal - akhir --}}
 								<tbody>
 									@foreach($absensies as $absensi)
 									<tr>
