@@ -35,10 +35,12 @@ class BiodataController extends Controller
         $biodata->NoHP = $request->NoHP;
         $biodata->Email = $request->Email;
 
-        $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
-        $path = $request->file('photo')->storeAs('photos/', $imageName);
-        $biodata->Photo = 'photos/'.$imageName;
-        $biodata->Photo = $imageName;
+        if(!empty($request->file('photo'))){
+            $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
+            $path = $request->file('photo')->storeAs('photos/', $imageName);
+            $biodata->Photo = 'photos/'.$imageName;
+            $biodata->Photo = $imageName;
+        }
 
         $biodata->save();
         return redirect('/biodata_insert');
