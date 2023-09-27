@@ -39,8 +39,7 @@
 			<div id="filtering_absen" class="panel-wrapper collapse in" aria-expanded="true">
 				<div class="panel-body">
 					<div class="form-wrap">
-						<form action="/daftar_absensi" method="POST">
-								{{ csrf_field() }}
+						<form action="/daftar_absensi" method="GET">
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Tanggal*</label>
 									<input type="date" name="Tanggal" class="form-control">
@@ -131,9 +130,9 @@
 									@endforeach --}}
 									<tr>
 										<td>1</td>
-										<td>dd/mm/yyyy</td>
-										<td>Terapis</td>
+										<td>23/09/2023</td>
 										<td>Anak</td>
+										<td>Terapis</td>
 										<td>
 											<div class="checkbox checkbox-success">
 												<input id="status_kehadiran" type="checkbox">
@@ -146,6 +145,25 @@
 											<textarea name="" class="form-control" id="" cols="20" rows="3" placeholder="Isi Keterangan"></textarea>
 										</td>
 									</tr>
+									@foreach($jadwal_rolling as $jadwal)
+									<tr>
+										<td>{{$loop->index+1}}</td>
+										<td>{{$jadwal->Tanggal}}</td>
+										<td>{{$jadwal->user->Nama}}</td>
+										<td>{{$jadwal->biodata->Nama}}</td>
+										<td>
+											<div class="checkbox checkbox-success">
+												<input id="status_kehadiran" type="checkbox">
+												<label for="status_kehadiran">
+													Hadir
+												</label>
+											</div>
+										</td>
+										<td>
+											<textarea name="" class="form-control" id="" cols="20" rows="3" placeholder="Isi Keterangan"></textarea>
+										</td>
+									</tr>
+									@endforeach
 								</tbody>
 							</table>
 							<button type="submit" class="btn btn-info btn-block">Submit</button>

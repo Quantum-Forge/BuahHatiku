@@ -20,4 +20,14 @@ class JadwalRolling extends Model
      * @var string
      */
     protected $primaryKey = 'IdJadwal';
+
+    public function biodata()
+    {
+        return $this->belongsTo(Biodata::class, 'IdAnak', 'IdAnak');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'NoIdentitas', 'NoIdentitas');
+    }
 }

@@ -119,8 +119,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jadwal_rolling',function(Request $request){
         return JadwalRollingController::insert($request);
     });
-    Route::get('/daftar_absensi',function(){
-        return AbsensiController::view();
+    Route::get('/daftar_absensi',function(Request $request){
+        return AbsensiController::view($request);
     });
     Route::post('/daftar_absensi',function(Request $request){
         return AbsensiController::insert($request);

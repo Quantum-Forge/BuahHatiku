@@ -49,6 +49,9 @@
 														<span class="fa fa-calendar"></span>
 													</span>
 												</div> 
+												@error('Tanggal')
+													<div class="alert alert-danger">{{ $message }}</div>
+												@enderror
 											</div>
 										</div>
 										<!--/span-->
@@ -61,6 +64,9 @@
 														<option value="{{$terapis->NoIdentitas}}">{{$terapis->Nama}}</option>
 													@endforeach
 												</select>
+												@error('NoIdentitas')
+													<div class="alert alert-danger">{{ $message }}</div>
+												@enderror
 											</div>
 										</div>
 										<!--/span-->
@@ -76,14 +82,23 @@
 														<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
 													@endforeach
 												</select>
+												@error('IdAnak')
+													<div class="alert alert-danger">{{ $message }}</div>
+												@enderror
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
 												<label class="control-label mb-10">Tipe Absensi</label>
-												<select class="form-control" name="IdAnak">
+												<select class="form-control" name="IdTipe">
 													<option disabled selected>Choose..</option>
+													@foreach($tipe_absensies as $tipe_absensi)
+														<option value="{{$tipe_absensi->IdTipe}}">{{$tipe_absensi->JenisAbsensi}}</option>
+													@endforeach
 												</select>
+												@error('IdTipe')
+													<div class="alert alert-danger">{{ $message }}</div>
+												@enderror
 											</div>
 										</div>
 										<!--/span-->
@@ -99,6 +114,9 @@
 															</span>
 															<input type='time' name="WaktuMulai" id="start-time" class="form-control" />
 														</div>
+														@error('WaktuMulai')
+															<div class="alert alert-danger">{{ $message }}</div>
+														@enderror
 													</div>
 													<div class="col-sm-6">
 														<div class='input-group'>
@@ -108,6 +126,9 @@
 																 End
 															</span>
 														</div>
+														@error('WaktuSelesai')
+															<div class="alert alert-danger">{{ $message }}</div>
+														@enderror
 													</div>
 												</div>
 											</div>
