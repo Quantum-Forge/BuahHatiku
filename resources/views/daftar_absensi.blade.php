@@ -22,82 +22,70 @@
 
 <!-- Row -->
 <div class="row">
-	<div class="col-sm-6">
+	<div class="col-sm-3">
 		<div class="panel panel-default card-view">
 			<div class="panel-heading">
 				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Absensi</h6>
+					<h6 class="panel-title">Absensi</h6>
+				</div>
+				<div class="pull-right">
+					<a data-toggle="collapse" href="#filtering_absen" aria-expanded="true" class="">
+						<i class="fa fa-angle-down fa-fw"></i>
+						<i class="fa fa-angle-up fa-fw"></i>
+					</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			<div class="panel-wrapper collapse in">
+			<div id="filtering_absen" class="panel-wrapper collapse in" aria-expanded="true">
 				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-12 col-xs-12">
-							<div class="form-wrap">
-								{{-- ini hanya filtering doang --}}
-								<form class="form-horizontal" action="/daftar_absensi" method="POST">
-									{{ csrf_field() }}
-									<div class="form-group">
-										<label for="Jenis" class="col-sm-3 control-label">Tanggal*</label>
-										<div class="col-sm-9">
-											<div class="input-group">
-												<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-												<input type="date" name="Tanggal" class="form-control">
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="Jenis" class="col-sm-3 control-label">Terapis*</label>
-										<div class="col-sm-9">
-											<div class="input-group">
-												<div class="input-group-addon"><i class="fa fa-user"></i></div>
-												<select type="text" name="NoIdentitas" class="form-control" id="Terapis">
-													@foreach( $terapises as $terapis)
-														<option value="{{$terapis->NoIdentitas}}">{{$terapis->Nama}}</option>
-													@endforeach
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="Jenis" class="col-sm-3 control-label">Anak*</label>
-										<div class="col-sm-9">
-											<div class="input-group">
-												<div class="input-group-addon"><i class="fa fa-user"></i></div>
-												<select type="text" name="IdAnak" class="form-control" id="Terapis">
-													@foreach($biodatas as $biodata)
-														<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
-													@endforeach
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label  for="Pertanyaan" class="col-sm-3 control-label">Tipe Absensi*</label>
-										<div class="col-sm-9">
-											<select type="text" name="IdTipe" class="form-control" id="Terapis">
-												<option disabled selected>Choose...</option>
-												@foreach($tipe_absensies as $tipe_absensi)
-													<option value="{{$tipe_absensi->IdTipe}}">{{$tipe_absensi->JenisAbsensi}}</option>
+					<div class="form-wrap">
+						<form action="/daftar_absensi" method="POST">
+								{{ csrf_field() }}
+								<div class="form-group">
+									<label for="Jenis" class="control-label mb-10">Tanggal*</label>
+									<input type="date" name="Tanggal" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="Jenis" class="control-label mb-10">Terapis*</label>
+									<div class="input-group">
+											<div class="input-group-addon"><i class="fa fa-user"></i></div>
+											<select type="text" name="NoIdentitas" class="form-control" id="Terapis">
+											<option disabled selected>Choose...</option>
+												@foreach( $terapises as $terapis)
+													<option value="{{$terapis->NoIdentitas}}">{{$terapis->Nama}}</option>
 												@endforeach
 											</select>
 										</div>
+								</div>
+								<div class="form-group">
+									<label for="Jenis" class="control-label mb-10">Anak*</label>
+									<div class="input-group">
+										<div class="input-group-addon"><i class="fa fa-user"></i></div>
+										<select type="text" name="IdAnak" class="form-control" id="Terapis">
+											<option disabled selected>Choose...</option>
+											@foreach($biodatas as $biodata)
+												<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
+											@endforeach
+										</select>
 									</div>
-									<div class="form-group mb-0">
-										<div class="col-sm-12">
-											<button type="submit" class="btn btn-info btn-block"><i class="fa fa-filter"></i> Filter</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
+								</div>
+								<div class="form-group">
+									<label  for="Pertanyaan" class="control-label mb-10">Tipe Absensi*</label>
+									<select type="text" name="IdTipe" class="form-control" id="Terapis">
+										<option disabled selected>Choose...</option>
+										@foreach($tipe_absensies as $tipe_absensi)
+											<option value="{{$tipe_absensi->IdTipe}}">{{$tipe_absensi->JenisAbsensi}}</option>
+										@endforeach
+									</select>
+								</div>
+								<button type="submit" class="btn btn-info btn-block"><i class="fa fa-filter"></i> Filter</button>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-6">
+	<div class="col-sm-9">
 		<div class="panel panel-default card-view">
 			<div class="panel-heading">
 				<div class="pull-left">
@@ -109,19 +97,24 @@
 				<div class="panel-body">
 					<div class="table-wrap">
 						<div class="table-responsive">
-							<table id="datable_1" class="table table-sm table-hover display text-wrap">
+							<table id="" class="table display text-wrap">
 								<thead>
 									<tr>
 										<th>No.</th>
+										<th>Tanggal</th>
+										<th>Terapis</th>
 										<th>Nama</th>
+										<th>Status</th>
 										<th>Keterangan</th>
 									</tr>
 								</thead>
 								{{-- ini looping jadwal rolling, di tambahkan juga status kehadiran, karena uang makan harus dihitung dari absensi awal - akhir --}}
 								<tbody>
-									@foreach($absensies as $absensi)
+									{{-- @foreach($absensies as $absensi)
 									<tr>
 										<td>{{$loop->index+1}}</td>
+										<td>dd/mm/yyyy</td>
+										<td>Terapis</td>
 										<td>{{$absensi->biodata->Nama}}</td>
 										<td>
 											<div class="checkbox checkbox-success">
@@ -131,10 +124,31 @@
 												</label>
 											</div>
 										</td>
+										<td>
+											<textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+										</td>
 									</tr>
-									@endforeach
+									@endforeach --}}
+									<tr>
+										<td>1</td>
+										<td>dd/mm/yyyy</td>
+										<td>Terapis</td>
+										<td>Anak</td>
+										<td>
+											<div class="checkbox checkbox-success">
+												<input id="status_kehadiran" type="checkbox">
+												<label for="status_kehadiran">
+													Hadir
+												</label>
+											</div>
+										</td>
+										<td>
+											<textarea name="" class="form-control" id="" cols="20" rows="3" placeholder="Isi Keterangan"></textarea>
+										</td>
+									</tr>
 								</tbody>
 							</table>
+							<button type="submit" class="btn btn-info btn-block">Submit</button>
 						</div>
 					</div>
 				</div>
