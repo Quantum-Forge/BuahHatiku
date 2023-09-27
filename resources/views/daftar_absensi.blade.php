@@ -46,7 +46,7 @@
 								</div>
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Terapis*</label>
-									<div class="input-group">
+										<div class="input-group">
 											<div class="input-group-addon"><i class="fa fa-user"></i></div>
 											<select type="text" name="NoIdentitas" class="form-control" id="Terapis">
 											<option disabled selected>Choose...</option>
@@ -77,6 +77,14 @@
 										@endforeach
 									</select>
 								</div>
+								<div class="form-group">
+									<label for="Jenis" class="control-label mb-10">Start Time*</label>
+									<input type="time" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="Jenis" class="control-label mb-10">End Time*</label>
+									<input type="time" class="form-control">
+								</div>
 								<button type="submit" class="btn btn-info btn-block"><i class="fa fa-filter"></i> Filter</button>
 						</form>
 					</div>
@@ -101,6 +109,7 @@
 									<tr>
 										<th>No.</th>
 										<th>Tanggal</th>
+										<th>Jam</th>
 										<th>Terapis</th>
 										<th>Nama</th>
 										<th>Status</th>
@@ -131,6 +140,7 @@
 									<tr>
 										<td>1</td>
 										<td>23/09/2023</td>
+										<td>-</td>
 										<td>Anak</td>
 										<td>Terapis</td>
 										<td>
