@@ -42,7 +42,7 @@
 						<form action="/daftar_absensi" method="GET">
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Tanggal*</label>
-									<input type="date" name="Tanggal" class="form-control">
+									<input type="date" name="Tanggal" class="form-control" value="{{Request::input('Tanggal')}}">
 								</div>
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Terapis*</label>
@@ -51,7 +51,7 @@
 											<select type="text" name="NoIdentitas" class="form-control" id="Terapis">
 											<option disabled selected>Choose...</option>
 												@foreach( $terapises as $terapis)
-													<option value="{{$terapis->NoIdentitas}}">{{$terapis->Nama}}</option>
+													<option value="{{$terapis->NoIdentitas}}" @if(Request::input('NoIdentitas') == $terapis->NoIdentitas) selected @endif>{{$terapis->Nama}}</option>
 												@endforeach
 											</select>
 										</div>
@@ -60,10 +60,10 @@
 									<label for="Jenis" class="control-label mb-10">Anak*</label>
 									<div class="input-group">
 										<div class="input-group-addon"><i class="fa fa-user"></i></div>
-										<select type="text" name="IdAnak" class="form-control" id="Terapis">
+										<select type="text" name="IdAnak" class="form-control" id="Anak">
 											<option disabled selected>Choose...</option>
 											@foreach($biodatas as $biodata)
-												<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
+												<option value="{{$biodata->IdAnak}}" @if(Request::input('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
 											@endforeach
 										</select>
 									</div>
@@ -73,18 +73,18 @@
 									<select type="text" name="IdTipe" class="form-control" id="Terapis">
 										<option disabled selected>Choose...</option>
 										@foreach($tipe_absensies as $tipe_absensi)
-											<option value="{{$tipe_absensi->IdTipe}}">{{$tipe_absensi->JenisAbsensi}}</option>
+											<option value="{{$tipe_absensi->IdTipe}}" @if(Request::input('IdTipe') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
 										@endforeach
 									</select>
 								</div>
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Start Time*</label>
-									<input type="time" class="form-control">
+									<input type="time" class="form-control" name="WaktuMulai" value="{{Request::input('WaktuMulai')}}">
 								</div>
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label for="Jenis" class="control-label mb-10">End Time*</label>
-									<input type="time" class="form-control">
-								</div>
+									<input type="time" class="form-control" name="WaktuSelesai" value="{{Request::input('WaktuSelesai')}}">
+								</div> -->
 								<button type="submit" class="btn btn-info btn-block"><i class="fa fa-filter"></i> Filter</button>
 						</form>
 					</div>
@@ -103,81 +103,49 @@
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
 					<div class="table-wrap">
-						<div class="table-responsive">
-							<table id="" class="table display text-wrap">
-								<thead>
-									<tr>
-										<th>No.</th>
-										<th>Tanggal</th>
-										<th>Jam</th>
-										<th>Terapis</th>
-										<th>Nama</th>
-										<th>Status</th>
-										<th>Keterangan</th>
-									</tr>
-								</thead>
-								{{-- ini looping jadwal rolling, di tambahkan juga status kehadiran, karena uang makan harus dihitung dari absensi awal - akhir --}}
-								<tbody>
-									{{-- @foreach($absensies as $absensi)
-									<tr>
-										<td>{{$loop->index+1}}</td>
-										<td>dd/mm/yyyy</td>
-										<td>Terapis</td>
-										<td>{{$absensi->biodata->Nama}}</td>
-										<td>
-											<div class="checkbox checkbox-success">
-												<input id="status_kehadiran" type="checkbox" onchange="window.location.href='/absensi_hadir/{{$absensi->IdAbsensi}}';" @if($absensi->Hadir ==  1) checked @else '' @endif>
-												<label for="status_kehadiran">
-													Hadir
-												</label>
-											</div>
-										</td>
-										<td>
-											<textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
-										</td>
-									</tr>
-									@endforeach --}}
-									<!-- <tr>
-										<td>1</td>
-										<td>23/09/2023</td>
-										<td>-</td>
-										<td>Anak</td>
-										<td>Terapis</td>
-										<td>
-											<div class="checkbox checkbox-success">
-												<input id="status_kehadiran" type="checkbox">
-												<label for="status_kehadiran">
-													Hadir
-												</label>
-											</div>
-										</td>
-										<td>
-											<textarea name="" class="form-control" id="" cols="20" rows="3" placeholder="Isi Keterangan"></textarea>
-										</td>
-									</tr> -->
-									@foreach($jadwal_rolling as $jadwal)
-									<tr>
-										<td>{{$loop->index+1}}</td>
-										<td>{{$jadwal->Tanggal}}</td>
-										<td>{{$jadwal->user->Nama}}</td>
-										<td>{{$jadwal->biodata->Nama}}</td>
-										<td>
-											<div class="checkbox checkbox-success">
-												<input id="status_kehadiran" type="checkbox">
-												<label for="status_kehadiran">
-													Hadir
-												</label>
-											</div>
-										</td>
-										<td>
-											<textarea name="" class="form-control" id="" cols="20" rows="3" placeholder="Isi Keterangan"></textarea>
-										</td>
-									</tr>
-									@endforeach
-								</tbody>
-							</table>
-							<button type="submit" class="btn btn-info btn-block">Submit</button>
-						</div>
+						<form action="/daftar_absensi" method="POST">
+							{{csrf_field()}}
+							<div class="table-responsive">
+								<table id="" class="table display text-wrap">
+									<thead>
+										<tr>
+											<th>No.</th>
+											<th>Tanggal</th>
+											<th>Jam</th>
+											<th>Terapis</th>
+											<th>Nama</th>
+											<th>Status</th>
+											<th>Keterangan</th>
+										</tr>
+									</thead>
+									{{-- ini looping jadwal rolling, di tambahkan juga status kehadiran, karena uang makan harus dihitung dari absensi awal - akhir --}}
+									<tbody>
+										@foreach($jadwal_rolling as $jadwal)
+										<tr>
+											<td>{{$loop->index+1}}</td>
+											<td>{{$jadwal->Tanggal}}</td>
+											<td>{{$jadwal->user->Nama}}</td>
+											<td>{{$jadwal->biodata->Nama}}</td>
+											<td>
+												<div class="checkbox checkbox-success">
+													<input type="hidden" name="absensi[]" value="{{$jadwal->absensi->IdAbsensi}}">
+													<input type="hidden" name="hadir[{{$jadwal->absensi->IdAbsensi}}]" value="0">
+													<input id="status_kehadiran" type="checkbox" name="hadir[{{$jadwal->absensi->IdAbsensi}}]" @if($jadwal->absensi->Hadir == 1) checked @endif value="1">
+													<label for="status_kehadiran">
+														Hadir
+													</label>
+												</div>
+											</td>
+											<td>
+												<textarea name="keterangan[{{$jadwal->absensi->IdAbsensi}}]" class="form-control" id="" cols="20" rows="3" placeholder="Isi Keterangan">{{$jadwal->absensi->Alasan}}</textarea>
+											</td>
+										</tr>
+										@endforeach
+									</tbody>
+								</table>
+								<button type="submit" class="btn btn-info btn-block">Submit</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

@@ -123,10 +123,7 @@ Route::middleware(['auth'])->group(function () {
         return AbsensiController::view($request);
     });
     Route::post('/daftar_absensi',function(Request $request){
-        return AbsensiController::insert($request);
-    });
-    Route::get('/absensi_hadir/{IdAbsensi}',function($IdAbsensi){
-        return AbsensiController::update_status($IdAbsensi);
+        return AbsensiController::update($request);
     });
     Route::get('/input_invoice',function(){
         return InvoiceController::input_view();

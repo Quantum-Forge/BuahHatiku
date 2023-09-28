@@ -18,19 +18,21 @@ class AbsensiController extends Controller
         $terapises = User::where('Role', 3)->get();
         $tipe_absensies = TipeAbsensi::all();
         $jadwal_rolling = JadwalRolling::query();
-        if($request->Tanggal){
-            $jadwal_rolling->where('Tanggal', $request->Tanggal);
+        if($request->Tanggal || $request->IdAnak || $request->NoIdentitas || $request->IdTipe){
+            if($request->Tanggal){
+                $jadwal_rolling->where('Tanggal', $request->Tanggal);
+            }
+            if($request->IdAnak){
+                $jadwal_rolling->where('IdAnak', $request->IdAnak);
+            }
+            if($request->NoIdentitas){
+                $jadwal_rolling->where('NoIdentitas', $request->NoIdentitas);
+            }
+            if($request->IdTipe){
+                $jadwal_rolling->where('IdTipe', $request->IdTipe);
+            }
+            $jadwal_rolling = $jadwal_rolling->get();
         }
-        if($request->IdAnak){
-            $jadwal_rolling->where('IdAnak', $request->IdAnak);
-        }
-        if($request->NoIdentitas){
-            $jadwal_rolling->where('NoIdentitas', $request->NoIdentitas);
-        }
-        if($request->IdTipe){
-            $jadwal_rolling->where('IdTipe', $request->IdTipe);
-        }
-        $jadwal_rolling = $jadwal_rolling->get();
         return view('daftar_absensi')->with([
             'biodatas' => $biodatas,
             'terapises' => $terapises,
@@ -39,19 +41,18 @@ class AbsensiController extends Controller
         ]);
     }
 
-    public static function insert(Request $request){
-        $absensi = new Absensi;
-
-        $absensi->IdAnak = $request->IdAnak;
-        $absensi->NoIdentitas = $request->NoIdentitas;
-        $absensi->IdTipe = $request->IdTipe;
-        $absensi->Tanggal = $request->Tanggal;
-        $date = Carbon::parse($request->Tanggal)->locale('id');
-        $date->settings(['formatFunction' => 'translatedFormat']);
-        $absensi->Hari = $date->format('l');
-        $absensi->Hadir = 0;
-        
-        $absensi->save();
+    public static function update(Request $request){
+        if($request->absensi){
+            foreach($request->absensi as $IdAbsensi){
+                $absensi = Absensi::find($IdAbsensi);
+                // $date = Carbon::parse($request->Tanggal)->locale('id');
+                // $date->settings(['formatFunction' => 'translatedFormat']);
+                // $absensi->Hari = $date->format('l');
+                $absensi->Hadir = $request->hadir[$IdAbsensi];
+                $absensi->Alasan = $request->keterangan[$IdAbsensi];
+                $absensi->save();
+            }
+        }
         return redirect('/daftar_absensi');
     }
 

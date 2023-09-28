@@ -43,6 +43,18 @@ class JadwalRollingController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
+        $check = JadwalRolling::where('IdAnak', $request->IdAnak)
+                ->where('NoIdentitas', $request->NoIdentitas)
+                ->where('IdTipe', $request->IdTipe)
+                ->where('Tanggal', $request->Tanggal)
+                ->where('WaktuMulai', $request->WaktuMulai)
+                ->where('WaktuSelesai', $request->WaktuSelesai)
+                ->first();
+        if($check){
+            return redirect('/jadwal_rolling')
+                        ->withErrors(['message' => 'JadwalRolling sudah pernah diinput'])
+                        ->withInput();
+        }
         $jadwal = new JadwalRolling;
 
         $jadwal->IdAnak = $request->IdAnak;

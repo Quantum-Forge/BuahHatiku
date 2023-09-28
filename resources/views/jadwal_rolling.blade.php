@@ -44,7 +44,7 @@
 											<div class="form-group">
 												<label class="control-label mb-10">Tanggal Penjadwalan</label>
 												<div class="input-group" id="">
-													<input type="date" name="Tanggal" id="date-input" class="form-control">
+													<input type="date" name="Tanggal" id="date-input" class="form-control" value="{{old('Tanggal')}}">
 													<span class="input-group-addon">
 														<span class="fa fa-calendar"></span>
 													</span>
@@ -61,7 +61,7 @@
 												<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="1">
 													<option disabled selected>Choose..</option>
 													@foreach( $terapises as $terapis)
-														<option value="{{$terapis->NoIdentitas}}">{{$terapis->Nama}}</option>
+														<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas) selected @endif>{{$terapis->Nama}}</option>
 													@endforeach
 												</select>
 												@error('NoIdentitas')
@@ -79,7 +79,7 @@
 												<select class="form-control" name="IdAnak">
 													<option disabled selected>Choose..</option>
 													@foreach($biodatas as $biodata)
-														<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
+														<option value="{{$biodata->IdAnak}}" @if(old('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
 													@endforeach
 												</select>
 												@error('IdAnak')
@@ -93,7 +93,7 @@
 												<select class="form-control" name="IdTipe">
 													<option disabled selected>Choose..</option>
 													@foreach($tipe_absensies as $tipe_absensi)
-														<option value="{{$tipe_absensi->IdTipe}}">{{$tipe_absensi->JenisAbsensi}}</option>
+														<option value="{{$tipe_absensi->IdTipe}}" @if(old('IdTipe') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
 													@endforeach
 												</select>
 												@error('IdTipe')
@@ -112,7 +112,7 @@
 																<span class="fa fa-clock-o mr-5"></span>
 																Start
 															</span>
-															<input type='time' name="WaktuMulai" id="start-time" class="form-control" />
+															<input type='time' name="WaktuMulai" id="start-time" class="form-control" value="{{old('WaktuMulai')}}"/>
 														</div>
 														@error('WaktuMulai')
 															<div class="alert alert-danger">{{ $message }}</div>
@@ -120,7 +120,7 @@
 													</div>
 													<div class="col-sm-6">
 														<div class='input-group'>
-															<input type='time' name="WaktuSelesai" id="end-time" class="form-control" />
+															<input type='time' name="WaktuSelesai" id="end-time" class="form-control" value="{{old('WaktuSelesai')}}"/>
 															<span class="input-group-addon">
 																<span class="fa fa-clock-o mr-5"></span>
 																 End
@@ -135,6 +135,9 @@
 										</div>
 										<!--/span-->
 									</div>
+									@error('message')
+										<div class="alert alert-danger">{{ $message }}</div>
+									@enderror
 									<div class="form-actions mt-10">
 										<button type="submit" class="btn btn-success btn-block mr-10">Save</button>
 									</div>
