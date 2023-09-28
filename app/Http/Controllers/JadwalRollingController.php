@@ -8,6 +8,7 @@ use App\Models\Biodata;
 use App\Models\User;
 use App\Models\TipeAbsensi;
 use App\Models\JadwalRolling;
+use App\Models\Absensi;
 
 class JadwalRollingController extends Controller
 {
@@ -52,6 +53,12 @@ class JadwalRollingController extends Controller
         $jadwal->WaktuSelesai = $request->WaktuSelesai;
 
         $jadwal->save();
+
+        $absensi = new Absensi;
+        $absensi->IdJadwal = $jadwal->IdJadwal;
+        $absensi->Hadir = 0;
+        $absensi->save();
+
         return redirect('/jadwal_rolling');
     }
 }

@@ -17,29 +17,25 @@ class AbsensiController extends Controller
         $biodatas = Biodata::all();
         $terapises = User::where('Role', 3)->get();
         $tipe_absensies = TipeAbsensi::all();
-        // dd($request->Tanggal);
         $jadwal_rolling = JadwalRolling::query();
-        $jadwal_rolling->where('Tanggal', $request->Tanggal);
         if($request->Tanggal){
             $jadwal_rolling->where('Tanggal', $request->Tanggal);
         }
-            
         if($request->IdAnak){
             $jadwal_rolling->where('IdAnak', $request->IdAnak);
         }
-            
-                                            // ->where('NoIdentitas', $request->NoIdentitas)
-                                            // ->where('IdTipe', $request->IdTipe)
-        $jadwal_rolling->get();
-                                        
-                // dd($jadwal_rolling);
-        $absensies = Absensi::all();
+        if($request->NoIdentitas){
+            $jadwal_rolling->where('NoIdentitas', $request->NoIdentitas);
+        }
+        if($request->IdTipe){
+            $jadwal_rolling->where('IdTipe', $request->IdTipe);
+        }
+        $jadwal_rolling = $jadwal_rolling->get();
         return view('daftar_absensi')->with([
             'biodatas' => $biodatas,
             'terapises' => $terapises,
             'tipe_absensies' => $tipe_absensies,
-            'jadwal_rolling' => $jadwal_rolling,
-            'absensies' => $absensies
+            'jadwal_rolling' => $jadwal_rolling
         ]);
     }
 

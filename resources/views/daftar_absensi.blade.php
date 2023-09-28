@@ -137,7 +137,7 @@
 										</td>
 									</tr>
 									@endforeach --}}
-									<tr>
+									<!-- <tr>
 										<td>1</td>
 										<td>23/09/2023</td>
 										<td>-</td>
@@ -154,7 +154,7 @@
 										<td>
 											<textarea name="" class="form-control" id="" cols="20" rows="3" placeholder="Isi Keterangan"></textarea>
 										</td>
-									</tr>
+									</tr> -->
 									@foreach($jadwal_rolling as $jadwal)
 									<tr>
 										<td>{{$loop->index+1}}</td>

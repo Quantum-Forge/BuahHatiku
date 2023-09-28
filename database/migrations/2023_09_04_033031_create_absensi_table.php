@@ -15,11 +15,12 @@ class CreateAbsensiTable extends Migration
     {
         Schema::create('absensi', function (Blueprint $table) {
             $table->bigIncrements('IdAbsensi');
-            $table->date('Tanggal');
-            $table->string('NoIdentitas', 100);
-            $table->integer('IdTipe');
-            $table->string('Hari', 350);
-            $table->integer('IdAnak');
+            $table->integer('IdJadwal');
+            // $table->date('Tanggal');
+            // $table->string('NoIdentitas', 100);
+            // $table->integer('IdTipe');
+            // $table->string('Hari', 350);
+            // $table->integer('IdAnak');
             $table->integer('Hadir');
             $table->string('Alasan', 400)->nullable();
             $table->timestamps();

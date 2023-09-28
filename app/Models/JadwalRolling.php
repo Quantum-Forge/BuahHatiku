@@ -30,4 +30,9 @@ class JadwalRolling extends Model
     {
         return $this->belongsTo(User::class, 'NoIdentitas', 'NoIdentitas');
     }
+
+    public function absensi()
+    {
+        return $this->hasOne(Absensi::class, 'IdJadwal', 'IdJadwal');
+    }
 }
