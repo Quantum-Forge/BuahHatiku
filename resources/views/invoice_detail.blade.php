@@ -80,20 +80,23 @@
 								<thead>
 									<tr>
 										<th>Tipe Terapi</th>
+										<th>Hari</th>
 										<th>Durasi</th>
 										<th>Harga</th>
 										<th>Total</th>
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($absensies as $absensi)
-										<tr>
-											<td>{{$absensi->tipe_absensi->JenisAbsensi}}</td>
-											<td>{{$absensi->tipe_absensi->Durasi}} Jam</td>
-											<td>Rp. {{number_format($absensi->tipe_absensi->Harga, 0, ',', '.')}}</td>
-											
-											<td>Rp. {{number_format($absensi->tipe_absensi->Durasi * $absensi->tipe_absensi->Harga, 0, ',', '.')}}</td>
-										</tr>
+									@foreach($invoice->rincian as $rincian)
+										@if($rincian->JenisTransaksi == 1)
+											<tr>
+												<td>{{$rincian->tipe_absensi->JenisAbsensi}}</td>
+												<td>{{$rincian->Hari}}</td>
+												<td>{{$rincian->JumlahPertemuan}} Jam</td>
+												<td>Rp. {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</td>
+												<td>Rp. {{number_format($rincian->Total, 0, ',', '.')}}</td>
+											</tr>
+										@endif
 									@endforeach
 									<thead>
 										<tr>
@@ -101,14 +104,20 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>ABA</td>
-											<td>2 Jam</td>
-											<td>Rp. 20.000</td>
-											<td>Rp. 20.000</td>
-										</tr>
+										@foreach($invoice->rincian as $rincian)
+											@if($rincian->JenisTransaksi == 0)
+												<tr>
+													<td>{{$rincian->tipe_absensi->JenisAbsensi}}</td>
+													<td>{{$rincian->Hari}}</td>
+													<td>{{$rincian->JumlahPertemuan}} Jam</td>
+													<td>Rp. {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</td>
+													<td>Rp. {{number_format($rincian->Total, 0, ',', '.')}}</td>
+												</tr>
+											@endif
+										@endforeach
 									</tbody>
 									<tr class="txt-dark">
+										<td></td>
 										<td></td>
 										<td></td>
 										<td>Subtotal</td>
@@ -117,10 +126,12 @@
 									<tr class="txt-dark">
 										<td></td>
 										<td></td>
-										<td>Shipping</td>
-										<td>$15</td>
+										<td></td>
+										<td>Pengembalian</td>
+										<td>Rp. {{number_format($invoice->SubTotal - $invoice->GrandTotal, 0, ',', '.')}}</td>
 									</tr>
 									<tr class="txt-dark">
+										<td></td>
 										<td></td>
 										<td></td>
 										<td>Total</td>

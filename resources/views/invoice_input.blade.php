@@ -33,15 +33,16 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="panel-wrapper collapse in">
-				<form action="/input_invoice_form" method="GET">
-					<div class="panel-body">
+				<div class="panel-body">
+					<form action="/input_invoice" method="GET">
 						<div class="row">
 							<div class="col-xs-6">
 								<span class="txt-dark head-font inline-block capitalize-font mb-5">Billed to:</span>
 								<div class="">
-									<select name="IdAnak" class="form-control" style="width: 300px; max-width: 100%;">
+									<select name="IdAnak" class="form-control" style="width: 300px; max-width: 100%;" onchange="this.form.submit()">
+										<option disabled selected>Choose...</option>
 										@foreach($biodatas as $biodata)
-											<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
+											<option value="{{$biodata->IdAnak}}" @if(Request::input('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
 										@endforeach
 									</select>
 									<img src="{{ asset('dist/img/bca.png') }}" alt="" class="img-responsive" style="max-width: 100%; width: 100px;">
@@ -57,34 +58,122 @@
 								</address>
 							</div>
 						</div>
-						
-						<div class="row">
-							<div class="col-xs-6">
-								<address>
-									<span class="txt-dark head-font capitalize-font mb-5">Bank BCA:</span>
-									<br>
-									Yayasan Bina Sejahtera<br>
-									7055567123
-								</address>
-							</div>
-							<div class="col-xs-6 text-right">
-								<address>
-									<span class="txt-dark head-font capitalize-font mb-5">Invoice date:</span><br>
-									{{$today}}<br><br>
-								</address>
-							</div>
+					</form>
+					
+					<div class="row">
+						<div class="col-xs-6">
+							<address>
+								<span class="txt-dark head-font capitalize-font mb-5">Bank BCA:</span>
+								<br>
+								Yayasan Bina Sejahtera<br>
+								7055567123
+							</address>
 						</div>
-
-						<div class="pull-right">
-							<button type="submit" class="btn btn-primary mr-10">
-								Submit 
-							</button>
+						<div class="col-xs-6 text-right">
+							<address>
+								<span class="txt-dark head-font capitalize-font mb-5">Invoice date:</span><br>
+								{{$today}}<br><br>
+							</address>
 						</div>
-						
-						<div class="seprator-block"></div>
-						
 					</div>
-				</form>
+					@error('message')
+						<div class="alert alert-danger">{{ $message }}</div>
+					@enderror
+					
+					<div class="seprator-block"></div>
+
+					<div class="invoice-bill-table">
+						<form action="/input_invoice" method="POST">
+							{{csrf_field()}}
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>Tipe Terapi</th>
+											<th>Hari</th>
+											<th>Jumlah Pertemuan</th>
+											<th>Harga</th>
+											<th>Total</th>
+										</tr>
+									</thead>
+									<input type="hidden" name="NoIdentitas" value="{{$first_jadwal}}">
+									<input type="hidden" name="IdAnak" value="{{Request::input('IdAnak')}}">
+									<tbody>
+										@php( $subtotal=0 )
+										@foreach( $jadwal_hadir as $jadwal)
+											<tr>
+												<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
+												<td>{{$jadwal->ListHari}}</td>
+												<td>{{$jadwal->JumlahPertemuan}}</td>
+												<td>Rp. {{number_format($jadwal->tipe_absensi->Harga, 0, ',', '.')}}</td>
+												<td>Rp. {{number_format($jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga, 0, ',', '.')}}</td>
+												@php( $subtotal += $jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga )
+												<input type="hidden" name="absensi.IdTipe[]" value="{{$jadwal->IdTipe}}">
+												<input type="hidden" name="absensi.Hari[]" value="{{$jadwal->ListHari}}">
+												<input type="hidden" name="absensi.JmlhPertemuan[]" value="{{$jadwal->JumlahPertemuan}}">
+												<input type="hidden" name="absensi.Harga[]" value="{{$jadwal->tipe_absensi->Harga}}">
+												<input type="hidden" name="absensi.Total[]" value="{{$jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga}}">
+											</tr>
+										@endforeach
+										<thead>
+											<tr>
+												<th colspan="4" class="txt-dark">Pengembalian</th>
+											</tr>
+										</thead>
+										<tbody>
+											@php( $pengembalian=0 )
+											@foreach( $jadwal_tidak_hadir as $jadwal)
+												<tr>
+													<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
+													<td>{{$jadwal->ListHari}}</td>
+													<td>{{$jadwal->JumlahPertemuan}}</td>
+													<td>Rp. {{number_format($jadwal->tipe_absensi->Harga, 0, ',', '.')}}</td>
+													<td>Rp. {{number_format($jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga, 0, ',', '.')}}</td>
+													@php( $pengembalian += $jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga )
+													<input type="hidden" name="pengembalian.IdTipe[]" value="{{$jadwal->IdTipe}}">
+													<input type="hidden" name="pengembalian.Hari[]" value="{{$jadwal->ListHari}}">
+													<input type="hidden" name="pengembalian.JmlhPertemuan[]" value="{{$jadwal->JumlahPertemuan}}">
+													<input type="hidden" name="pengembalian.Harga[]" value="{{$jadwal->tipe_absensi->Harga}}">
+													<input type="hidden" name="pengembalian.Total[]" value="{{$jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga}}">
+												</tr>
+											@endforeach
+										</tbody>
+										<tr class="txt-dark">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Subtotal</td>
+											<td>Rp. {{number_format($subtotal, 0, ',', '.')}}</td>
+											<input type="hidden" name="SubTotal" value="{{$subtotal}}">
+										</tr>
+										<tr class="txt-dark">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Pengembalian</td>
+											<td>Rp. {{number_format($pengembalian, 0, ',', '.')}}</td>
+											<input type="hidden" name="Pengembalian" value="{{$pengembalian}}">
+										</tr>
+										<tr class="txt-dark">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<td>Rp. {{number_format($subtotal - $pengembalian, 0, ',', '.')}}</td>
+											<input type="hidden" name="GrandTotal" value="{{$subtotal - $pengembalian}}">
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="pull-right">
+								<button type="submit" class="btn btn-primary mr-10">
+									Submit 
+								</button>
+							</div>
+							<div class="clearfix"></div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -125,8 +125,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/daftar_absensi',function(Request $request){
         return AbsensiController::update($request);
     });
-    Route::get('/input_invoice',function(){
-        return InvoiceController::input_view();
+    Route::get('/input_invoice',function(Request $request){
+        return InvoiceController::input_view($request);
     });
     Route::get('/input_invoice_form',function(Request $request){
         return InvoiceController::input_view_selected($request);
