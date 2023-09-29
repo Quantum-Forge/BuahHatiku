@@ -24,12 +24,6 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="panel panel-default card-view">
-			<div class="panel-heading">
-				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Biodata Anak</h6>
-				</div>
-				<div class="clearfix"></div>
-			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
 					<div class="row">
@@ -42,21 +36,21 @@
 										<hr>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Nama') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Nama</label>
 													<input type="text" id="firstName" class="form-control" name="Nama" placeholder="Isi Nama Anak" value="{{old('Nama')}}">
 													@error('Nama')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">Nama harus diisi!</span>
 													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('AnakKe') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Anak Ke...</label>
 													<input type="number" id="lastName" class="form-control" name="AnakKe" placeholder="Anak ke..." value="{{old('AnakKe')}}">
 													@error('AnakKe')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">Tolong</span>
 													@enderror
 												</div>
 											</div>
@@ -65,31 +59,26 @@
 										<!-- /Row -->
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('JenisKelamin') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Jenis Kelamin</label>
 													<select class="form-control" name="JenisKelamin">
+														<option disabled selected>Choose...</option>
 														<option value="Laki-laki">Laki-laki</option>
 														<option value="Perempuan">Perempuan</option>
 													</select>
 													@error('JenisKelamin')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('TglLahir') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir</label>
 													<input type="date" class="form-control" name="TglLahir" value="{{old('TglLahir')}}">
 													@error('TglLahir')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
-													{{-- <div class="input-group date" name="TglLahir" id="TglLahir">
-														<input type="text" data-mask="99/99/9999" class="form-control">
-														<span class="input-group-addon">
-															<span class="fa fa-calendar"></span>
-														</span>
-													</div> --}}
 												</div>
 											</div>
 										</div>
@@ -97,18 +86,18 @@
 										<div class="row">
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('TempatLahir') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tempat Lahir</label>
 													<input type="text" class="form-control" name="TempatLahir" placeholder="Isi Tempat Lahir" value="{{old('TempatLahir')}}">
 													@error('TempatLahir')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Pendidikan') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan</label>
 													<select name="Pendidikan" class="form-control">
 														<option value="PAUD" @if(old('Pendidikan') == 'PAUD') selected @endif>Pendidikan Anak Usia Dini (PAUD)</option>
@@ -125,14 +114,14 @@
 														<option value="Pendidikan_Khusus" @if(old('Pendidikan') == 'Pendidikan_Khusus') selected @endif>Pendidikan Khusus</option>
 													</select>
 													@error('Pendidikan')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<!--/span-->
 											<div class="col-md-12">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Diagnosa') ? 'has-error has-danger' : '' }}">
 													<label class="control-label mb-5">Diagnosa</label>
 													<div class="radio-list">
 														<div class="radio-inline pl-0">
@@ -167,18 +156,18 @@
 														</div>
 													</div>
 													@error('Diagnosa')
-														<div class="alert alert-danger">{{ $message }}</div>
+														{{-- <div class="alert alert-danger">{{ $message }}</div> --}}
 													@enderror
 													<textarea name="KeteranganDiagnosa" class="form-control" id="" cols="30" rows="10" placeholder="Keterangan Diagnosa...">{{old('KeteranganDiagnosa')}}</textarea>
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-12 ">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('YangMendiagnosa') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Yang Mendiagnosa</label>
 													<input type="text" class="form-control" name="YangMendiagnosa" placeholder="Silahkan Isi Form ini..." value="{{old('YangMendiagnosa')}}">
 													@error('YangMendiagnosa')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
@@ -191,25 +180,25 @@
 										<hr>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('NamaBapak') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Nama Bapak</label>
 													<input type="text" class="form-control" name="NamaBapak" placeholder="Isi Nama Bapak" value="{{old('NamaBapak')}}">
 													@error('NamaBapak')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('NamaIbu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Nama Ibu</label>
 													<input type="text" class="form-control" name="NamaIbu" placeholder="Isi Nama Ibu" value="{{old('NamaIbu')}}">
 													@error('NamaIbu')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('PendBapak') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan Bapak</label>
 													<select name="PendBapak" class="form-control">
 														<option value="PAUD" @if(old('PendBapak') == 'PAUD') selected @endif>Pendidikan Anak Usia Dini (PAUD)</option>
@@ -226,12 +215,12 @@
 														<option value="Pendidikan_Khusus" @if(old('PendBapak') == 'Pendidikan_Khusus') selected @endif>Pendidikan Khusus</option>
 													</select>
 													@error('PendBapak')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('PendIbu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan Ibu</label>
 													<select name="PendIbu" class="form-control">
 														<option value="PAUD" @if(old('PendIbu') == 'PAUD') selected @endif>Pendidikan Anak Usia Dini (PAUD)</option>
@@ -248,43 +237,37 @@
 														<option value="Pendidikan_Khusus" @if(old('PendIbu') == 'Pendidikan_Khusus') selected @endif>Pendidikan Khusus</option>
 													</select>
 													@error('PendIbu')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<div class="col-md-12 ">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Alamat') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Alamat</label>
 													<textarea type="text" class="form-control" rows="7" name="Alamat" placeholder="Silahkan Isi Form ini...">{{old('Alamat')}}</textarea>
 													@error('Alamat')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
-													<label class="control-label mb-10">Tanggal Lahir Bapak/Ibu</label>
+												<div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">Tanggal Lahir Ibu</label>
 													<input type="date" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu')}}">
 													@error('TglLahirOrtu')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
-													{{-- <div class="input-group date" name="TglLahirOrtu" id="TglLahirOrtu">
-														<input type="text" data-mask="99/99/9999" class="form-control">
-														<span class="input-group-addon">
-															<span class="fa fa-calendar"></span>
-														</span>
-													</div> --}}
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('NoHP') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Phone Number</label>
 													<input type="number" class="form-control" name="NoHP" value="{{old('NoHP')}}">
 													@error('NoHP')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
@@ -293,20 +276,21 @@
 										<!-- /Row -->
 										<div class="row">
 											<div class="col-md-12">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Email') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">E-mail</label>
 													<input type="email" class="form-control" name="Email" value="{{old('Email')}}">
 													@error('Email')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="control-label mb-10">Foto</label>
+													<input type="file" id="input-file-now" class="dropify" name="photo" data-allowed-file-extensions="jpg png jpeg" required />
+												</div>
+											</div>
 										</div>
-										<label class="control-label mb-10">Foto</label>
-										<input type="file" id="input-file-now" class="dropify" name="photo" data-allowed-file-extensions="jpg png jpeg" />
-										@error('photo')
-											<div class="alert alert-danger">{{ $message }}</div>
-										@enderror
 									</div>
 									<div class="form-actions mt-10">
 										<button type="submit" class="btn btn-success  mr-10"> Save</button>
