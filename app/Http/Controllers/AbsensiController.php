@@ -45,9 +45,6 @@ class AbsensiController extends Controller
         if($request->absensi){
             foreach($request->absensi as $IdAbsensi){
                 $absensi = Absensi::find($IdAbsensi);
-                // $date = Carbon::parse($request->Tanggal)->locale('id');
-                // $date->settings(['formatFunction' => 'translatedFormat']);
-                // $absensi->Hari = $date->format('l');
                 $absensi->Hadir = $request->hadir[$IdAbsensi];
                 $absensi->Alasan = $request->keterangan[$IdAbsensi];
                 $absensi->save();

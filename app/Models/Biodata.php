@@ -27,8 +27,21 @@ class Biodata extends Model
         return $this->hasMany(ParentalQuestionnaire::class, 'IdAnak', 'IdAnak');
     }
 
-    public function absensies()
+    public function jadwal_rolling()
     {
-        return $this->hasMany(Absensi::class, 'IdAnak', 'IdAnak');
+        return $this->hasMany(JadwalRolling::class, 'IdAnak', 'IdAnak');
+    }
+
+    public function invoice()
+    {
+        return $this->hasMany(Invoice::class, 'IdAnak', 'IdAnak');
+    }
+
+    public function scopeDoesntHaveInvoice($query, $month, $year)
+    {
+        return $query->wheredoesntHave('invoice', function($query) use ($month, $year) {
+            return $query->whereMonth('TglInvoice', $month)
+                        ->whereYear('TglInvoice', $year);
+        });
     }
 }

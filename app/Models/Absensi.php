@@ -21,13 +21,8 @@ class Absensi extends Model
      */
     protected $primaryKey = 'IdAbsensi';
 
-    public function biodata()
-    {
-        return $this->belongsTo(Biodata::class, 'IdAnak', 'IdAnak');
-    }
-
-    public function tipe_absensi()
-    {
-        return $this->belongsTo(TipeAbsensi::class, 'IdTipe', 'IdTipe');
-    }
+    // public function biodata()
+    // {
+    //     return $this->belongsTo(Biodata::class, 'IdAnak', 'IdAnak');
+    // }
 }

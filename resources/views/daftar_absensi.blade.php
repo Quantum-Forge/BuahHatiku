@@ -124,6 +124,7 @@
 										<tr>
 											<td>{{$loop->index+1}}</td>
 											<td>{{$jadwal->Tanggal}}</td>
+											<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
 											<td>{{$jadwal->user->Nama}}</td>
 											<td>{{$jadwal->biodata->Nama}}</td>
 											<td>

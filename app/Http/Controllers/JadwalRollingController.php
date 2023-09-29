@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\TipeAbsensi;
 use App\Models\JadwalRolling;
 use App\Models\Absensi;
+use Carbon\Carbon;
 
 class JadwalRollingController extends Controller
 {
@@ -30,13 +31,14 @@ class JadwalRollingController extends Controller
             'IdAnak' => 'required',
             'IdTipe' => 'required',
             'Tanggal' => 'required',
-            'WaktuMulai' => 'required',
-            'WaktuSelesai' => 'required',
+            'WaktuMulai' => 'required|date_format:H:i',
+            'WaktuSelesai' => 'required|date_format:H:i|after:WaktuMulai',
         ], [
             'required' => ':attribute harus diisi',
             'NoIdentitas.required' => 'Terapis harus diisi',
             'IdAnak.required' => 'Anak harus diisi',
             'IdTipe.required' => 'Tipe absensi harus diisi',
+            'WaktuSelesai.after' => 'Waktu selesai harus setelah waktu mulai'
         ]);
         if ($validator->fails()) {
             return redirect('/jadwal_rolling')
@@ -61,6 +63,9 @@ class JadwalRollingController extends Controller
         $jadwal->NoIdentitas = $request->NoIdentitas;
         $jadwal->IdTipe = $request->IdTipe;
         $jadwal->Tanggal = $request->Tanggal;
+        $date = Carbon::parse($request->Tanggal)->locale('id');
+        $date->settings(['formatFunction' => 'translatedFormat']);
+        $jadwal->Hari = $date->format('l');
         $jadwal->WaktuMulai = $request->WaktuMulai;
         $jadwal->WaktuSelesai = $request->WaktuSelesai;
 

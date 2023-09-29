@@ -19,6 +19,7 @@ class CreateJadwalRollingTable extends Migration
             $table->string('NoIdentitas', 45);
             $table->integer('IdTipe');
             $table->date('Tanggal');
+            $table->string('Hari', 20);
             $table->time('WaktuMulai')->nullable();
             $table->time('WaktuSelesai')->nullable();
             $table->timestamps();
