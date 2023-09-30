@@ -43,21 +43,21 @@
 										<hr>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Nama') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Nama</label>
 													<input type="text" id="firstName" class="form-control" name="Nama" placeholder="Isi Nama Anak" value="{{old('Nama', $biodata->Nama)}}">
 													@error('Nama')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('AnakKe') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Anak Ke...</label>
 													<input type="number" id="lastName" class="form-control" name="AnakKe" placeholder="Anak ke..." value="{{old('AnakKe', $biodata->AnakKe)}}">
 													@error('AnakKe')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
@@ -66,24 +66,24 @@
 										<!-- /Row -->
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('JenisKelamin') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Jenis Kelamin</label>
 													<select class="form-control" name="JenisKelamin">
 														<option @if (old('JenisKelamin', $biodata->JenisKelamin) == "Laki-laki") selected @endif value="Laki-laki">Laki-laki</option>
 														<option @if (old('JenisKelamin', $biodata->JenisKelamin) == "Perempuan") selected @endif value="Perempuan">Perempuan</option>
 													</select>
 													@error('JenisKelamin')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('TglLahir') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir</label>
 													<input type="date" class="form-control" name="TglLahir" value="{{old('TglLahir', $biodata->TglLahir)}}">
 													@error('TglLahir')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
@@ -92,18 +92,18 @@
 										<div class="row">
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('TempatLahir') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tempat Lahir</label>
 													<input type="text" class="form-control" name="TempatLahir" placeholder="Isi Tempat Lahir" value="{{old('TempatLahir', $biodata->TempatLahir)}}">
 													@error('TempatLahir')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Pendidikan') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan</label>
 													<select name="Pendidikan" class="form-control">
 														<option @if(old('Pendidikan', $biodata->Pendidikan) == "PAUD") selected @endif value="PAUD">Pendidikan Anak Usia Dini (PAUD)</option>
@@ -120,14 +120,14 @@
 														<option @if(old('Pendidikan', $biodata->Pendidikan) == "Pendidikan_Khusus") selected @endif value="Pendidikan_Khusus">Pendidikan Khusus</option>
 													</select>
 													@error('Pendidikan')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<!--/span-->
 											<!--/span-->
 											<div class="col-md-12">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Diagnosa') ? 'has-error' : '' }}">
 													<label class="control-label mb-5">Diagnosa</label>
 													<div class="radio-list">
 														<div class="radio-inline pl-0">
@@ -161,7 +161,7 @@
 														</span>
 														</div>
 														@error('Diagnosa')
-															<div class="alert alert-danger">{{ $message }}</div>
+															{{-- <span class="help-block">{{ $message }}</span> --}}
 														@enderror
 													</div>
 													<textarea name="KeteranganDiagnosa" class="form-control" id="" cols="30" rows="10" placeholder="Keterangan Diagnosa...">{{old('KeteranganDiagnosa', $biodata->KeteranganDiagnosa)}}</textarea>
@@ -169,11 +169,11 @@
 											</div>
 											<!--/span-->
 											<div class="col-md-12 ">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('YangMendiagnosa') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Yang Mendiagnosa</label>
 													<input type="text" class="form-control" name="YangMendiagnosa" placeholder="Silahkan Isi Form ini..." value="{{old('YangMendiagnosa', $biodata->YangMendiagnosa)}}">
 													@error('YangMendiagnosa')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
@@ -186,25 +186,25 @@
 										<hr>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('NamaBapak') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Nama Bapak</label>
 													<input type="text" class="form-control" name="NamaBapak" placeholder="Isi Nama Bapak" value="{{old('NamaBapak', $biodata->NamaBapak)}}">
 													@error('NamaBapak')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('NamaIbu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Nama Ibu</label>
 													<input type="text" class="form-control" name="NamaIbu" placeholder="Isi Nama Ibu" value="{{old('NamaIbu', $biodata->NamaIbu)}}">
 													@error('NamaIbu')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('PendBapak') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan Bapak</label>
 													<select name="PendBapak" class="form-control">
 														<option @if(old('PendBapak', $biodata->PendBapak) == "PAUD") selected @endif value="PAUD">Pendidikan Anak Usia Dini (PAUD)</option>
@@ -221,12 +221,12 @@
 														<option @if(old('PendBapak', $biodata->PendBapak) == "Pendidikan_Khusus") selected @endif value="Pendidikan_Khusus">Pendidikan Khusus</option>
 													</select>
 													@error('PendBapak')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('PendIbu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan Ibu</label>
 													<select name="PendIbu" class="form-control">
 														<option @if(old('PendIbu', $biodata->PendIbu) == "PAUD") selected @endif value="PAUD">Pendidikan Anak Usia Dini (PAUD)</option>
@@ -243,27 +243,27 @@
 														<option @if(old('PendIbu', $biodata->PendIbu) == "Pendidikan_Khusus") selected @endif value="Pendidikan_Khusus">Pendidikan Khusus</option>
 													</select>
 													@error('PendIbu')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 											<div class="col-md-12 ">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Alamat') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Alamat</label>
 													<textarea type="text" class="form-control" rows="7" name="Alamat" placeholder="Silahkan Isi Form ini...">{{old('Alamat', $biodata->Alamat)}}</textarea>
 													@error('Alamat')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir Bapak/Ibu</label>
 													<input type="date" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu', $biodata->TglLahirOrtu)}}">
 													@error('TglLahirOrtu')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 													{{-- <div class="input-group date" name="TglLahirOrtu" id="TglLahirOrtu">
 														<input type="text" data-mask="99/99/9999" class="form-control">
@@ -275,11 +275,11 @@
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('NoHP') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Phone Number</label>
 													<input type="number" class="form-control" name="NoHP" value="{{old('NoHP', $biodata->NoHP)}}">
 													@error('NoHP')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
@@ -288,20 +288,25 @@
 										<!-- /Row -->
 										<div class="row">
 											<div class="col-md-12">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('Email') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">E-mail</label>
 													<input type="email" class="form-control" name="Email" value="{{old('Email', $biodata->Email)}}">
 													@error('Email')
-														<div class="alert alert-danger">{{ $message }}</div>
+														<span class="help-block">{{ $message }}</span>
+													@enderror
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group {{ $errors->has('NoHP') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">Foto</label>
+													<input type="file" id="input-file-now" class="dropify" name="photo" data-allowed-file-extensions="jpg png jpeg" />
+													@error('photo')
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
 										</div>
-										<label class="control-label mb-10">Foto</label>
-										<input type="file" id="input-file-now" class="dropify" name="photo" data-allowed-file-extensions="jpg png jpeg" />
-										@error('photo')
-											<div class="alert alert-danger">{{ $message }}</div>
-										@enderror
+										
 									</div>
 									<div class="form-actions mt-10">
 										<button type="submit" class="btn btn-success  mr-10"> Save</button>
