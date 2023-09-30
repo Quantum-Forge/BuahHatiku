@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             // 3 = Terapis (User) tolong tanya Brian atau Agus mengenai hal ini
             'Nama' => 'Aldo Sentosa',
             'Alamat' => 'Jl. Gunung Latimojong No.129-A, Maradekaya, Kec. Makassar, Kota Makassar, Sulawesi Selatan 90145',
-            'NoHP' => '081456456456',
+            'NoHP' => '+6281393133016',
             'StatusAktif' => 1, // Sesuaikan dengan status aktif yang sesuai
             'Username' => 'Aldo Sentosa',
             'Password' => Hash::make('Apotik_Andika'),

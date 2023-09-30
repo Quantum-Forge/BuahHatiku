@@ -24,12 +24,6 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="panel panel-default card-view">
-			<div class="panel-heading">
-				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Jadwal Rolling</h6>
-				</div>
-				<div class="clearfix"></div>
-			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
 					<div class="row">
@@ -41,7 +35,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-md-6">
-											<div class="form-group">
+											<div class="form-group {{ $errors->has('Tanggal') ? 'has-error' : '' }}">
 												<label class="control-label mb-10">Tanggal Penjadwalan</label>
 												<div class="input-group" id="">
 													<input type="date" name="Tanggal" id="date-input" class="form-control" value="{{old('Tanggal')}}">
@@ -50,13 +44,13 @@
 													</span>
 												</div> 
 												@error('Tanggal')
-													<div class="alert alert-danger">{{ $message }}</div>
+													<span class="help-block">{{ $message }}</span>
 												@enderror
 											</div>
 										</div>
 										<!--/span-->
 										<div class="col-md-6">
-											<div class="form-group">
+											<div class="form-group {{ $errors->has('NoIdentitas') ? 'has-error' : '' }}">
 												<label class="control-label mb-10">Terapis</label>
 												<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="1">
 													<option disabled selected>Choose..</option>
@@ -65,7 +59,7 @@
 													@endforeach
 												</select>
 												@error('NoIdentitas')
-													<div class="alert alert-danger">{{ $message }}</div>
+													<span class="help-block">{{ $message }}</span>
 												@enderror
 											</div>
 										</div>
@@ -74,7 +68,7 @@
 									<!-- /Row -->
 									<div class="row">
 										<div class="col-md-3">
-											<div class="form-group">
+											<div class="form-group {{ $errors->has('IdAnak') ? 'has-error' : '' }}">
 												<label class="control-label mb-10">Anak</label>
 												<select class="form-control" name="IdAnak">
 													<option disabled selected>Choose..</option>
@@ -83,12 +77,12 @@
 													@endforeach
 												</select>
 												@error('IdAnak')
-													<div class="alert alert-danger">{{ $message }}</div>
+													<span class="help-block">{{ $message }}</span>
 												@enderror
 											</div>
 										</div>
 										<div class="col-md-3">
-											<div class="form-group">
+											<div class="form-group {{ $errors->has('IdTipe') ? 'has-error' : '' }}">
 												<label class="control-label mb-10">Tipe Absensi</label>
 												<select class="form-control" name="IdTipe">
 													<option disabled selected>Choose..</option>
@@ -97,13 +91,13 @@
 													@endforeach
 												</select>
 												@error('IdTipe')
-													<div class="alert alert-danger">{{ $message }}</div>
+													<span class="help-block">{{ $message }}</span>
 												@enderror
 											</div>
 										</div>
 										<!--/span-->
 										<div class="col-md-6">
-											<div class="form-group">
+											<div class="form-group {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
 												<label class="control-label mb-10 text-left">Time Range Pick</label>
 												<div class="row">
 													<div class="col-sm-6">
@@ -115,20 +109,22 @@
 															<input type='time' name="WaktuMulai" id="start-time" class="form-control" value="{{old('WaktuMulai')}}"/>
 														</div>
 														@error('WaktuMulai')
-															<div class="alert alert-danger">{{ $message }}</div>
+															<span class="help-block">{{ $message }}</span>
 														@enderror
 													</div>
 													<div class="col-sm-6">
-														<div class='input-group'>
-															<input type='time' name="WaktuSelesai" id="end-time" class="form-control" value="{{old('WaktuSelesai')}}"/>
-															<span class="input-group-addon">
-																<span class="fa fa-clock-o mr-5"></span>
-																 End
-															</span>
+														<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }}">
+															<div class='input-group'>
+																<input type='time' name="WaktuSelesai" id="end-time" class="form-control" value="{{old('WaktuSelesai')}}"/>
+																<span class="input-group-addon">
+																	<span class="fa fa-clock-o mr-5"></span>
+																	 End
+																</span>
+															</div>
+															@error('WaktuSelesai')
+																<span class="help-block">{{ $message }}</span>
+															@enderror
 														</div>
-														@error('WaktuSelesai')
-															<div class="alert alert-danger">{{ $message }}</div>
-														@enderror
 													</div>
 												</div>
 											</div>
@@ -136,7 +132,7 @@
 										<!--/span-->
 									</div>
 									@error('message')
-										<div class="alert alert-danger">{{ $message }}</div>
+										<span class="help-block">{{ $message }}</span>
 									@enderror
 									<div class="form-actions mt-10">
 										<button type="submit" class="btn btn-success btn-block mr-10">Save</button>
