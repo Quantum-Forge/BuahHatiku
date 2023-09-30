@@ -11,6 +11,7 @@ use App\Http\Controllers\TipeAbsensiController;
 use App\Http\Controllers\JadwalRollingController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\UangMakanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,6 +145,6 @@ Route::middleware(['auth'])->group(function () {
         return InvoiceController::view_detail($NoInvoice);
     });
     Route::get('/uang_makan',function(){
-        return view('uang_makan');
+        return UangMakanController::view();
     });
 });

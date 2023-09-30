@@ -49,14 +49,16 @@
 													</tr>
 												</thead>
 												<tbody>
+													@foreach($result as $uang_makan)
 													<tr>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
+														<td>{{$loop->index+1}}</td>
+														<td>{{$uang_makan->Nama}}</td>
+														<td>{{$uang_makan->Tanggal}}</td>
+														<td>{{$uang_makan->durasi}}</td>
+														<td>{{$uang_makan->uang_makan}}</td>
 														<td></td>
 													</tr>
+													@endforeach
 												</tbody>
 											</table>
 										</div>
