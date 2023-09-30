@@ -71,7 +71,7 @@ class BiodataController extends Controller
         }
 
         $biodata->save();
-        return redirect('/biodata_insert');
+        return redirect('/biodata_view');
     }
 
     public static function update_view($IdAnak){
