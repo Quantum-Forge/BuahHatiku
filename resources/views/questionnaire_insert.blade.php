@@ -35,7 +35,7 @@
 					<div class="row">
 						<div class="col-sm-12 col-xs-12">
 							<div class="form-wrap row">
-								<div class="col-md-6">
+								<div class="col-md-5">
 									<form class="form-horizontal" action="/questionnaire_insert" method="POST">
 										{{ csrf_field() }}
 										<div class="form-group">
@@ -66,15 +66,15 @@
 										</div>
 									</form>
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-7">
 									<div class="table-wrap">
 										<div class="table-responsive">
-											<table id="datable_1" class="table table-sm table-hover display text-nowrap">
+											<table id="datable_1" class="table table-sm display text-wrap">
 												<thead>
 													<tr>
 														<th>No</th>
 														<th>Jenis</th>
-														<th>Pertanyaan</th>
+														<th style="width: 40%;">Pertanyaan</th>
 														<th>Aksi</th>
 													</tr>
 												</thead>
@@ -84,8 +84,7 @@
 														<td>{{ $loop->index+1 }}</td>
 														<td>{{ $questionnaire->jenis->NamaJenis }}</td>
 														<td>{{ $questionnaire->Pertanyaan }}</td>
-														<td width="80">
-															<button class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
+														<td>
 															<button data-toggle="modal" data-target="#responsive-modal{{$questionnaire->IdQuestionaire}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 														</td>
 													</tr>

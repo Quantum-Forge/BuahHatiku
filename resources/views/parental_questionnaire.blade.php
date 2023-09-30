@@ -40,7 +40,7 @@
 								<div class="form-body">
 									<div class="form-group">
 										<div class="col-md-12">
-											<select name="IdAnak" class="form-control">
+											<select name="IdAnak" class="form-control" required>
 												<option disabled selected>Silahkan Pilih Nama Anak...</option>
 												@foreach( $biodatas as $biodata)
 													<option value="{{$biodata->IdAnak}}">{{$biodata->Nama}}</option>
@@ -68,15 +68,15 @@
 															<div class="radio-list">
 																<div class="col-sm-12">
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
 																		<label for="radio1"> Ya </label>
 																	</div>
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
 																		<label for="radio2"> Kadang-kadang </label>
 																	</div>
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
 																		<label for="radio3"> Tidak </label>
 																	</div>
 																</div>
@@ -107,15 +107,15 @@
 															<div class="radio-list">
 																<div class="col-sm-12">
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
 																		<label for="radio1"> Ya </label>
 																	</div>
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
 																		<label for="radio2"> Kadang-kadang </label>
 																	</div>
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
 																		<label for="radio3"> Tidak </label>
 																	</div>
 																</div>
@@ -146,15 +146,15 @@
 															<div class="radio-list">
 																<div class="col-sm-12">
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
 																		<label for="radio1"> Ya </label>
 																	</div>
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
 																		<label for="radio2"> Kadang-kadang </label>
 																	</div>
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
 																		<label for="radio3"> Tidak </label>
 																	</div>
 																</div>
@@ -185,15 +185,15 @@
 															<div class="radio-list">
 																<div class="col-sm-12">
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
 																		<label for="radio1"> Ya </label>
 																	</div>
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio2" value="Kadang-kadang">
 																		<label for="radio2"> Kadang-kadang </label>
 																	</div>
 																	<div class="radio">
-																		<input type="radio" name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
+																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio3" value="Tidak">
 																		<label for="radio3"> Tidak </label>
 																	</div>
 																</div>
