@@ -5,56 +5,45 @@
 						<a class="active" href="/dashboard"><i class="icon-home mr-10"></i>Dashboard</a>
 					</li>
 					<li>
-						<a href="javascript:void(0);" data-toggle="collapse" data-target="#biodata"><i class="icon-folder mr-10"></i>Biodata Anak <span class="pull-right"><span class="label label-success mr-10">4</span><i class="fa fa-fw fa-angle-down"></i></span></a>
-						<ul id="biodata" class="collapse collapse-level-1">
+						<a href="javascript:void(0);" data-toggle="collapse" data-target="#master"><i class="fa fa-database mr-10"></i>Master Data <span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
+						<ul id="master" class="collapse collapse-level-1">
 							<li>
-								<a href="/biodata_insert">Create Biodata</a>
+								<a href="/biodata_insert">Buat Biodata Anak</a>
 							</li>
 							<li>
-								<a href="/biodata_view">View Biodata</a>
+								<a href="/questionnaire_insert">Buat Questionnaire</a>
+							</li>
+							<li>
+								<a href="/tipe_absensi_insert">Buat Tipe Absensi</a>
 							</li>
 						</ul>
+					</li>
+					<li>
+						<a class="" href="/biodata_view"><i class="icon-folder mr-10"></i>Biodata<span class="pull-right"><span class="label label-success mr-10">4</span></span></a>
 					</li>
 					<li>
 						<a href="/jadwal_rolling"><i class="icon-calender mr-10"></i>Scheduling</a>
 					</li>
+					<li>
+						<a class="" href="/parental_questionnaire"><i class="icon-question mr-10"></i>Questionnaire</a>
+					</li>
+					<li>
+						<a class="" href="/daftar_absensi"><i class="icon-notebook mr-10"></i>Absensi</a>
+					</li>
 					
 					<li>
-						<a href="javascript:void(0);" data-toggle="collapse" data-target="#questionnaire"><i class="icon-question mr-10"></i>Questionnaire <span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
-						<ul id="questionnaire" class="collapse collapse-level-1">
-							<li>
-								<a href="/questionnaire_insert">Create Questionnaire</a>
-							</li>
-							<li>
-								<a href="/parental_questionnaire">Parental Questionnaire</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="javascript:void(0);" data-toggle="collapse" data-target="#absensi"><i class="icon-notebook mr-10"></i>Absensi<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
-						<ul id="absensi" class="collapse collapse-level-1">
-							<li>
-								<a href="/daftar_absensi">Daftar Absensi</a>
-							</li>
-							<li>
-								<a href="/tipe_absensi_insert">Tipe Absensi</a>
-							</li>
-
-						</ul>
-					</li>
-					<li>
-						<a href="javascript:void(0);" data-toggle="collapse" data-target="#invoice"><i class=" icon-folder-alt mr-10"></i>Invoice<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
+						<a href="javascript:void(0);" data-toggle="collapse" data-target="#invoice"><i class=" icon-folder-alt mr-10"></i>Faktur<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
 						<ul id="invoice" class="collapse collapse-level-1">
 							<li>
-								<a href="/input_invoice">Input Invoice</a>
+								<a href="/input_invoice">Buat Faktur</a>
 							</li>
 							<li>
-								<a href="/invoice_archive">Daftar Invoice</a>
+								<a href="/invoice_archive">Daftar Faktur</a>
 							</li>
 						</ul>
 					</li>
 					<li>
-						<a href=""><i class="fa fa-money mr-10"></i>Biaya</a>
+						<a href="/uang_makan"><i class="fa fa-money mr-10"></i>Uang Makan</a>
 					</li>
 					<li>
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#User"><i class="icon-user mr-10"></i>Pengguna<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>

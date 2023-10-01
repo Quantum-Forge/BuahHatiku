@@ -15,31 +15,31 @@
 							<li>
 								<ul class="app-icon-wrap">
 									<li>
-										<a href="#" class="connection-item">
+										<a href="/biodata_view" class="connection-item">
 										<i class="pe-7s-info txt-info"></i>
 										<span class="block">Anak</span>
 										</a>
 									</li>
 									<li>
-										<a href="#" class="connection-item">
+										<a href="/daftar_absensi" class="connection-item">
 										<i class="pe-7s-glasses txt-success"></i>
 										<span class="block">Absen</span>
 										</a>
 									</li>
 									<li>
-										<a href="#" class="connection-item">
+										<a href="/Scheduling" class="connection-item">
 										<i class="pe-7s-date txt-primary"></i>
 										<span class="block">Jadwal</span>
 										</a>
 									</li>
 									<li>
-										<a href="#" class="connection-item">
+										<a href="/parental_questionnaire" class="connection-item">
 										<i class="pe-7s-user-female txt-danger"></i>
 										<span class="block">Parental</span>
 										</a>
 									</li>
 									<li>
-										<a href="#" class="connection-item">
+										<a href="/invoice_archive" class="connection-item">
 										<i class="pe-7s-file txt-warning"></i>
 										<span class="block">Invoice</span>
 										</a>
