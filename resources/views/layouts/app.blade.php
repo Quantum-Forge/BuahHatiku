@@ -19,6 +19,8 @@
     <link href="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- vector map CSS -->
 	<link href="{{ asset('vendors/bower_components/jquery-wizard.js/css/wizard.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Calendar CSS -->
+	<link href="{{ asset('vendors/bower_components/fullcalendar/dist/fullcalendar.css') }}" rel="stylesheet" type="text/css"/>
 	<!-- jquery-steps css -->
     <link rel="stylesheet" href="{{ asset('vendors/bower_components/jquery.steps/demo/css/jquery.steps.css') }}">
     <!-- select2 CSS -->

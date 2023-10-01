@@ -37,7 +37,7 @@
 								<div class="panel panel-default card-view mb-0">
 									<div class="panel-heading">
 										<div class="pull-left">
-											<h6 class="panel-title txt-dark">Sign In</h6>
+											<h6 class="panel-title txt-dark">Login</h6>
 										</div>
 										<div class="clearfix"></div>
 									</div>
@@ -48,17 +48,23 @@
 													<div class="form-wrap">
 														<form method="POST" action="/login">
 															{{ csrf_field() }}
+															@error('error')
+																<div class="alert alert-danger alert-dismissable">
+																	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+																	<i class="ti-na pr-15"></i>{{ $message }}
+																</div>
+															@enderror
 															<div class="form-group">
 																<label class="control-label mb-10" for="email">Email</label>
 																<div class="input-group">
-																	<input type="text" class="form-control" required="" id="email" name="email" placeholder="Enter email">
+																	<input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
 																	<div class="input-group-addon"><i class="icon-envelope-open"></i></div>
 																</div>
 															</div>
 															<div class="form-group">
 																<label class="control-label mb-10" for="password">Password</label>
 																<div class="input-group">
-																	<input type="password" class="form-control" required="" id="password" name="password" placeholder="Enter Password">
+																	<input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
 																	<div class="input-group-addon"><i class="icon-lock"></i></div>
 																</div>
 															</div>
@@ -71,14 +77,8 @@
 																<a class="capitalize-font txt-danger block pt-5 pull-right" href="#">forgot password</a>
 																<div class="clearfix"></div>
 															</div>
-															<div class="form-group {{ $errors->has('error') ? 'has-error' : '' }}">
-																@error('error')
-																	<span class="help-block">{{ $message }}</span>
-																@enderror
-															</div>
-
 															<div class="form-group">
-																<button type="submit" class="btn btn-success btn-block">sign in</button>
+																<button type="submit" class="btn btn-success btn-block">Sign in</button>
 															</div>
 															<div class="form-group mb-0">
 																<span class="inline-block pr-5">Don't have an account?</span>

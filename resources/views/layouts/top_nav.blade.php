@@ -1,7 +1,10 @@
 <!-- Top Menu Items -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
 				<a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block mr-20 pull-left" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
-				<a href="index.html"><img class="brand-img pull-left" src="/dist/img/logo.png" alt="brand"/></a>
+				<a href="/dashboard">
+					{{-- <img class="brand-img pull-left" src="/dist/img/logo.png" alt="brand"/> --}}
+					<h4 class="brand-img pull-left txt-success" style="font-weight: bolder">Attendance Management System</h4>
+				</a>
 				<ul class="nav navbar-right top-nav pull-right">
 					<li>
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#site_navbar_search">

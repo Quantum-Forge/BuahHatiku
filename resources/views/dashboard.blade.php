@@ -3,9 +3,9 @@
 @section('dashboard')
 
 <!-- Title -->
-<div class="row heading-bg  bg-red">
+<div class="row heading-bg bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h5 class="txt-light">analytical</h5>
+		<h5 class="txt-light">Dashboard</h5>
 	</div>
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -19,82 +19,118 @@
 </div>
 <!-- /Title -->
 
-<!-- Row -->
 <div class="row">
 	<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+		<div class="panel panel-default card-view  pa-0">
+			<div class="panel-wrapper collapse in">
+				<div class="panel-body  pa-0">
+					<div class="profile-box">
+						<div class="profile-info-wrap text-center">
+							<div class="profile-info pt-40">
+								<img class="img-circle inline-block mt-40 mb-10" src="dist/img/user1.png" alt="user"/>
+								<h4 class="txt-light block  mb-5 capitalize-font">Aldo Senotsa</h4>
+								<h6 class="txt-light block uppercase-font pb-40">Owner</h6>
+							</div>	
+							<div class="profile-image-overlay"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
 		<div class="panel panel-default card-view">
 			<div class="panel-heading">
 				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Conversion Rate</h6>
+					<h6 class="panel-title txt-dark">Daftar Absensi</h6>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
-					<div class="sm-graph-box">
-						<div class="row">
-							<div class="col-xs-6">
-								<div id="sparkline_1"></div>
+					<div class="table-wrap">
+						<div class="table-responsive">
+							<table class="table display product-overview" id="statement">
+								<thead>
+									<tr>
+										<th>tanggal</th>
+										<th>Jam</th>
+										<th>Terapis</th>
+										<th>Anak</th>
+										<th>status</th>
+									</tr>
+								</thead>
+								{{-- looping 4x sesuai urutan upload --}}
+								<tbody>
+									<td>dd/mm/yyyy</td>
+									<td>00:00</td>
+									<td>Terapis</td>
+									<td>Anak</td>
+									<td><span class="label label-success font-weight-100">Hadir</span></td>
+								</tbody>
+							</table>
+						</div>
+					</div>	
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Row -->
+<div class="row">
+	<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+		<div class="panel panel-default card-view pa-0">
+			<div class="panel-wrapper collapse in">
+				<div class="panel-body pa-0">
+					<div class="sm-data-box bg-primary">
+						<div class="row ma-0">
+							<div class="col-xs-5 text-center pa-0 icon-wrap-left">
+								<i class="icon-user txt-light"></i>
 							</div>
-							<div class="col-xs-6">
-								<div class="counter-wrap text-right">
-									<span class="counter-cap"><i class="fa  fa-level-up txt-success"></i></span><span class="counter">23</span><span>%</span>
-								</div>	
+							<div class="col-xs-7 text-center data-wrap-right">
+								<h6 class="txt-light">Jumlah Terapis</h6>
+								<span class="txt-light counter counter-anim">45678</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-			<div class="panel panel-default card-view">
-				<div class="panel-heading">
-					<div class="pull-left">
-						<h6 class="panel-title txt-dark">Total Visits</h6>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="panel-wrapper collapse in">
-					<div class="panel-body">
-						<div class="sm-graph-box">
-							<div class="row">
-								<div class="col-xs-6">
-									<div id="sparkline_2"></div>
-								</div>
-								<div class="col-xs-6">
-									<div class="counter-wrap text-right">
-										<span class="counter-cap"><i class="fa  fa-level-up txt-success"></i></span><span class="counter">12</span><span>m</span>
-									</div>	
-								</div>
+		<div class="panel panel-default card-view pa-0">
+			<div class="panel-wrapper collapse in">
+				<div class="panel-body pa-0">
+					<div class="sm-data-box bg-pink">
+						<div class="row ma-0">
+							<div class="col-xs-5 text-center pa-0 icon-wrap-left">
+								<i class="ti-face-smile txt-light"></i>
+							</div>
+							<div class="col-xs-7 text-center data-wrap-right">
+								<h6 class="txt-light">Anak Hadir</h6>
+								<span class="txt-light counter counter-anim">45678</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="panel panel-default card-view">
-				<div class="panel-heading">
-					<div class="pull-left">
-						<h6 class="panel-title txt-dark">downloads</h6>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="panel-wrapper collapse in">
-					<div class="panel-body">
-						<div class="sm-graph-box">
-							<div class="row">
-								<div class="col-xs-6">
-									<div id="sparkline_6"></div>
-								</div>
-								<div class="col-xs-6">
-									<div class="counter-wrap text-right">
-										<span class="counter-cap"><i class="fa  fa-level-down txt-danger"></i></span><span class="counter">1122</span>
-									</div>	
-								</div>
+		</div>
+		<div class="panel panel-default card-view pa-0">
+			<div class="panel-wrapper collapse in">
+				<div class="panel-body pa-0">
+					<div class="sm-data-box bg-red">
+						<div class="row ma-0">
+							<div class="col-xs-5 text-center pa-0 icon-wrap-left">
+								<i class="ti-face-sad txt-light"></i>
+							</div>
+							<div class="col-xs-7 text-center data-wrap-right">
+								<h6 class="txt-light">Anak tidak Hadir</h6>
+								<span class="txt-light counter counter-anim">45678</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		
+		</div>
 	</div>
 	<div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
 		<div class="panel panel-default card-view">
@@ -115,74 +151,18 @@
 <!-- /Row -->
 
 <div class="row">
-	<div class="col-lg-3 col-md-6">
-		<div class="panel panel-primary card-view">
-			<div class="panel-heading mb-20">
-				<div class="pull-left">
-					<h6 class="panel-title txt-light">top countries</h6>
-				</div>
-				<div class="clearfix"></div>
-			</div>
+	<div class="col-lg-4 col-md-6">
+		<div class="panel panel-default card-view">
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
-					<div class="table-wrap">
-						<div class="table-responsive">
-							<table  class="table  top-countries" >
-								<tbody>
-									<tr>
-										<td>
-											<img src="dist/img/country/gb.svg" alt="user_img">	
-										</td>
-										<td>
-											United Kingdom
-										</td>
-										<td>
-											$50
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<img src="dist/img/country/my.svg" alt="user_img">	
-										</td>
-										<td>
-											Malaysia
-										</td>
-										<td>
-											$20
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<img src="dist/img/country/au.svg" alt="user_img">
-										</td>
-										<td>
-											Australia
-										</td>
-										<td>
-											$5
-										</td>
-									</tr>
-									
-									<tr>
-										<td>
-											<img src="dist/img/country/us.svg" alt="user_img">
-										</td>
-										<td>
-											United States
-										</td>
-										<td>
-											$5
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+					<div class="calendar-wrap">
+					  <div id="calendar_small" class="small-calendar"></div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</div>
-	<div class="col-lg-3 col-md-6">
+	<div class="col-lg-4 col-md-6">
 		<div class="panel panel-default card-view">
 			<div class="panel-heading">
 				<div class="pull-left">
@@ -197,143 +177,43 @@
 			</div>
 		</div>	
 	</div>
-	<div class="col-lg-6 col-md-12">
-		<div class="panel panel-default card-view">
-			<div class="panel-heading">
+	<div class="col-lg-4 col-md-6">
+		<div class="panel panel-success card-view">
+			<div class="panel-heading mb-20">
 				<div class="pull-left">
-					<h6 class="panel-title txt-dark"><i class="icon-clock mr-10"></i>Average Position</h6>
+					<h6 class="panel-title txt-light pull-left">Daftar Anak</h6>
+				</div>
+				<div class="pull-right">
+					<a class="txt-light" href="javascript:void(0);"><i class="ti-more"></i></a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
-					<div id="morris_extra_line_chart" class="morris-chart" style="height:280px;"></div>
+					<ul class="chat-list-wrap">
+						<li class="chat-list">
+							<div class="chat-body">
+								{{-- looping 4x dan sesuai dengan urutan upload, dan href anak ini mengarah ke parental_questionnaire_view/id jika ada,
+									kalau tidak ada mengarah ke biodata_view --}}
+								<a class="" href="#">
+									<div class="chat-data">
+										<img class="user-img img-circle" src="dist/img/user.png" alt="user"/>
+										<div class="user-data">
+											<span class="name block capitalize-font">Abigail Bell</span>
+											<span class="diagnosa block txt-grey">Autis</span>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+								</a>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 	
 </div>
-
-<!-- Row -->
-<div class="row">
-	<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-		<div class="panel panel-default card-view pa-0">
-			<div class="panel-wrapper collapse in">
-				<div class="panel-body pa-0">
-					<div class="sm-data-box bg-green">
-						<div class="row ma-0">
-							<div class="col-xs-5 text-center pa-0 icon-wrap-left">
-								<i class="icon-diamond txt-light"></i>
-							</div>
-							<div class="col-xs-7 text-center data-wrap-right">
-								<h6 class="txt-light">monthly sales</h6>
-								<span class="txt-light counter counter-anim">45678</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="weather_3" class="panel panel-default card-view pa-0 weather-info">
-			<div class="panel-wrapper collapse in">
-				<div class="panel-body pa-0">
-					<div class="row ma-0">
-						<div class="col-xs-6 pa-0">
-							<div class="left-block-wrap pa-30">
-								<p class="block nowday"></p>
-								<span class="block nowdate"></span>
-								<div class="left-block  mt-15"></div>
-							</div>
-						</div>
-						<div class="col-xs-6 pa-0">
-							<div class="right-block-wrap pa-30">
-								<div class="right-block"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
-		<div class="panel panel-default card-view">
-			<div class="panel-heading">
-				<div class="pull-left">
-					<h6 class="panel-title txt-dark">statement table</h6>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="panel-wrapper collapse in">
-				<div class="panel-body">
-					<div class="table-wrap">
-						<div class="table-responsive">
-							<table class="table display product-overview" id="statement">
-								<thead>
-									<tr>
-										<th>date</th>
-										<th>Order ID</th>
-										<th>type</th>
-										<th>Details</th>
-										<th>price</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>10-7-2016</td>
-										<td>#85457898</td>
-										<td>
-											<span class="label label-primary font-weight-100">fee</span>
-										</td>
-										<td>
-											Author Fee for included support sale IVIP13444036
-										</td>
-										<td>$20</td>
-									</tr>
-									<tr>
-										<td>10-7-2016</td>
-										<td>#85457897</td>
-										<td>
-											<span class="label label-danger font-weight-100">refund</span>
-										</td>
-										<td>
-											Author Fee for included support sale IVIP13444036
-										</td>
-										<td>$20</td>
-									</tr>
-									<tr>
-										<td>10-7-2016</td>
-										<td>#85457896</td>
-										<td>
-											<span class="label label-primary font-weight-100">fee</span>
-										</td>
-										<td>
-											Author Fee for included support sale IVIP13444036
-										</td>
-										<td>$20</td>
-									</tr>
-									<tr>
-										<td>10-7-2016</td>
-										<td>#85457895</td>
-										<td>
-											<span class="label label-info font-weight-100">support</span>
-										</td>
-										<td>
-											Author Fee for included support sale IVIP13444036
-										</td>
-										<td>$20</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>	
-				</div>	
-			</div>
-		</div>
-	</div>
-</div>	
-<!-- Row -->
 @endsection
 
 @section('scripts')
@@ -353,6 +233,12 @@
 <script src="{{ asset('vendors/bower_components/moment/min/moment.min.js') }}"></script>
 <script src="{{ asset('vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js') }}"></script>
 <script src="{{ asset('dist/js/simpleweather-data.js') }}"></script>
+
+<!-- Calender JavaScripts -->
+<script src="{{ asset('vendors/bower_components/moment/min/moment.min.js') }}"></script>
+<script src="{{ asset('vendors/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('vendors/bower_components/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+<script src="{{ asset('dist/js/fullcalendar-data.js') }}"></script>
 
 <!-- Progressbar Animation JavaScript -->
 <script src="{{ asset('vendors/bower_components/waypoints/lib/jquery.waypoints.min.js') }}"></script>
