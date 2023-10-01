@@ -38,24 +38,31 @@
 								<div class="col-md-5">
 									<form class="form-horizontal" action="/questionnaire_insert" method="POST">
 										{{ csrf_field() }}
-										<div class="form-group">
+										<div class="form-group {{ $errors->has('IdJenis') ? 'has-error' : '' }}">
 											<label for="Jenis" class="col-sm-3 control-label">Jenis*</label>
 											<div class="col-sm-9">
 												<div class="input-group">
 													<div class="input-group-addon"><i class="icon-list"></i></div>
 													<select type="text" class="form-control" id="Jenis" name="IdJenis">
+														<option disabled selected>Choose...</option>
 														@foreach($jenis_questionaires as $jenis)
-															<option value="{{$jenis->IdJenis}}">{{$jenis->NamaJenis}}</option>
+															<option value="{{$jenis->IdJenis}}" @if(old('IdJenis') == $jenis->IdJenis) selected @endif>{{$jenis->NamaJenis}}</option>
 														@endforeach
 													</select>
 												</div>
+												@error('IdJenis')
+													<span class="help-block">{{ $message }}</span>
+												@enderror
 											</div>
 										</div>
-										<div class="form-group">
+										<div class="form-group {{ $errors->has('Pertanyaan') ? 'has-error' : '' }}">
 											<label  for="Pertanyaan" class="col-sm-3 control-label">Pertanyaan*</label>
 											<div class="col-sm-9">
 												<div class="input-group">
-													<textarea name="Pertanyaan" class="form-control" id="" cols="50" rows="10"></textarea>
+													<textarea name="Pertanyaan" class="form-control" id="" cols="50" rows="10">{{old('Pertanyaan')}}</textarea>
+													@error('Pertanyaan')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
 												</div>
 											</div>
 										</div>

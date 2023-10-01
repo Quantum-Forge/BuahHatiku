@@ -54,7 +54,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href=""><i class="fa fa-money mr-10"></i>Biaya</a>
+						<a href="/uang_makan"><i class="fa fa-money mr-10"></i>Uang Makan</a>
 					</li>
 					<li>
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#User"><i class="icon-user mr-10"></i>Pengguna<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>

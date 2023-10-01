@@ -58,35 +58,35 @@ class UserController extends Controller
 
     public static function update(Request $request)
     {
-        // Validate the request...
-        $validated = $request->validate([
-            // 'NoIdentitas' => 'required|unique:users|max:16',
+        $user = User::where('NoIdentitas', $request->NoIdentitas)->first();
+        $validator = Validator::make($request->all(), [
             'Role' => 'required',
             'Nama' => 'required',
             'Alamat' => 'required',
             'NoHP' => 'required|numeric',
-            'Username' => 'required',
-            // 'Password' => 'required',
-            'Email' => 'required|email',
+            'Username' => 'required|unique:users,Username,'.$user->NoIdentitas.',NoIdentitas',
+            'Password' => 'nullable',
+            'Email' => 'required|email|unique:users,Email,'.$user->NoIdentitas.',NoIdentitas',
+        ], [
+            'required' => ':attribute harus diisi'
         ]);
-        if($validated){
-            $user = User::where('NoIdentitas', $request->NoIdentitas)->first();
-            
-            $user->Role = $request->Role;
-            $user->Nama = $request->Nama;
-            $user->Alamat = $request->Alamat;
-            $user->NoHP = $request->NoHP;
-            $user->Username = $request->Username;
-            // $user->Password = Hash::make($request->Password);
-            $user->Email = $request->Email;
-    
-            $user->save();
-            return redirect('user_view');
+        if ($validator->fails()) {
+            return redirect('/user_edit/'.$request->NoIdentitas)
+                        ->withErrors($validator)
+                        ->withInput();
         }
-        return back()->withErrors([
-            'error' => 'Email atau password tidak sesuai',
-        ]);
-        
+        $user->Role = $request->Role;
+        $user->Nama = $request->Nama;
+        $user->Alamat = $request->Alamat;
+        $user->NoHP = $request->NoHP;
+        $user->Username = $request->Username;
+        if($request->Password){
+            $user->Password = Hash::make($request->Password);
+        }
+        $user->Email = $request->Email;
+
+        $user->save();
+        return redirect('user_view');
     }
 
     public static function update_status($NoIdentitas){

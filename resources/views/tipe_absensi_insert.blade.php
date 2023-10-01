@@ -38,37 +38,49 @@
 								<div class="col-md-4">
 									<form class="form-horizontal" action="/tipe_absensi_insert" method="POST">
 										{{ csrf_field() }}
-										<div class="form-group">
+										<div class="form-group {{ $errors->has('JenisAbsensi') ? 'has-error' : '' }}">
 											<label for="Jenis" class="col-sm-3 control-label">Jenis*</label>
 											<div class="col-sm-9">
 												<div class="input-group">
 													<div class="input-group-addon"><i class="icon-list"></i></div>
-													<input type="text" name="JenisAbsensi" class="form-control">
+													<input type="text" name="JenisAbsensi" class="form-control" value="{{old('JenisAbsensi')}}">
 												</div>
+												@error('JenisAbsensi')
+													<span class="help-block">{{ $message }}</span>
+												@enderror
 											</div>
 										</div>
-										<div class="form-group">
+										<div class="form-group {{ $errors->has('Harga') ? 'has-error' : '' }}">
 											<label for="Jenis" class="col-sm-3 control-label">Harga*</label>
 											<div class="col-sm-9">
 												<div class="input-group">
 													<div class="input-group-addon">Rp.</div>
-													<input type="number" name="Harga" placeholder="Isi Harga..." class="form-control">
+													<input type="number" name="Harga" placeholder="Isi Harga..." class="form-control"  value="{{old('Harga')}}">
 												</div>
+												@error('Harga')
+													<span class="help-block">{{ $message }}</span>
+												@enderror
 											</div>
 										</div>
-										<div class="form-group">
+										<div class="form-group {{ $errors->has('Durasi') ? 'has-error' : '' }}">
 											<label for="" class="col-sm-3 control-label">Durasi</label>
 											<div class="col-sm-9">
-												<input placeholder="Isi Durasi Jam..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="" style="display: block;">
+												<input placeholder="Isi Durasi Jam..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="{{old('Durasi')}}" style="display: block;">
 												<span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+												@error('Durasi')
+													<span class="help-block">{{ $message }}</span>
+												@enderror
 											</div>
 										</div>
-										<div class="form-group">
+										<div class="form-group {{ $errors->has('Keterangan') ? 'has-error' : '' }}">
 											<label for="Pertanyaan" class="col-sm-3 control-label">Keterangan*</label>
 											<div class="col-sm-9">
 												<div class="input-group">
-													<textarea name="Keterangan" class="form-control" id="" cols="50" rows="10"></textarea>
+													<textarea name="Keterangan" class="form-control" id="" cols="50" rows="10">{{old('Keterangan')}}</textarea>
 												</div>
+												@error('Keterangan')
+													<span class="help-block">{{ $message }}</span>
+												@enderror
 											</div>
 										</div>
 										<div class="form-group mb-0">

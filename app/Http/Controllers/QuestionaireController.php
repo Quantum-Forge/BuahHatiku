@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JenisQuestionaire;
 use App\Models\Questionnaire;
+use Illuminate\Support\Facades\Validator;
 
 class QuestionaireController extends Controller
 {
@@ -19,6 +20,18 @@ class QuestionaireController extends Controller
     }
 
     public static function insert(Request $request){
+        $validator = Validator::make($request->all(), [
+            'IdJenis' => 'required',
+            'Pertanyaan' => 'required',
+        ], [
+            'required' => ':attribute harus diisi'
+        ]);
+        if ($validator->fails()) {
+            return redirect('/questionnaire_insert')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
         $questionnaire = new Questionnaire;
 
         $questionnaire->IdJenis = $request->IdJenis;

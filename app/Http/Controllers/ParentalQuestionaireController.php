@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Questionnaire;
 use App\Models\ParentalQuestionnaire;
 use App\Models\Biodata;
+use Illuminate\Support\Facades\Validator;
 
 class ParentalQuestionaireController extends Controller
 {
@@ -29,6 +30,19 @@ class ParentalQuestionaireController extends Controller
     }
     
     public static function insert(Request $request){
+        $validator = Validator::make($request->all(), [
+            'IdAnak' => 'required',
+            'answer' => 'required',
+            'answer.*' => 'required|in:Ya,Kadang-kadang,Tidak',
+        ], [
+            'required' => ':attribute harus diisi'
+        ]);
+        if ($validator->fails()) {
+            return redirect('/parental_questionnaire')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
         foreach($request->questionnaire as $IdQuestionaire){
             $parentalQuestionnaire = new ParentalQuestionnaire;
             $parentalQuestionnaire->IdAnak = $request->IdAnak;

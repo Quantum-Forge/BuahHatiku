@@ -33,42 +33,66 @@
 							<form action="/user_edit" method="POST">
 								<div class="row">
 									{{ csrf_field() }}
-									<div class="form-group col-md-6">
+									<div class="form-group col-md-6 {{ $errors->has('Nama') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left">Nama</label>
-										<input type="text" class="form-control" name="Nama" placeholder="Masukkan Nama Anda..." value="{{$user->Nama}}">
+										<input type="text" class="form-control" name="Nama" value="{{old('Nama', $user->Nama)}}" placeholder="Masukkan Nama Anda...">
+										@error('Nama')
+											<span class="help-block">{{ $message }}</span>
+										@enderror
 									</div>
-									<div class="form-group col-md-6">
+									<div class="form-group col-md-6 {{ $errors->has('NoIdentitas') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left">NIK</label>
-										<input type="number" readonly class="form-control" name="NoIdentitas" placeholder="Masukkan NIK Anda..." value="{{$user->NoIdentitas}}">
+										<input type="text" class="form-control" data-mask="9999999999999999" readonly name="NoIdentitas" value="{{old('NoIdentitas', $user->NoIdentitas)}}" placeholder="Masukkan NIK Anda...">
+										@error('NoIdentitas')
+											<span class="help-block">{{ $message }}</span>
+										@enderror
 									</div>
-									<div class="form-group col-md-6">
+									<div class="form-group col-md-6 {{ $errors->has('Username') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left" for="example-email">Username</label>
-										<input type="text" id="example-email" name="Username" class="form-control" placeholder="Username" value="{{$user->Username}}">
+										<input type="text" id="example-email" name="Username" value="{{old('Username', $user->Username)}}" class="form-control" placeholder="Username">
+										@error('Username')
+											<span class="help-block">{{ $message }}</span>
+										@enderror
 									</div>
-									<div class="form-group col-md-6">
+									<div class="form-group col-md-6 {{ $errors->has('Email') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left" for="example-email">Email</label>
-										<input type="email" id="example-email" name="Email" class="form-control" placeholder="Email" value="{{$user->Email}}">
+										<input type="email" id="example-email" name="Email" value="{{old('Email', $user->Email)}}" class="form-control" placeholder="Email">
+										@error('Email')
+											<span class="help-block">{{ $message }}</span>
+										@enderror
 									</div>
-									<div class="form-group col-md-6">
+									<div class="form-group col-md-6 {{ $errors->has('Password') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left">Password</label>
-										<input type="password" class="form-control" name="Password" placeholder="Masukkan Password">
+										<input type="password" class="form-control" name="Password" placeholder="Masukkan Password" value="{{old('Password')}}">
+										@error('Password')
+											<span class="help-block">{{ $message }}</span>
+										@enderror
 									</div>
-									<div class="form-group col-md-6">
+									<div class="form-group col-md-6 {{ $errors->has('Role') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left">Role</label>
-										<select class="form-control" name="Role">
-											<option disabled >Choose...</option>
-											<option value="1" @if ($user->Role == 1) selected @endif >Owner</option>
-											<option value="2" @if ($user->Role == 2) selected @endif >Admin</option>
-											<option value="3" @if ($user->Role == 3) selected @endif >Terapis</option>
+										<select class="form-control" name="Role" >
+											<option disabled selected>Choose...</option>
+											<option value="1" @if(old('Role', $user->Role)==1) selected @endif>Owner</option>
+											<option value="2" @if(old('Role', $user->Role)==2) selected @endif>Admin</option>
+											<option value="3" @if(old('Role', $user->Role)==3) selected @endif>Terapis</option>
 										</select>
+										@error('Role')
+											<span class="help-block">{{ $message }}</span>
+										@enderror
 									</div>
-									<div class="form-group col-md-12">
+									<div class="form-group col-md-12 {{ $errors->has('NoHP') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left" for="no_hp">Nomor HP</label>
-										<input type="text" id="no_hp" name="NoHP" data-mask="0899999999999999" class="form-control" placeholder="Nomor HP" value="{{$user->NoHP}}">
+										<input type="text" id="no_hp" name="NoHP" data-mask="+62-99999999999" value="{{old('NoHP', $user->NoHP)}}" class="form-control" placeholder="Nomor HP">
+										@error('NoHP')
+											<span class="help-block">{{ $message }}</span>
+										@enderror
 									</div>
-									<div class="form-group col-md-12">
+									<div class="form-group col-md-12 {{ $errors->has('Alamat') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left">Alamat</label>
-										<textarea class="form-control" rows="5" name="Alamat" placeholder="Alamat">{{$user->Alamat}}</textarea>
+										<textarea class="form-control" rows="5" name="Alamat" placeholder="Alamat">{{old('Alamat', $user->Alamat)}}</textarea>
+										@error('Alamat')
+											<span class="help-block">{{ $message }}</span>
+										@enderror
 									</div>
 								</div>
 								<button class="btn btn-block btn-success">Submit</button>

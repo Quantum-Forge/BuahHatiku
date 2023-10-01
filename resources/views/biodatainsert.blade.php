@@ -40,7 +40,7 @@
 													<label class="control-label mb-10">Nama</label>
 													<input type="text" id="firstName" class="form-control" name="Nama" placeholder="Isi Nama Anak" value="{{old('Nama')}}">
 													@error('Nama')
-														<span class="help-block">Nama harus diisi!</span>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>
@@ -50,7 +50,7 @@
 													<label class="control-label mb-10">Anak Ke...</label>
 													<input type="number" id="lastName" class="form-control" name="AnakKe" placeholder="Anak ke..." value="{{old('AnakKe')}}">
 													@error('AnakKe')
-														<span class="help-block">Tolong</span>
+														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
 											</div>

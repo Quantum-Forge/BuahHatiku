@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\TipeAbsensi;
+use Illuminate\Support\Facades\Validator;
 
 class TipeAbsensiController extends Controller
 {
@@ -17,6 +17,19 @@ class TipeAbsensiController extends Controller
     }
 
     public static function insert(Request $request){
+        $validator = Validator::make($request->all(), [
+            'JenisAbsensi' => 'required',
+            'Harga' => 'required|numeric',
+            'Durasi' => 'required|numeric',
+            'Keterangan' => 'required',
+        ], [
+            'required' => ':attribute harus diisi'
+        ]);
+        if ($validator->fails()) {
+            return redirect('/tipe_absensi_insert')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
         $tipe_absensi = new TipeAbsensi;
 
         $tipe_absensi->JenisAbsensi = $request->JenisAbsensi;

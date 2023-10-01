@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -12,10 +13,17 @@ class AuthController extends Controller
     //
     public static function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        $validator = Validator::make($request->all(), [
+            'password' => 'nullable',
+            'email' => 'required|email',
+        ], [
+            'required' => ':attribute harus diisi'
         ]);
+        if ($validator->fails()) {
+            return back()->withErrors([
+                'error' => 'Email atau password tidak sesuai',
+            ]);
+        }
         $remember_me = $request->has('remember_me') ? true : false ;
         $user  = User::where('Email' , $request->email )
                         ->where('StatusAktif', 1)

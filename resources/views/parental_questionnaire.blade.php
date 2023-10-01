@@ -67,6 +67,7 @@
 															<input type="hidden" name="questionnaire[]" value="{{$questionnaire->IdQuestionaire}}">
 															<div class="radio-list">
 																<div class="col-sm-12">
+																	<input type="hidden" name="answer[{{$questionnaire->IdQuestionaire}}]" value="0">
 																	<div class="radio">
 																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
 																		<label for="radio1"> Ya </label>
@@ -106,6 +107,7 @@
 															<input type="hidden" name="questionnaire[]" value="{{$questionnaire->IdQuestionaire}}">
 															<div class="radio-list">
 																<div class="col-sm-12">
+																	<input type="hidden" name="answer[{{$questionnaire->IdQuestionaire}}]" value="0">
 																	<div class="radio">
 																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
 																		<label for="radio1"> Ya </label>
@@ -145,6 +147,7 @@
 															<input type="hidden" name="questionnaire[]" value="{{$questionnaire->IdQuestionaire}}">
 															<div class="radio-list">
 																<div class="col-sm-12">
+																	<input type="hidden" name="answer[{{$questionnaire->IdQuestionaire}}]" value="0">
 																	<div class="radio">
 																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
 																		<label for="radio1"> Ya </label>
@@ -184,6 +187,7 @@
 															<input type="hidden" name="questionnaire[]" value="{{$questionnaire->IdQuestionaire}}">
 															<div class="radio-list">
 																<div class="col-sm-12">
+																	<input type="hidden" name="answer[{{$questionnaire->IdQuestionaire}}]" value="0">
 																	<div class="radio">
 																		<input type="radio" required name="answer[{{$questionnaire->IdQuestionaire}}]" id="radio1" value="Ya">
 																		<label for="radio1"> Ya </label>
