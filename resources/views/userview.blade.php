@@ -56,11 +56,11 @@
 											<td>{{ $user->NoHP }}</td>
 											<td>
 												@if($user->Role == 1 )
-													Owner
+													<span class="label label-primary ">Owner</span>
 												@elseif($user->Role == 2 )
-													Admin
+													<span class="label label-success ">Admin</span>
 												@elseif($user->Role == 3 )
-													Terapis
+													<span class="label label-warning ">Terapis</span>
 												@endif
 											</td>
 											<td><input type="checkbox" onchange="window.location.href='/user_toggle_status/{{$user->NoIdentitas}}';" @if($user->StatusAktif ==  1) checked @else '' @endif class="js-switch" data-color="#FAAB15" data-size="small"></td>
