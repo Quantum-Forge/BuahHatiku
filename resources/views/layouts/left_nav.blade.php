@@ -31,7 +31,7 @@
 						<a class="{{ Request::is('daftar_absensi') ? 'active' : '' }}" href="/daftar_absensi"><i class="icon-notebook mr-10"></i>Absensi</a>
 					</li>
 					<li>
-						<a class="{{ Request::is('') ? 'active' : '' }}" href=""><i class="icon-list mr-10"></i>Kehadiran</a>
+						<a class="{{ Request::is('kehadiran') ? 'active' : '' }}" href="/kehadiran"><i class="icon-list mr-10"></i>Kehadiran</a>
 					</li>
 					<li>
 						<a  class="{{ Request::is('input_invoice', 'invoice_archive') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#invoice"><i class=" icon-folder-alt mr-10"></i>Faktur<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>

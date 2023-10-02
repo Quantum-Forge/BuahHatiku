@@ -126,6 +126,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/daftar_absensi',function(Request $request){
         return AbsensiController::update($request);
     });
+    Route::get('/kehadiran',function(){
+        return view('kehadiran');
+    });
     Route::get('/input_invoice',function(Request $request){
         return InvoiceController::input_view($request);
     });
@@ -146,5 +149,9 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::get('/uang_makan',function(){
         return UangMakanController::view();
+    });
+
+    Route::get('/404',function(){
+        return view('404');
     });
 });
