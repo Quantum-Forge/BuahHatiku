@@ -19,8 +19,10 @@
 </div>
 <!-- /Title -->
 
+<!-- Row -->
 <div class="row">
 	<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+
 		<div class="panel panel-default card-view  pa-0">
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body  pa-0">
@@ -28,7 +30,7 @@
 						<div class="profile-info-wrap text-center">
 							<div class="profile-info pt-40">
 								<img class="img-circle inline-block mt-40 mb-10" src="dist/img/user1.png" alt="user"/>
-								<h4 class="txt-light block  mb-5 capitalize-font">Aldo Senotsa</h4>
+								<h4 class="txt-light block  mb-5 capitalize-font">Aldo Sentosa</h4>
 								<h6 class="txt-light block uppercase-font pb-40">Owner</h6>
 							</div>	
 							<div class="profile-image-overlay"></div>
@@ -37,49 +39,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
-		<div class="panel panel-default card-view">
-			<div class="panel-heading">
-				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Daftar Absensi</h6>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="panel-wrapper collapse in">
-				<div class="panel-body">
-					<div class="table-wrap">
-						<div class="table-responsive">
-							<table class="table display product-overview" id="statement">
-								<thead>
-									<tr>
-										<th>tanggal</th>
-										<th>Jam</th>
-										<th>Terapis</th>
-										<th>Anak</th>
-										<th>status</th>
-									</tr>
-								</thead>
-								{{-- looping 4x sesuai urutan upload --}}
-								<tbody>
-									<td>dd/mm/yyyy</td>
-									<td>00:00</td>
-									<td>Terapis</td>
-									<td>Anak</td>
-									<td><span class="label label-success font-weight-100">Hadir</span></td>
-								</tbody>
-							</table>
-						</div>
-					</div>	
-				</div>	
-			</div>
-		</div>
-	</div>
-</div>
 
-<!-- Row -->
-<div class="row">
-	<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
 		<div class="panel panel-default card-view pa-0">
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body pa-0">
@@ -146,6 +106,69 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="panel panel-default card-view">
+			<div class="panel-heading">
+				<div class="pull-left">
+					<h6 class="panel-title txt-dark">Daftar Absensi</h6>
+				</div>
+				<div class="pull-right">
+					<a href="" class="label label-primary">Selengkapnya</a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="panel-wrapper collapse in">
+				<div class="panel-body">
+					<div class="table-wrap">
+						<div class="table-responsive">
+							<table class="table display product-overview" id="statement">
+								<thead>
+									<tr>
+										<th>tanggal</th>
+										<th>Jam</th>
+										<th>Terapis</th>
+										<th>Anak</th>
+										<th>status</th>
+									</tr>
+								</thead>
+								{{-- looping 4x sesuai urutan upload --}}
+								<tbody>
+									<tr>
+										<td>dd/mm/yyyy</td>
+										<td>00:00 - 00:00</td>
+										<td>Terapis</td>
+										<td>Brian Thomas</td>
+										<td><span class="label label-success font-weight-100">Hadir</span></td>
+									</tr>
+									<tr>
+										<td>dd/mm/yyyy</td>
+										<td>00:00 - 00:00</td>
+										<td>Terapis</td>
+										<td>Brian Thomas</td>
+										<td><span class="label label-success font-weight-100">Hadir</span></td>
+									</tr>
+									<tr>
+										<td>dd/mm/yyyy</td>
+										<td>00:00 - 00:00</td>
+										<td>Muhammad Fadillah</td>
+										<td>Anak</td>
+										<td><span class="label label-danger font-weight-100">Tidak Hadir</span></td>
+									</tr>
+									<tr>
+										<td>dd/mm/yyyy</td>
+										<td>00:00 - 00:00</td>
+										<td>Terapis</td>
+										<td>Muhammad Aziz Fata</td>
+										<td><span class="label label-danger font-weight-100">Tidak Hadir</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>	
+				</div>	
+			</div>
+		</div>
+
 	</div>
 </div>
 <!-- /Row -->

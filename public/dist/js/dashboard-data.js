@@ -16,7 +16,7 @@ $(document).ready(function(){
 			labels: ["January", "February", "March", "April", "May", "June", "July"],
 			datasets: [
 			{
-				label: "fir",
+				label: "Hadir",
 				backgroundColor: "rgba(60,184,120,0.4)",
 				borderColor: "rgba(60,184,120,0.4)",
 				pointBorderColor: "rgb(60,184,120)",
@@ -24,7 +24,7 @@ $(document).ready(function(){
 				data: [0, 59, 80, 58, 20, 55, 40]
 			},
 			{
-				label: "sec",
+				label: "Tidak Hadir",
 				backgroundColor: "rgba(252,176,59,0.4)",
 				borderColor: "rgba(252,176,59,0.4)",
 				pointBorderColor: "rgb(252,176,59)",
@@ -92,22 +92,22 @@ $(document).ready(function(){
 		var ctx6 = document.getElementById("chart_6").getContext("2d");
 		var data6 = {
 			 labels: [
-			"lab 1",
-			"lab 2",
-			"lab 3"
+			"Jumlah Terapis",
+			"Anak Hadir",
+			"Anak Tidak Hadir"
 		],
 		datasets: [
 			{
 				data: [300, 50, 100],
 				backgroundColor: [
-					"rgba(234,101,162,.8)",
-					"rgba(241,91,38,.8)",
-					"rgba(252,176,59,.8)"
+					"#337ab7",
+					"#ea65a2",
+					"#f15b26"
 				],
 				hoverBackgroundColor: [
-					"rgba(234,101,162,.8)",
-					"rgba(241,91,38,.8)",
-					"rgba(252,176,59,.8)"
+					"#337ab8",
+					"#ea65a3",
+					"#f15b27"
 				]
 			}]
 		};
@@ -143,9 +143,9 @@ $(document).ready(function(){
 $(window).load(function(){
 	window.setTimeout(function(){
 		$.toast({
-			heading: 'Welcome to kenny',
-			text: 'Use the predefined ones, or specify a custom position object.',
-			position: 'top-right',
+			heading: 'Selamat datang Aldo Sentosa',
+			text: 'BuahHatiku Attendance Management System siap membantu anda',
+			position: 'bottom-right',
 			loaderBg:'#ea65a2',
 			icon: 'success',
 			hideAfter: 3000, 
@@ -155,49 +155,3 @@ $(window).load(function(){
 });
 /*****Load function* end*****/
 
-var sparklineLogin = function() { 
-	if( $('#sparkline_1').length > 0 ){
-		$("#sparkline_1").sparkline([2,4,4,6,8,5,6,4,8,6,6,2 ], {
-			type: 'line',
-			width: '100%',
-			height: '45',
-			lineColor: '#566FC9',
-			fillColor: '#566FC9',
-			maxSpotColor: '#566FC9',
-			highlightLineColor: 'rgba(0, 0, 0, 0.2)',
-			highlightSpotColor: '#566FC9'
-		});
-	}	
-	if( $('#sparkline_2').length > 0 ){
-		$("#sparkline_2").sparkline([0,2,8,6,8], {
-			type: 'bar',
-			width: '100%',
-			height: '45',
-			barWidth: '10',
-			resize: true,
-			barSpacing: '10',
-			barColor: '#3cb878',
-			highlightSpotColor: '#3cb878'
-		});
-	}	
-	if( $('#sparkline_6').length > 0 ){
-		$("#sparkline_6").sparkline([0, 23, 43, 35, 44, 45, 56, 37, 40, 45, 56, 7, 10], {
-			type: 'line',
-			width: '100%',
-			height: '45',
-			lineColor: '#fcb03b',
-			fillColor: 'transparent',
-			spotColor: '#fff',
-			minSpotColor: undefined,
-			maxSpotColor: undefined,
-			highlightSpotColor: undefined,
-			highlightLineColor: undefined
-		});
-	}
-}
-var sparkResize;
-	$(window).resize(function(e) {
-		clearTimeout(sparkResize);
-		sparkResize = setTimeout(sparklineLogin, 200);
-	});
-sparklineLogin();
