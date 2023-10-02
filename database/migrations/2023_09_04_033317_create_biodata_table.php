@@ -32,7 +32,9 @@ class CreateBiodataTable extends Migration
             $table->string('PekerjaanOrtu', 45)->nullable();
             $table->timestamps();
             $table->string('Photo', 200)->nullable();
-            $table->date('TglMasuk')->nullable();
+            // ketika mendaftar biodata
+            $table->date('TglMasuk')->nullable(); 
+            // ketika terbit invoice 
             $table->date('TglKeluar')->nullable();
         });
     }
