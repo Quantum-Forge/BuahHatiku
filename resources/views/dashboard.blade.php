@@ -30,8 +30,8 @@
 						<div class="profile-info-wrap text-center">
 							<div class="profile-info pt-40">
 								<img class="img-circle inline-block mt-40 mb-10" src="dist/img/user1.png" alt="user"/>
-								<h4 class="txt-light block  mb-5 capitalize-font">Aldo Sentosa</h4>
-								<h6 class="txt-light block uppercase-font pb-40">Owner</h6>
+								<h4 class="txt-light block  mb-5 capitalize-font">{{$user->Nama}}</h4>
+								<h6 class="txt-light block uppercase-font pb-40">{{$user->Role == 1 ? 'Owner' : ($user->Role == 2 ? 'Admin' : 'Terapis')}}</h6>
 							</div>	
 							<div class="profile-image-overlay"></div>
 						</div>
@@ -50,7 +50,7 @@
 							</div>
 							<div class="col-xs-7 text-center data-wrap-right">
 								<h6 class="txt-light">Jumlah Terapis</h6>
-								<span class="txt-light counter counter-anim">45678</span>
+								<span class="txt-light counter counter-anim">{{$jumlah_terapis}}</span>
 							</div>
 						</div>
 					</div>
@@ -67,7 +67,7 @@
 							</div>
 							<div class="col-xs-7 text-center data-wrap-right">
 								<h6 class="txt-light">Anak Hadir</h6>
-								<span class="txt-light counter counter-anim">45678</span>
+								<span class="txt-light counter counter-anim">{{$hadir}}</span>
 							</div>
 						</div>
 					</div>
@@ -84,7 +84,7 @@
 							</div>
 							<div class="col-xs-7 text-center data-wrap-right">
 								<h6 class="txt-light">Anak tidak Hadir</h6>
-								<span class="txt-light counter counter-anim">45678</span>
+								<span class="txt-light counter counter-anim">{{$tidak_hadir}}</span>
 							</div>
 						</div>
 					</div>
@@ -113,7 +113,7 @@
 					<h6 class="panel-title txt-dark">Daftar Absensi</h6>
 				</div>
 				<div class="pull-right">
-					<a href="" class="label label-primary">Selengkapnya</a>
+					<a href="/daftar_absensi" class="label label-primary">Selengkapnya</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -124,7 +124,7 @@
 							<table class="table display product-overview" id="statement">
 								<thead>
 									<tr>
-										<th>tanggal</th>
+										<th>Tanggal</th>
 										<th>Jam</th>
 										<th>Terapis</th>
 										<th>Anak</th>
@@ -133,34 +133,15 @@
 								</thead>
 								{{-- looping 4x sesuai urutan upload --}}
 								<tbody>
+									@foreach($jadwals as $jadwal)
 									<tr>
-										<td>dd/mm/yyyy</td>
-										<td>00:00 - 00:00</td>
-										<td>Terapis</td>
-										<td>Brian Thomas</td>
-										<td><span class="label label-success font-weight-100">Hadir</span></td>
+										<td>{{$jadwal->Tanggal->format('d-m-Y')}}</td>
+										<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
+										<td>{{$jadwal->user->Nama}}</td>
+										<td>{{$jadwal->biodata->Nama}}</td>
+										<td><span class="label {{$jadwal->absensi->Hadir == 1 ? 'label-success' : 'label-danger'}} font-weight-100">{{$jadwal->absensi->Hadir == 1 ? 'Hadir' : 'Tidak Hadir'}}</span></td>
 									</tr>
-									<tr>
-										<td>dd/mm/yyyy</td>
-										<td>00:00 - 00:00</td>
-										<td>Terapis</td>
-										<td>Brian Thomas</td>
-										<td><span class="label label-success font-weight-100">Hadir</span></td>
-									</tr>
-									<tr>
-										<td>dd/mm/yyyy</td>
-										<td>00:00 - 00:00</td>
-										<td>Muhammad Fadillah</td>
-										<td>Anak</td>
-										<td><span class="label label-danger font-weight-100">Tidak Hadir</span></td>
-									</tr>
-									<tr>
-										<td>dd/mm/yyyy</td>
-										<td>00:00 - 00:00</td>
-										<td>Terapis</td>
-										<td>Muhammad Aziz Fata</td>
-										<td><span class="label label-danger font-weight-100">Tidak Hadir</span></td>
-									</tr>
+									@endforeach
 								</tbody>
 							</table>
 						</div>
@@ -218,16 +199,18 @@
 							<div class="chat-body">
 								{{-- looping 4x dan sesuai dengan urutan upload, dan href anak ini mengarah ke parental_questionnaire_view/id jika ada,
 									kalau tidak ada mengarah ke biodata_view --}}
-								<a class="" href="#">
-									<div class="chat-data">
-										<img class="user-img img-circle" src="dist/img/user.png" alt="user"/>
-										<div class="user-data">
-											<span class="name block capitalize-font">Abigail Bell</span>
-											<span class="diagnosa block txt-grey">Autis</span>
+								@foreach($biodatas as $biodata)
+									<a class="" href="{{count($biodata->parental_questionnaires) > 0? '/parental_questionnaire_view/'.$biodata->IdAnak : '/biodata_view'}}">
+										<div class="chat-data">
+											<img class="user-img img-circle" src="dist/img/user.png" alt="user"/>
+											<div class="user-data">
+												<span class="name block capitalize-font">{{$biodata->Nama}}</span>
+												<span class="diagnosa block txt-grey">{{$biodata->Diagnosa()}}</span>
+											</div>
+											<div class="clearfix"></div>
 										</div>
-										<div class="clearfix"></div>
-									</div>
-								</a>
+									</a>
+								@endforeach
 							</div>
 						</li>
 					</ul>

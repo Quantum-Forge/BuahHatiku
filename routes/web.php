@@ -12,6 +12,7 @@ use App\Http\Controllers\JadwalRollingController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\UangMakanController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,7 @@ Route::get('/logout', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',function(){
-        return view('dashboard');
+        return DashboardController::view();
     });
     Route::get('/user_view',function(){
         return UserController::view();

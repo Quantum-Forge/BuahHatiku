@@ -22,6 +22,17 @@ class Biodata extends Model
      */
     protected $primaryKey = 'IdAnak';
 
+    public function Diagnosa(): string
+    {
+        $diagnosa = '';
+        if($this->IdDiagnosa == 1) $diagnosa = 'Hiperaktif';
+        elseif($this->IdDiagnosa == 2) $diagnosa = 'Autis';
+        elseif($this->IdDiagnosa == 3) $diagnosa = 'Speech Delay';
+        elseif($this->IdDiagnosa == 4) $diagnosa = 'ADHD';
+        elseif($this->IdDiagnosa == 5) $diagnosa = 'Lainnya';
+        return $diagnosa;
+    }
+
     public function parental_questionnaires()
     {
         return $this->hasMany(ParentalQuestionnaire::class, 'IdAnak', 'IdAnak');

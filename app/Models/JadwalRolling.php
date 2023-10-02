@@ -15,6 +15,7 @@ class JadwalRolling extends Model
      * @var string
      */
     protected $table = 'jadwal_rolling';
+    protected $dates = ['Tanggal'];
     /**
      * The primary key associated with the table.
      *
