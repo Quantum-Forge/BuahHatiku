@@ -15,7 +15,7 @@ class InvoiceController extends Controller
 {
     //
     public static function input_view(Request $request){
-        $biodatas = Biodata::has('jadwal_rolling')
+        $biodatas = Biodata::hasJadwal(now()->month, now()->year)
                             ->doesntHaveInvoice(now()->month, now()->year)
                             ->get();
         $jadwal_hadir = JadwalRolling::where('IdAnak', $request->IdAnak)
@@ -88,6 +88,10 @@ class InvoiceController extends Controller
             $rincian->Total = $request->pengembalian_Total[$i];
             $rincian->save();
         }
+        $biodata = Biodata::where('IdAnak', $request->IdAnak)->first();
+        $biodata->TglKeluar = $date;
+        $biodata->save();
+
         return redirect('invoice_archive');
     }
 

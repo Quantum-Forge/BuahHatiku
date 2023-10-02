@@ -103,6 +103,11 @@
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
 					<canvas id="chart_1" height="417"></canvas>	
+					@foreach($chart_1 as $data)
+						<div id="data_{{$data->month}}" data-value="{{ $data->month }}"></div>
+						<div id="hadir_{{$data->month}}" data-value="{{ $data->hadir }}"></div>
+						<div id="tidak_hadir_{{$data->month}}" data-value="{{ $data->tidak_hadir }}"></div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -176,6 +181,9 @@
 			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
+					<div id="jumlah_terapis" data-value="{{ $jumlah_terapis }}"></div>
+					<div id="hadir" data-value="{{ $hadir }}"></div>
+					<div id="tidak_hadir" data-value="{{ $tidak_hadir }}"></div>
 					<canvas id="chart_6" height="280"></canvas>
 				</div>
 			</div>

@@ -15,13 +15,16 @@ class DashboardController extends Controller
     //
     public static function view(){
         $user = Auth::user();
-        $dashboard = DB::select('
+        $chart_1 = DB::select('
             SELECT
-                MONTHNAME(Tanggal) as month,
-                COUNT(CASE WHEN Hadir = 1 THEN IdAbsensi END) as hadir,
-                COUNT(CASE WHEN Hadir = 0 THEN IdAbsensi END) as tidak_hadir
-            FROM jadwal_rolling
-                JOIN absensi ON jadwal_rolling.IdJadwal = absensi.IdJadwal
+                month,
+                COALESCE(COUNT(CASE WHEN Hadir = 1 THEN IdAbsensi END),0) as hadir,
+                COALESCE(COUNT(CASE WHEN Hadir = 0 THEN IdAbsensi END),0) as tidak_hadir
+            FROM (
+                SELECT "January" as month UNION SELECT "February" UNION SELECT "March" UNION SELECT "April" UNION SELECT "May" UNION SELECT "June" UNION SELECT "July"
+            ) month_data 
+                LEFT JOIN jadwal_rolling ON month_data.month = MONTHNAME(Tanggal)
+                LEFT JOIN absensi ON jadwal_rolling.IdJadwal = absensi.IdJadwal
             GROUP BY 1
         ');
         $jadwals = JadwalRolling::orderBy('Tanggal')->orderBy('WaktuMulai')->take(4)->get();
@@ -31,7 +34,7 @@ class DashboardController extends Controller
         $tidak_hadir = Absensi::where('Hadir', 0)->count();
         return view('dashboard')->with([
             'user' => $user,
-            'dashboard' => $dashboard,
+            'chart_1' => $chart_1,
             'jadwals' => $jadwals,
             'biodatas' => $biodatas,
             'jumlah_terapis' => $jumlah_terapis,

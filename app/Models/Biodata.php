@@ -43,6 +43,14 @@ class Biodata extends Model
         return $this->hasMany(JadwalRolling::class, 'IdAnak', 'IdAnak');
     }
 
+    public function scopeHasJadwal($query, $month, $year)
+    {
+        return $query->whereHas('jadwal_rolling', function($query) use ($month, $year) {
+            return $query->whereMonth('Tanggal', $month)
+                        ->whereYear('Tanggal', $year);
+        });
+    }
+
     public function invoice()
     {
         return $this->hasMany(Invoice::class, 'IdAnak', 'IdAnak');

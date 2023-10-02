@@ -21,7 +21,15 @@ $(document).ready(function(){
 				borderColor: "rgba(60,184,120,0.4)",
 				pointBorderColor: "rgb(60,184,120)",
 				pointHighlightStroke: "rgba(60,184,120,1)",
-				data: [0, 59, 80, 58, 20, 55, 40]
+				data: [
+					document.getElementById('hadir_January').getAttribute('data-value'),
+					document.getElementById('hadir_February').getAttribute('data-value'),
+					document.getElementById('hadir_March').getAttribute('data-value'),
+					document.getElementById('hadir_April').getAttribute('data-value'),
+					document.getElementById('hadir_May').getAttribute('data-value'),
+					document.getElementById('hadir_June').getAttribute('data-value'),
+					document.getElementById('hadir_July').getAttribute('data-value')
+				]
 			},
 			{
 				label: "Tidak Hadir",
@@ -29,7 +37,15 @@ $(document).ready(function(){
 				borderColor: "rgba(252,176,59,0.4)",
 				pointBorderColor: "rgb(252,176,59)",
 				pointBackgroundColor: "rgba(252,176,59,0.4)",
-				data: [28, 48, 40, 19, 86, 27, 90],
+				data: [
+					document.getElementById('tidak_hadir_January').getAttribute('data-value'),
+					document.getElementById('tidak_hadir_February').getAttribute('data-value'),
+					document.getElementById('tidak_hadir_March').getAttribute('data-value'),
+					document.getElementById('tidak_hadir_April').getAttribute('data-value'),
+					document.getElementById('tidak_hadir_May').getAttribute('data-value'),
+					document.getElementById('tidak_hadir_June').getAttribute('data-value'),
+					document.getElementById('tidak_hadir_July').getAttribute('data-value')
+				],
 			}
 			
 		]
@@ -90,6 +106,9 @@ $(document).ready(function(){
 	}
 	if( $('#chart_6').length > 0 ){
 		var ctx6 = document.getElementById("chart_6").getContext("2d");
+		var jumlah_terapis = document.getElementById('jumlah_terapis').getAttribute('data-value');
+		var hadir = document.getElementById('hadir').getAttribute('data-value');
+		var tidak_hadir = document.getElementById('tidak_hadir').getAttribute('data-value');
 		var data6 = {
 			 labels: [
 			"Jumlah Terapis",
@@ -98,7 +117,7 @@ $(document).ready(function(){
 		],
 		datasets: [
 			{
-				data: [300, 50, 100],
+				data: [jumlah_terapis, hadir, tidak_hadir],
 				backgroundColor: [
 					"#337ab7",
 					"#ea65a2",

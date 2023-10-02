@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Biodata;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class BiodataController extends Controller
 {
@@ -62,6 +63,7 @@ class BiodataController extends Controller
         $biodata->TglLahirOrtu = $request->TglLahirOrtu;
         $biodata->NoHP = $request->NoHP;
         $biodata->Email = $request->Email;
+        $biodata->TglMasuk = Carbon::now();
 
         if(!empty($request->file('photo'))){
             $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
