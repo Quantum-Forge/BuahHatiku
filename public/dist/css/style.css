@@ -2239,7 +2239,9 @@ a.toggle-left-nav-btn i {
 
 /* Top Navigation */
 .navbar .brand-img {
-  margin: 15px 0 0 0;
+  margin: 10px 0 0 0;
+  width: 135px;
+  max-width: 200px;
 }
 .navbar.navbar-inverse {
   background: #fff;
@@ -2481,7 +2483,7 @@ footer p {
 footer .brand {
   display: block;
   float: left;
-  padding-top: 4px;
+  margin-top: -4px;
 }
 footer .navbar-nav > li > a {
   padding-bottom: 0;

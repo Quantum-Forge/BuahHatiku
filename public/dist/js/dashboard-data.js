@@ -162,9 +162,9 @@ $(document).ready(function(){
 $(window).load(function(){
 	window.setTimeout(function(){
 		$.toast({
-			heading: 'Selamat datang Aldo Sentosa',
-			text: 'BuahHatiku Attendance Management System siap membantu anda',
-			position: 'bottom-right',
+			heading: 'Welcome to Buahatiku',
+			text: 'Attendace Management System siap membantu anda',
+			position: 'top-right',
 			loaderBg:'#ea65a2',
 			icon: 'success',
 			hideAfter: 3000, 

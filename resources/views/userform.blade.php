@@ -84,7 +84,7 @@
 									</div>
 									<div class="form-group col-md-12 {{ $errors->has('NoHP') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left" for="no_hp">Nomor HP</label>
-										<input type="text" id="no_hp" name="NoHP" data-mask="+62-99999999999" value="{{old('NoHP')}}" class="form-control" placeholder="Nomor HP">
+										<input type="text" id="no_hp" name="NoHP" data-mask="(+62)99999999999" value="{{old('NoHP')}}" class="form-control" placeholder="Nomor HP">
 										@error('NoHP')
 											<span class="help-block">{{ $message }}</span>
 										@enderror

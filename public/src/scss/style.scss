@@ -1293,7 +1293,9 @@ a.toggle-left-nav-btn {
 /* Top Navigation */
 .navbar{
 	.brand-img {
-		margin: 15px 0 0 0;
+		margin: 10px 0 0 0;
+		width: 135px;
+		max-width: 200px;
 	}
 	&.navbar-inverse{
 		background:$white;
@@ -1545,7 +1547,7 @@ footer {
 	.brand {
 		display: block;
 		float: left;
-		padding-top:4px;
+		margin-top: -4px;
 	}
 	.navbar-nav > li > a {
 		padding-bottom: 0;

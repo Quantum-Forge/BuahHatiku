@@ -160,7 +160,7 @@
 <!-- /Row -->
 
 <div class="row">
-	<div class="col-lg-4 col-md-6">
+	<div class="col-lg-4 col-md-12">
 		<div class="panel panel-default card-view">
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
@@ -171,7 +171,7 @@
 			</div>
 		</div>	
 	</div>
-	<div class="col-lg-4 col-md-6">
+	<div class="col-lg-4 col-md-6	">
 		<div class="panel panel-default card-view">
 			<div class="panel-heading">
 				<div class="pull-left">
@@ -196,7 +196,7 @@
 					<h6 class="panel-title txt-light pull-left">Daftar Anak</h6>
 				</div>
 				<div class="pull-right">
-					<a class="txt-light" href="javascript:void(0);"><i class="ti-more"></i></a>
+					<a class="txt-light" href="/biodata_view"><i class="ti-more"></i></a>
 				</div>
 				<div class="clearfix"></div>
 			</div>

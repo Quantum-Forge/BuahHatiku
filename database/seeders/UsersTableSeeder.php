@@ -13,12 +13,9 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'NoIdentitas' => 2345123,
             'role' => 1,
-            // 1 = Owner (Super Admin)
-            // 2 = Administrasi (Admin)
-            // 3 = Terapis (User) tolong tanya Brian atau Agus mengenai hal ini
             'Nama' => 'Aldo Sentosa',
             'Alamat' => 'Jl. Gunung Latimojong No.129-A, Maradekaya, Kec. Makassar, Kota Makassar, Sulawesi Selatan 90145',
-            'NoHP' => '+6281393133016',
+            'NoHP' => '(+62)81393133016',
             'StatusAktif' => 1, // Sesuaikan dengan status aktif yang sesuai
             'Username' => 'Aldo Sentosa',
             'Password' => Hash::make('Apotik_Andika'),
