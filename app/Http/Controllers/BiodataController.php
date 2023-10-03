@@ -69,7 +69,6 @@ class BiodataController extends Controller
             $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
             $path = $request->file('photo')->storeAs('photos/', $imageName);
             $biodata->Photo = 'photos/'.$imageName;
-            $biodata->Photo = $imageName;
         }
 
         $biodata->save();
@@ -132,7 +131,6 @@ class BiodataController extends Controller
             $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
             $path = $request->file('photo')->storeAs('photos/', $imageName);
             $biodata->Photo = 'photos/'.$imageName;
-            $biodata->Photo = $imageName;
         }
 
         $biodata->save();
