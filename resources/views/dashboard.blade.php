@@ -207,10 +207,11 @@
 							<div class="chat-body">
 								{{-- looping 4x dan sesuai dengan urutan upload, dan href anak ini mengarah ke parental_questionnaire_view/id jika ada,
 									kalau tidak ada mengarah ke biodata_view --}}
+									<!-- run php artisan storage:link untuk view photo -->
 								@foreach($biodatas as $biodata)
 									<a class="" href="{{count($biodata->parental_questionnaires) > 0? '/parental_questionnaire_view/'.$biodata->IdAnak : '/biodata_view'}}">
 										<div class="chat-data">
-											<img class="user-img img-circle" src="dist/img/user.png" alt="user"/>
+											<img class="user-img img-circle" src="{{ $biodata->Photo? asset('storage/'.$biodata->Photo) : 'dist/img/user.png'}}" alt="user"/>
 											<div class="user-data">
 												<span class="name block capitalize-font">{{$biodata->Nama}}</span>
 												<span class="diagnosa block txt-grey">{{$biodata->Diagnosa()}}</span>

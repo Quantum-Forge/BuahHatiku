@@ -35,7 +35,7 @@
 					<div class="row">
 						<div class="col-sm-12 col-xs-12">
 							<div class="form-wrap">
-								<form action="/biodata_edit" method="POST">
+								<form action="/biodata_edit" method="POST" enctype="multipart/form-data">
 									{{ csrf_field() }}
 									<div class="form-body">
 										<input type="hidden" name="IdAnak" value="{{$biodata->IdAnak}}">
