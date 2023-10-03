@@ -166,6 +166,6 @@ Route::middleware(['auth'])->group(function () {
     });
     // Kehadiran
     Route::get('/kehadiran',function(){
-        return view('kehadiran');
+        return AbsensiController::view_kehadiran();
     });
 });

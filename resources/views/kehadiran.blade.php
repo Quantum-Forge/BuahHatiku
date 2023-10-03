@@ -49,15 +49,17 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><span class="label label-success">Hadir</span></td>
-								</tr>
+								@foreach($jadwal_rolling as $jadwal)
+									<tr>
+										<td>{{$loop->index+1}}</td>
+										<td>{{$jadwal->Tanggal}}</td>
+										<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
+										<td>{{$jadwal->user->Nama}}</td>
+										<td>{{$jadwal->biodata->Nama}}</td>
+										<td>{{$jadwal->absensi->Alasan}}</td>
+										<td><span class="label {{$jadwal->absensi->Hadir == 1 ? 'label-success' : 'label-danger'}}">{{$jadwal->absensi->Hadir == 1 ? 'Hadir' : 'Tidak Hadir'}}</span></td>
+									</tr>
+								@endforeach
 							</tbody>
 						</table>
 					</div>

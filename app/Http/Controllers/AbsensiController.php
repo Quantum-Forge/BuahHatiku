@@ -13,6 +13,13 @@ use Carbon\Carbon;
 class AbsensiController extends Controller
 {
     //
+    public static function view_kehadiran(){
+        $jadwal_rolling = JadwalRolling::all();
+        return view('kehadiran')->with([
+            'jadwal_rolling' => $jadwal_rolling
+        ]);
+    }
+
     public static function view(Request $request){
         $biodatas = Biodata::all();
         $terapises = User::where('Role', 3)->get();
