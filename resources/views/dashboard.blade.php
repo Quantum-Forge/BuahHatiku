@@ -140,7 +140,7 @@
 								<tbody>
 									@foreach($jadwals as $jadwal)
 									<tr>
-										<td>{{$jadwal->Tanggal->format('d-m-Y')}}</td>
+										<td>{{$jadwal->Tanggal}}</td>
 										<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
 										<td>{{$jadwal->user->Nama}}</td>
 										<td>{{$jadwal->biodata->Nama}}</td>
