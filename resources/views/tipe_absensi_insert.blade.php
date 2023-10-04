@@ -63,9 +63,9 @@
 											</div>
 										</div>
 										<div class="form-group {{ $errors->has('Durasi') ? 'has-error' : '' }}">
-											<label for="" class="col-sm-3 control-label">Durasi</label>
+											<label for="" class="col-sm-3 control-label">Durasi*</label>
 											<div class="col-sm-9">
-												<input placeholder="Isi Durasi Jam..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="{{old('Durasi')}}" style="display: block;">
+												<input placeholder="Isi Sesi..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="{{old('Durasi')}}" style="display: block;">
 												<span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
 												@error('Durasi')
 													<span class="help-block">{{ $message }}</span>

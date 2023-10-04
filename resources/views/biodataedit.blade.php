@@ -260,17 +260,11 @@
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Tanggal Lahir Bapak/Ibu</label>
+													<label class="control-label mb-10">Tanggal Lahir Ibu</label>
 													<input type="date" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu', $biodata->TglLahirOrtu)}}">
 													@error('TglLahirOrtu')
 														<span class="help-block">{{ $message }}</span>
 													@enderror
-													{{-- <div class="input-group date" name="TglLahirOrtu" id="TglLahirOrtu">
-														<input type="text" data-mask="99/99/9999" class="form-control">
-														<span class="input-group-addon">
-															<span class="fa fa-calendar"></span>
-														</span>
-													</div> --}}
 												</div>
 											</div>
 											<!--/span-->
@@ -287,7 +281,7 @@
 										</div>
 										<!-- /Row -->
 										<div class="row">
-											<div class="col-md-12">
+											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('Email') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">E-mail</label>
 													<input type="email" class="form-control" name="Email" value="{{old('Email', $biodata->Email)}}">
@@ -296,6 +290,14 @@
 													@enderror
 												</div>
 											</div>
+											<!--/span-->
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label mb-10">Tanggal Masuk</label>
+													<input type="date" class="form-control" name="" value="">
+												</div>
+											</div>
+											<!--/span-->
 											<div class="col-md-12">
 												<div class="form-group {{ $errors->has('NoHP') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Foto</label>

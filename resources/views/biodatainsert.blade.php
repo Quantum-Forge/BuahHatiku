@@ -287,7 +287,7 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="control-label mb-10">Foto</label>
-													<input type="file" id="input-file-now" class="dropify" name="photo" data-allowed-file-extensions="jpg png jpeg" required />
+													<input type="file" id="input-file-now" class="dropify" name="photo" data-allowed-file-extensions="jpg png jpeg" />
 												</div>
 											</div>
 										</div>

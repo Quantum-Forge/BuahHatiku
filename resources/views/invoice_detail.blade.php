@@ -98,24 +98,24 @@
 											</tr>
 										@endif
 									@endforeach
+									@foreach($invoice->rincian as $rincian)
+									@if($rincian->JenisTransaksi == 0)
 									<thead>
 										<tr>
 											<th colspan="4" class="txt-dark">Pengembalian</th>
 										</tr>
 									</thead>
 									<tbody>
-										@foreach($invoice->rincian as $rincian)
-											@if($rincian->JenisTransaksi == 0)
-												<tr>
-													<td>{{$rincian->tipe_absensi->JenisAbsensi}}</td>
-													<td>{{$rincian->Hari}}</td>
-													<td>{{$rincian->JumlahPertemuan}} Jam</td>
-													<td>Rp. {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</td>
-													<td>Rp. {{number_format($rincian->Total, 0, ',', '.')}}</td>
-												</tr>
-											@endif
-										@endforeach
+										<tr>
+											<td>{{$rincian->tipe_absensi->JenisAbsensi}}</td>
+											<td>{{$rincian->Hari}}</td>
+											<td>{{$rincian->JumlahPertemuan}} Jam</td>
+											<td>Rp. {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</td>
+											<td>Rp. {{number_format($rincian->Total, 0, ',', '.')}}</td>
+										</tr>
 									</tbody>
+									@endif
+									@endforeach
 									<tr class="txt-dark">
 										<td></td>
 										<td></td>
@@ -141,8 +141,8 @@
 							</table>
 						</div>
 						<div class="pull-right">
-							<button type="submit" class="btn btn-primary mr-10">
-								Submit 
+							<button type="submit" class="btn btn-success mr-10">
+								Lunas
 							</button>
 							<button type="button" class="btn btn-success btn-outline btn-icon left-icon" onclick="javascript:window.print();"> 
 								<i class="fa fa-print"></i><span> Print</span> 

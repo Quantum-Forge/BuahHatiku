@@ -54,7 +54,7 @@
 										<td>Rp. {{number_format($invoice->GrandTotal, 0, ',', '.')}}</td>
 										<td>
 											@if($invoice->StatusPelunasan == 1) <span class="label label-success">Lunas</span>
-											@else <span class="">Belum Lunas</span>
+											@else <span class="label label-danger">Belum Lunas</span>
 											@endif
 										</td>
 										<td>{{$invoice->TglInvoice}}</td>
