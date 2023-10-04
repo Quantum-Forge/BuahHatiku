@@ -232,15 +232,19 @@
 								<thead>
 									<tr>
 										<th>No.</th>
+										<th>Gambar</th>
 										<th>Nama Anak</th>
 										<th>Diagnosa</th>
+										<th>Tanggal Masuk</th>
+										<th>Tanggal Keluar</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
 									@foreach ($biodatas_filled as $biodata)
 									<tr>
-										<td>{{ $loop->index+1 }}</td>
+										<td style="width: 7%;">{{$loop->index+1}}</td>
+										<td style="width: 7%;"><img src="" alt="{{ $biodata->Nama }}" width="80"></td>
 										<td>{{ $biodata->Nama }}</td>
 										<td>
 											@if($biodata->IdDiagnosa == 1) Hiperaktif
@@ -250,6 +254,8 @@
 											@elseif($biodata->IdDiagnosa == 5) Lainnya
 											@endif
 										</td>
+										<td>dd/mm/yyyy</td>
+										<td>dd/mm/yyyy</td>
 										<td width="80">
 											<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/parental_questionnaire_view/{{$biodata->IdAnak}}';"><i class="fa fa-eye"></i></button>
 											<button data-toggle="modal" data-target="#responsive-modal{{$biodata->IdAnak}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>

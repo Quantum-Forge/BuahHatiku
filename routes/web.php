@@ -168,4 +168,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kehadiran',function(){
         return AbsensiController::view_kehadiran();
     });
+    Route::get('/search', function () {
+        return view('search');
+    });
 });
