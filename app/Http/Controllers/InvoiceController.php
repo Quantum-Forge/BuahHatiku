@@ -66,32 +66,32 @@ class InvoiceController extends Controller
         $invoice->StatusPelunasan = 0;
         $invoice->save();
 
-        for( $i=0; $i < count($request->absensi_IdTipe) ; $i++){
-            $rincian = new RincianInvoice;
-            $rincian->NoInvoice = $invoice->NoInvoice;
-            $rincian->JenisTransaksi = 1;
-            $rincian->IdTipe = $request->absensi_IdTipe[$i];
-            $rincian->Hari = $request->absensi_Hari[$i];
-            $rincian->JmlhPertemuan = $request->absensi_JmlhPertemuan[$i];
-            $rincian->Harga = $request->absensi_Harga[$i];
-            $rincian->Total = $request->absensi_Total[$i];
-            $rincian->save();
+        if($request->absensi_IdTipe){
+            for( $i=0; $i < count($request->absensi_IdTipe) ; $i++){
+                $rincian = new RincianInvoice;
+                $rincian->NoInvoice = $invoice->NoInvoice;
+                $rincian->JenisTransaksi = 1;
+                $rincian->IdTipe = $request->absensi_IdTipe[$i];
+                $rincian->Hari = $request->absensi_Hari[$i];
+                $rincian->JmlhPertemuan = $request->absensi_JmlhPertemuan[$i];
+                $rincian->Harga = $request->absensi_Harga[$i];
+                $rincian->Total = $request->absensi_Total[$i];
+                $rincian->save();
+            }
         }
-        for( $i=0; $i < count($request->pengembalian_IdTipe) ; $i++){
-            $rincian = new RincianInvoice;
-            $rincian->NoInvoice = $invoice->NoInvoice;
-            $rincian->JenisTransaksi = 0;
-            $rincian->IdTipe = $request->pengembalian_IdTipe[$i];
-            $rincian->Hari = $request->pengembalian_Hari[$i];
-            $rincian->JmlhPertemuan = $request->pengembalian_JmlhPertemuan[$i];
-            $rincian->Harga = $request->pengembalian_Harga[$i];
-            $rincian->Total = $request->pengembalian_Total[$i];
-            $rincian->save();
+        if($request->pengembalian_IdTipe){
+            for( $i=0; $i < count($request->pengembalian_IdTipe) ; $i++){
+                $rincian = new RincianInvoice;
+                $rincian->NoInvoice = $invoice->NoInvoice;
+                $rincian->JenisTransaksi = 0;
+                $rincian->IdTipe = $request->pengembalian_IdTipe[$i];
+                $rincian->Hari = $request->pengembalian_Hari[$i];
+                $rincian->JmlhPertemuan = $request->pengembalian_JmlhPertemuan[$i];
+                $rincian->Harga = $request->pengembalian_Harga[$i];
+                $rincian->Total = $request->pengembalian_Total[$i];
+                $rincian->save();
+            }
         }
-        $biodata = Biodata::where('IdAnak', $request->IdAnak)->first();
-        $biodata->TglKeluar = $date;
-        $biodata->save();
-
         return redirect('invoice_archive');
     }
 
@@ -107,5 +107,17 @@ class InvoiceController extends Controller
         return view('invoice_detail')->with([
             'invoice' => $invoice,
         ]);
+    }
+
+    public static function update_lunas($NoInvoice){
+        $invoice = Invoice::find($NoInvoice);
+        $invoice->StatusPelunasan = 1;
+        $invoice->save();
+
+        $biodata = Biodata::where('IdAnak', $invoice->biodata->IdAnak)->first();
+        $biodata->TglKeluar = Carbon::now();
+        $biodata->save();
+
+        return redirect('invoice_archive');
     }
 }

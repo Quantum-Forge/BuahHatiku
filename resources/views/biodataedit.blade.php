@@ -292,9 +292,12 @@
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
-												<div class="form-group">
+												<div class="form-group {{ $errors->has('TanggalMasuk') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Masuk</label>
-													<input type="date" class="form-control" name="" value="">
+													<input type="date" class="form-control" name="TanggalMasuk" value="{{old('TanggalMasuk', $biodata->TglMasuk)}}">
+													@error('TanggalMasuk')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
 												</div>
 											</div>
 											<!--/span-->

@@ -52,10 +52,10 @@
 										<div class="col-md-6">
 											<div class="form-group {{ $errors->has('NoIdentitas') ? 'has-error' : '' }}">
 												<label class="control-label mb-10">Terapis</label>
-												<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="1">
+												<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
 													<option disabled selected>Choose..</option>
 													@foreach( $terapises as $terapis)
-														<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas) selected @endif>{{$terapis->Nama}}</option>
+														<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
 													@endforeach
 												</select>
 												@error('NoIdentitas')

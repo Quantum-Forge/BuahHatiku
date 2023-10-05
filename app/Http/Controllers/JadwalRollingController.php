@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Biodata;
 use App\Models\User;
 use App\Models\TipeAbsensi;
@@ -17,6 +18,10 @@ class JadwalRollingController extends Controller
     public static function view(){
         $biodatas = Biodata::all();
         $terapises = User::where('Role', 3)->get();
+        $user = Auth::user();
+        if($user->Role == 3){
+            $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
+        }
         $tipe_absensies = TipeAbsensi::all();
         return view('jadwal_rolling')->with([
             'biodatas' => $biodatas,

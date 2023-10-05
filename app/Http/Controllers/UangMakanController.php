@@ -15,7 +15,7 @@ class UangMakanController extends Controller
         //         ->get();
         $result = DB::select('
                     SELECT
-                    users.Nama, Tanggal, SUM(durasi) as durasi, 
+                    users.Nama, Tanggal, ROUND(SUM(durasi),2) as durasi, 
                         CASE 
                             WHEN Hari IN("Senin", "Selasa", "Rabu", "Kamis", "Jumat") AND SUM(durasi) >= 5 THEN 15000
                             WHEN Hari IN("Sabtu") AND SUM(durasi) >= 4 THEN 15000

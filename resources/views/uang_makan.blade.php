@@ -54,8 +54,8 @@
 														<td>{{$loop->index+1}}</td>
 														<td>{{$uang_makan->Nama}}</td>
 														<td>{{$uang_makan->Tanggal}}</td>
-														<td>{{$uang_makan->durasi}}</td>
-														<td>{{$uang_makan->uang_makan}}</td>
+														<td>{{floatval($uang_makan->durasi)}} Jam</td>
+														<td>Rp. {{number_format($uang_makan->uang_makan, 0, ',', '.')}}</td>
 														<td></td>
 													</tr>
 													@endforeach

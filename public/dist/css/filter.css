@@ -360,4 +360,7 @@
 	transition-duration: 0s;
 }
 
-
+select[readonly]
+{
+    pointer-events: none;
+}

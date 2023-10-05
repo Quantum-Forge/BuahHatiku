@@ -103,6 +103,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/invoice_detail/{NoInvoice}',function($NoInvoice){
             return InvoiceController::view_detail($NoInvoice);
         });
+        Route::post('/invoice_detail/{NoInvoice}',function($NoInvoice){
+            return InvoiceController::update_lunas($NoInvoice);
+        });
         // Uang Makan
         Route::get('/uang_makan',function(){
             return UangMakanController::view();

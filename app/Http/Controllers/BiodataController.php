@@ -98,6 +98,7 @@ class BiodataController extends Controller
             'TglLahirOrtu' => 'required',
             'NoHP' => 'required|numeric',
             'Email' => 'required|email',
+            'TanggalMasuk' => 'required',
             'photo' => 'nullable|image|mimes:jpeg,jpg,png,gif'
         ], [
             'required' => ':attribute harus diisi'
@@ -126,6 +127,7 @@ class BiodataController extends Controller
         $biodata->TglLahirOrtu = $request->TglLahirOrtu;
         $biodata->NoHP = $request->NoHP;
         $biodata->Email = $request->Email;
+        $biodata->TglMasuk = $request->TanggalMasuk;
 
         if(!empty($request->file('photo'))){
             $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();
