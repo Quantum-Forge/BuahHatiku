@@ -5,13 +5,14 @@
 <!-- Title -->
 <div class="row heading-bg  bg-red">
 	<div class="col-lg-12">
-		<h5 class="txt-light">"bbbbbbbbbbbbbbbbbbbbbbbbbbbbb" Result</h5>
+		<h5 class="txt-light">"{{Request::input('Nama')}}" Result</h5>
 	</div>
 </div>
 <!-- /Title -->
 
 <!-- Row -->
 <div class="row">
+	@foreach( $biodatas as $biodata )
 	<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 		<div class="panel panel-default card-view pa-0">
 			<div class="panel-wrapper collapse in">
@@ -22,19 +23,19 @@
 								<a href="" class="btn btn-default btn-icon-anim btn-circle mr-5" type="submit"><i class="icon-pencil"></i></a>
 								<a href="/biodata_view" class="btn btn-info btn-icon-anim btn-circle" type="submit"><i class="icon-trash"></i></a>
 							</div>
-							<img src="dist/img/chair.jpg" class="img-responsive" alt="Product Image"> 
+							<img src="{{ $biodata->Photo? asset('storage/'.$biodata->Photo) : 'dist/img/chair.jpg'}}" class="img-responsive" alt="{{$biodata->Nama}}"> 
 						</div>
 						<div class="info text-center">
-							<h6>Aldo Sentosa</h6>
-							{{-- tanggal lahir --}}
-							<span class="product-spec capitalize-font block mt-5 mb-5">dd/mm/yyy</span>
-							<span class="head-font block text-success">diagnosa</span>
+							<h6>{{$biodata->Nama}}</h6>
+							<span class="product-spec capitalize-font block mt-5 mb-5">{{$biodata->TglLahir->format('d-m-Y')}}</span>
+							<span class="head-font block text-success">{{$biodata->Diagnosa()}}</span>
 						</div>
 					</article>
 				</div>
 			</div>	
 		</div>	
 	</div>
+	@endforeach
 </div>
 <!-- /Row -->
 

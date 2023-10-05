@@ -171,7 +171,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kehadiran',function(){
         return AbsensiController::view_kehadiran();
     });
-    Route::get('/search', function () {
-        return view('search');
+    Route::get('/search', function (Request $request) {
+        return BiodataController::search($request);
     });
 });

@@ -63,11 +63,11 @@
 					</li>
 				</ul>
 				<div class="collapse navbar-search-overlap" id="site_navbar_search">
-					<form role="search">
+					<form action="/search" method="GET">
 						<div class="form-group mb-0">
 							<div class="input-search">
-								<div class="input-group">	
-									<input type="text" id="overlay_search" name="overlay-search" class="form-control pl-30" placeholder="Search">
+								<div class="input-group">
+									<input type="text" id="overlay_search" name="Nama" class="form-control pl-30" placeholder="Search">
 									<span class="input-group-addon pr-30">
 									<a  href="javascript:void(0)" class="close-input-overlay" data-target="#site_navbar_search" data-toggle="collapse" aria-label="Close" aria-expanded="true"><i class="fa fa-times"></i></a>
 									</span> 

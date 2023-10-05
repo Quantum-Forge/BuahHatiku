@@ -15,6 +15,7 @@ class Biodata extends Model
      * @var string
      */
     protected $table = 'biodata';
+    protected $dates = ['TglLahir'];
     /**
      * The primary key associated with the table.
      *

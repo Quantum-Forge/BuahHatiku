@@ -144,4 +144,9 @@ class BiodataController extends Controller
         $biodata->delete();
         return redirect('/biodata_view');
     }
+
+    public static function search($request){
+        $biodatas = Biodata::where('Nama', 'LIKE', '%'.$request->Nama.'%')->get();
+        return view('search')->with('biodatas', $biodatas);
+    }
 }
