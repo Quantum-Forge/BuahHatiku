@@ -20,8 +20,7 @@
 					<article class="col-item">
 						<div class="photo">
 							<div class="options">
-								<a href="" class="btn btn-default btn-icon-anim btn-circle mr-5" type="submit"><i class="icon-pencil"></i></a>
-								<a href="/biodata_view" class="btn btn-info btn-icon-anim btn-circle" type="submit"><i class="icon-trash"></i></a>
+								<a href="/biodata_edit/{{$biodata->IdAnak}}" class="btn btn-default btn-icon-anim btn-circle mr-5" type="submit"><i class="icon-pencil"></i></a>
 							</div>
 							<img src="{{ $biodata->Photo? asset('storage/'.$biodata->Photo) : 'dist/img/chair.jpg'}}" class="img-responsive" alt="{{$biodata->Nama}}"> 
 						</div>
