@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'NoIdentitas' => 2345123,
+            'NoIdentitas' => 7371031903980001,
             'role' => 1,
             'Nama' => 'Aldo Sentosa',
             'Alamat' => 'Jl. Gunung Latimojong No.129-A, Maradekaya, Kec. Makassar, Kota Makassar, Sulawesi Selatan 90145',

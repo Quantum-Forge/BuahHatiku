@@ -2,17 +2,19 @@
 
 @section('dashboard')
 
+<form action="/invoice_detail/{{$invoice->NoInvoice}}" method="POST">
+{{csrf_field()}}
 <!-- Title -->
 <div class="row heading-bg  bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h5 class="txt-light">analytical</h5>
+		<h5 class="txt-light">Invoice # {{$invoice->NoInvoice}}</h5>
 	</div>
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Dashboard</a></li>
-			<li><a href="#"><span>dashboard</span></a></li>
-			<li class="active"><span>analytical</span></li>
+			<li><a href="/invoice_input">Faktur</a></li>
+			<li><a href="#	"><span>dashboard</span></a></li>
+			<li class="active"><span>Invoice # {{$invoice->NoInvoice}}</span></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->
@@ -23,8 +25,6 @@
 <!-- Row -->
 <div class="row">
 	<div class="col-md-12">
-		<form action="/invoice_detail/{{$invoice->NoInvoice}}" method="POST">
-			{{csrf_field()}}
 			<div class="panel panel-default card-view">
 				<div class="panel-heading">
 					<div class="pull-left">
@@ -50,8 +50,10 @@
 								<span class="txt-dark head-font inline-block capitalize-font mb-5">shiped to:</span>
 								<address class="mb-15">
 									<span class="address-head mb-5">Xyz, Inc.</span>
-									795 Folsom Ave, Suite 600 <br>
-									San Francisco, CA 94107 <br>
+										Jl. Gunung Latimojong No.129-A, Maradekaya,<br>
+										Kec. Makassar, Kota Makassar,<br>
+										Sulawesi Selatan 90145 <br>
+										P:(0411)3625214 <br>
 									<abbr title="Phone">P:</abbr>(123) 456-7890
 								</address>
 							</div>
@@ -155,11 +157,10 @@
 					</div>
 				</div>
 			</div>
-		</form>
 	</div>
 </div>
 <!-- /Row -->
-
+</form>
 @endsection
 
 @section('scripts')

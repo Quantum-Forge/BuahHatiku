@@ -4,32 +4,30 @@
 
 <!-- Title -->
 <div class="row heading-bg bg-red">
-	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+	<div class="col-lg-9 col-md-8 col-sm-4 col-xs-12">
 		<h5 class="txt-light">Dashboard</h5>
 	</div>
 	<!-- Breadcrumb -->
-	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+	<div class="col-lg-3 col-sm-4 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Dashboard</a></li>
-			<li><a href="#"><span>dashboard</span></a></li>
+			<li><a href="/dashboard">Dashboard</a></li>
 			<li class="active"><span>analytical</span></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->
 </div>
 <!-- /Title -->
-
 <!-- Row -->
 <div class="row">
 	<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
 
-		<div class="panel panel-default card-view  pa-0">
+		<div class="panel panel-default card-view pa-0">
 			<div class="panel-wrapper collapse in">
-				<div class="panel-body  pa-0">
+				<div class="panel-body pa-0">
 					<div class="profile-box">
-						<div class="profile-info-wrap text-center">
+						<div class="profile-info-wrap text-center bg-green">
 							<div class="profile-info pt-40">
-								<img class="img-circle inline-block mt-40 mb-10" src="dist/img/user1.png" alt="user"/>
+								<img class="img-circle inline-block mt-40 mb-10" src="{{ asset('dist/img/buahatiku.png') }}" alt="user"/>
 								<h4 class="txt-light block  mb-5 capitalize-font">{{$user->Nama}}</h4>
 								<h6 class="txt-light block uppercase-font pb-40">{{$user->Role == 1 ? 'Owner' : ($user->Role == 2 ? 'Admin' : 'Terapis')}}</h6>
 							</div>	

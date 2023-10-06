@@ -5,14 +5,14 @@
 <!-- Title -->
 <div class="row heading-bg  bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h5 class="txt-light">analytical</h5>
+		<h5 class="txt-light">Arsip Faktur</h5>
 	</div>
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
 			<li><a href="index.html">Dashboard</a></li>
-			<li><a href="#"><span>dashboard</span></a></li>
-			<li class="active"><span>analytical</span></li>
+			<li><a href="#"><span>Faktur</span></a></li>
+			<li class="active"><span>Daftar Faktur</span></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->

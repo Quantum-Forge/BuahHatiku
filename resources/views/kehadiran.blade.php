@@ -5,14 +5,13 @@
 <!-- Title -->
 <div class="row heading-bg  bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h5 class="txt-light">analytical</h5>
+		<h5 class="txt-light">kehadiran</h5>
 	</div>
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Dashboard</a></li>
-			<li><a href="#"><span>dashboard</span></a></li>
-			<li class="active"><span>analytical</span></li>
+			<li><a href="/dashboard">Dashboard</a></li>
+			<li class="active"><span>daftar kehadiran</span></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->
@@ -44,7 +43,7 @@
 									<th>Jam</th>
 									<th>Terapis</th>
 									<th>Nama</th>
-									<th>Keterangan</th>
+									<th>Jenis Absensi</th>
 									<th>Status</th>
 								</tr>
 							</thead>
@@ -56,7 +55,7 @@
 										<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
 										<td>{{$jadwal->user->Nama}}</td>
 										<td>{{$jadwal->biodata->Nama}}</td>
-										<td>{{$jadwal->absensi->Alasan}}</td>
+										<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
 										<td><span class="label {{$jadwal->absensi->Hadir == 1 ? 'label-success' : 'label-danger'}}">{{$jadwal->absensi->Hadir == 1 ? 'Hadir' : 'Tidak Hadir'}}</span></td>
 									</tr>
 								@endforeach
