@@ -42,16 +42,16 @@
 						<form action="/daftar_absensi" method="GET">
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Tanggal*</label>
-									<input type="date" name="Tanggal" class="form-control" value="{{Request::input('Tanggal')}}">
+									<input type="date" name="Tanggal" class="form-control" value="{{Auth::user()->Role==3? $tanggal: Request::input('Tanggal')}}" @if(Auth::user()->Role==3) readonly @endif>
 								</div>
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Terapis*</label>
 										<div class="input-group">
 											<div class="input-group-addon"><i class="fa fa-user"></i></div>
-											<select type="text" name="NoIdentitas" class="form-control" id="Terapis">
+											<select type="text" name="NoIdentitas" class="form-control" id="Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
 											<option disabled selected>Choose...</option>
 												@foreach( $terapises as $terapis)
-													<option value="{{$terapis->NoIdentitas}}" @if(Request::input('NoIdentitas') == $terapis->NoIdentitas) selected @endif>{{$terapis->Nama}}</option>
+													<option value="{{$terapis->NoIdentitas}}" @if(Request::input('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
 												@endforeach
 											</select>
 										</div>

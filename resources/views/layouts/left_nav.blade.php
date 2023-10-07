@@ -24,9 +24,11 @@
 						@php( $biodata_count = App\Models\Biodata::count() )
 						<a class="{{ Request::is('biodata_view') ? 'active' : '' }}" href="/biodata_view"><i class="icon-folder mr-10"></i>Biodata<span class="pull-right"><span class="label label-success mr-10">{{$biodata_count > 99 ? '99+' : $biodata_count}}</span></span></a>
 					</li>
+					@if(Auth::user()->Role == 1 || Auth::user()->Role == 2)
 					<li>
 						<a class="{{ Request::is('jadwal_rolling') ? 'active' : '' }}" href="/jadwal_rolling"><i class="icon-calender mr-10"></i>Scheduling</a>
 					</li>
+					@endif
 					<li>
 						<a class="{{ Request::is('parental_questionnaire') ? 'active' : '' }}" href="/parental_questionnaire"><i class="icon-question mr-10"></i>Questionnaire</a>
 					</li>

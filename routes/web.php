@@ -84,6 +84,13 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/tipe_absensi_delete/{IdTipe}',function($IdTipe){
             return TipeAbsensiController::delete($IdTipe);
         });
+        // Schedulling
+        Route::get('/jadwal_rolling',function(){
+            return JadwalRollingController::view();
+        });
+        Route::post('/jadwal_rolling',function(Request $request){
+            return JadwalRollingController::insert($request);
+        });
         // Invoice
         Route::get('/input_invoice',function(Request $request){
             return InvoiceController::input_view($request);
@@ -152,13 +159,6 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::get('/parental_questionnaire_view/{IdAnak}',function($IdAnak){
         return ParentalQuestionaireController::view_detail($IdAnak);
-    });
-    // Schedulling
-    Route::get('/jadwal_rolling',function(){
-        return JadwalRollingController::view();
-    });
-    Route::post('/jadwal_rolling',function(Request $request){
-        return JadwalRollingController::insert($request);
     });
     // Daftar Absensi
     Route::get('/daftar_absensi',function(Request $request){

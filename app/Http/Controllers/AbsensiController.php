@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Absensi;
 use App\Models\Biodata;
 use App\Models\User;
@@ -23,6 +24,10 @@ class AbsensiController extends Controller
     public static function view(Request $request){
         $biodatas = Biodata::all();
         $terapises = User::where('Role', 3)->get();
+        $user = Auth::user();
+        if($user->Role == 3){
+            $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
+        }
         $tipe_absensies = TipeAbsensi::all();
         $jadwal_rolling = JadwalRolling::query();
         if($request->Tanggal || $request->IdAnak || $request->NoIdentitas || $request->IdTipe){
@@ -41,6 +46,7 @@ class AbsensiController extends Controller
             $jadwal_rolling = $jadwal_rolling->get();
         }
         return view('daftar_absensi')->with([
+            'tanggal' => Carbon::now()->format('Y-m-d'),
             'biodatas' => $biodatas,
             'terapises' => $terapises,
             'tipe_absensies' => $tipe_absensies,
