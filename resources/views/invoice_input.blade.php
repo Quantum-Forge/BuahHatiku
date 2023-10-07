@@ -10,9 +10,8 @@
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Dashboard</a></li>
-			<li><a href="#"><span>dashboard</span></a></li>
-			<li class="active"><span>analytical</span></li>
+			<li><a href="/dashboard">Dashboard</a></li>
+			<li><a href="#"><span>Faktur</span></a></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->
@@ -26,9 +25,6 @@
 			<div class="panel-heading">
 				<div class="pull-left">
 					<h6 class="panel-title txt-dark">Invoice</h6>
-				</div>
-				<div class="pull-right">
-					<h6 class="txt-dark">Invoice#12345</h6>
 				</div>
 				<div class="clearfix"></div>
 			</div>

@@ -106,7 +106,7 @@
 						<form action="/daftar_absensi" method="POST">
 							{{csrf_field()}}
 							<div class="table-responsive">
-								<table id="" class="table display text-wrap">
+								<table id="datable_1" class="table display text-wrap">
 									<thead>
 										<tr>
 											<th>No.</th>
@@ -144,7 +144,7 @@
 										@endforeach
 									</tbody>
 								</table>
-								<button type="submit" class="btn btn-info btn-block">Submit</button>
+								<button type="submit" class="btn btn-info btn-block mt-10">Submit</button>
 							</div>
 						</form>
 					</div>

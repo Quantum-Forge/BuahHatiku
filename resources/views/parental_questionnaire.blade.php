@@ -5,14 +5,13 @@
 <!-- Title -->
 <div class="row heading-bg  bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h5 class="txt-light">analytical</h5>
+		<h5 class="txt-light">Parental Questionnaire</h5>
 	</div>
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Dashboard</a></li>
-			<li><a href="#"><span>dashboard</span></a></li>
-			<li class="active"><span>analytical</span></li>
+			<li><a href="/dashboard">Dashboard</a></li>
+			<li class="active"><span>Parental Questionnaire</span></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->
@@ -304,7 +303,7 @@
 
 <!-- Form Wizard JavaScript -->
 <script src="{{ asset('vendors/bower_components/jquery.steps/build/jquery.steps.min.js') }}"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 
 <!-- Form Wizard Data JavaScript -->
 <script src="{{ asset('dist/js/form-wizard-data.js') }}"></script>
@@ -326,6 +325,6 @@
 <script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
 
 <!-- Init JavaScript -->
-<script src="{{ asset('dist/js/init.js') }}"></script>
+<script src="{{ asset('dist/js/init.min.js') }}"></script>
 
 @endsection
