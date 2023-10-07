@@ -305,15 +305,18 @@
 <script src="{{ asset('vendors/bower_components/jquery.steps/build/jquery.steps.min.js') }}"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 
+<!-- Form Wizard Data JavaScript -->
+<script src="{{ asset('dist/js/form-wizard-data.js') }}"></script>
+
 <!-- Data table JavaScript -->
 <script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
 
-<!-- Form Wizard Data JavaScript -->
-<script src="{{ asset('dist/js/form-wizard-data.js') }}"></script>
-
 <!-- Bootstrap Touchspin JavaScript -->
 <script src="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
+
+<!-- Starrr JavaScript -->
+<script src="{{ asset('dist/js/starrr.js') }}"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
@@ -322,7 +325,6 @@
 <script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
 
 <!-- Init JavaScript -->
-<script src="{{ asset('dist/js/init.js') }}"></script>
-
+<script src="{{ asset('dist/js/init.min.js') }}"></script>
 
 @endsection
