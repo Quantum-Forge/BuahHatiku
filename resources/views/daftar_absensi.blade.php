@@ -42,7 +42,13 @@
 						<form action="/daftar_absensi" method="GET">
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Tanggal*</label>
-									<input type="date" name="Tanggal" class="form-control" value="{{Auth::user()->Role==3? $tanggal: Request::input('Tanggal')}}" @if(Auth::user()->Role==3) readonly @endif>
+									<div class="input-group date" id="Tanggal">
+										<input type="text" name="Tanggal" class="form-control" placeholder="Pilih Tanggal..." value="{{Auth::user()->Role==3? $tanggal: Request::input('Tanggal')}}" @if(Auth::user()->Role==3) readonly @endif>
+										<span class="input-group-addon">
+											<span class="fa fa-calendar"></span>
+										</span>
+									</div> 
+									{{-- <input type="date" name="Tanggal" class="form-control" value="{{Auth::user()->Role==3? $tanggal: Request::input('Tanggal')}}" @if(Auth::user()->Role==3) readonly @endif> --}}
 								</div>
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Terapis*</label>
@@ -79,12 +85,14 @@
 								</div>
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Start Time*</label>
-									<input type="time" class="form-control" name="WaktuMulai" value="{{Request::input('WaktuMulai')}}">
+									<div class="input-group date" id="WaktuMulai">
+										<input type="text" class="form-control" name="WaktuMulai" value="{{Request::input('WaktuMulai')}}">
+										<span class="input-group-addon">
+											<span class="fa fa-clock-o"></span>
+										</span>
+									</div>
+									{{-- <input type="time" class="form-control" name="WaktuMulai" value="{{Request::input('WaktuMulai')}}"> --}}
 								</div>
-								<!-- <div class="form-group">
-									<label for="Jenis" class="control-label mb-10">End Time*</label>
-									<input type="time" class="form-control" name="WaktuSelesai" value="{{Request::input('WaktuSelesai')}}">
-								</div> -->
 								<button type="submit" class="btn btn-info btn-block"><i class="fa fa-filter"></i> Filter</button>
 						</form>
 					</div>
@@ -160,18 +168,39 @@
 @section('scripts')
 <!-- jQuery -->
 <script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
 
 <!-- Data table JavaScript -->
 <script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
+
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+		
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+		
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+<!-- Bootstrap Daterangepicker JavaScript -->
+<script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="{{ asset('dist/js/form-picker-data.js') }}"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
 
 <!-- Fancy Dropdown JS -->
 <script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
+<!-- Bootstrap Dropify JavaScript -->
+<script src="{{ asset('vendors/bower_components/dropify/dist/js/dropify.min.js') }}"></script>
+<!-- Form Flie Upload Data JavaScript -->
+<script src="{{ asset('dist/js/form-file-upload-data.js') }}"></script>
 
 <!-- Init JavaScript -->
 <script src="{{ asset('dist/js/init.js') }}"></script>

@@ -29,14 +29,14 @@
 							<form action="/jadwal_rolling" method="POST">
 								{{ csrf_field() }}
 								<div class="form-body">
-									<h6 class="txt-dark capitalize-font"><i class="ti-calendar mr-10"></i>Scheduling</h6>
+									<h6 class="txt-dark capitalize-font"><i class="ti-calendar mr-10"></i>Penjadwalan Terapis</h6>
 									<hr>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group {{ $errors->has('Tanggal') ? 'has-error' : '' }}">
 												<label class="control-label mb-10">Tanggal Penjadwalan</label>
-												<div class="input-group" id="">
-													<input type="date" name="Tanggal" id="date-input" class="form-control" value="{{old('Tanggal')}}">
+												<div class="input-group date" id="Tanggal">
+													<input type="text" name="Tanggal" class="form-control" value="{{old('Tanggal')}}">
 													<span class="input-group-addon">
 														<span class="fa fa-calendar"></span>
 													</span>
@@ -99,12 +99,13 @@
 												<label class="control-label mb-10 text-left">Time Range Pick</label>
 												<div class="row">
 													<div class="col-sm-6">
-														<div class='input-group'>
+														<div class="input-group date" id="WaktuMulai">
 															<span class="input-group-addon">
 																<span class="fa fa-clock-o mr-5"></span>
 																Start
 															</span>
-															<input type='time' name="WaktuMulai" id="start-time" class="form-control" value="{{old('WaktuMulai')}}"/>
+															<input type="text" class="form-control">
+															{{-- <input type='time' name="WaktuMulai" id="start-time" class="form-control" value="{{old('WaktuMulai')}}"/> --}}
 														</div>
 														@error('WaktuMulai')
 															<span class="help-block">{{ $message }}</span>
@@ -112,8 +113,9 @@
 													</div>
 													<div class="col-sm-6">
 														<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }}">
-															<div class='input-group'>
-																<input type='time' name="WaktuSelesai" id="end-time" class="form-control" value="{{old('WaktuSelesai')}}"/>
+															<div class='input-group date' id="WaktuSelesai">
+																<input type="text" class="form-control">
+																{{-- <input type='time' name="WaktuSelesai" id="end-time" class="form-control" value="{{old('WaktuSelesai')}}"/> --}}
 																<span class="input-group-addon">
 																	<span class="fa fa-clock-o mr-5"></span>
 																	 End
@@ -149,24 +151,40 @@
 @endsection
 
 @section('scripts')
-   <!-- jQuery -->
-   <script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
+  <!-- jQuery -->
+<script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
-   <!-- Bootstrap Core JavaScript -->
-   <script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-   
-   <!-- Data table JavaScript -->
-   <script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-   <script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
-   
-   <!-- Slimscroll JavaScript -->
-   <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
-   
-   <!-- Fancy Dropdown JS -->
-   <script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
-   
-   <!-- Init JavaScript -->
-   <script src="{{ asset('dist/js/init.js') }}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+		
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+		
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+<!-- Bootstrap Daterangepicker JavaScript -->
+<script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="{{ asset('dist/js/form-picker-data.js') }}"></script>
+
+<!-- Slimscroll JavaScript -->
+<script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
+
+<!-- Fancy Dropdown JS -->
+<script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
+<!-- Bootstrap Dropify JavaScript -->
+<script src="{{ asset('vendors/bower_components/dropify/dist/js/dropify.min.js') }}"></script>
+<!-- Form Flie Upload Data JavaScript -->
+<script src="{{ asset('dist/js/form-file-upload-data.js') }}"></script>
+
+<!-- Init JavaScript -->
+<script src="{{ asset('dist/js/init.js') }}"></script>
 <script>
 	$(document).ready(function() {
 		// Mendengarkan perubahan pada input tanggal
