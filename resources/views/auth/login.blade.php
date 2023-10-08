@@ -4,13 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>BuahHatiku - Login</title>
-		<meta name="description" content="Kenny is a Dashboard & Admin Site Responsive Template by hencework." />
-		<meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Kenny Admin, kennyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
-		<meta name="author" content="hencework"/>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="author" content=""/>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+		<link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+		<link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
 
         <!-- vector map CSS -->
         <link href="{{ asset('vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css') }}" rel="stylesheet" type="text/css">

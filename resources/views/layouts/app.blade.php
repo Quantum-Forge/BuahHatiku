@@ -8,8 +8,8 @@
 	<meta name="keywords" content="" />
 	<meta name="author" content="hencework"/>
 	<!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
     <!-- Bootstrap touchspin CSS -->
     <link href="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css">
     <!-- Bootstrap Colorpicker CSS -->
