@@ -132,44 +132,50 @@
 											<!--/span-->
 											<!--/span-->
 											<div class="col-md-12">
-												<div class="form-group {{ $errors->has('Diagnosa') ? 'has-error has-danger' : '' }}">
+												<div class="form-group {{ $errors->has('Diagnosa') ? 'has-error has-danger' : '' }}" id="diagnosa">
 													<label class="control-label mb-5">Diagnosa</label>
-													<div class="radio-list">
-														<div class="radio-inline pl-0">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" id="hiperaktif" value="1" @if(old('Diagnosa')==1) checked @endif>
-																<label for="hiperaktif">Hiperaktif</label>
-															</span>
+													<div class="row">
+														<div class="col-md-6">
+															<textarea name="KeteranganDiagnosa" class="form-control" id="" cols="30" rows="10" placeholder="Keterangan Diagnosa...">{{old('KeteranganDiagnosa')}}</textarea>
 														</div>
-														<div class="radio-inline">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" id="autis" value="2" @if(old('Diagnosa')==2) checked @endif>
-														<label for="autis">Autis</label>
-														</span>
-														</div>
-														<div class="radio-inline">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" id="speech_delay" value="3" @if(old('Diagnosa')==3) checked @endif>
-														<label for="speech_delay">Speech Delay</label>
-														</span>
-														</div>
-														<div class="radio-inline">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" id="adhd" value="4" @if(old('Diagnosa')==4) checked @endif>
-														<label for="adhd">ADHD</label>
-														</span>
-														</div>
-														<div class="radio-inline">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" id="lainnya" value="5" @if(old('Diagnosa')==5) checked @endif>
-														<label for="lainnya">Lainnya</label>
-														</span>
+														<div class="col-md-6">
+															<div class="radio-list">
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																		<input type="radio" name="Diagnosa" id="hiperaktif" value="1" @if(old('Diagnosa')==1) checked @endif>
+																		<label for="hiperaktif">Hiperaktif</label>
+																	</span>
+																</div>
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																		<input type="radio" name="Diagnosa" id="autis" value="2" @if(old('Diagnosa')==2) checked @endif>
+																<label for="autis">Autis</label>
+																</span>
+																</div>
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																		<input type="radio" name="Diagnosa" id="speech_delay" value="3" @if(old('Diagnosa')==3) checked @endif>
+																<label for="speech_delay">Speech Delay</label>
+																</span>
+																</div>
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																		<input type="radio" name="Diagnosa" id="adhd" value="4" @if(old('Diagnosa')==4) checked @endif>
+																		<label for="adhd">ADHD</label>
+																	</span>
+																</div>
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																		<input type="radio" name="Diagnosa" id="lainnya" value="5" @if(old('Diagnosa')==5) checked @endif>
+																<label for="lainnya">Lainnya</label>
+																</span>
+																</div>
+															</div>
 														</div>
 													</div>
 													@error('Diagnosa')
-														{{-- <div class="alert alert-danger">{{ $message }}</div> --}}
+														{{-- <span class="help-block">{{ $message }}</span> --}}
 													@enderror
-													<textarea name="KeteranganDiagnosa" class="form-control" id="" cols="30" rows="10" placeholder="Keterangan Diagnosa...">{{old('KeteranganDiagnosa')}}</textarea>
 												</div>
 											</div>
 											<!--/span-->
@@ -317,7 +323,7 @@
 									</div>
 									<div class="form-actions mt-10">
 										<button type="submit" class="btn btn-success  mr-10"> Save</button>
-										<button type="button" class="btn btn-default">Cancel</button>
+										<a href="/dashboard" class="btn btn-default">Cancel</a>
 									</div>
 								</form>
 							</div>
@@ -329,7 +335,8 @@
 	</div>
 </div>
 <!-- /Row -->
-
+<input type="hidden" id="WaktuMulai">
+<input type="hidden" id="WaktuSelesai">
 @endsection
 
 @section('scripts')
