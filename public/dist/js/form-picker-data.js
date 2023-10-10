@@ -21,6 +21,7 @@ $(document).ready(function() {
 	$('#TglLahir, #TglLahirOrtu, #Tanggal, #TanggalMasuk').datetimepicker({
 		format: 'DD/MM/YYYY',
 		useCurrent: true,
+		defaultDate: moment(),
 		icons: {
 			time: "fa fa-clock-o",
 			date: "fa fa-calendar",
