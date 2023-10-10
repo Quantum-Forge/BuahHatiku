@@ -42,12 +42,11 @@
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Tanggal*</label>
 									<div class="input-group date" id="Tanggal">
-										<input type="text" name="Tanggal" class="form-control" placeholder="Pilih Tanggal..." value="{{Auth::user()->Role==3? $tanggal: Request::input('Tanggal')}}" @if(Auth::user()->Role==3) readonly @endif>
+										<input type="text" name="Tanggal" class="form-control" placeholder="Pilih Tanggal..." @if(Auth::user()->Role==3) readonly @endif>
 										<span class="input-group-addon">
 											<span class="fa fa-calendar"></span>
 										</span>
-									</div> 
-									{{-- <input type="date" name="Tanggal" class="form-control" value="{{Auth::user()->Role==3? $tanggal: Request::input('Tanggal')}}" @if(Auth::user()->Role==3) readonly @endif> --}}
+									</div>
 								</div>
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Terapis*</label>
