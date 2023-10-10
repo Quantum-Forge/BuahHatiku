@@ -5,14 +5,13 @@
 <!-- Title -->
 <div class="row heading-bg  bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h5 class="txt-light">analytical</h5>
+		<h5 class="txt-light">Daftar Absensi</h5>
 	</div>
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Dashboard</a></li>
-			<li><a href="#"><span>dashboard</span></a></li>
-			<li class="active"><span>analytical</span></li>
+			<li><a href="/dashboard">Dashboard</a></li>
+			<li class="active"><span>Daftar Absensi</span></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->
@@ -162,7 +161,7 @@
 	</div>
 </div>
 <!-- /Row -->
-
+<input type="hidden" id="WaktuSelesai">
 @endsection
 
 @section('scripts')
