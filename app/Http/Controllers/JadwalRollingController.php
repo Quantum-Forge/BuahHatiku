@@ -36,8 +36,8 @@ class JadwalRollingController extends Controller
             'IdAnak' => 'required',
             'IdTipe' => 'required',
             'Tanggal' => 'required',
-            'WaktuMulai' => 'required|date_format:H:i',
-            'WaktuSelesai' => 'required|date_format:H:i|after:WaktuMulai',
+            'WaktuMulai' => 'required',
+            'WaktuSelesai' => 'required|after:WaktuMulai',
         ], [
             'required' => ':attribute harus diisi',
             'NoIdentitas.required' => 'Terapis harus diisi',
@@ -50,12 +50,15 @@ class JadwalRollingController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
+        $tanggal = Carbon::createFromFormat('d/m/Y',$request->Tanggal);
+        $waktuMulai = Carbon::createFromFormat('g:i a',$request->WaktuMulai)->format('H:i');
+        $waktuSelesai = Carbon::createFromFormat('g:i a',$request->WaktuSelesai)->format('H:i');
         $check = JadwalRolling::where('IdAnak', $request->IdAnak)
                 ->where('NoIdentitas', $request->NoIdentitas)
                 ->where('IdTipe', $request->IdTipe)
-                ->where('Tanggal', $request->Tanggal)
-                ->where('WaktuMulai', $request->WaktuMulai)
-                ->where('WaktuSelesai', $request->WaktuSelesai)
+                ->where('Tanggal', $tanggal->toDateString())
+                ->where('WaktuMulai', $waktuMulai)
+                ->where('WaktuSelesai', $waktuSelesai)
                 ->first();
         if($check){
             return redirect('/jadwal_rolling')
@@ -67,12 +70,12 @@ class JadwalRollingController extends Controller
         $jadwal->IdAnak = $request->IdAnak;
         $jadwal->NoIdentitas = $request->NoIdentitas;
         $jadwal->IdTipe = $request->IdTipe;
-        $jadwal->Tanggal = $request->Tanggal;
-        $date = Carbon::parse($request->Tanggal)->locale('id');
+        $jadwal->Tanggal = $tanggal;
+        $date = $tanggal->locale('id');
         $date->settings(['formatFunction' => 'translatedFormat']);
         $jadwal->Hari = $date->format('l');
-        $jadwal->WaktuMulai = $request->WaktuMulai;
-        $jadwal->WaktuSelesai = $request->WaktuSelesai;
+        $jadwal->WaktuMulai = $waktuMulai;
+        $jadwal->WaktuSelesai = $waktuSelesai;
 
         $jadwal->save();
 

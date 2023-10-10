@@ -104,7 +104,7 @@
 																<span class="fa fa-clock-o mr-5"></span>
 																Start
 															</span>
-															<input type="text" class="form-control">
+															<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
 															{{-- <input type='time' name="WaktuMulai" id="start-time" class="form-control" value="{{old('WaktuMulai')}}"/> --}}
 														</div>
 														@error('WaktuMulai')
@@ -114,7 +114,7 @@
 													<div class="col-sm-6">
 														<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }}">
 															<div class='input-group date' id="WaktuSelesai">
-																<input type="text" class="form-control">
+																<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
 																{{-- <input type='time' name="WaktuSelesai" id="end-time" class="form-control" value="{{old('WaktuSelesai')}}"/> --}}
 																<span class="input-group-addon">
 																	<span class="fa fa-clock-o mr-5"></span>

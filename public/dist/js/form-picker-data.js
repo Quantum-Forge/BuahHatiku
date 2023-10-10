@@ -18,7 +18,7 @@ $(document).ready(function() {
 	});
 	
 	/* Datetimepicker Init*/
-	$('#TglLahir, #TglLahirOrtu, #Tanggal').datetimepicker({
+	$('#TglLahir, #TglLahirOrtu, #Tanggal, #TanggalMasuk').datetimepicker({
 		format: 'DD/MM/YYYY',
 		useCurrent: true,
 		icons: {

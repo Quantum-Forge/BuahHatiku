@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Biodata extends Model
 {
@@ -22,6 +23,21 @@ class Biodata extends Model
      * @var string
      */
     protected $primaryKey = 'IdAnak';
+
+    public function getTglLahirAttribute()
+    {
+        return Carbon::parse($this->attributes['TglLahir'])->format('d/m/Y');
+    }
+
+    public function getTglLahirOrtuAttribute()
+    {
+        return Carbon::parse($this->attributes['TglLahirOrtu'])->format('d/m/Y');
+    }
+
+    public function getTglMasukAttribute()
+    {
+        return Carbon::parse($this->attributes['TglMasuk'])->format('d/m/Y');
+    }
 
     public function Diagnosa(): string
     {

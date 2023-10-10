@@ -49,7 +49,7 @@ class BiodataController extends Controller
         $biodata->Nama = $request->Nama;
         $biodata->AnakKe = $request->AnakKe;
         $biodata->JenisKelamin = $request->JenisKelamin;
-        $biodata->TglLahir = $request->TglLahir;
+        $biodata->TglLahir = Carbon::createFromFormat('d/m/Y',$request->TglLahir);
         $biodata->TempatLahir = $request->TempatLahir;
         $biodata->Pendidikan = $request->Pendidikan;
         $biodata->IdDiagnosa = $request->Diagnosa;
@@ -60,7 +60,7 @@ class BiodataController extends Controller
         $biodata->PendBapak = $request->PendBapak;
         $biodata->PendIbu = $request->PendIbu;
         $biodata->Alamat = $request->Alamat;
-        $biodata->TglLahirOrtu = $request->TglLahirOrtu;
+        $biodata->TglLahirOrtu = Carbon::createFromFormat('d/m/Y',$request->TglLahirOrtu);
         $biodata->NoHP = $request->NoHP;
         $biodata->Email = $request->Email;
         $biodata->TglMasuk = Carbon::now();
@@ -113,7 +113,7 @@ class BiodataController extends Controller
         $biodata->Nama = $request->Nama;
         $biodata->AnakKe = $request->AnakKe;
         $biodata->JenisKelamin = $request->JenisKelamin;
-        $biodata->TglLahir = $request->TglLahir;
+        $biodata->TglLahir = Carbon::createFromFormat('d/m/Y',$request->TglLahir);
         $biodata->TempatLahir = $request->TempatLahir;
         $biodata->Pendidikan = $request->Pendidikan;
         $biodata->IdDiagnosa = $request->Diagnosa;
@@ -124,10 +124,10 @@ class BiodataController extends Controller
         $biodata->PendBapak = $request->PendBapak;
         $biodata->PendIbu = $request->PendIbu;
         $biodata->Alamat = $request->Alamat;
-        $biodata->TglLahirOrtu = $request->TglLahirOrtu;
+        $biodata->TglLahirOrtu = Carbon::createFromFormat('d/m/Y',$request->TglLahirOrtu);
         $biodata->NoHP = $request->NoHP;
         $biodata->Email = $request->Email;
-        $biodata->TglMasuk = $request->TanggalMasuk;
+        $biodata->TglMasuk = Carbon::createFromFormat('d/m/Y',$request->TanggalMasuk);
 
         if(!empty($request->file('photo'))){
             $imageName = time() . '.' . $request->file('photo')->getClientOriginalExtension();

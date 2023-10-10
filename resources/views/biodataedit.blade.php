@@ -80,7 +80,13 @@
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('TglLahir') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir</label>
-													<input type="date" class="form-control" name="TglLahir" value="{{old('TglLahir', $biodata->TglLahir)}}">
+													<div class="input-group date" id="TglLahir">
+														<input type="text" class="form-control" name="TglLahir" value="{{old('TglLahir', $biodata->TglLahir)}}">
+														<span class="input-group-addon">
+															<span class="fa fa-calendar"></span>
+														</span>
+													</div>
+													<!-- <input type="date" class="form-control" name="TglLahir" value="{{old('TglLahir', $biodata->TglLahir)}}"> -->
 													@error('TglLahir')
 														<span class="help-block">{{ $message }}</span>
 													@enderror
@@ -260,7 +266,13 @@
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir Ibu</label>
-													<input type="date" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu', $biodata->TglLahirOrtu)}}">
+													<div class="input-group date" id="TglLahirOrtu">
+														<input type="text" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu', $biodata->TglLahirOrtu)}}">
+														<span class="input-group-addon">
+															<span class="fa fa-calendar"></span>
+														</span>
+													</div>
+													<!-- <input type="date" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu', $biodata->TglLahirOrtu)}}"> -->
 													@error('TglLahirOrtu')
 														<span class="help-block">{{ $message }}</span>
 													@enderror
@@ -293,7 +305,13 @@
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('TanggalMasuk') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Masuk</label>
-													<input type="date" class="form-control" name="TanggalMasuk" value="{{old('TanggalMasuk', $biodata->TglMasuk)}}">
+													<div class="input-group date" id="TanggalMasuk">
+														<input type="text" class="form-control" name="TanggalMasuk" value="{{old('TanggalMasuk', $biodata->TglMasuk)}}">
+														<span class="input-group-addon">
+															<span class="fa fa-calendar"></span>
+														</span>
+													</div>
+													<!-- <input type="date" class="form-control" name="TanggalMasuk" value="{{old('TanggalMasuk', $biodata->TglMasuk)}}"> -->
 													@error('TanggalMasuk')
 														<span class="help-block">{{ $message }}</span>
 													@enderror
@@ -336,6 +354,22 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+
+
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+		
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+		
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+<!-- Bootstrap Daterangepicker JavaScript -->
+<script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="{{ asset('dist/js/form-picker-data.js') }}"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>

@@ -32,7 +32,7 @@ class AbsensiController extends Controller
         $jadwal_rolling = JadwalRolling::query();
         if($request->Tanggal || $request->IdAnak || $request->NoIdentitas || $request->IdTipe){
             if($request->Tanggal){
-                $jadwal_rolling->where('Tanggal', $request->Tanggal);
+                $jadwal_rolling->whereDate('Tanggal', Carbon::createFromFormat('d/m/Y',$request->Tanggal)->toDateString());
             }
             if($request->IdAnak){
                 $jadwal_rolling->where('IdAnak', $request->IdAnak);
@@ -42,6 +42,10 @@ class AbsensiController extends Controller
             }
             if($request->IdTipe){
                 $jadwal_rolling->where('IdTipe', $request->IdTipe);
+            }
+            if($request->WaktuMulai){
+                $waktu = Carbon::createFromFormat('g:i a',$request->WaktuMulai)->format('H:i');
+                $jadwal_rolling->where('WaktuMulai', '>=', $waktu);
             }
             $jadwal_rolling = $jadwal_rolling->get();
         }

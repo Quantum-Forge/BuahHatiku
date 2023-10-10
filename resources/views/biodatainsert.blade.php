@@ -62,8 +62,8 @@
 													<label class="control-label mb-10">Jenis Kelamin</label>
 													<select class="form-control" name="JenisKelamin">
 														<option disabled selected>Choose...</option>
-														<option value="Laki-laki">Laki-laki</option>
-														<option value="Perempuan">Perempuan</option>
+														<option value="Laki-laki" @if(old('JenisKelamin') == 'Laki-laki') selected @endif>Laki-laki</option>
+														<option value="Perempuan" @if(old('JenisKelamin') == 'Perempuan') selected @endif>Perempuan</option>
 													</select>
 													@error('JenisKelamin')
 														<span class="help-block">{{ $message }}</span>
@@ -82,7 +82,7 @@
 												<div class="form-group {{ $errors->has('TglLahir') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir</label>
 													<div class="input-group date" id="TglLahir">
-														<input type="text" class="form-control">
+														<input type="text" class="form-control" name="TglLahir" value="{{old('TglLahir')}}">
 														<span class="input-group-addon">
 															<span class="fa fa-calendar"></span>
 														</span>
@@ -280,7 +280,7 @@
 												<div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir Ibu</label>
 													<div class="input-group date" id="TglLahirOrtu">
-														<input type="text" class="form-control">
+														<input type="text" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu')}}">
 														<span class="input-group-addon">
 															<span class="fa fa-calendar"></span>
 														</span>
