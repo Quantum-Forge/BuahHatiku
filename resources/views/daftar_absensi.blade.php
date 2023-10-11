@@ -41,8 +41,8 @@
 						<form action="/daftar_absensi" method="GET">
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Tanggal*</label>
-									<div class="input-group date" id="Tanggal">
-										<input type="text" name="Tanggal" class="form-control" placeholder="Pilih Tanggal..." @if(Auth::user()->Role==3) readonly @endif>
+									<div class="input-group date">
+										<input type="text" name="Tanggal" id="Tanggal" class="form-control" placeholder="Pilih Tanggal..." @if(Auth::user()->Role==3) readonly @endif>
 										<span class="input-group-addon">
 											<span class="fa fa-calendar"></span>
 										</span>
@@ -188,7 +188,7 @@
 <script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
 <!-- Form Picker Init JavaScript -->
-<script src="{{ asset('dist/js/form-picker-data.js') }}"></script>
+<script src="{{ asset('dist/js/daftar_absensi_picker.js') }}"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
