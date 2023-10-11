@@ -55,9 +55,9 @@
 																</div>
 															@enderror
 															<div class="form-group">
-																<label class="control-label mb-10" for="email">Email</label>
+																<label class="control-label mb-10" for="username">Username</label>
 																<div class="input-group">
-																	<input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+																	<input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
 																	<div class="input-group-addon"><i class="icon-envelope-open"></i></div>
 																</div>
 															</div>
@@ -68,21 +68,12 @@
 																	<div class="input-group-addon"><i class="icon-lock"></i></div>
 																</div>
 															</div>
-															
-															<div class="form-group">
-																<!-- <div class="checkbox checkbox-success pr-10 pull-left">
-																	<input id="checkbox_2" name="remember_me" type="checkbox">
-																	<label for="checkbox_2"> Keep me logged in </label>
-																</div> -->
-																<a class="capitalize-font txt-danger block pt-5 pull-right" href="#">forgot password</a>
-																<div class="clearfix"></div>
-															</div>
 															<div class="form-group">
 																<button type="submit" class="btn btn-success btn-block">Sign in</button>
 															</div>
 															<div class="form-group mb-0">
 																<span class="inline-block pr-5">Don't have an account?</span>
-																<a class="inline-block txt-danger" href="signup-page.html">Sign Up</a>
+																<a class="inline-block txt-danger" href="">Contact me</a>
 															</div>	
 														</form>
 													</div>

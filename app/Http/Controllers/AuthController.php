@@ -15,18 +15,18 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'password' => 'nullable',
-            'email' => 'required|email',
+            'username' => 'required',
         ], [
             'required' => ':attribute harus diisi'
         ]);
         if ($validator->fails()) {
             return back()->withErrors([
-                'error' => 'Email atau password tidak sesuai',
+                'error' => 'Username atau password tidak sesuai',
             ]);
         }
         // $remember_me = $request->has('remember_me') ? true : false ;
         $remember_me = true;
-        $user  = User::where('Email' , $request->email )
+        $user  = User::where('Username' , $request->username )
                         ->where('StatusAktif', 1)
                         ->first();
         if($user){
@@ -41,7 +41,7 @@ class AuthController extends Controller
         }
         
         return back()->withErrors([
-            'error' => 'Email atau password tidak sesuai',
+            'error' => 'Username atau password tidak sesuai',
         ]);
     }
 
