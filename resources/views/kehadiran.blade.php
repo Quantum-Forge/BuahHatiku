@@ -45,6 +45,7 @@
 									<th>Nama</th>
 									<th>Jenis Absensi</th>
 									<th>Status</th>
+									<th>Keterangan</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -57,6 +58,7 @@
 										<td>{{$jadwal->biodata->Nama}}</td>
 										<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
 										<td><span class="label {{$jadwal->absensi->Hadir == 1 ? 'label-success' : 'label-danger'}}">{{$jadwal->absensi->Hadir == 1 ? 'Hadir' : 'Tidak Hadir'}}</span></td>
+										<td>{{$jadwal->absensi->Alasan}}</td>
 									</tr>
 								@endforeach
 							</tbody>
