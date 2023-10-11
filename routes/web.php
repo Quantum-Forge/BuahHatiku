@@ -117,6 +117,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/uang_makan',function(){
             return UangMakanController::view();
         });
+        // Daftar Absensi
+        Route::get('/daftar_absensi',function(Request $request){
+            return AbsensiController::view($request);
+        });
+        
     });
     Route::middleware(['role:owner'])->group(function () {
         Route::get('/user_view',function(){
@@ -160,9 +165,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/parental_questionnaire_view/{IdAnak}',function($IdAnak){
         return ParentalQuestionaireController::view_detail($IdAnak);
     });
-    // Daftar Absensi
-    Route::get('/daftar_absensi',function(Request $request){
-        return AbsensiController::view($request);
+    // Daftar absensi terapis
+    Route::get('/daftar_absensi_terapis',function(){
+        return AbsensiController::view_terapis();
     });
     Route::post('/daftar_absensi',function(Request $request){
         return AbsensiController::update($request);

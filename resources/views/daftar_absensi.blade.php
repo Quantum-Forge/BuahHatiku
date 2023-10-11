@@ -42,7 +42,7 @@
 								<div class="form-group">
 									<label for="Jenis" class="control-label mb-10">Tanggal*</label>
 									<div class="input-group date">
-										<input type="text" name="Tanggal" id="Tanggal" class="form-control" placeholder="Pilih Tanggal..." @if(Auth::user()->Role==3) readonly @endif>
+										<input type="text" name="Tanggal" id="Tanggal" class="form-control" placeholder="Pilih Tanggal..." value="{{Request::input('Tanggal')}}">
 										<span class="input-group-addon">
 											<span class="fa fa-calendar"></span>
 										</span>

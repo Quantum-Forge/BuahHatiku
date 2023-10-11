@@ -32,7 +32,12 @@ class AbsensiController extends Controller
         $jadwal_rolling = JadwalRolling::query();
         if($request->Tanggal || $request->IdAnak || $request->NoIdentitas || $request->IdTipe){
             if($request->Tanggal){
-                $jadwal_rolling->whereDate('Tanggal', Carbon::createFromFormat('d/m/Y',$request->Tanggal)->toDateString());
+                $tanggal = explode(" - ", $request->Tanggal);
+                $jadwal_rolling->whereBetween('Tanggal', [
+                    Carbon::createFromFormat('d/m/Y',$tanggal[0])->toDateString(), 
+                    Carbon::createFromFormat('d/m/Y',$tanggal[1])->toDateString()
+                ]);
+                // $jadwal_rolling->whereDate('Tanggal', Carbon::createFromFormat('d/m/Y',$request->Tanggal)->toDateString());
             }
             if($request->IdAnak){
                 $jadwal_rolling->where('IdAnak', $request->IdAnak);
@@ -58,6 +63,18 @@ class AbsensiController extends Controller
         ]);
     }
 
+    public static function view_terapis(){
+        $user = Auth::user();
+        $today = Carbon::now();
+        $threeDaysAgo = $today->copy()->subDays(3);
+        $jadwal_rolling = JadwalRolling::whereBetween('Tanggal', [$threeDaysAgo, $today])
+                                        ->where('NoIdentitas', $user->NoIdentitas)
+                                        ->get();
+        return view('daftar_absensi_terapis')->with([
+            'jadwal_rolling' => $jadwal_rolling
+        ]);
+    }
+
     public static function update(Request $request){
         if($request->absensi){
             foreach($request->absensi as $IdAbsensi){
@@ -66,6 +83,9 @@ class AbsensiController extends Controller
                 $absensi->Alasan = $request->keterangan[$IdAbsensi];
                 $absensi->save();
             }
+        }
+        if(Auth::user()->Role==3){
+            return redirect('daftar_absensi_terapis');
         }
         return redirect('/daftar_absensi');
     }

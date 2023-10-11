@@ -32,9 +32,15 @@
 					<li>
 						<a class="{{ Request::is('parental_questionnaire') ? 'active' : '' }}" href="/parental_questionnaire"><i class="icon-question mr-10"></i>Questionnaire</a>
 					</li>
+					@if(Auth::user()->Role == 3)
+					<li>
+						<a class="{{ Request::is('daftar_absensi_terapis') ? 'active' : '' }}" href="/daftar_absensi_terapis"><i class="icon-notebook mr-10"></i>Absensi</a>
+					</li>
+					@else
 					<li>
 						<a class="{{ Request::is('daftar_absensi') ? 'active' : '' }}" href="/daftar_absensi"><i class="icon-notebook mr-10"></i>Absensi</a>
 					</li>
+					@endif
 					<li>
 						<a class="{{ Request::is('kehadiran') ? 'active' : '' }}" href="/kehadiran"><i class="icon-list mr-10"></i>Kehadiran</a>
 					</li>

@@ -24,7 +24,8 @@ class AuthController extends Controller
                 'error' => 'Email atau password tidak sesuai',
             ]);
         }
-        $remember_me = $request->has('remember_me') ? true : false ;
+        // $remember_me = $request->has('remember_me') ? true : false ;
+        $remember_me = true;
         $user  = User::where('Email' , $request->email )
                         ->where('StatusAktif', 1)
                         ->first();
@@ -33,7 +34,7 @@ class AuthController extends Controller
             if (Hash::check($password, $user->Password)) { 
                 Auth::login($user, $remember = $remember_me);
                 if($user->Role == 3){
-                    return redirect('/daftar_absensi');
+                    return redirect('/daftar_absensi_terapis');
                 } 
                 return redirect('dashboard');
             }

@@ -70,10 +70,10 @@
 															</div>
 															
 															<div class="form-group">
-																<div class="checkbox checkbox-success pr-10 pull-left">
+																<!-- <div class="checkbox checkbox-success pr-10 pull-left">
 																	<input id="checkbox_2" name="remember_me" type="checkbox">
 																	<label for="checkbox_2"> Keep me logged in </label>
-																</div>
+																</div> -->
 																<a class="capitalize-font txt-danger block pt-5 pull-right" href="#">forgot password</a>
 																<div class="clearfix"></div>
 															</div>
