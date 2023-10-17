@@ -72,13 +72,6 @@
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
-												{{-- <div class="form-group {{ $errors->has('TglLahir') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Tanggal Lahir</label>
-													<input type="date" class="form-control" name="TglLahir" value="{{old('TglLahir')}}">
-													@error('TglLahir')
-														<span class="help-block">{{ $message }}</span>
-													@enderror
-												</div> --}}
 												<div class="form-group {{ $errors->has('TglLahir') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir</label>
 													<div class="input-group date" id="TglLahir">
@@ -270,13 +263,6 @@
 										</div>
 										<div class="row">
 											<div class="col-md-6">
-												{{-- <div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Tanggal Lahir Ibu</label>
-													<input type="date" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu')}}">
-													@error('TglLahirOrtu')
-														<span class="help-block">{{ $message }}</span>
-													@enderror
-												</div> --}}
 												<div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir Ibu</label>
 													<div class="input-group date" id="TglLahirOrtu">
@@ -335,8 +321,6 @@
 	</div>
 </div>
 <!-- /Row -->
-<input type="hidden" id="WaktuMulai">
-<input type="hidden" id="WaktuSelesai">
 @endsection
 
 @section('scripts')

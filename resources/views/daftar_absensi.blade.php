@@ -160,7 +160,7 @@
 	</div>
 </div>
 <!-- /Row -->
-<input type="hidden" id="WaktuSelesai">
+
 @endsection
 
 @section('scripts')

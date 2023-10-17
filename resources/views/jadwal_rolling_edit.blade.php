@@ -145,66 +145,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12">
-		<div class="panel panel-default card-view">
-			<div class="panel-heading">
-				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Data Penjadwalan</h6>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="panel-wrapper collapse in">
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table id="datable_1" class="table table-hover display pb-30" >
-							<thead>
-								<tr>
-									<th>No</th>
-									<th>Tanggal Penjadwalan</th>
-									<th>Terapis</th>
-									<th>Anak</th>
-									<th>Tipe Absensi</th>
-									<th>Waktu</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td>
-										<button class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
-										<button  data-toggle="modal" data-target="#responsive-modal" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
-									</td>
-								</tr>
-								<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-												<h5 class="modal-title">Delete Schedule</h5>
-											</div>
-											<div class="modal-body">
-												Are you sure to delete this Schedule ?
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-												<button type="button" class="btn btn-danger">Yes</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </div>
 <!-- /Row -->
 
@@ -217,10 +158,6 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
-
-<!-- Data table JavaScript -->
-<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
 
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
