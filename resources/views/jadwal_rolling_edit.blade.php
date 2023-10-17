@@ -26,9 +26,10 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-12">
-							<form action="/jadwal_rolling" method="POST">
+							<form action="/jadwal_rolling_edit" method="POST">
 								{{ csrf_field() }}
 								<div class="form-body">
+									<input type="hidden" name="IdJadwal" value="{{$jadwal_rolling->IdJadwal}}">
 									<h6 class="txt-dark capitalize-font"><i class="ti-calendar mr-10"></i>Penjadwalan Terapis</h6>
 									<hr>
 									<div class="row">
@@ -36,7 +37,7 @@
 											<div class="form-group {{ $errors->has('Tanggal') ? 'has-error' : '' }}">
 												<label class="control-label mb-10">Tanggal Penjadwalan</label>
 												<div class="input-group date" id="Tanggal">
-													<input type="text" name="Tanggal" class="form-control" value="{{old('Tanggal')}}">
+													<input type="text" name="Tanggal" class="form-control" value="{{old('Tanggal', $jadwal_rolling->Tanggal)}}">
 													<span class="input-group-addon">
 														<span class="fa fa-calendar"></span>
 													</span>
@@ -53,7 +54,7 @@
 												<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
 													<option disabled selected>Choose..</option>
 													@foreach( $terapises as $terapis)
-														<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
+														<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas', $jadwal_rolling->user->NoIdentitas) == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
 													@endforeach
 												</select>
 												@error('NoIdentitas')
@@ -71,7 +72,7 @@
 												<select class="form-control" name="IdAnak">
 													<option disabled selected>Choose..</option>
 													@foreach($biodatas as $biodata)
-														<option value="{{$biodata->IdAnak}}" @if(old('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
+														<option value="{{$biodata->IdAnak}}" @if(old('IdAnak', $jadwal_rolling->biodata->IdAnak) == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
 													@endforeach
 												</select>
 												@error('IdAnak')
@@ -85,7 +86,7 @@
 												<select class="form-control" name="IdTipe">
 													<option disabled selected>Choose..</option>
 													@foreach($tipe_absensies as $tipe_absensi)
-														<option value="{{$tipe_absensi->IdTipe}}" @if(old('IdTipe') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
+														<option value="{{$tipe_absensi->IdTipe}}" @if(old('IdTipe', $jadwal_rolling->IdTipe) == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
 													@endforeach
 												</select>
 												@error('IdTipe')
@@ -104,7 +105,7 @@
 																<span class="fa fa-clock-o mr-5"></span>
 																Start
 															</span>
-															<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+															<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai', $jadwal_rolling->WaktuMulai)}}">
 															{{-- <input type='time' name="WaktuMulai" id="start-time" class="form-control" value="{{old('WaktuMulai')}}"/> --}}
 														</div>
 														@error('WaktuMulai')
@@ -114,7 +115,7 @@
 													<div class="col-sm-6">
 														<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }}">
 															<div class='input-group date' id="WaktuSelesai">
-																<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai', $jadwal_rolling->WaktuSelesai)}}">
 																{{-- <input type='time' name="WaktuSelesai" id="end-time" class="form-control" value="{{old('WaktuSelesai')}}"/> --}}
 																<span class="input-group-addon">
 																	<span class="fa fa-clock-o mr-5"></span>

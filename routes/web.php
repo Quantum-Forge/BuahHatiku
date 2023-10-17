@@ -91,6 +91,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/jadwal_rolling',function(Request $request){
             return JadwalRollingController::insert($request);
         });
+        Route::get('/jadwal_rolling_edit/{IdJadwal}',function($IdJadwal){
+            return JadwalRollingController::edit_view($IdJadwal);
+        });
+        Route::post('/jadwal_rolling_edit',function(Request $request){
+            return JadwalRollingController::edit($request);
+        });
+        Route::post('/jadwal_rolling_delete/{IdJadwal}',function($IdJadwal){
+            return JadwalRollingController::delete($IdJadwal);
+        });
         // Invoice
         Route::get('/input_invoice',function(Request $request){
             return InvoiceController::input_view($request);

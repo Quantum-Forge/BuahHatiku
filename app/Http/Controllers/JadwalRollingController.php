@@ -23,10 +23,14 @@ class JadwalRollingController extends Controller
             $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
         }
         $tipe_absensies = TipeAbsensi::all();
+        $jadwal_rolling = JadwalRolling::whereHas('absensi',function($q) {
+            $q->whereColumn('created_at', '>=', 'updated_at');
+        })->get();
         return view('jadwal_rolling')->with([
             'biodatas' => $biodatas,
             'terapises' => $terapises,
             'tipe_absensies' => $tipe_absensies,
+            'jadwal_rolling' => $jadwal_rolling,
         ]);
     }
 
@@ -84,6 +88,83 @@ class JadwalRollingController extends Controller
         $absensi->Hadir = 0;
         $absensi->save();
 
+        return redirect('/jadwal_rolling');
+    }
+
+    public static function edit_view($IdJadwal){
+        $biodatas = Biodata::all();
+        $terapises = User::where('Role', 3)->get();
+        $user = Auth::user();
+        if($user->Role == 3){
+            $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
+        }
+        $tipe_absensies = TipeAbsensi::all();
+        $jadwal_rolling = JadwalRolling::find($IdJadwal);
+        return view('jadwal_rolling_edit')->with([
+            'biodatas' => $biodatas,
+            'terapises' => $terapises,
+            'tipe_absensies' => $tipe_absensies,
+            'jadwal_rolling' => $jadwal_rolling,
+        ]);
+    }
+
+    public static function edit(Request $request){
+        $validator = Validator::make($request->all(), [
+            'NoIdentitas' => 'required',
+            'IdAnak' => 'required',
+            'IdTipe' => 'required',
+            'Tanggal' => 'required',
+            'WaktuMulai' => 'required',
+            'WaktuSelesai' => 'required|after:WaktuMulai',
+        ], [
+            'required' => ':attribute harus diisi',
+            'NoIdentitas.required' => 'Terapis harus diisi',
+            'IdAnak.required' => 'Anak harus diisi',
+            'IdTipe.required' => 'Tipe absensi harus diisi',
+            'WaktuSelesai.after' => 'Waktu selesai harus setelah waktu mulai'
+        ]);
+        if ($validator->fails()) {
+            return redirect('/jadwal_rolling_edit/'.$request->IdJadwal)
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        $tanggal = Carbon::createFromFormat('d/m/Y',$request->Tanggal);
+        $waktuMulai = Carbon::createFromFormat('g:i a',$request->WaktuMulai)->format('H:i');
+        $waktuSelesai = Carbon::createFromFormat('g:i a',$request->WaktuSelesai)->format('H:i');
+        $check = JadwalRolling::where('IdAnak', $request->IdAnak)
+                ->where('NoIdentitas', $request->NoIdentitas)
+                ->where('IdTipe', $request->IdTipe)
+                ->where('Tanggal', $tanggal->toDateString())
+                ->where('WaktuMulai', $waktuMulai)
+                ->where('WaktuSelesai', $waktuSelesai)
+                ->first();
+        if($check){
+            return redirect('/jadwal_rolling_edit/'.$request->IdJadwal)
+                        ->withErrors(['message' => 'JadwalRolling sudah pernah diinput'])
+                        ->withInput();
+        }
+        $jadwal = JadwalRolling::find($request->IdJadwal);
+
+        $jadwal->IdAnak = $request->IdAnak;
+        $jadwal->NoIdentitas = $request->NoIdentitas;
+        $jadwal->IdTipe = $request->IdTipe;
+        $jadwal->Tanggal = $tanggal;
+        $date = $tanggal->locale('id');
+        $date->settings(['formatFunction' => 'translatedFormat']);
+        $jadwal->Hari = $date->format('l');
+        $jadwal->WaktuMulai = $waktuMulai;
+        $jadwal->WaktuSelesai = $waktuSelesai;
+
+        $jadwal->save();
+
+        return redirect('/jadwal_rolling');
+    }
+
+    public static function delete($IdJadwal){
+        $jadwal_rolling = JadwalRolling::where('IdJadwal', $IdJadwal)->first();
+        $absensi = Absensi::where('IdJadwal', $IdJadwal)->first();
+        $absensi->delete();
+        $jadwal_rolling->delete();
         return redirect('/jadwal_rolling');
     }
 }
