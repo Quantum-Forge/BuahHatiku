@@ -6,7 +6,7 @@
 	<title>Buahatiku - Management System</title>
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
-	<meta name="author" content="hencework"/>
+	<meta name="author" content=""/>
 	<!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">

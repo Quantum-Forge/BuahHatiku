@@ -33,8 +33,8 @@
 									<hr>
 									<div class="row">
 										<div class="col-md-6">
-											<div class="mt-10 mb-30">
-												<div class="table-responsive">
+											<div class="table-wrap mt-10 mb-30">
+												<div class="">
 													<table class="table table-bordered mb-0">
 														<thead>
 														  <tr>
@@ -60,12 +60,13 @@
 																</td>
 																<td>Senin</td>
 																<td>
-																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}"></div>
-																	<div class="input-group date" id="SeninStart">
-																		<span class="input-group-addon">
-																			<span class="fa fa-clock-o"></span>
-																		</span>
-																		<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
+																		<div class="input-group date" id="SeninStart">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																		</div>
 																		@error('WaktuMulai')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
@@ -96,15 +97,14 @@
 																<td>Selasa</td>
 																<td>
 																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
-
-																	</div>
-																	<div class="input-group date" id="SelasaStart">
-																		<span class="input-group-addon">
-																			<span class="fa fa-clock-o"></span>
-																		</span>
-																		<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">	
+																		<div class="input-group date" id="SelasaStart">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">	
+																		</div>
 																		@error('WaktuMulai')
-																			<span class="help-block">{{ $message }}</span>
+																				<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
 																</td>
