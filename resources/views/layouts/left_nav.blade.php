@@ -6,7 +6,7 @@
 					</li>
 					@if(Auth::user()->Role == 1 || Auth::user()->Role == 2)
 					<li>
-						<a class="{{ Request::is('biodata_insert', 'questionnaire_insert', 'tipe_absensi_insert') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#master"><i class="fa fa-database mr-10"></i>Master Data <span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
+						<a class="{{ Request::is('biodata_insert', 'questionnaire_insert', 'tipe_absensi_insert', 'jadwal_rolling') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#master"><i class="fa fa-database mr-10"></i>Master Data <span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
 						<ul id="master" class="collapse collapse-level-1">
 							<li>
 								<a href="/biodata_insert">Buat Biodata Anak</a>
@@ -17,6 +17,9 @@
 							<li>
 								<a href="/tipe_absensi_insert">Buat Tipe Absensi</a>
 							</li>
+							<li>
+								<a href="/jadwal_rolling">Buat Jadwal Rolling</a>
+							</li>
 						</ul>
 					</li>
 					@endif
@@ -26,7 +29,7 @@
 					</li>
 					@if(Auth::user()->Role == 1 || Auth::user()->Role == 2)
 					<li>
-						<a class="{{ Request::is('jadwal_rolling') ? 'active' : '' }}" href="/jadwal_rolling"><i class="icon-calender mr-10"></i>Scheduling</a>
+						<a class="{{ Request::is('jadwal_rolling_view') ? 'active' : '' }}" href="/jadwal_rolling_view"><i class="icon-calender mr-10"></i>Jadwal Rolling</a>
 					</li>
 					@endif
 					<li>
@@ -78,9 +81,3 @@
 				</ul>
 			</div>
 			<!-- /Left Sidebar Menu -->
-
-			{{--
-				Owner Akses Semua
-				Admin: Buat Biodata, Scheduling, Questionnaire, Buat Questionnaire, Scheduling, Absensi, Daftar Absensi, Uang Makan, Kehadiran
-				Terapis: Scheduling, Questionnaire, Absensi, Kehadiran  
-				 --}}

@@ -3,7 +3,7 @@
 @section('dashboard')
 
 <!-- Title -->
-<div class="row heading-bg  bg-red">
+<div class="row heading-bg bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
 		<h5 class="txt-light">Jadwal Rolling</h5>
 	</div>
@@ -33,109 +33,310 @@
 									<hr>
 									<div class="row">
 										<div class="col-md-6">
-											<div class="form-group {{ $errors->has('Tanggal') ? 'has-error' : '' }}">
-												<label class="control-label mb-10">Tanggal Penjadwalan</label>
-												<div class="input-group date" id="Tanggal">
-													<input type="text" name="Tanggal" class="form-control" value="{{old('Tanggal')}}">
-													<span class="input-group-addon">
-														<span class="fa fa-calendar"></span>
-													</span>
-												</div> 
-												@error('Tanggal')
-													<span class="help-block">{{ $message }}</span>
-												@enderror
-											</div>
-										</div>
-										<!--/span-->
-										<div class="col-md-6">
-											<div class="form-group {{ $errors->has('NoIdentitas') ? 'has-error' : '' }}">
-												<label class="control-label mb-10">Terapis</label>
-												<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
-													<option disabled selected>Choose..</option>
-													@foreach( $terapises as $terapis)
-														<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
-													@endforeach
-												</select>
-												@error('NoIdentitas')
-													<span class="help-block">{{ $message }}</span>
-												@enderror
-											</div>
-										</div>
-										<!--/span-->
-									</div>
-									<!-- /Row -->
-									<div class="row">
-										<div class="col-md-3">
-											<div class="form-group {{ $errors->has('IdAnak') ? 'has-error' : '' }}">
-												<label class="control-label mb-10">Anak</label>
-												<select class="form-control" name="IdAnak">
-													<option disabled selected>Choose..</option>
-													@foreach($biodatas as $biodata)
-														<option value="{{$biodata->IdAnak}}" @if(old('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
-													@endforeach
-												</select>
-												@error('IdAnak')
-													<span class="help-block">{{ $message }}</span>
-												@enderror
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group {{ $errors->has('IdTipe') ? 'has-error' : '' }}">
-												<label class="control-label mb-10">Tipe Absensi</label>
-												<select class="form-control" name="IdTipe">
-													<option disabled selected>Choose..</option>
-													@foreach($tipe_absensies as $tipe_absensi)
-														<option value="{{$tipe_absensi->IdTipe}}" @if(old('IdTipe') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
-													@endforeach
-												</select>
-												@error('IdTipe')
-													<span class="help-block">{{ $message }}</span>
-												@enderror
-											</div>
-										</div>
-										<!--/span-->
-										<div class="col-md-6">
-											<div class="form-group {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
-												<label class="control-label mb-10 text-left">Time Range Pick</label>
-												<div class="row">
-													<div class="col-sm-6">
-														<div class="input-group date" id="WaktuMulai">
-															<span class="input-group-addon">
-																<span class="fa fa-clock-o mr-5"></span>
-																Start
-															</span>
-															<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
-															{{-- <input type='time' name="WaktuMulai" id="start-time" class="form-control" value="{{old('WaktuMulai')}}"/> --}}
-														</div>
-														@error('WaktuMulai')
-															<span class="help-block">{{ $message }}</span>
-														@enderror
-													</div>
-													<div class="col-sm-6">
-														<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }}">
-															<div class='input-group date' id="WaktuSelesai">
-																<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
-																{{-- <input type='time' name="WaktuSelesai" id="end-time" class="form-control" value="{{old('WaktuSelesai')}}"/> --}}
-																<span class="input-group-addon">
-																	<span class="fa fa-clock-o mr-5"></span>
-																	 End
-																</span>
-															</div>
-															@error('WaktuSelesai')
-																<span class="help-block">{{ $message }}</span>
-															@enderror
-														</div>
-													</div>
+											<div class="mt-10 mb-30">
+												<div class="table-responsive">
+													<table class="table table-bordered mb-0">
+														<thead>
+														  <tr>
+															<th>
+																<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
+																	<input id="checkAll" type="checkbox">
+																	<label for="checkAll" class="pl-0"></label>
+																</div>
+															</th>
+															<th>Hari</th>
+															<th>Start Time</th>
+															<th>End Date</th>
+														  </tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>
+																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
+																		<input id="checkbox3" type="checkbox">
+																		<label for="checkbox3" class="pl-0">
+																		</label>
+																	</div>
+																</td>
+																<td>Senin</td>
+																<td>
+																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}"></div>
+																	<div class="input-group date" id="SeninStart">
+																		<span class="input-group-addon">
+																			<span class="fa fa-clock-o"></span>
+																		</span>
+																		<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																		@error('WaktuMulai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+																<td>
+																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																		<div class='input-group date' id="SeninSelesai">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																		</div>
+																		@error('WaktuSelesai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
+																		<input id="checkbox3" type="checkbox">
+																		<label for="checkbox3" class="pl-0">
+																		</label>
+																	</div>
+																</td>
+																<td>Selasa</td>
+																<td>
+																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
+
+																	</div>
+																	<div class="input-group date" id="SelasaStart">
+																		<span class="input-group-addon">
+																			<span class="fa fa-clock-o"></span>
+																		</span>
+																		<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">	
+																		@error('WaktuMulai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+																<td>
+																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																		<div class='input-group date' id="SelasaSelesai">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																		</div>
+																		@error('WaktuSelesai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
+																		<input id="checkbox3" type="checkbox">
+																		<label for="checkbox3" class="pl-0">
+																		</label>
+																	</div>
+																</td>
+																<td>Rabu</td>
+																<td>
+																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
+																		<div class="input-group date" id="KamisStart">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																		</div>
+																		@error('WaktuMulai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+																<td>
+																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																		<div class='input-group date' id="KamisSelesai">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																		</div>
+																		@error('WaktuSelesai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
+																		<input id="checkbox3" type="checkbox">
+																		<label for="checkbox3" class="pl-0">
+																		</label>
+																	</div>
+																</td>
+																<td>Kamis</td>
+																<td>
+																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
+																		<div class="input-group date" id="KamisStart">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																		</div>
+																		@error('WaktuMulai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+																<td>
+																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																		<div class='input-group date' id="KamisSelesai">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																		</div>
+																		@error('WaktuSelesai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
+																		<input id="checkbox3" type="checkbox">
+																		<label for="checkbox3" class="pl-0">
+																		</label>
+																	</div>
+																</td>
+																<td>Jumat</td>
+																<td>
+																	<div class="form-group {{ $errors->has('WaktuMulai') ? 'has-error' : '' }} mb-0">
+																		<div class="input-group date" id="JumatStart">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																		</div>
+																		@error('WaktuMulai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+																<td>
+																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																		<div class='input-group date' id="JumatSelesai">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																		</div>
+																		@error('WaktuSelesai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
+																		<input id="checkbox3" type="checkbox">
+																		<label for="checkbox3" class="pl-0">
+																		</label>
+																	</div>
+																</td>
+																<td>Sabtu</td>
+																<td>
+																	<div class="form-group {{ $errors->has('WaktuMulai') ? 'has-error' : '' }} mb-0">
+																		<div class="input-group date" id="SabtuStart">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																		</div>
+																		@error('WaktuMulai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+																<td>
+																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																		<div class='input-group date' id="SabtuSelesai">
+																			<span class="input-group-addon">
+																				<span class="fa fa-clock-o"></span>
+																			</span>
+																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																		</div>
+																		@error('WaktuSelesai')
+																			<span class="help-block">{{ $message }}</span>
+																		@enderror
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
 												</div>
 											</div>
 										</div>
-										<!--/span-->
-									</div>
-									@error('message')
-										<span class="help-block">{{ $message }}</span>
-									@enderror
-									<div class="form-actions mt-10">
-										<button type="submit" class="btn btn-success btn-block mr-10">Save</button>
+										<div class="col-md-6">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group {{ $errors->has('Tanggal') ? 'has-error' : '' }}">
+														<label class="control-label mb-10">Tanggal Penjadwalan</label>
+														<div class="input-group date">
+															<input type="text" id="Tanggal" name="Tanggal" class="form-control" value="{{old('Tanggal')}}">
+															<span class="input-group-addon">
+																<span class="fa fa-calendar"></span>
+															</span>
+														</div> 
+														@error('Tanggal')
+															<span class="help-block">{{ $message }}</span>
+														@enderror
+													</div>
+												</div>
+												<!--/span-->
+												<div class="col-md-12">
+													<div class="form-group {{ $errors->has('NoIdentitas') ? 'has-error' : '' }}">
+														<label class="control-label mb-10">Terapis</label>
+														<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
+															<option disabled selected>Choose..</option>
+															@foreach( $terapises as $terapis)
+																<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
+															@endforeach
+														</select>
+														@error('NoIdentitas')
+															<span class="help-block">{{ $message }}</span>
+														@enderror
+													</div>
+												</div>
+												<!--/span-->
+												<div class="col-md-12">
+													<div class="form-group {{ $errors->has('IdAnak') ? 'has-error' : '' }}">
+														<label class="control-label mb-10">Anak</label>
+														<select class="form-control" name="IdAnak">
+															<option disabled selected>Choose..</option>
+															@foreach($biodatas as $biodata)
+																<option value="{{$biodata->IdAnak}}" @if(old('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
+															@endforeach
+														</select>
+														@error('IdAnak')
+															<span class="help-block">{{ $message }}</span>
+														@enderror
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group {{ $errors->has('IdTipe') ? 'has-error' : '' }}">
+														<label class="control-label mb-10">Tipe Absensi</label>
+														<select class="form-control" name="IdTipe">
+															<option disabled selected>Choose..</option>
+															@foreach($tipe_absensies as $tipe_absensi)
+																<option value="{{$tipe_absensi->IdTipe}}" @if(old('IdTipe') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
+															@endforeach
+														</select>
+														@error('IdTipe')
+															<span class="help-block">{{ $message }}</span>
+														@enderror
+													</div>
+												</div>
+												<!--/span-->
+											</div>
+											<div class="form-actions mt-10">
+												<button type="submit" class="btn btn-success btn-block mr-10">Save</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</form>
@@ -151,7 +352,89 @@
 				<div class="pull-left">
 					<h6 class="panel-title txt-dark">Data Penjadwalan</h6>
 				</div>
+				<div class="pull-right">
+					<a href="#" class="label label-danger" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-trash mr-5"></i>Remove</a>
+				</div>
 				<div class="clearfix"></div>
+			</div>
+			<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h5 class="modal-title">Remove Schedule</h5>
+						</div>
+						<div class="modal-body">
+							<form action="">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group {{ $errors->has('Tanggal') ? 'has-error' : '' }}">
+											<label class="control-label mb-10">Tanggal Penjadwalan</label>
+											<div class="input-group date">
+												<input type="text" id="TanggalDelete" name="Tanggal" class="form-control" value="{{old('Tanggal')}}">
+												<span class="input-group-addon">
+													<span class="fa fa-calendar"></span>
+												</span>
+											</div> 
+											@error('Tanggal')
+												<span class="help-block">{{ $message }}</span>
+											@enderror
+										</div>
+									</div>
+									<!--/span-->
+									<div class="col-md-6">
+										<div class="form-group {{ $errors->has('NoIdentitas') ? 'has-error' : '' }}">
+											<label class="control-label mb-10">Terapis</label>
+											<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
+												<option disabled selected>Choose..</option>
+												@foreach( $terapises as $terapis)
+													<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
+												@endforeach
+											</select>
+											@error('NoIdentitas')
+												<span class="help-block">{{ $message }}</span>
+											@enderror
+										</div>
+									</div>
+									<!--/span-->
+									<div class="col-md-6">
+										<div class="form-group {{ $errors->has('IdAnak') ? 'has-error' : '' }}">
+											<label class="control-label mb-10">Anak</label>
+											<select class="form-control" name="IdAnak">
+												<option disabled selected>Choose..</option>
+												@foreach($biodatas as $biodata)
+													<option value="{{$biodata->IdAnak}}" @if(old('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
+												@endforeach
+											</select>
+											@error('IdAnak')
+												<span class="help-block">{{ $message }}</span>
+											@enderror
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group {{ $errors->has('IdTipe') ? 'has-error' : '' }}">
+											<label class="control-label mb-10">Tipe Absensi</label>
+											<select class="form-control" name="IdTipe">
+												<option disabled selected>Choose..</option>
+												@foreach($tipe_absensies as $tipe_absensi)
+													<option value="{{$tipe_absensi->IdTipe}}" @if(old('IdTipe') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
+												@endforeach
+											</select>
+											@error('IdTipe')
+												<span class="help-block">{{ $message }}</span>
+											@enderror
+										</div>
+									</div>
+									<!--/span-->
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+							<button type="button" class="btn btn-danger">Yes</button>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
@@ -179,29 +462,8 @@
 										<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
 										<td>
 											<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/jadwal_rolling_edit/{{$jadwal->IdJadwal}}';"><i class="fa fa-pencil"></i></button>
-											<button data-toggle="modal" data-target="#responsive-modal{{$jadwal->IdJadwal}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 										</td>
 									</tr>
-									<div id="responsive-modal{{$jadwal->IdJadwal}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-										<div class="modal-dialog">
-											<form action="/jadwal_rolling_delete/{{$jadwal->IdJadwal}}" method="POST">
-												{{csrf_field()}}
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-														<h5 class="modal-title">Delete Schedule</h5>
-													</div>
-													<div class="modal-body">
-														Are you sure to delete this Schedule ?
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-														<button type="submit" class="btn btn-danger">Yes</button>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
 								@endforeach
 							</tbody>
 						</table>
@@ -222,6 +484,10 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
+
+<!-- Bootstrap-table JavaScript -->
+	<script src="vendors/bower_components/bootstrap-table/dist/bootstrap-table.min.js"></script>
+	<script src="dist/js/bootstrap-table-data.js"></script>
 
 <!-- Data table JavaScript -->
 <script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>

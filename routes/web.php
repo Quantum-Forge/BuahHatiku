@@ -100,6 +100,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/jadwal_rolling_delete/{IdJadwal}',function($IdJadwal){
             return JadwalRollingController::delete($IdJadwal);
         });
+        Route::get('/jadwal_rolling_view', function () {
+            return view('jadwal_rolling_view');
+        });
         // Invoice
         Route::get('/input_invoice',function(Request $request){
             return InvoiceController::input_view($request);
