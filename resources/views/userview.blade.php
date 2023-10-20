@@ -34,21 +34,25 @@
 				<div class="panel-body">
 					<div class="table-wrap">
 						<div class="table-responsive">
-							<table id="datable_1" class="table table-sm table-hover display text-nowrap">
+							<table id="user_view" class="table table-sm table-hover display text-nowrap">
 								<thead>
 									<tr>
-										<th>No.</th>
+										<th>#</th>
 										<th>Nama</th>
 										<th>Email</th>
 										<th>Handphone</th>
 										<th>Role</th>
-										<th>Status</th>
 										<th>Action</th>
 									</tr>
 									<tbody>
 										@foreach ($users as $user)
 										<tr>	
-											<td width="50">{{ $loop->index + 1 }}</td>
+											<td width="50">
+												<div class="checkbox checkbox-primary">
+													<input id="checkbox_{{ $loop->index + 1 }}" onchange="window.location.href='/user_toggle_status/{{$user->NoIdentitas}}';" @if($user->StatusAktif ==  1) checked @else '' @endif type="checkbox">
+													<label for="checkbox_{{ $loop->index + 1 }}"></label>
+												</div>
+											</td>
 											<td>{{ $user->Nama }}</td>
 											<td>{{ $user->Email }}</td>
 											<td>{{ $user->NoHP }}</td>
@@ -61,7 +65,6 @@
 													<span class="label label-warning ">Terapis</span>
 												@endif
 											</td>
-											<td><input type="checkbox" onchange="window.location.href='/user_toggle_status/{{$user->NoIdentitas}}';" @if($user->StatusAktif ==  1) checked @else '' @endif class="js-switch" data-color="#FAAB15" data-size="small"></td>
 											<td width="80">
 												<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/user_edit/{{$user->NoIdentitas}}';"><i class="fa fa-pencil"></i></button>
 												<button data-toggle="modal" data-target="#responsive-modal{{$user->NoIdentitas}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
