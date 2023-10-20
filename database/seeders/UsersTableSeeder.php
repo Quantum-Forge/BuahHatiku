@@ -15,9 +15,9 @@ class UsersTableSeeder extends Seeder
             'role' => 1,
             'Nama' => 'Aldo Sentosa',
             'Alamat' => 'Jl. Gunung Latimojong No.129-A, Maradekaya, Kec. Makassar, Kota Makassar, Sulawesi Selatan 90145',
-            'NoHP' => '(+62)81393133016',
+            'NoHP' => '081393133016',
             'StatusAktif' => 1, // Sesuaikan dengan status aktif yang sesuai
-            'Username' => 'Aldo Sentosa',
+            'Username' => 'Aldo_Sentosa',
             'Password' => Hash::make('Apotik_Andika'),
             'email' => 'sentosaaldo@gmail.com',
             'email_verified_at' => null, // Jika Anda ingin memasukkan data ini

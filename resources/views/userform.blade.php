@@ -50,7 +50,7 @@
 									</div>
 									<div class="form-group col-md-6 {{ $errors->has('Username') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left" for="example-email">Username</label>
-										<input type="text" id="example-email" name="Username" value="{{old('Username')}}" class="form-control" placeholder="Username">
+										<input type="text" id="username" name="Username" value="{{old('Username')}}" class="form-control" placeholder="Username">
 										@error('Username')
 											<span class="help-block">{{ $message }}</span>
 										@enderror
@@ -83,7 +83,10 @@
 									</div>
 									<div class="form-group col-md-12 {{ $errors->has('NoHP') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left" for="no_hp">Nomor HP</label>
-										<input type="text" id="no_hp" name="NoHP" data-mask="(+62)99999999999" value="{{old('NoHP')}}" class="form-control" placeholder="Nomor HP">
+										<div class="input-group">
+											<div class="input-group-addon"><i class="ti-mobile mr-5"></i>(+62)</div>
+											<input type="number" id="no_hp" name="NoHP" value="{{old('NoHP')}}" class="form-control" placeholder="Nomor HP">
+										</div>
 										@error('NoHP')
 											<span class="help-block">{{ $message }}</span>
 										@enderror
@@ -126,6 +129,8 @@
 
 <!-- Fancy Dropdown JS -->
 <script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
+
+<script src="{{ asset('dist/js/validator_user.js') }}"></script>
 
 <!-- Init JavaScript -->
 <script src="{{ asset('dist/js/init.js') }}"></script>
