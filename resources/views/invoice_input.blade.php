@@ -150,6 +150,25 @@
 											<td>Rp. {{number_format($pengembalian, 0, ',', '.')}}</td>
 											<input type="hidden" name="Pengembalian" value="{{$pengembalian}}">
 										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Potongan</td>
+											<td>
+												<div class="input-group bootstrap-touchspin">
+													<span class="input-group-btn">
+														<button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
+													</span>
+													<span class="input-group-addon bootstrap-touchspin-prefix">Rp.</span>
+													<input id="tch2" type="number" value="0" name="tch2" class="form-control" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" style="display: block;">
+													<span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+													<span class="input-group-btn">
+														<button class="btn btn-default bootstrap-touchspin-up" type="button">+</button>
+													</span>
+												</div>
+											</td>
+										</tr>
 										<tr class="txt-dark">
 											<td></td>
 											<td></td>
