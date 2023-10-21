@@ -26,7 +26,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-12">
-							<form action="/jadwal_rolling" method="POST">
+							<form action="/jadwal_rolling" method="POST" id="jadwal_rolling_form">
 								{{ csrf_field() }}
 								<div class="form-body">
 									<h6 class="txt-dark capitalize-font"><i class="ti-calendar mr-10"></i>Penjadwalan Terapis</h6>
@@ -45,42 +45,42 @@
 																</div>
 															</th>
 															<th>Hari</th>
-															<th>Start Time</th>
-															<th>End Date</th>
+															<th>Waktu Mulai</th>
+															<th>Waktu Selesai</th>
 														  </tr>
 														</thead>
 														<tbody>
 															<tr>
 																<td>
 																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
-																		<input id="checkbox3" type="checkbox">
+																		<input id="checkbox3" type="checkbox" name="Hari[0]" value="Senin" @if(old('Hari.0') == 'Senin') checked @endif>
 																		<label for="checkbox3" class="pl-0">
 																		</label>
 																	</div>
 																</td>
 																<td>Senin</td>
 																<td>
-																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
+																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai.0') ? 'has-error' : '' }}">
 																		<div class="input-group date" id="SeninStart">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																			<input type="text" class="form-control" name="WaktuMulai[0]" value="{{old('WaktuMulai.0')}}">
 																		</div>
-																		@error('WaktuMulai')
+																		@error('WaktuMulai.0')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
 																</td>
 																<td>
-																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																	<div class="form-group {{ $errors->has('WaktuSelesai.0') ? 'has-error' : '' }} mb-0">
 																		<div class='input-group date' id="SeninSelesai">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																			<input type="text" class="form-control"  name="WaktuSelesai[0]" value="{{old('WaktuSelesai.0')}}">
 																		</div>
-																		@error('WaktuSelesai')
+																		@error('WaktuSelesai.0')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
@@ -89,34 +89,34 @@
 															<tr>
 																<td>
 																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
-																		<input id="checkbox3" type="checkbox">
+																		<input id="checkbox3" type="checkbox" name="Hari[1]" value="Selasa" @if(old('Hari.1') == 'Selasa') checked @endif>
 																		<label for="checkbox3" class="pl-0">
 																		</label>
 																	</div>
 																</td>
 																<td>Selasa</td>
 																<td>
-																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
+																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai.1') ? 'has-error' : '' }}">
 																		<div class="input-group date" id="SelasaStart">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">	
+																			<input type="text" class="form-control" name="WaktuMulai[1]" value="{{old('WaktuMulai.1')}}">	
 																		</div>
-																		@error('WaktuMulai')
+																		@error('WaktuMulai.1')
 																				<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
 																</td>
 																<td>
-																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																	<div class="form-group {{ $errors->has('WaktuSelesai.1') ? 'has-error' : '' }} mb-0">
 																		<div class='input-group date' id="SelasaSelesai">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																			<input type="text" class="form-control"  name="WaktuSelesai[1]" value="{{old('WaktuSelesai.1')}}">
 																		</div>
-																		@error('WaktuSelesai')
+																		@error('WaktuSelesai.1')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
@@ -125,34 +125,34 @@
 															<tr>
 																<td>
 																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
-																		<input id="checkbox3" type="checkbox">
+																		<input id="checkbox3" type="checkbox" name="Hari[2]" value="Rabu" @if(old('Hari.2') == 'Rabu') checked @endif>
 																		<label for="checkbox3" class="pl-0">
 																		</label>
 																	</div>
 																</td>
 																<td>Rabu</td>
 																<td>
-																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
-																		<div class="input-group date" id="KamisStart">
+																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai.2') ? 'has-error' : '' }}">
+																		<div class="input-group date" id="RabuStart">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																			<input type="text" class="form-control" name="WaktuMulai[2]" value="{{old('WaktuMulai.2')}}">
 																		</div>
-																		@error('WaktuMulai')
+																		@error('WaktuMulai.2')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
 																</td>
 																<td>
-																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
-																		<div class='input-group date' id="KamisSelesai">
+																	<div class="form-group {{ $errors->has('WaktuSelesai.2') ? 'has-error' : '' }} mb-0">
+																		<div class='input-group date' id="RabuSelesai">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																			<input type="text" class="form-control"  name="WaktuSelesai[2]" value="{{old('WaktuSelesai.2')}}">
 																		</div>
-																		@error('WaktuSelesai')
+																		@error('WaktuSelesai.2')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
@@ -161,34 +161,34 @@
 															<tr>
 																<td>
 																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
-																		<input id="checkbox3" type="checkbox">
+																		<input id="checkbox3" type="checkbox" name="Hari[3]" value="Kamis" @if(old('Hari.3') == 'Kamis') checked @endif>
 																		<label for="checkbox3" class="pl-0">
 																		</label>
 																	</div>
 																</td>
 																<td>Kamis</td>
 																<td>
-																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai') ? 'has-error' : '' }}">
+																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai.3') ? 'has-error' : '' }}">
 																		<div class="input-group date" id="KamisStart">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																			<input type="text" class="form-control" name="WaktuMulai[3]" value="{{old('WaktuMulai.3')}}">
 																		</div>
-																		@error('WaktuMulai')
+																		@error('WaktuMulai.3')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
 																</td>
 																<td>
-																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																	<div class="form-group {{ $errors->has('WaktuSelesai.3') ? 'has-error' : '' }} mb-0">
 																		<div class='input-group date' id="KamisSelesai">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																			<input type="text" class="form-control"  name="WaktuSelesai[3]" value="{{old('WaktuSelesai.3')}}">
 																		</div>
-																		@error('WaktuSelesai')
+																		@error('WaktuSelesai.3')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
@@ -197,34 +197,34 @@
 															<tr>
 																<td>
 																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
-																		<input id="checkbox3" type="checkbox">
+																		<input id="checkbox3" type="checkbox" name="Hari[4]" value="Jumat" @if(old('Hari.4') == 'Jumat') checked @endif>
 																		<label for="checkbox3" class="pl-0">
 																		</label>
 																	</div>
 																</td>
 																<td>Jumat</td>
 																<td>
-																	<div class="form-group {{ $errors->has('WaktuMulai') ? 'has-error' : '' }} mb-0">
+																	<div class="form-group {{ $errors->has('WaktuMulai.4') ? 'has-error' : '' }} mb-0">
 																		<div class="input-group date" id="JumatStart">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																			<input type="text" class="form-control" name="WaktuMulai[4]" value="{{old('WaktuMulai.4')}}">
 																		</div>
-																		@error('WaktuMulai')
+																		@error('WaktuMulai.4')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
 																</td>
 																<td>
-																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																	<div class="form-group {{ $errors->has('WaktuSelesai.4') ? 'has-error' : '' }} mb-0">
 																		<div class='input-group date' id="JumatSelesai">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																			<input type="text" class="form-control"  name="WaktuSelesai[4]" value="{{old('WaktuSelesai.4')}}">
 																		</div>
-																		@error('WaktuSelesai')
+																		@error('WaktuSelesai.4')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
@@ -233,34 +233,34 @@
 															<tr>
 																<td>
 																	<div class="checkbox checkbox-success" style="padding-left: 25px !important;">
-																		<input id="checkbox3" type="checkbox">
+																		<input id="checkbox3" type="checkbox" name="Hari[5]" value="Sabtu" @if(old('Hari.5') == 'Sabtu') checked @endif>
 																		<label for="checkbox3" class="pl-0">
 																		</label>
 																	</div>
 																</td>
 																<td>Sabtu</td>
 																<td>
-																	<div class="form-group {{ $errors->has('WaktuMulai') ? 'has-error' : '' }} mb-0">
+																	<div class="form-group {{ $errors->has('WaktuMulai.5') ? 'has-error' : '' }} mb-0">
 																		<div class="input-group date" id="SabtuStart">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control" name="WaktuMulai" value="{{old('WaktuMulai')}}">
+																			<input type="text" class="form-control" name="WaktuMulai[5]" value="{{old('WaktuMulai.5')}}">
 																		</div>
-																		@error('WaktuMulai')
+																		@error('WaktuMulai.5')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
 																</td>
 																<td>
-																	<div class="form-group {{ $errors->has('WaktuSelesai') ? 'has-error' : '' }} mb-0">
+																	<div class="form-group {{ $errors->has('WaktuSelesai.5') ? 'has-error' : '' }} mb-0">
 																		<div class='input-group date' id="SabtuSelesai">
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control"  name="WaktuSelesai" value="{{old('WaktuSelesai')}}">
+																			<input type="text" class="form-control"  name="WaktuSelesai[5]" value="{{old('WaktuSelesai.5')}}">
 																		</div>
-																		@error('WaktuSelesai')
+																		@error('WaktuSelesai.5')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
@@ -269,6 +269,9 @@
 														</tbody>
 													</table>
 												</div>
+												@error('Hari')
+													<div class="alert alert-danger">{{ $message }}</div>
+												@enderror
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -334,7 +337,7 @@
 												<!--/span-->
 											</div>
 											<div class="form-actions mt-10">
-												<button type="submit" class="btn btn-success btn-block mr-10">Save</button>
+												<button type="button" class="btn btn-success btn-block mr-10" onclick="submitForm()">Save</button>
 											</div>
 										</div>
 									</div>
@@ -462,8 +465,29 @@
 										<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
 										<td>
 											<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/jadwal_rolling_edit/{{$jadwal->IdJadwal}}';"><i class="fa fa-pencil"></i></button>
+											<button data-toggle="modal" data-target="#responsive-modal{{$jadwal->IdJadwal}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 										</td>
 									</tr>
+									<div id="responsive-modal{{$jadwal->IdJadwal}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+										<div class="modal-dialog">
+											<form action="/jadwal_rolling_delete/{{$jadwal->IdJadwal}}" method="POST">
+												{{csrf_field()}}
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+														<h5 class="modal-title">Delete Schedule</h5>
+													</div>
+													<div class="modal-body">
+														Are you sure to delete this Schedule ?
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+														<button type="submit" class="btn btn-danger">Yes</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
 								@endforeach
 							</tbody>
 						</table>
@@ -520,29 +544,4 @@
 
 <!-- Init JavaScript -->
 <script src="{{ asset('dist/js/init.js') }}"></script>
-<script>
-	$(document).ready(function() {
-		// Mendengarkan perubahan pada input tanggal
-		$("#date-input, #start-time, #end-time").on("change", function() {
-			validateTime();
-		});
-	
-		// Fungsi untuk melakukan validasi
-		function validateTime() {
-			var selectedDate = new Date($("#date-input").val());
-			var today = new Date();
-	
-			if (selectedDate.toDateString() === today.toDateString()) {
-				var startTime = $("#start-time").val();
-				var endTime = $("#end-time").val();
-	
-				if (startTime && endTime && startTime > endTime) {
-					alert("End Time tidak boleh lebih awal daripada Start Time");
-					// Mengosongkan input End Time atau melakukan tindakan lain yang sesuai
-					$("#end-time").val("");
-				}
-			}
-		}
-	});
-</script>
 @endsection

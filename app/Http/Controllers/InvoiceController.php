@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use App\Models\Biodata;
 use App\Models\JadwalRolling;
@@ -53,6 +54,7 @@ class InvoiceController extends Controller
             return redirect('input_invoice')
                         ->withErrors(['message' => 'Pilih Anak dahulu']);
         }
+        
         $invoice = new Invoice;
 
         $invoice->NoIdentitas = $request->NoIdentitas;
@@ -62,6 +64,7 @@ class InvoiceController extends Controller
         $invoice->Bulan = $date->month;
         $invoice->Tahun = $date->year;
         $invoice->SubTotal = $request->SubTotal;
+        $invoice->Potongan = $request->Potongan;
         $invoice->GrandTotal = $request->GrandTotal;
         $invoice->StatusPelunasan = 0;
         $invoice->save();

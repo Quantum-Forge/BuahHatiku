@@ -19,7 +19,7 @@ $(document).ready(function() {
 
 	// Inisialisasi datetimepicker untuk elemen-elemen yang sesuai
 	$('#SeninStart, #SelasaStart, #RabuStart, #KamisStart, #JumatStart, #SabtuStart').datetimepicker({
-		format: 'LT',
+		format: 'HH:mm',
 		useCurrent: false,
 		icons: {
 			time: "fa fa-clock-o",
@@ -30,11 +30,11 @@ $(document).ready(function() {
 	});
 
 	// Mengatur nilai awal input dengan waktu saat ini
-	$('#SeninStart, #SelasaStart, #RabuStart, #KamisStart, #JumatStart, #SabtuStart').find('input').val(moment().format('LT'));
+	// $('#SeninStart, #SelasaStart, #RabuStart, #KamisStart, #JumatStart, #SabtuStart').find('input').val(moment().format('LT'));
 
 
 	$('#SeninSelesai, #SelasaSelesai, #RabuSelesai, #KamisSelesai, #JumatSelesai, #SabtuSelesai').datetimepicker({
-		format: 'LT',
+		format: 'HH:mm',
 		useCurrent: false,
 		icons: {
 			time: "fa fa-clock-o",
@@ -45,7 +45,7 @@ $(document).ready(function() {
 	});
 
 	// Mengatur nilai awal input dengan waktu saat ini
-	$('#SeninSelesai, #SelasaSelesai, #RabuSelesai, #KamisSelesai, #JumatSelesai, #SabtuSelesai').find('input').val(moment().format('LT'));
+	// $('#SeninSelesai, #SelasaSelesai, #RabuSelesai, #KamisSelesai, #JumatSelesai, #SabtuSelesai').find('input').val(moment().format('LT'));
 	 
 	$(document).ready(function() {
 		// Handler untuk kotak centang "Check All"
@@ -77,5 +77,18 @@ $(document).ready(function() {
 				   language: 'id'
 			   }
 	   });
-	
+
 });
+// Clear null di waktu
+function submitForm() {
+	const form = document.getElementById('jadwal_rolling_form');
+	const inputFields = form.querySelectorAll('input');
+	
+	for (let inputField of inputFields) {
+		if (inputField.value === "") {
+		inputField.removeAttribute("name");
+		}
+	}
+	
+	form.submit();
+}

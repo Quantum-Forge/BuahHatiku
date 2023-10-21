@@ -14,13 +14,16 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if($role == 'owner') $key = 1;
-        elseif($role == 'admin') $key = 2;
-        elseif($role == 'terapis') $key = 3;
-        if($request->user() && ($request->user()->Role == $key || $request->user()->Role == 1)) {
-            return $next($request);
+        foreach ($roles as $role) {
+            if($role == 'owner') $key = 1;
+            elseif($role == 'admin') $key = 2;
+            elseif($role == 'terapis') $key = 3;
+            elseif($role == 'staff') $key = 4;
+            if($request->user() && ($request->user()->Role == $key || $request->user()->Role == 1)) {
+                return $next($request);
+            }
         }
         return redirect('/404');
     }

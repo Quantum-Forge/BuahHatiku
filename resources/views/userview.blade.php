@@ -63,6 +63,8 @@
 													<span class="label label-success ">Admin</span>
 												@elseif($user->Role == 3 )
 													<span class="label label-warning ">Terapis</span>
+												@elseif($user->Role == 4 )
+													<span class="label label-danger ">Staff</span>
 												@endif
 											</td>
 											<td width="80">

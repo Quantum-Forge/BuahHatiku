@@ -75,6 +75,7 @@
 											<option value="1" @if(old('Role', $user->Role)==1) selected @endif>Owner</option>
 											<option value="2" @if(old('Role', $user->Role)==2) selected @endif>Admin</option>
 											<option value="3" @if(old('Role', $user->Role)==3) selected @endif>Terapis</option>
+											<option value="4" @if(old('Role', $user->Role)==4) selected @endif>Staff</option>
 										</select>
 										@error('Role')
 											<span class="help-block">{{ $message }}</span>

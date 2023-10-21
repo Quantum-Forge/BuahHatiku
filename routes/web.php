@@ -43,11 +43,13 @@ Route::get('/404',function(){
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard',function(){
-        return DashboardController::view();
+    Route::get('/home', function(){
+        return UserController::home();
     });
     Route::middleware(['role:admin'])->group(function () {
-        
+        Route::get('/dashboard',function(){
+            return DashboardController::view();
+        });
         // BIODATA
         Route::get('/biodata_insert',function(){
             return view('biodatainsert');
@@ -86,7 +88,7 @@ Route::middleware(['auth'])->group(function () {
         });
         // Schedulling
         Route::get('/jadwal_rolling',function(){
-            return JadwalRollingController::view();
+            return JadwalRollingController::crud_view();
         });
         Route::post('/jadwal_rolling',function(Request $request){
             return JadwalRollingController::insert($request);
@@ -99,9 +101,6 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::post('/jadwal_rolling_delete/{IdJadwal}',function($IdJadwal){
             return JadwalRollingController::delete($IdJadwal);
-        });
-        Route::get('/jadwal_rolling_view', function () {
-            return view('jadwal_rolling_view');
         });
         // Invoice
         Route::get('/input_invoice',function(Request $request){
@@ -158,37 +157,44 @@ Route::middleware(['auth'])->group(function () {
             return UserController::delete($NoIdentitas);
         });
     });
-    Route::get('/biodata_view',function(){
-        return BiodataController::view();
+    Route::middleware(['role:terapis,admin'])->group(function () {
+        Route::get('/biodata_view',function(){
+            return BiodataController::view();
+        });
+        // Questionnaire
+        Route::get('/parental_questionnaire',function(){
+            return ParentalQuestionaireController::view();
+        });
+        Route::post('/parental_questionnaire',function(Request $request){
+            return ParentalQuestionaireController::insert($request);
+        });
+        Route::post('/parental_questionnaire_delete/{IdAnak}',function($IdAnak){
+            return ParentalQuestionaireController::delete($IdAnak);
+        });
+        Route::get('/parental_questionnaire_view',function(){
+            return view('parental_questionnaire_view');
+        });
+        Route::get('/parental_questionnaire_view/{IdAnak}',function($IdAnak){
+            return ParentalQuestionaireController::view_detail($IdAnak);
+        });
+        // Daftar absensi terapis
+        Route::get('/daftar_absensi_terapis',function(){
+            return AbsensiController::view_terapis();
+        });
+        Route::post('/daftar_absensi',function(Request $request){
+            return AbsensiController::update($request);
+        });
+        // Kehadiran
+        Route::get('/kehadiran',function(){
+            return AbsensiController::view_kehadiran();
+        });
+        Route::get('/search', function (Request $request) {
+            return BiodataController::search($request);
+        });
     });
-    // Questionnaire
-    Route::get('/parental_questionnaire',function(){
-        return ParentalQuestionaireController::view();
-    });
-    Route::post('/parental_questionnaire',function(Request $request){
-        return ParentalQuestionaireController::insert($request);
-    });
-    Route::post('/parental_questionnaire_delete/{IdAnak}',function($IdAnak){
-        return ParentalQuestionaireController::delete($IdAnak);
-    });
-    Route::get('/parental_questionnaire_view',function(){
-        return view('parental_questionnaire_view');
-    });
-    Route::get('/parental_questionnaire_view/{IdAnak}',function($IdAnak){
-        return ParentalQuestionaireController::view_detail($IdAnak);
-    });
-    // Daftar absensi terapis
-    Route::get('/daftar_absensi_terapis',function(){
-        return AbsensiController::view_terapis();
-    });
-    Route::post('/daftar_absensi',function(Request $request){
-        return AbsensiController::update($request);
-    });
-    // Kehadiran
-    Route::get('/kehadiran',function(){
-        return AbsensiController::view_kehadiran();
-    });
-    Route::get('/search', function (Request $request) {
-        return BiodataController::search($request);
+    Route::middleware(['role:staff,terapis,admin'])->group(function () {
+        Route::get('/jadwal_rolling_view', function () {
+            return JadwalRollingController::view();
+        });
     });
 });

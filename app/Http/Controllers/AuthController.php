@@ -33,10 +33,7 @@ class AuthController extends Controller
             $password  = $request->password;
             if (Hash::check($password, $user->Password)) { 
                 Auth::login($user, $remember = $remember_me);
-                if($user->Role == 3){
-                    return redirect('/daftar_absensi_terapis');
-                } 
-                return redirect('dashboard');
+                return redirect('/home');
             }
         }
         

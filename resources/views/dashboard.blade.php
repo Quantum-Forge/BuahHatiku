@@ -29,7 +29,7 @@
 							<div class="profile-info pt-40">
 								<img class="img-circle inline-block mt-40 mb-10" src="{{ asset('dist/img/buahatiku.png') }}" alt="user"/>
 								<h4 class="txt-light block  mb-5 capitalize-font">{{$user->Nama}}</h4>
-								<h6 class="txt-light block uppercase-font pb-40">{{$user->Role == 1 ? 'Owner' : ($user->Role == 2 ? 'Admin' : 'Terapis')}}</h6>
+								<h6 class="txt-light block uppercase-font pb-40">{{$user->Role == 1 ? 'Owner' : ($user->Role == 2 ? 'Admin' : ($user->Role == 3 ? 'Terapis' : 'Staff'))}}</h6>
 							</div>	
 							<div class="profile-image-overlay"></div>
 						</div>

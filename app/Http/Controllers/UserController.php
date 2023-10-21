@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
@@ -11,6 +12,16 @@ use App\Models\User;
 class UserController extends Controller
 {
     //
+    public static function home(){
+        $user = Auth::user();
+        if($user->Role == 3){
+            return redirect('/daftar_absensi_terapis');
+        } elseif($user->Role == 4){
+            return redirect('/jadwal_rolling_view');
+        }
+        return redirect('/dashboard');
+    }
+
     public static function view(){
         $users = User::all();
         return view('userview')->with('users', $users);

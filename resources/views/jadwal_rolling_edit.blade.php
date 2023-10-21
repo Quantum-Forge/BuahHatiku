@@ -73,7 +73,7 @@
 												<select class="form-control" name="IdAnak">
 													<option disabled selected>Choose..</option>
 													@foreach($biodatas as $biodata)
-														<option value="{{$biodata->IdAnak}}" @if(old('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
+														<option value="{{$biodata->IdAnak}}" @if(old('IdAnak', $jadwal_rolling->biodata->IdAnak) == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
 													@endforeach
 												</select>
 												@error('IdAnak')
