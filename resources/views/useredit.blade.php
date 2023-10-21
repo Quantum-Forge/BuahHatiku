@@ -49,7 +49,7 @@
 									</div>
 									<div class="form-group col-md-6 {{ $errors->has('Username') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left" for="example-email">Username</label>
-										<input type="text" id="example-email" name="Username" value="{{old('Username', $user->Username)}}" class="form-control" placeholder="Username">
+										<input type="text" id="username" name="Username" value="{{old('Username', $user->Username)}}" class="form-control" placeholder="Username">
 										@error('Username')
 											<span class="help-block">{{ $message }}</span>
 										@enderror
