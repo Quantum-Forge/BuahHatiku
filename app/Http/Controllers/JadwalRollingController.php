@@ -44,25 +44,25 @@ class JadwalRollingController extends Controller
     public static function insert(Request $request){
         // dd($request->Hari[1]);
         // dd($request->all());
-        
+        // dd($request->Hari[0]);
         $validator = Validator::make($request->all(), [
             'NoIdentitas' => 'required',
             'IdAnak' => 'required',
             'IdTipe' => 'required',
             'Tanggal' => 'required',
             'Hari' => 'required',
-            'WaktuMulai.0' => 'required_if:Hari.0,Senin|date_format:H:i',
-            'WaktuSelesai.0' => 'required_if:Hari.0,Senin|date_format:H:i|after:WaktuMulai.0',
-            'WaktuMulai.1' => 'required_if:Hari.1,Selasa|date_format:H:i',
-            'WaktuSelesai.1' => 'required_if:Hari.1,Selasa|date_format:H:i|after:WaktuMulai.1',
-            'WaktuMulai.2' => 'required_if:Hari.2,Rabu|date_format:H:i',
-            'WaktuSelesai.2' => 'required_if:Hari.2,Rabu|date_format:H:i|after:WaktuMulai.2',
-            'WaktuMulai.3' => 'required_if:Hari.3,Kamis|date_format:H:i',
-            'WaktuSelesai.3' => 'required_if:Hari.3,Kamis|date_format:H:i|after:WaktuMulai.3',
-            'WaktuMulai.4' => 'required_if:Hari.4,Jumat|date_format:H:i',
-            'WaktuSelesai.4' => 'required_if:Hari.4,Jumat|date_format:H:i|after:WaktuMulai.4',
-            'WaktuMulai.5' => 'required_if:Hari.5,Sabtu|date_format:H:i',
-            'WaktuSelesai.5' => 'required_if:Hari.5,Sabtu|date_format:H:i|after:WaktuMulai.5',
+            'WaktuMulai.0' => 'required_with:Hari.0|date_format:H:i',
+            'WaktuSelesai.0' => 'required_with:Hari.0|date_format:H:i|after:WaktuMulai.0',
+            'WaktuMulai.1' => 'required_with:Hari.1|date_format:H:i',
+            'WaktuSelesai.1' => 'required_with:Hari.1|date_format:H:i|after:WaktuMulai.1',
+            'WaktuMulai.2' => 'required_with:Hari.2|date_format:H:i',
+            'WaktuSelesai.2' => 'required_with:Hari.2|date_format:H:i|after:WaktuMulai.2',
+            'WaktuMulai.3' => 'required_with:Hari.3|date_format:H:i',
+            'WaktuSelesai.3' => 'required_with:Hari.3|date_format:H:i|after:WaktuMulai.3',
+            'WaktuMulai.4' => 'required_with:Hari.4|date_format:H:i',
+            'WaktuSelesai.4' => 'required_with:Hari.4|date_format:H:i|after:WaktuMulai.4',
+            'WaktuMulai.5' => 'required_with:Hari.5|date_format:H:i',
+            'WaktuSelesai.5' => 'required_with:Hari.5|date_format:H:i|after:WaktuMulai.5',
             // 'WaktuMulai.*' => 'nullable|required_if:Hari.*,Selasa',
             // 'WaktuSelesai.*' => 'nullable|required_if:Hari.*,Selasa|after:WaktuMulai.*',
         ], [
@@ -70,9 +70,9 @@ class JadwalRollingController extends Controller
             'NoIdentitas.required' => 'Terapis harus diisi',
             'IdAnak.required' => 'Anak harus diisi',
             'IdTipe.required' => 'Tipe absensi harus diisi',
-            'WaktuMulai.*.required_if' => 'Waktu mulai harus diisi',
-            'WaktuSelesai.*.required_if' => 'Waktu selesai harus diisi',
-            'WaktuSelesai.*.after' => 'Waktu selesai harus setelah waktu mulai'
+            'WaktuMulai.*.required_with' => 'Waktu mulai harus diisi',
+            'WaktuSelesai.*.required_with' => 'Waktu selesai harus diisi',
+            'WaktuSelesai.*.after' => 'Waktu selesai harus setelah waktu mulai',
         ]);
         // dd($validator->errors());
         if ($validator->fails()) {
