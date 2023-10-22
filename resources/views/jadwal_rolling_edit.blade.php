@@ -26,7 +26,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-12">
-							<form action="/jadwal_rolling_edit" method="POST">
+							<form action="/jadwal_rolling_edit" id="jadwal_rolling_edit" method="POST">
 								{{ csrf_field() }}
 								<div class="form-body">
 									<input type="hidden" name="IdJadwal" value="{{$jadwal_rolling->IdJadwal}}">

@@ -18,7 +18,7 @@ $(document).ready(function() {
 	   });
 
 	$('#WaktuMulai').datetimepicker({
-		format: 'LT',
+		format: 'HH:mm',
 		useCurrent: false,
 		icons: {
 				time: "fa fa-clock-o",
@@ -29,7 +29,7 @@ $(document).ready(function() {
 	}).data("DateTimePicker").date(moment());
 
 	$('#WaktuSelesai').datetimepicker({
-		format: 'LT',
+		format: 'HH:mm',
 		useCurrent: false,
 		icons: {
 				time: "fa fa-clock-o",
