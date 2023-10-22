@@ -27,7 +27,10 @@ $(document).ready(function() {
 				up: "fa fa-arrow-up",
 				down: "fa fa-arrow-down"
 			},
-	}).data("DateTimePicker").date(moment());
+	}).on('dp.show', function() {
+		if($(this).data("DateTimePicker").date() === null)
+			$(this).data("DateTimePicker").date(moment());
+	});
 
 	$('#WaktuSelesai').datetimepicker({
 		format: 'HH:mm',
@@ -38,6 +41,11 @@ $(document).ready(function() {
 				up: "fa fa-arrow-up",
 				down: "fa fa-arrow-down"
 			},
-	}).data("DateTimePicker").date(moment());
+	}).on('dp.show', function() {
+		if($(this).data("DateTimePicker").date() === null)
+			$(this).data("DateTimePicker").date(moment());
+	});
 	
 });
+
+
