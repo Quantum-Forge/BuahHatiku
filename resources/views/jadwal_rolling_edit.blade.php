@@ -171,7 +171,7 @@
 <script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
 <!-- Form Picker Init JavaScript -->
-<script src="{{ asset('dist/js/edit_Jadwalrolling_form.js') }}"></script>
+<script src="{{ asset('dist/js/jadwal_rolling-edit.js') }}"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
