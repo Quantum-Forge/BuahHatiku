@@ -5,7 +5,7 @@
 <!-- Title -->
 <div class="row heading-bg  bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h5 class="txt-light">analytical</h5>
+		<h5 class="txt-light">Invoice</h5>
 	</div>
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -150,23 +150,15 @@
 											<td>Rp. {{number_format($pengembalian, 0, ',', '.')}}</td>
 											<input type="hidden" name="Pengembalian" value="{{$pengembalian}}">
 										</tr>
-										<tr>
+										<tr class="txt-dark">
 											<td></td>
 											<td></td>
 											<td></td>
 											<td>Potongan</td>
 											<td>
-												<div class="input-group bootstrap-touchspin">
-													<span class="input-group-btn">
-														<button class="btn btn-default bootstrap-touchspin-down" type="button">-</button>
-													</span>
-													<span class="input-group-addon bootstrap-touchspin-prefix">Rp.</span>
-													<input id="tch2" type="number" value="0" name="Potongan" class="form-control" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" style="display: block;">
-													<span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
-													<span class="input-group-btn">
-														<button class="btn btn-default bootstrap-touchspin-up" type="button">+</button>
-													</span>
-												</div>
+												<div class="form-group mt-10">
+													<input id="tch2" type="number" value="0" name="Potongan" class=" form-control" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default">
+												</div>	
 											</td>
 										</tr>
 										<tr class="txt-dark">
@@ -208,32 +200,14 @@
 <script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
 
-<!-- Bootstrap Colorpicker JavaScript -->
-<script src="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
-
-<!-- Switchery JavaScript -->
-<script src="{{ asset('vendors/bower_components/switchery/dist/switchery.min.js') }}"></script>
-
 <!-- Select2 JavaScript -->
 <script src="{{ asset('vendors/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
 <!-- Bootstrap Select JavaScript -->
 <script src="{{ asset('vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
 
-<!-- Bootstrap Tagsinput JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-
 <!-- Bootstrap Touchspin JavaScript -->
 <script src="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
-
-<!-- Multiselect JavaScript -->
-<script src="{{ asset('vendors/bower_components/multiselect/js/jquery.multi-select.js') }}"></script>
-
-<!-- Bootstrap Switch JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js') }}"></script>
-
-<!-- Bootstrap Datetimepicker JavaScript -->
-<script src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
 <!-- Form Advance Init JavaScript -->
 <script src="{{ asset('dist/js/form-advance-data.js') }}"></script>

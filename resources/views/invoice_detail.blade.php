@@ -138,6 +138,13 @@
 											<td></td>
 											<td></td>
 											<td></td>
+											<td>Potongan</td>
+											<td>Rp. -</td>
+										</tr>
+										<tr class="txt-dark">
+											<td></td>
+											<td></td>
+											<td></td>
 											<td>Total</td>
 											<td>Rp. {{number_format($invoice->GrandTotal, 0, ',', '.')}}</td>
 										</tr>
