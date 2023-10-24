@@ -68,15 +68,16 @@ $(document).ready(function() {
 
 	// options untuk delete
 	/* delete Init*/
-	$('#TanggalDelete').daterangepicker({
-		buttonClasses: ['btn', 'btn-sm'],
-			   applyClass: 'btn-info',
-			   cancelClass: 'btn-default',
-			   locale: {
-				   format: 'DD/MM/YYYY',
-				   language: 'id'
-			   }
-	   });
+	$('#TanggalDelete').datetimepicker({
+		format: 'DD/MM/YYYY',
+		useCurrent: true,
+		icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-arrow-up",
+			down: "fa fa-arrow-down"
+		}
+	}).data("DateTimePicker").date(moment());
 
 });
 // Clear null di waktu

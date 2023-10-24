@@ -362,81 +362,82 @@
 			</div>
 			<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h5 class="modal-title">Remove Schedule</h5>
-						</div>
-						<div class="modal-body">
-							<form action="">
+					<form action="/jadwal_rolling_delete" method="POST">
+					{{csrf_field()}}
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h5 class="modal-title">Anak Berhenti</h5>
+							</div>
+							<div class="modal-body">
 								<div class="row">
 									<div class="col-md-12">
-										<div class="form-group {{ $errors->has('Tanggal') ? 'has-error' : '' }}">
-											<label class="control-label mb-10">Tanggal Penjadwalan</label>
+										<div class="form-group {{ $errors->has('TanggalDelete') ? 'has-error' : '' }}">
+											<label class="control-label mb-10">Tanggal Berhenti</label>
 											<div class="input-group date">
-												<input type="text" id="TanggalDelete" name="Tanggal" class="form-control" value="{{old('Tanggal')}}">
+												<input type="text" id="TanggalDelete" name="TanggalDelete" class="form-control" value="{{old('TanggalDelete')}}">
 												<span class="input-group-addon">
 													<span class="fa fa-calendar"></span>
 												</span>
 											</div> 
-											@error('Tanggal')
+											@error('TanggalDelete')
 												<span class="help-block">{{ $message }}</span>
 											@enderror
 										</div>
 									</div>
 									<!--/span-->
 									<div class="col-md-6">
-										<div class="form-group {{ $errors->has('NoIdentitas') ? 'has-error' : '' }}">
+										<div class="form-group {{ $errors->has('NoIdentitasDelete') ? 'has-error' : '' }}">
 											<label class="control-label mb-10">Terapis</label>
-											<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
+											<select class="form-control" name="NoIdentitasDelete" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
 												<option disabled selected>Choose..</option>
 												@foreach( $terapises as $terapis)
-													<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
+													<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitasDelete') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
 												@endforeach
 											</select>
-											@error('NoIdentitas')
+											@error('NoIdentitasDelete')
 												<span class="help-block">{{ $message }}</span>
 											@enderror
 										</div>
 									</div>
 									<!--/span-->
 									<div class="col-md-6">
-										<div class="form-group {{ $errors->has('IdAnak') ? 'has-error' : '' }}">
+										<div class="form-group {{ $errors->has('IdAnakDelete') ? 'has-error' : '' }}">
 											<label class="control-label mb-10">Anak</label>
-											<select class="form-control" name="IdAnak">
+											<select class="form-control" name="IdAnakDelete">
 												<option disabled selected>Choose..</option>
 												@foreach($biodatas as $biodata)
-													<option value="{{$biodata->IdAnak}}" @if(old('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
+													<option value="{{$biodata->IdAnak}}" @if(old('IdAnakDelete') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
 												@endforeach
 											</select>
-											@error('IdAnak')
+											@error('IdAnakDelete')
 												<span class="help-block">{{ $message }}</span>
 											@enderror
 										</div>
 									</div>
 									<div class="col-md-12">
-										<div class="form-group {{ $errors->has('IdTipe') ? 'has-error' : '' }}">
+										<div class="form-group {{ $errors->has('IdTipeDelete') ? 'has-error' : '' }}">
 											<label class="control-label mb-10">Tipe Absensi</label>
-											<select class="form-control" name="IdTipe">
+											<select class="form-control" name="IdTipeDelete">
 												<option disabled selected>Choose..</option>
 												@foreach($tipe_absensies as $tipe_absensi)
-													<option value="{{$tipe_absensi->IdTipe}}" @if(old('IdTipe') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
+													<option value="{{$tipe_absensi->IdTipe}}" @if(old('IdTipeDelete') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
 												@endforeach
 											</select>
-											@error('IdTipe')
+											@error('IdTipeDelete')
 												<span class="help-block">{{ $message }}</span>
 											@enderror
 										</div>
 									</div>
 									<!--/span-->
 								</div>
-							</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+								<button type="submit" class="btn btn-danger">Yes</button>
+							</div>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-							<button type="button" class="btn btn-danger">Yes</button>
-						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 			<div class="panel-wrapper collapse in">

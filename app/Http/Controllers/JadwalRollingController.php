@@ -221,7 +221,7 @@ class JadwalRollingController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
-        $tanggal = Carbon::createFromFormat('d-m-Y',$request->Tanggal);
+        $tanggal = Carbon::createFromFormat('d/m/Y',$request->Tanggal);
         // $waktuMulai = Carbon::createFromFormat('g:i a',$request->WaktuMulai)->format('H:i');
         // $waktuSelesai = Carbon::createFromFormat('g:i a',$request->WaktuSelesai)->format('H:i');
         $check = JadwalRolling::where('IdAnak', $request->IdAnak)
@@ -258,6 +258,36 @@ class JadwalRollingController extends Controller
         $absensi = Absensi::where('IdJadwal', $IdJadwal)->first();
         $absensi->delete();
         $jadwal_rolling->delete();
+        return redirect('/jadwal_rolling');
+    }
+
+    public static function quit(Request $request){
+        $validator = Validator::make($request->all(), [
+            'NoIdentitasDelete' => 'required',
+            'IdAnakDelete' => 'required',
+            'IdTipeDelete' => 'required',
+            'TanggalDelete' => 'required',
+        ], [
+            'TanggalDelete.required' => 'Tanggal Berhenti harus diisi',
+            'NoIdentitasDelete.required' => 'Terapis harus diisi',
+            'IdAnakDelete.required' => 'Anak harus diisi',
+            'IdTipeDelete.required' => 'Tipe absensi harus diisi',
+        ]);
+        if ($validator->fails()) {
+            return redirect('/jadwal_rolling')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        $tanggal = Carbon::createFromFormat('d/m/Y',$request->TanggalDelete);
+        $jadwal_rolling = JadwalRolling::
+            whereDate('Tanggal', '>=', $tanggal)
+            ->where('IdAnak', $request->IdAnakDelete)
+            ->where('NoIdentitas', $request->NoIdentitasDelete)
+            ->where('IdTipe', $request->IdTipeDelete);
+
+        Absensi::whereIn('IdJadwal', $jadwal_rolling->get()->modelKeys())->delete();
+        $jadwal_rolling->delete();
+        
         return redirect('/jadwal_rolling');
     }
 }
