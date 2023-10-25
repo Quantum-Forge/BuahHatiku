@@ -48,8 +48,8 @@
 									@foreach($jadwal_rolling as $jadwal)
 										<tr>
 											<td>{{$loop->index+1}}</td>
-											<td>{{$jadwal->Tanggal}}</td>
-											<td>-</td>
+											<td>{{$jadwal->Hari.', '.$jadwal->Tanggal}}</td>
+											<td>{{$jadwal->Bulan}}</td>
 											<td>{{$jadwal->user->Nama}}</td>
 											<td>{{$jadwal->biodata->Nama}}</td>
 											<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>

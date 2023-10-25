@@ -23,6 +23,11 @@ class JadwalRolling extends Model
      */
     protected $primaryKey = 'IdJadwal';
 
+    public function getBulanAttribute()
+    {
+        return Carbon::parse($this->attributes['Tanggal'])->locale('id')->monthName;
+    }
+
     public function getTanggalAttribute()
     {
         return Carbon::parse($this->attributes['Tanggal'])->format('d-m-Y');

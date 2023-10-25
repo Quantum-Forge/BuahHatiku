@@ -423,7 +423,7 @@
 							<!--/span-->
 						</div>
 						<div class="form-actions mt-10">
-							<button type="button" class="btn btn-danger btn-block"><i class="fa fa-trash"></i> Delete</button>
+							<button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash"></i> Delete</button>
 						</div>		
 					</form>
 				</div>
@@ -432,97 +432,100 @@
 	</div>
 	<div class="col-md-9">
 		<div class="panel panel-default card-view">
-			<div class="panel-heading">
-				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Data Penjadwalan</h6>
+			<form action="/jadwal_rolling_delete_bulk" method="POST">
+				{{csrf_field()}}
+				<div class="panel-heading">
+					<div class="pull-left">
+						<h6 class="panel-title txt-dark">Data Penjadwalan</h6>
+					</div>
+					<div class="pull-right">
+						<a href="#" class="label label-danger" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-trash mr-5"></i>Remove</a>
+					</div>
+					<div class="clearfix"></div>
 				</div>
-				<div class="pull-right">
-					<a href="#" class="label label-danger" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-trash mr-5"></i>Remove</a>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h5 class="modal-title">Delete Schedule</h5>
-						</div>
-						<div class="modal-body">
-							Are you sure to delete this (Total Checks) Checks ?
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-							<button type="button" class="btn btn-danger">Yes</button>
+				<div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								<h5 class="modal-title">Delete Schedule</h5>
+							</div>
+							<div class="modal-body">
+								Are you sure to delete this (Total Checks) Checks ?
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+								<button type="submit" class="btn btn-danger">Yes</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="panel-wrapper collapse in">
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table id="jadwal_table" class="table table-hover display pb-30" >
-							<thead>
-								<tr>
-									<th>
-										<div class="checkbox penjadwalan checkbox-success" style="padding-left: 25px !important;">
-											<input id="checkAllPenjadwalan" type="checkbox">
-											<label for="checkAllPenjadwalan" class="pl-0"></label>
-										</div>
-									</th>
-									<th>Tanggal Penjadwalan</th>
-									<th>Terapis</th>
-									<th>Anak</th>
-									<th>Tipe Absensi</th>
-									<th>Waktu</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach($jadwal_rolling as $jadwal)
+				<div class="panel-wrapper collapse in">
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table id="jadwal_table" class="table table-hover display pb-30" >
+								<thead>
 									<tr>
-										<td>
+										<th>
 											<div class="checkbox penjadwalan checkbox-success" style="padding-left: 25px !important;">
-												<input id="penjadwalan{{$loop->index+1}}" type="checkbox">
-												<label for="penjadwalan{{$loop->index+1}}" class="pl-0"></label>
+												<input id="checkAllPenjadwalan" type="checkbox">
+												<label for="checkAllPenjadwalan" class="pl-0"></label>
 											</div>
-										</td>
-										<td>{{$jadwal->Tanggal}}</td>
-										<td>{{$jadwal->user->Nama}}</td>
-										<td>{{$jadwal->biodata->Nama}}</td>
-										<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
-										<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
-										<td>
-											<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/jadwal_rolling_edit/{{$jadwal->IdJadwal}}';"><i class="fa fa-pencil"></i></button>
-											<button data-toggle="modal" data-target="#responsive-modal{{$jadwal->IdJadwal}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
-										</td>
+										</th>
+										<th>Tanggal Penjadwalan</th>
+										<th>Terapis</th>
+										<th>Anak</th>
+										<th>Tipe Absensi</th>
+										<th>Waktu</th>
+										<th>Action</th>
 									</tr>
-									<div id="responsive-modal{{$jadwal->IdJadwal}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-										<div class="modal-dialog">
-											<form action="/jadwal_rolling_delete/{{$jadwal->IdJadwal}}" method="POST">
-												{{csrf_field()}}
-												<div class="modal-content">
-													<div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-														<h5 class="modal-title">Delete Schedule</h5>
-													</div>
-													<div class="modal-body">
-														Are you sure to delete this Schedule ?
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-														<button type="submit" class="btn btn-danger">Yes</button>
-													</div>
+								</thead>
+								<tbody>
+									@foreach($jadwal_rolling as $jadwal)
+										<tr>
+											<td>
+												<div class="checkbox penjadwalan checkbox-success" style="padding-left: 25px !important;">
+													<input id="penjadwalan{{$loop->index+1}}" type="checkbox" name="Delete[]" value="{{$jadwal->IdJadwal}}">
+													<label for="penjadwalan{{$loop->index+1}}" class="pl-0"></label>
 												</div>
-											</form>
+											</td>
+											<td>{{$jadwal->Hari.', '.$jadwal->Tanggal}}</td>
+											<td>{{$jadwal->user->Nama}}</td>
+											<td>{{$jadwal->biodata->Nama}}</td>
+											<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
+											<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
+											<td>
+												<button type="button" class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/jadwal_rolling_edit/{{$jadwal->IdJadwal}}';"><i class="fa fa-pencil"></i></button>
+												<button type="button" data-toggle="modal" data-target="#responsive-modal{{$jadwal->IdJadwal}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+											</td>
+										</tr>
+										<div id="responsive-modal{{$jadwal->IdJadwal}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+											<div class="modal-dialog">
+												<!-- <form action="/jadwal_rolling_delete/{{$jadwal->IdJadwal}}" method="POST">
+													{{csrf_field()}} -->
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+															<h5 class="modal-title">Delete Schedule</h5>
+														</div>
+														<div class="modal-body">
+															Are you sure to delete this Schedule ?
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+															<button type="button" class="btn btn-danger" onclick="window.location.href='/jadwal_rolling_delete/{{$jadwal->IdJadwal}}';">Yes</button>
+														</div>
+													</div>
+												<!-- </form> -->
+											</div>
 										</div>
-									</div>
-								@endforeach
-							</tbody>
-						</table>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>

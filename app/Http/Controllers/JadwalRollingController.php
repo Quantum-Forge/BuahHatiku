@@ -280,6 +280,15 @@ class JadwalRollingController extends Controller
         return redirect('/jadwal_rolling');
     }
 
+    public static function delete_bulk(Request $request){
+        if($request->Delete){
+            $jadwal_rolling = JadwalRolling::whereIn('IdJadwal', $request->Delete);
+            Absensi::whereIn('IdJadwal', $jadwal_rolling->get()->modelKeys())->delete();
+            $jadwal_rolling->delete();
+        }
+        return redirect('/jadwal_rolling');
+    }
+
     public static function quit(Request $request){
         $validator = Validator::make($request->all(), [
             'NoIdentitasDelete' => 'required',
