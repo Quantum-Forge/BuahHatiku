@@ -23,14 +23,14 @@ class InvoiceController extends Controller
                                         ->whereYear('Tanggal', now()->year)
                                         ->whereMonth('Tanggal', now()->month)
                                         ->groupBy('IdTipe')
-                                        ->select('IdTipe', DB::raw('count(*) as JumlahPertemuan'), DB::raw('GROUP_CONCAT(Hari SEPARATOR \', \') as ListHari'))
+                                        ->select('IdTipe', DB::raw('count(*) as JumlahPertemuan'), DB::raw('GROUP_CONCAT(DISTINCT Hari ORDER BY FIELD(Hari, "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu") SEPARATOR \', \') as ListHari'))
                                         ->get();
         $jadwal_tidak_hadir = JadwalRolling::where('IdAnak', $request->IdAnak)
                                         ->whereYear('Tanggal', now()->year)
                                         ->whereMonth('Tanggal', now()->month)
                                         ->hasAbsensi(0)
                                         ->groupBy('IdTipe')
-                                        ->select('IdTipe', DB::raw('count(*) as JumlahPertemuan'), DB::raw('GROUP_CONCAT(Hari SEPARATOR \', \') as ListHari'))
+                                        ->select('IdTipe', DB::raw('count(*) as JumlahPertemuan'), DB::raw('GROUP_CONCAT(DISTINCT Hari ORDER BY FIELD(Hari, "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu") SEPARATOR \', \') as ListHari'))
                                         ->get();
         $first_jadwal = JadwalRolling::where('IdAnak', $request->IdAnak)
                                     ->whereYear('Tanggal', now()->year)
