@@ -5,13 +5,13 @@
 <!-- Title -->
 <div class="row heading-bg bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h5 class="txt-light">Jadwal Rolling</h5>
+		<h5 class="txt-light">Jadwal Terapis</h5>
 	</div>
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
 			<li><a href="/dashboard">Dashboard</a></li>
-			<li class="active"><span>Jadwal rolling</span></li>
+			<li class="active"><span>Jadwal Terapis</span></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->
@@ -32,11 +32,12 @@
 				<div class="panel-body">
 					<div class="table-wrap">
 						<div class="table-responsive">
-							<table id="datable_1" class="table table-hover display pb-30">
+							<table id="export-table" class="table table-hover display pb-30">
 								<thead>
 									<tr>
 										<th>No</th>
 										<th>Tanggal Penjadwalan</th>
+										<th>Bulan</th>
 										<th>Terapis</th>
 										<th>Anak</th>
 										<th>Tipe Absensi</th>
@@ -48,6 +49,7 @@
 										<tr>
 											<td>{{$loop->index+1}}</td>
 											<td>{{$jadwal->Tanggal}}</td>
+											<td>-</td>
 											<td>{{$jadwal->user->Nama}}</td>
 											<td>{{$jadwal->biodata->Nama}}</td>
 											<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
@@ -68,23 +70,30 @@
 @endsection
 
 @section('scripts')
-    <!-- jQuery -->
-<script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<!-- jQuery -->
+<script src="{{asset('vendors/bower_components/jquery/dist/jquery.min.js')}}"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
 <!-- Data table JavaScript -->
-<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
+<script src="{{asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+<script src="{{asset('vendors/bower_components/jszip/dist/jszip.min.js')}}"></script>
+<script src="{{asset('vendors/bower_components/pdfmake/build/pdfmake.min.js')}}"></script>
+<script src="{{asset('vendors/bower_components/pdfmake/build/vfs_fonts.js')}}"></script>
+<script src="{{asset('vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('dist/js/export-table-data.js')}}"></script>
 
 <!-- Slimscroll JavaScript -->
-<script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
+<script src="{{asset('dist/js/jquery.slimscroll.js')}}"></script>
 
 <!-- Fancy Dropdown JS -->
-<script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
+<script src="{{asset('dist/js/dropdown-bootstrap-extended.js')}}"></script>
 
 <!-- Init JavaScript -->
-<script src="{{ asset('dist/js/init.js') }}"></script>
+<script src="{{asset('dist/js/init.js')}}"></script>
 
 @endsection

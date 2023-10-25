@@ -2,20 +2,21 @@
 
 $(document).ready(function() {
 	"use strict";
-	var today = new Date(); // Get the current date and time
-	var sixDaysLater = new Date(today.getTime() + 6 * 24 * 60 * 60 * 1000); // Calculate 7 days in the future
-	/* Datetimepicker Init*/
+	var today = new Date();
+	var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0); // Menghitung akhir bulan
+	/* Datetimepicker Init */
 	$('#Tanggal').daterangepicker({
 		startDate: today,
-		endDate: sixDaysLater,
+		endDate: lastDayOfMonth,
 		buttonClasses: ['btn', 'btn-sm'],
-			   applyClass: 'btn-info',
-			   cancelClass: 'btn-default',
-			   locale: {
-				   format: 'DD/MM/YYYY',
-				   language: 'id'
-			   }
-	   });
+		applyClass: 'btn-info',
+		cancelClass: 'btn-default',
+		locale: {
+			format: 'DD/MM/YYYY',
+			language: 'id'
+		}
+	});
+
 
 	// Inisialisasi datetimepicker untuk elemen-elemen yang sesuai
 	$('#SeninStart, #SelasaStart, #RabuStart, #KamisStart, #JumatStart, #SabtuStart').datetimepicker({
@@ -32,7 +33,7 @@ $(document).ready(function() {
 	// Mengatur nilai awal input dengan waktu saat ini
 	// $('#SeninStart, #SelasaStart, #RabuStart, #KamisStart, #JumatStart, #SabtuStart').find('input').val(moment().format('LT'));
 
-
+	
 	$('#SeninSelesai, #SelasaSelesai, #RabuSelesai, #KamisSelesai, #JumatSelesai, #SabtuSelesai').datetimepicker({
 		format: 'HH:mm',
 		useCurrent: false,
@@ -52,17 +53,36 @@ $(document).ready(function() {
 		$('#checkAll').change(function() {
 			var isChecked = $(this).prop('checked');
 			// Mengatur status kotak centang pada semua kotak centang anak dalam tabel
-			$('.checkbox input[type="checkbox"]').prop('checked', isChecked);
+			$('.checkbox.hari input[type="checkbox"]').prop('checked', isChecked);
 		});
 		
 		// Handler untuk kotak centang anak
-		$('.checkbox input[type="checkbox"]').change(function() {
+		$('.checkbox.hari input[type="checkbox"]').change(function() {
 			// Periksa apakah semua kotak centang anak telah dipilih
-			var allChecked = $('.checkbox input[type="checkbox"]').not('#checkAll').get().every(function(checkbox) {
+			var allChecked = $('.checkbox.hari input[type="checkbox"]').not('#checkAll').get().every(function(checkbox) {
 				return $(checkbox).prop('checked');
 			});
 			// Mengatur status kotak centang "Check All" berdasarkan kotak centang anak
 			$('#checkAll').prop('checked', allChecked);
+		});
+	});
+
+	$(document).ready(function() {
+		// Handler untuk kotak centang "Check All"
+		$('#checkAllPenjadwalan').change(function() {
+			var isChecked = $(this).prop('checked');
+			// Mengatur status kotak centang pada semua kotak centang anak dalam tabel
+			$('.checkbox.penjadwalan input[type="checkbox"]').prop('checked', isChecked);
+		});
+		
+		// Handler untuk kotak centang anak
+		$('.checkbox.penjadwalan input[type="checkbox"]').change(function() {
+			// Periksa apakah semua kotak centang anak telah dipilih
+			var allChecked = $('.checkbox.penjadwalan input[type="checkbox"]').not('#checkAllPenjadwalan').get().every(function(checkbox) {
+				return $(checkbox).prop('checked');
+			});
+			// Mengatur status kotak centang "Check All" berdasarkan kotak centang anak
+			$('#checkAllPenjadwalan').prop('checked', allChecked);
 		});
 	});
 

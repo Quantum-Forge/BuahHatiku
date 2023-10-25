@@ -30,7 +30,7 @@
 					</li>
 					@endif
 					<li>
-						<a class="{{ Request::is('jadwal_rolling_view') ? 'active' : '' }}" href="/jadwal_rolling_view"><i class="icon-calender mr-10"></i>Jadwal Rolling</a>
+						<a class="{{ Request::is('jadwal_rolling_view') ? 'active' : '' }}" href="/jadwal_rolling_view"><i class="icon-calender mr-10"></i>Jadwal Terapis</a>
 					</li>
 					@if(Auth::user()->Role != 4)
 						<li>
