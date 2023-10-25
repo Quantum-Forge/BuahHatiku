@@ -85,7 +85,7 @@
 										<tr>
 											<th>Tipe Terapi</th>
 											<th>Hari</th>
-											<th>Durasi</th>
+											<th>Jumlah Pertemuan</th>
 											<th>Harga</th>
 											<th>Total</th>
 										</tr>
@@ -96,7 +96,7 @@
 												<tr>
 													<td>{{$rincian->tipe_absensi->JenisAbsensi}}</td>
 													<td>{{$rincian->Hari}}</td>
-													<td>{{$rincian->JmlhPertemuan}} Jam</td>
+													<td>{{$rincian->JmlhPertemuan}}</td>
 													<td>Rp. {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</td>
 													<td>Rp. {{number_format($rincian->Total, 0, ',', '.')}}</td>
 												</tr>
@@ -113,7 +113,7 @@
 											<tr>
 												<td>{{$rincian->tipe_absensi->JenisAbsensi}}</td>
 												<td>{{$rincian->Hari}}</td>
-												<td>{{$rincian->JmlhPertemuan}} Jam</td>
+												<td>{{$rincian->JmlhPertemuan}}</td>
 												<td>Rp. {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</td>
 												<td>Rp. {{number_format($rincian->Total, 0, ',', '.')}}</td>
 											</tr>
@@ -139,7 +139,7 @@
 											<td></td>
 											<td></td>
 											<td>Potongan</td>
-											<td>Rp. -</td>
+											<td>Rp. {{number_format($invoice->Potongan, 0, ',', '.')}}</td>
 										</tr>
 										<tr class="txt-dark">
 											<td></td>

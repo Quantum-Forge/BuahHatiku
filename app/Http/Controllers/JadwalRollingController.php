@@ -11,6 +11,7 @@ use App\Models\TipeAbsensi;
 use App\Models\JadwalRolling;
 use App\Models\Absensi;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
 
 class JadwalRollingController extends Controller
 {
@@ -41,10 +42,33 @@ class JadwalRollingController extends Controller
         ]);
     }
 
+    public static function filterHolidays($dates)
+    {
+        $client = new Client();
+        $response = $client->get('https://api-harilibur.vercel.app/api');
+        $holidays = json_decode($response->getBody(), true);
+
+        $next_year = Carbon::now()->year+1;
+        $response = $client->get('https://api-harilibur.vercel.app/api?year='.$next_year);
+        $holidays = array_merge($holidays, json_decode($response->getBody(), true));
+        
+        $holidays = array_filter($holidays, function ($holiday) {
+            return $holiday['is_national_holiday'] == true;
+        });
+        $holiday_dates = [];
+        foreach ($holidays as $item) {
+            if (isset($item['holiday_date'])) {
+                $holiday_dates[] = $item['holiday_date'];
+            }
+        }
+        $dates = array_filter($dates, function ($item) use ($holiday_dates) {
+            return !in_array($item['Tanggal'], $holiday_dates);
+        });
+
+        return $dates;
+    }
+
     public static function insert(Request $request){
-        // dd($request->Hari[1]);
-        // dd($request->all());
-        // dd($request->Hari[0]);
         $validator = Validator::make($request->all(), [
             'NoIdentitas' => 'required',
             'IdAnak' => 'required',
@@ -74,7 +98,6 @@ class JadwalRollingController extends Controller
             'WaktuSelesai.*.required_with' => 'Waktu selesai harus diisi',
             'WaktuSelesai.*.after' => 'Waktu selesai harus setelah waktu mulai',
         ]);
-        // dd($validator->errors());
         if ($validator->fails()) {
             return redirect('/jadwal_rolling')
                         ->withErrors($validator)
@@ -137,11 +160,7 @@ class JadwalRollingController extends Controller
             }
             $startDate->addDay(); // Move to the next day
         }
-        // dd($dates);
-
-        // $tanggal = Carbon::createFromFormat('d/m/Y',$request->Tanggal);
-        // $waktuMulai = Carbon::createFromFormat('g:i a',$request->WaktuMulai)->format('H:i');
-        // $waktuSelesai = Carbon::createFromFormat('g:i a',$request->WaktuSelesai)->format('H:i');
+        $dates = JadwalRollingController::filterHolidays($dates);
         // Check JadwalRolling pernah diinput atau tidak
         foreach($dates as $date){
             $check = JadwalRolling::where('IdAnak', $request->IdAnak)
