@@ -111,7 +111,7 @@
 														<td>Rp. {{$tipe_absensi->Harga}}</td>
 														<td>{{$tipe_absensi->Durasi}} Jam</td>
 														<td width="100">
-															<button data-toggle="modal" data-target="#responsive-modal{{$tipe_absensi->IdTipe}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+															<button data-toggle="modal" data-target="#responsive-modal{{$tipe_absensi->IdTipe}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
 														</td>
 													</tr>
 													<div id="responsive-modal{{$tipe_absensi->IdTipe}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -121,14 +121,53 @@
 																<div class="modal-content">
 																	<div class="modal-header">
 																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-																		<h5 class="modal-title">Delete Tipe Absensi</h5>
+																		<h5 class="modal-title">Edit Tipe Absensi</h5>
 																	</div>
 																	<div class="modal-body">
-																		Are you sure to delete {{$tipe_absensi->Keterangan}} ?
+																		<div class="form-group {{ $errors->has('JenisAbsensi') ? 'has-error' : '' }}">
+																			<div class="">
+																				<div class="input-group">
+																					<div class="input-group-addon"><i class="icon-list"></i></div>
+																					<input type="text" placeholder="Isi Jenis..." name="JenisAbsensi" class="form-control" value="{{old('JenisAbsensi')}}">
+																				</div>
+																				@error('JenisAbsensi')
+																					<span class="help-block">{{ $message }}</span>
+																				@enderror
+																			</div>
+																		</div>
+																		<div class="form-group {{ $errors->has('Harga') ? 'has-error' : '' }}">
+																			<div class="">
+																				<div class="input-group">
+																					<div class="input-group-addon">Rp.</div>
+																					<input type="number" name="Harga" placeholder="Isi Harga..." class="form-control"  value="{{old('Harga')}}">
+																				</div>
+																				@error('Harga')
+																					<span class="help-block">{{ $message }}</span>
+																				@enderror
+																			</div>
+																		</div>
+																		<div class="form-group {{ $errors->has('Durasi') ? 'has-error' : '' }}">
+																			<div class="">
+																				<input placeholder="Isi Sesi..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="{{old('Durasi')}}" style="display: block;">
+																				<span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
+																				@error('Durasi')
+																					<span class="help-block">{{ $message }}</span>
+																				@enderror
+																			</div>
+																		</div>
+																		<div class="form-group {{ $errors->has('Keterangan') ? 'has-error' : '' }}">
+																			<div class="">
+																				<div class="input-group">
+																					<textarea name="Keterangan" placeholder="Isi Keterangan..." class="form-control" id="" cols="100" rows="10">{{old('Keterangan')}}</textarea>
+																				</div>
+																				@error('Keterangan')
+																					<span class="help-block">{{ $message }}</span>
+																				@enderror
+																			</div>
+																		</div>
 																	</div>
 																	<div class="modal-footer">
-																		<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-																		<button type="submit" class="btn btn-danger">Yes</button>
+																		<button type="submit" class="btn btn-success btn-block">Submit</button>
 																	</div>
 																</div>
 															</form>
