@@ -91,7 +91,7 @@
 														<td>{{ $questionnaire->jenis->NamaJenis }}</td>
 														<td>{{ $questionnaire->Pertanyaan }}</td>
 														<td>
-															<button data-toggle="modal" data-target="#responsive-modal{{$questionnaire->IdQuestionaire}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+															<button data-toggle="modal" data-target="#responsive-modal{{$questionnaire->IdQuestionaire}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
 														</td>
 													</tr>
 													<div id="responsive-modal{{$questionnaire->IdQuestionaire}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -101,14 +101,38 @@
 															<div class="modal-content">
 																<div class="modal-header">
 																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-																	<h5 class="modal-title">Delete Questionnaire</h5>
+																	<h5 class="modal-title">Edit Questionnaire#{{$questionnaire->IdQuestionaire}}</h5>
 																</div>
 																<div class="modal-body">
-																	Are you sure to delete pertanyaan {{$questionnaire->Pertanyaan}} ?
+																	<div class="form-group {{ $errors->has('IdJenis') ? 'has-error' : '' }}">
+																		<div class="">
+																			<div class="input-group">
+																				<div class="input-group-addon"><i class="icon-list"></i></div>
+																				<select type="text" class="form-control" id="Jenis" name="IdJenis">
+																					<option disabled selected>Pilih Jenis Questionnaire...</option>
+																					@foreach($jenis_questionaires as $jenis)
+																						<option value="{{$jenis->IdJenis}}" @if(old('IdJenis') == $jenis->IdJenis) selected @endif>{{$jenis->NamaJenis}}</option>
+																					@endforeach
+																				</select>
+																			</div>
+																			@error('IdJenis')
+																				<span class="help-block">{{ $message }}</span>
+																			@enderror
+																		</div>
+																	</div>
+																	<div class="form-group {{ $errors->has('Pertanyaan') ? 'has-error' : '' }}">
+																		<div class="">
+																			<div class="input-group">
+																				<textarea name="Pertanyaan" placeholder="Isi pertanyaan baru..." class="form-control" id="" cols="100" rows="10">{{old('Pertanyaan')}}</textarea>
+																				@error('Pertanyaan')
+																					<span class="help-block">{{ $message }}</span>
+																				@enderror
+																			</div>
+																		</div>
+																	</div>
 																</div>
 																<div class="modal-footer">
-																	<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-																	<button type="submit" class="btn btn-danger">Yes</button>
+																	<button type="submit" class="btn btn-success btn-block">Submit</button>
 																</div>
 															</div>
 														</div>
