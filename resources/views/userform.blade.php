@@ -82,13 +82,22 @@
 											<span class="help-block">{{ $message }}</span>
 										@enderror
 									</div>
-									<div class="form-group col-md-12 {{ $errors->has('NoHP') ? 'has-error' : '' }}">
+									<div class="form-group col-md-6 {{ $errors->has('NoHP') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left" for="no_hp">Nomor HP</label>
 										<div class="input-group">
 											<div class="input-group-addon"><i class="ti-mobile mr-5"></i>(+62)</div>
 											<input type="number" id="no_hp" name="NoHP" value="{{old('NoHP')}}" class="form-control" placeholder="Nomor HP">
 										</div>
 										@error('NoHP')
+											<span class="help-block">{{ $message }}</span>
+										@enderror
+									</div>
+									<div class="form-group col-md-6 {{ $errors->has('Role') ? 'has-error' : '' }}">
+										<label class="control-label mb-10 text-left">Tipe Absensi (Khusus Terapis)</label>
+										<select class="form-control" name="" >
+											<option disabled selected>Choose...</option>
+										</select>
+										@error('Role')
 											<span class="help-block">{{ $message }}</span>
 										@enderror
 									</div>

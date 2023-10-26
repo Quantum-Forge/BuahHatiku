@@ -71,10 +71,10 @@
 							<a class="{{ Request::is('user_form', 'user_view') ? 'active' : '' }}" href="javascript:void(0);" data-toggle="collapse" data-target="#User"><i class="icon-user mr-10"></i>Pengguna<span class="pull-right"><i class="fa fa-fw fa-angle-down"></i></span></a>
 							<ul id="User" class="collapse collapse-level-1">
 								<li>
-									<a href="/user_form">Add Pengguna</a>
+									<a href="/user_form">Buat Pengguna</a>
 								</li>
 								<li>
-									<a href="/user_view">View Pengguna</a>
+									<a href="/user_view">Lihat Pengguna</a>
 								</li>
 							</ul>
 						</li>
