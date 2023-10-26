@@ -332,7 +332,7 @@
 									</div>
 									<div class="form-actions mt-10">
 										<button type="submit" class="btn btn-success  mr-10"> Save</button>
-										<button type="button" class="btn btn-default">Cancel</button>
+										<button type="button" class="btn btn-default" onclick="window.location.href='/biodata_view';">Cancel</button>
 									</div>
 								</form>
 							</div>
