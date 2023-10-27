@@ -63,13 +63,13 @@
 															<tr>
 																<td>
 																	<div class="form-group mb-0">
-																		<select name="" id="" class="form-control">
-																			<option value="">Senin</option>
-																			<option value="">Selasa</option>
-																			<option value="">Rabu</option>
-																			<option value="">Kamis</option>
-																			<option value="">Jumat</option>
-																			<option value="">Sabtu</option>
+																		<select name="Hari[]" id="" class="form-control">
+																			<option value="Senin">Senin</option>
+																			<option value="Selasa">Selasa</option>
+																			<option value="Rabu">Rabu</option>
+																			<option value="Kamis">Kamis</option>
+																			<option value="Jumat">Jumat</option>
+																			<option value="Sabtu">Sabtu</option>
 																		</select>
 																	</div>
 																</td>
@@ -79,7 +79,7 @@
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control" placeholder="Isi Waktu Mulai..." name="WaktuMulai[0]" value="{{old('WaktuMulai.0')}}">
+																			<input type="text" class="form-control" placeholder="Isi Waktu Mulai..." name="WaktuMulai[]" value="{{old('WaktuMulai.0')}}">
 																		</div>
 																		@error('WaktuMulai.0')
 																			<span class="help-block">{{ $message }}</span>
@@ -92,7 +92,7 @@
 																			<span class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
 																			</span>
-																			<input type="text" class="form-control" placeholder="Isi Waktu Selesai..." name="WaktuSelesai[0]" value="{{old('WaktuSelesai.0')}}">
+																			<input type="text" class="form-control" placeholder="Isi Waktu Selesai..." name="WaktuSelesai[]" value="{{old('WaktuSelesai.0')}}">
 																		</div>
 																		@error('WaktuSelesai.0')
 																			<span class="help-block">{{ $message }}</span>
@@ -101,7 +101,7 @@
 																</td>
 																<td>
 																	<div class="form-group mb-0 {{ $errors->has('NoIdentitas') ? 'has-error' : '' }}">
-																		<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
+																		<select class="form-control" name="NoIdentitas[]" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
 																			<option disabled selected>Choose..</option>
 																			@foreach( $terapises as $terapis)
 																				<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
@@ -114,7 +114,7 @@
 																</td>
 																<td>
 																	<div class="form-group mb-0 {{ $errors->has('IdAnak') ? 'has-error' : '' }}">
-																		<select class="form-control" name="IdAnak">
+																		<select class="form-control" name="IdAnak[]">
 																			<option disabled selected>Choose..</option>
 																			@foreach($biodatas as $biodata)
 																				<option value="{{$biodata->IdAnak}}" @if(old('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>

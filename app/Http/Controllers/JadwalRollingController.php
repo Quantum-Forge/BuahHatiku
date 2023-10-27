@@ -49,12 +49,36 @@ class JadwalRollingController extends Controller
                 SELECT Terapis, Anak, hour_diff-1, ADDTIME(WaktuMulai, "1:00:00"), ADDTIME(WaktuSelesai, "1:00:00")
                 FROM jadwal_interval
                 WHERE hour_diff > 1
+            ), dim_time as (
+                SELECT "08:00:00" as WaktuMulai, "09:00:00" as WaktuSelesai UNION ALL
+                SELECT "09:00:00" as WaktuMulai, "10:00:00" as WaktuSelesai UNION ALL
+                SELECT "10:00:00" as WaktuMulai, "11:00:00" as WaktuSelesai UNION ALL
+                SELECT "11:00:00" as WaktuMulai, "12:00:00" as WaktuSelesai UNION ALL
+                SELECT "12:00:00" as WaktuMulai, "13:00:00" as WaktuSelesai UNION ALL
+                SELECT "13:00:00" as WaktuMulai, "14:00:00" as WaktuSelesai UNION ALL
+                SELECT "14:00:00" as WaktuMulai, "15:00:00" as WaktuSelesai UNION ALL
+                SELECT "15:00:00" as WaktuMulai, "16:00:00" as WaktuSelesai UNION ALL
+                SELECT "16:00:00" as WaktuMulai, "17:00:00" as WaktuSelesai
+            ), dim_terapis as (
+                SELECT users.Nama as Terapis
+                FROM users
+                WHERE Role = 3
+            ), dim as (
+                SELECT WaktuMulai, WaktuSelesai, Terapis
+                FROM dim_time
+                    CROSS JOIN dim_terapis
             )
-            select CONCAT(WaktuMulai, " - ", WaktuSelesai) as Waktu, Terapis, Anak from jadwal_interval
-            ORDER BY Waktu, Terapis
+            SELECT 
+                CONCAT(dim.WaktuMulai, " - ", dim.WaktuSelesai) as Waktu, dim.Terapis, Anak
+            FROM dim 
+                LEFT JOIN jadwal_interval
+                ON dim.WaktuMulai = jadwal_interval.WaktuMulai
+                    AND dim.WaktuSelesai = jadwal_interval.WaktuSelesai
+                    AND dim.Terapis = jadwal_interval.Terapis
+            ORDER BY Waktu, dim.Terapis
         ');
         $senin = collect($senin)->groupBy('Waktu');
-        // dd($senin);
+        // dd($senin->first());
         foreach ($senin as $waktu => $group) {
             echo "$waktu: ";
         
@@ -63,8 +87,10 @@ class JadwalRollingController extends Controller
             }
             echo "\n";
         }
-        dd($senin);
-        return $senin;
+        // dd($senin);
+        return view('test')->with([
+            'senin' => $senin
+        ]);
     }
 
     public static function crud_view(){
