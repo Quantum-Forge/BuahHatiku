@@ -26,18 +26,6 @@ class JadwalRollingController extends Controller
 
     public static function view_table(){
         $senin = JadwalRolling::where('Hari', 'Senin')->get();
-        // WITH RECURSIVE HourIntervals AS (
-        //     SELECT 8 AS start_hour, 9 AS end_hour
-        //     UNION ALL
-        //     SELECT end_hour, end_hour + 1
-        //     FROM HourIntervals
-        //     WHERE end_hour < 11
-        //   )
-        //   SELECT
-        //     LPAD(start_hour, 2, "0") AS interval_start,
-        //     LPAD(end_hour, 2, "0") AS interval_end
-        //   FROM HourIntervals;
-        
         $senin = DB::select('
             WITH RECURSIVE jadwal_interval as (
                 SELECT users.Nama as Terapis, biodata.Nama as Anak, HOUR(TIMEDIFF(WaktuSelesai, WaktuMulai)) as hour_diff, WaktuMulai, ADDTIME(WaktuMulai, "1:00:00") as WaktuSelesai
@@ -78,17 +66,15 @@ class JadwalRollingController extends Controller
             ORDER BY Waktu, dim.Terapis
         ');
         $senin = collect($senin)->groupBy('Waktu');
-        // dd($senin->first());
-        foreach ($senin as $waktu => $group) {
-            echo "$waktu: ";
+        // foreach ($senin as $waktu => $group) {
+        //     echo "$waktu: ";
         
-            foreach ($group as $item) {
-                echo $item->Anak.'|';
-            }
-            echo "\n";
-        }
-        // dd($senin);
-        return view('test')->with([
+        //     foreach ($group as $item) {
+        //         echo $item->Anak.'|';
+        //     }
+        //     echo "\n";
+        // }
+        return view('jadwal_rolling_view')->with([
             'senin' => $senin
         ]);
     }

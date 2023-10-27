@@ -48,12 +48,20 @@
 										</th>
 									</tr>
 									<tr>
-										<th>Terapis</th>
-										<th>Terapis</th>
+										@foreach($senin->first() as $header)
+											<th>{{ $header->Terapis }}</th>
+										@endforeach
 									</tr>
 								</thead>
 								<tbody>
-									
+									@foreach ($senin as $waktu => $group)
+										<tr>
+											<td>{{ $waktu }}</td>
+											@foreach($group as $item)
+												<td>{{ $item->Anak }}</td>
+											@endforeach
+										</tr>
+									@endforeach
 								</tbody>
 							</table>
 						</div>
