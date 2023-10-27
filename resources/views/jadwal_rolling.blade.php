@@ -60,7 +60,7 @@
 														  </tr>
 														</thead>
 														<tbody>
-															<tr>
+															<tr class="jadwal-item">
 																<td>
 																	<div class="form-group mb-0">
 																		<select name="Hari[]" id="" class="form-control">
@@ -100,27 +100,27 @@
 																	</div>
 																</td>
 																<td>
-																	<div class="form-group mb-0 {{ $errors->has('NoIdentitas') ? 'has-error' : '' }}">
+																	<div class="form-group mb-0 {{ $errors->has('NoIdentitas.0') ? 'has-error' : '' }}">
 																		<select class="form-control" name="NoIdentitas[]" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
-																			<option disabled selected>Choose..</option>
+																			<option value="" selected>Choose..</option>
 																			@foreach( $terapises as $terapis)
-																				<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
+																				<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas.0') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama.' ['.$terapis->tipe_absensi->JenisAbsensi.']'}}</option>
 																			@endforeach
 																		</select>
-																		@error('NoIdentitas')
+																		@error('NoIdentitas.0')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
 																</td>
 																<td>
-																	<div class="form-group mb-0 {{ $errors->has('IdAnak') ? 'has-error' : '' }}">
+																	<div class="form-group mb-0 {{ $errors->has('IdAnak.0') ? 'has-error' : '' }}">
 																		<select class="form-control" name="IdAnak[]">
-																			<option disabled selected>Choose..</option>
+																			<option value="" selected>Choose..</option>
 																			@foreach($biodatas as $biodata)
-																				<option value="{{$biodata->IdAnak}}" @if(old('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
+																				<option value="{{$biodata->IdAnak}}" @if(old('IdAnak.0') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
 																			@endforeach
 																		</select>
-																		@error('IdAnak')
+																		@error('IdAnak.0')
 																			<span class="help-block">{{ $message }}</span>
 																		@enderror
 																	</div>
@@ -129,15 +129,85 @@
 																	<a href="#" id="addrow" class="text-primary"><i class="fa fa-plus"></i></a>
 																</td>
 															</tr>
+															@if(count(old('Hari')  ?? []) > 1)
+																@for($i=1; $i<count(old('Hari')); $i++)
+																	<tr class="jadwal-item">
+																		<td>
+																			<div class="form-group mb-0">
+																				<select name="Hari[]" id="" class="form-control">
+																					<option value="Senin" @if(old('Hari.'.$i) == 'Senin') selected @endif>Senin</option>
+																					<option value="Selasa" @if(old('Hari.'.$i) == 'Selasa') selected @endif>Selasa</option>
+																					<option value="Rabu" @if(old('Hari.'.$i) == 'Rabu') selected @endif>Rabu</option>
+																					<option value="Kamis" @if(old('Hari.'.$i) == 'Kamis') selected @endif>Kamis</option>
+																					<option value="Jumat" @if(old('Hari.'.$i) == 'Jumat') selected @endif>Jumat</option>
+																					<option value="Sabtu" @if(old('Hari.'.$i) == 'Sabtu') selected @endif>Sabtu</option>
+																				</select>
+																			</div>
+																		</td>
+																		<td>
+																			<div class="form-group mb-0 {{ $errors->has('WaktuMulai.'.$i) ? 'has-error' : '' }}">
+																				<div class="input-group date" id="WaktuStart">
+																					<span class="input-group-addon">
+																						<span class="fa fa-clock-o"></span>
+																					</span>
+																					<input type="text" class="form-control" placeholder="Isi Waktu Mulai..." name="WaktuMulai[]" value="{{old('WaktuMulai.'.$i)}}">
+																				</div>
+																				@error('WaktuMulai.'.$i)
+																					<span class="help-block">{{ $message }}</span>
+																				@enderror
+																			</div>
+																		</td>
+																		<td>
+																			<div class="form-group {{ $errors->has('WaktuSelesai.'.$i) ? 'has-error' : '' }} mb-0">
+																				<div class='input-group date' id="WaktuSelesai">
+																					<span class="input-group-addon">
+																						<span class="fa fa-clock-o"></span>
+																					</span>
+																					<input type="text" class="form-control" placeholder="Isi Waktu Selesai..." name="WaktuSelesai[]" value="{{old('WaktuSelesai.'.$i)}}">
+																				</div>
+																				@error('WaktuSelesai.'.$i)
+																					<span class="help-block">{{ $message }}</span>
+																				@enderror
+																			</div>
+																		</td>
+																		<td>
+																			<div class="form-group mb-0 {{ $errors->has('NoIdentitas.'.$i) ? 'has-error' : '' }}">
+																				<select class="form-control" name="NoIdentitas[]" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
+																					<option value="" selected>Choose..</option>
+																					@foreach( $terapises as $terapis)
+																						<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitas.'.$i) == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama.' ['.$terapis->tipe_absensi->JenisAbsensi.']'}}</option>
+																					@endforeach
+																				</select>
+																				@error('NoIdentitas.'.$i)
+																					<span class="help-block">{{ $message }}</span>
+																				@enderror
+																			</div>
+																		</td>
+																		<td>
+																			<div class="form-group mb-0 {{ $errors->has('IdAnak.'.$i) ? 'has-error' : '' }}">
+																				<select class="form-control" name="IdAnak[]">
+																					<option value="" selected>Choose..</option>
+																					@foreach($biodatas as $biodata)
+																						<option value="{{$biodata->IdAnak}}" @if(old('IdAnak.'.$i) == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
+																					@endforeach
+																				</select>
+																				@error('IdAnak.'.$i)
+																					<span class="help-block">{{ $message }}</span>
+																				@enderror
+																			</div>
+																		</td>
+																		<td class="text-center vertical-align-middle">
+																			<a href="#" class="text-danger text-center removeRow"><i class="fa fa-trash"></i></a>
+																		</td>
+																	</tr>
+																@endfor
+															@endif
 														</tbody>
 													</table>
 												</div>
 												<div class="form-actions mt-10">
-													<button type="button" class="btn btn-success btn-block mr-10" onclick="submitForm()">Save</button>
+													<button type="submit" class="btn btn-success btn-block mr-10">Save</button>
 												</div>
-												@error('Hari')
-													<div class="alert alert-danger">{{ $message }}</div>
-												@enderror
 											</div>
 										</div>
 								</div>

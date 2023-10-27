@@ -139,135 +139,109 @@ class JadwalRollingController extends Controller
     }
 
     public static function insert(Request $request){
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
+            'Tanggal' => 'required',
             'NoIdentitas' => 'required',
             'IdAnak' => 'required',
-            'IdTipe' => 'required',
-            'Tanggal' => 'required',
             'Hari' => 'required',
-            'WaktuMulai.0' => 'required_with:Hari.0|date_format:H:i',
-            'WaktuSelesai.0' => 'required_with:Hari.0|date_format:H:i|after:WaktuMulai.0',
-            'WaktuMulai.1' => 'required_with:Hari.1|date_format:H:i',
-            'WaktuSelesai.1' => 'required_with:Hari.1|date_format:H:i|after:WaktuMulai.1',
-            'WaktuMulai.2' => 'required_with:Hari.2|date_format:H:i',
-            'WaktuSelesai.2' => 'required_with:Hari.2|date_format:H:i|after:WaktuMulai.2',
-            'WaktuMulai.3' => 'required_with:Hari.3|date_format:H:i',
-            'WaktuSelesai.3' => 'required_with:Hari.3|date_format:H:i|after:WaktuMulai.3',
-            'WaktuMulai.4' => 'required_with:Hari.4|date_format:H:i',
-            'WaktuSelesai.4' => 'required_with:Hari.4|date_format:H:i|after:WaktuMulai.4',
-            'WaktuMulai.5' => 'required_with:Hari.5|date_format:H:i',
-            'WaktuSelesai.5' => 'required_with:Hari.5|date_format:H:i|after:WaktuMulai.5',
-            // 'WaktuMulai.*' => 'nullable|required_if:Hari.*,Selasa',
-            // 'WaktuSelesai.*' => 'nullable|required_if:Hari.*,Selasa|after:WaktuMulai.*',
+            'WaktuMulai' => 'required',
+            'WaktuSelesai' => 'required',
+            'NoIdentitas.*' => 'required',
+            'IdAnak.*' => 'required',
+            'Hari.*' => 'required',
+            'WaktuMulai.*' => 'required|date_format:H:i',
+            'WaktuSelesai.*' => 'required|date_format:H:i|after:WaktuMulai.*',
+            // 'WaktuMulai.*' => 'required_with:Hari.*|date_format:H:i',
+            // 'WaktuSelesai.*' => 'required_with:Hari.*|date_format:H:i|after:WaktuMulai.0',
         ], [
             'required' => ':attribute harus diisi',
             'NoIdentitas.required' => 'Terapis harus diisi',
             'IdAnak.required' => 'Anak harus diisi',
-            'IdTipe.required' => 'Tipe absensi harus diisi',
+            'NoIdentitas.*.required' => 'Terapis harus diisi',
+            'IdAnak.*.required' => 'Anak harus diisi',
+            'WaktuMulai.*.required' => 'Waktu mulai harus diisi',
+            'WaktuSelesai.*.required' => 'Waktu selesai harus diisi',
             'WaktuMulai.*.required_with' => 'Waktu mulai harus diisi',
             'WaktuSelesai.*.required_with' => 'Waktu selesai harus diisi',
             'WaktuSelesai.*.after' => 'Waktu selesai harus setelah waktu mulai',
         ]);
+        // dd($validator->errors());
         if ($validator->fails()) {
             return redirect('/jadwal_rolling')
                         ->withErrors($validator)
                         ->withInput();
         }
+        $master_jadwal = [];
+        for($i=0; $i<count($request->Hari); $i++){
+            array_push($master_jadwal, [
+                'Hari' => $request->Hari[$i],
+                'WaktuMulai' => $request->WaktuMulai[$i],
+                'WaktuSelesai' => $request->WaktuSelesai[$i],
+                'NoIdentitas' => $request->NoIdentitas[$i],
+                'IdAnak' => $request->IdAnak[$i],
+            ]);
+        }
+        $master_jadwal = collect($master_jadwal)->groupBy('Hari');
+        
         $tanggal = explode(" - ", $request->Tanggal);
         $startDate = Carbon::createFromFormat('d/m/Y',$tanggal[0]); 
         $endDate = Carbon::createFromFormat('d/m/Y',$tanggal[1]);
         $dates = [];
         
         while ($startDate->lte($endDate)) {
-            if ( isset($request->Hari[0]) && $startDate->isMonday()) {
-                array_push($dates, [
-                    'Tanggal' => $startDate->toDateString(),
-                    'Hari' => $request->Hari[0],
-                    'WaktuMulai' => $request->WaktuMulai[0],
-                    'WaktuSelesai' => $request->WaktuSelesai[0],
+            array_push($dates, [
+                'Tanggal' => $startDate->toDateString(),
+                'Hari' => $startDate->locale('id')->dayName,
+            ]);
+            // if ( isset($request->Hari[0]) && $startDate->isMonday()) {
+            //     array_push($dates, [
+            //         'Tanggal' => $startDate->toDateString(),
+            //         'Hari' => $request->Hari[0],
+            //         'WaktuMulai' => $request->WaktuMulai[0],
+            //         'WaktuSelesai' => $request->WaktuSelesai[0],
 
-                ]);
-            } else if ( isset($request->Hari[1]) && $startDate->isTuesday()) {
-                array_push($dates, [
-                    'Tanggal' => $startDate->toDateString(),
-                    'Hari' => $request->Hari[1],
-                    'WaktuMulai' => $request->WaktuMulai[1],
-                    'WaktuSelesai' => $request->WaktuSelesai[1],
-
-                ]);
-            } else if ( isset($request->Hari[2]) && $startDate->isWednesday()) {
-                array_push($dates, [
-                    'Tanggal' => $startDate->toDateString(),
-                    'Hari' => $request->Hari[2],
-                    'WaktuMulai' => $request->WaktuMulai[2],
-                    'WaktuSelesai' => $request->WaktuSelesai[2],
-
-                ]);
-            } else if ( isset($request->Hari[3]) && $startDate->isThursday()) {
-                array_push($dates, [
-                    'Tanggal' => $startDate->toDateString(),
-                    'Hari' => $request->Hari[3],
-                    'WaktuMulai' => $request->WaktuMulai[3],
-                    'WaktuSelesai' => $request->WaktuSelesai[3],
-
-                ]);
-            } else if ( isset($request->Hari[4]) && $startDate->isFriday()) {
-                array_push($dates, [
-                    'Tanggal' => $startDate->toDateString(),
-                    'Hari' => $request->Hari[4],
-                    'WaktuMulai' => $request->WaktuMulai[4],
-                    'WaktuSelesai' => $request->WaktuSelesai[4],
-
-                ]);
-            } else if ( isset($request->Hari[5]) && $startDate->isSaturday()) {
-                array_push($dates, [
-                    'Tanggal' => $startDate->toDateString(),
-                    'Hari' => $request->Hari[5],
-                    'WaktuMulai' => $request->WaktuMulai[5],
-                    'WaktuSelesai' => $request->WaktuSelesai[5],
-
-                ]);
-            }
+            //     ]);
+            // } 
             $startDate->addDay(); // Move to the next day
         }
         $dates = JadwalRollingController::filterHolidays($dates);
+        
         // Check JadwalRolling pernah diinput atau tidak
         foreach($dates as $date){
-            $check = JadwalRolling::where('IdAnak', $request->IdAnak)
-                ->where('NoIdentitas', $request->NoIdentitas)
-                ->where('IdTipe', $request->IdTipe)
-                ->where('Tanggal', $date['Tanggal'])
-                ->where('WaktuMulai', $date['WaktuMulai'])
-                ->where('WaktuSelesai', $date['WaktuSelesai'])
-                ->first();
-            if($check){
-                return redirect('/jadwal_rolling')
-                            ->withErrors(['message' => 'JadwalRolling sudah pernah diinput'])
-                            ->withInput();
+            if(isset($master_jadwal[$date['Hari']])){
+                $jadwal_hari = $master_jadwal[$date['Hari']];
+                foreach($jadwal_hari as $data){
+                    // check jadwal duplikat
+                    $IdTipe = User::find($data['NoIdentitas'])->IdTipe;
+                    $check = JadwalRolling::where('IdAnak', $data['IdAnak'])
+                        ->where('NoIdentitas', $data['NoIdentitas'])
+                        ->where('IdTipe', $IdTipe)
+                        ->where('Tanggal', $date['Tanggal'])
+                        ->where('WaktuMulai', $data['WaktuMulai'])
+                        ->where('WaktuSelesai', $data['WaktuSelesai'])
+                        ->first();
+                    if(!$check){
+                        // insert jadwal
+                        $jadwal = new JadwalRolling;
+
+                        $jadwal->IdAnak = $data['IdAnak'];
+                        $jadwal->NoIdentitas = $data['NoIdentitas'];
+                        $jadwal->IdTipe = $IdTipe;
+                        $jadwal->Tanggal = $date['Tanggal'];
+                        $jadwal->Hari = $date['Hari'];
+                        $jadwal->WaktuMulai = $data['WaktuMulai'];
+                        $jadwal->WaktuSelesai = $data['WaktuSelesai'];
+                        $jadwal->save();
+
+                        $absensi = new Absensi;
+                        $absensi->IdJadwal = $jadwal->IdJadwal;
+                        $absensi->Hadir = 0;
+                        $absensi->save();
+                    }
+                }
             }
-        }
-        
-        // Insert data
-        foreach($dates as $date){
-            $jadwal = new JadwalRolling;
-
-            $jadwal->IdAnak = $request->IdAnak;
-            $jadwal->NoIdentitas = $request->NoIdentitas;
-            $jadwal->IdTipe = $request->IdTipe;
-            $jadwal->Tanggal = $date['Tanggal'];
-            // $date = $tanggal->locale('id');
-            // $date->settings(['formatFunction' => 'translatedFormat']);
-            // $jadwal->Hari = $date->format('l');
-            $jadwal->Hari = $date['Hari'];
-            $jadwal->WaktuMulai = $date['WaktuMulai'];
-            $jadwal->WaktuSelesai = $date['WaktuSelesai'];
-
-            $jadwal->save();
-
-            $absensi = new Absensi;
-            $absensi->IdJadwal = $jadwal->IdJadwal;
-            $absensi->Hadir = 0;
-            $absensi->save();
+            
         }
 
         return redirect('/jadwal_rolling');

@@ -64,7 +64,20 @@ $(document).ready(function() {
         $("#addrow").click(function(event) {
             event.preventDefault();
 
-            var newRow = $(rowTemplate);
+			var item = $(this).closest('.jadwal-item');
+			var newItem = item.clone(true, true);
+			var newRow = $(newItem);
+
+			var waktu = newRow.find('.date');
+			waktu.eq(0).prop('id', 'datetimepicker' + rowCounter);
+			waktu.eq(1).prop('id', 'datetimepicker' + rowCounter);
+			
+			var action_row = newRow.find('#addrow');
+			action_row.prop('class', 'text-danger text-center removeRow');
+			action_row.find('.fa-plus').prop('class', 'fa fa-trash');
+			action_row.prop('id', '');
+
+            // var newRow = $(rowTemplate);
 
             // Inisialisasi DateTimePicker untuk elemen input dalam baris baru
             newRow.find('.date').datetimepicker({
@@ -86,6 +99,7 @@ $(document).ready(function() {
         // Fungsi untuk menghapus baris
         $("#rolling").on("click", ".removeRow", function(event) {
             event.preventDefault();
+			console.log($(this).closest("tr"));
             $(this).closest("tr").remove();
         });
     });

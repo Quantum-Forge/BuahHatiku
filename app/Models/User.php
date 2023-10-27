@@ -42,4 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function tipe_absensi()
+    {
+        return $this->belongsTo(TipeAbsensi::class, 'IdTipe', 'IdTipe');
+    }
 }
