@@ -32,30 +32,28 @@
 				<div class="panel-body">
 					<div class="table-wrap">
 						<div class="table-responsive">
-							<table id="export-table" class="table table-hover display pb-30">
+							<table id="datable_1" class="table table-hover table-bordered display pb-30">
 								<thead>
 									<tr>
-										<th>No</th>
-										<th>Tanggal Penjadwalan</th>
-										<th>Bulan</th>
+										<th rowspan="2">Jam / Hari</th>
+										<th colspan="2">
+											<select name="" id="" class="form-control">
+												<option value="">Senin</option>
+												<option value="">Selasa</option>
+												<option value="">Rabu</option>
+												<option value="">Kamis</option>
+												<option value="">Jumat</option>
+												<option value="">Sabtu</option>
+											</select>
+										</th>
+									</tr>
+									<tr>
 										<th>Terapis</th>
-										<th>Anak</th>
-										<th>Tipe Absensi</th>
-										<th>Waktu</th>
+										<th>Terapis</th>
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($jadwal_rolling as $jadwal)
-										<tr>
-											<td>{{$loop->index+1}}</td>
-											<td>{{$jadwal->Hari.', '.$jadwal->Tanggal}}</td>
-											<td>{{$jadwal->Bulan}}</td>
-											<td>{{$jadwal->user->Nama}}</td>
-											<td>{{$jadwal->biodata->Nama}}</td>
-											<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
-											<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
-										</tr>
-									@endforeach
+									
 								</tbody>
 							</table>
 						</div>
@@ -77,15 +75,9 @@
 <script src="{{asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
 <!-- Data table JavaScript -->
-<script src="{{asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-<script src="{{asset('vendors/bower_components/jszip/dist/jszip.min.js')}}"></script>
-<script src="{{asset('vendors/bower_components/pdfmake/build/pdfmake.min.js')}}"></script>
-<script src="{{asset('vendors/bower_components/pdfmake/build/vfs_fonts.js')}}"></script>
-<script src="{{asset('vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('dist/js/export-table-data.js')}}"></script>
+<!-- Data table JavaScript -->
+<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="{{asset('dist/js/jquery.slimscroll.js')}}"></script>
