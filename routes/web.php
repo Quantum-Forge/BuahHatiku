@@ -73,8 +73,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/questionnaire_insert',function(Request $request){
             return QuestionaireController::insert($request);
         });
-        Route::post('/questionnaire_delete/{IdQuestionaire}',function($IdQuestionaire){
-            return QuestionaireController::delete($IdQuestionaire);
+        Route::post('/questionnaire_edit/{IdQuestionaire}',function(Request $request, $IdQuestionaire){
+            return QuestionaireController::edit($request, $IdQuestionaire);
         });
         // Tipe Absensi
         Route::get('/tipe_absensi_insert',function(){
@@ -83,8 +83,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/tipe_absensi_insert',function(Request $request){
             return TipeAbsensiController::insert($request);
         });
-        Route::post('/tipe_absensi_delete/{IdTipe}',function($IdTipe){
-            return TipeAbsensiController::delete($IdTipe);
+        Route::post('/tipe_absensi_edit/{IdTipe}',function(Request $request, $IdTipe){
+            return TipeAbsensiController::update($request, $IdTipe);
         });
         // Schedulling
         Route::get('/jadwal_rolling',function(){
@@ -145,7 +145,7 @@ Route::middleware(['auth'])->group(function () {
             return UserController::view();
         });
         Route::get('/user_form',function(){
-            return view('userform');
+            return UserController::insert_view();
         });
         Route::post('/user_form',function(Request $request){
             return UserController::insert($request);
@@ -201,6 +201,9 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:staff,terapis,admin'])->group(function () {
         Route::get('/jadwal_rolling_view', function () {
             return JadwalRollingController::view();
+        });
+        Route::get('/jadwal_rolling_view_table', function () {
+            return JadwalRollingController::view_table();
         });
     });
 });

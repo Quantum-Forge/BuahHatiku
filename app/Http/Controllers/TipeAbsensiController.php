@@ -18,12 +18,13 @@ class TipeAbsensiController extends Controller
 
     public static function insert(Request $request){
         $validator = Validator::make($request->all(), [
-            'JenisAbsensi' => 'required',
+            'JenisAbsensi' => 'required|unique:tipe_absensi',
             'Harga' => 'required|numeric',
             'Durasi' => 'required|numeric',
             'Keterangan' => 'required',
         ], [
-            'required' => ':attribute harus diisi'
+            'required' => ':attribute harus diisi',
+            'JenisAbsensi.unique' => 'Jenis absensi sudah ada'
         ]);
         if ($validator->fails()) {
             return redirect('/tipe_absensi_insert')
@@ -41,9 +42,24 @@ class TipeAbsensiController extends Controller
         return redirect('/tipe_absensi_insert');
     }
 
-    public static function delete($IdTipe){
+    public static function update(Request $request, $IdTipe){
+        $validator = Validator::make($request->all(), [
+            'JenisAbsensi' => 'required|unique:tipe_absensi',
+            'Harga' => 'required|numeric',
+            'Durasi' => 'required|numeric',
+            'Keterangan' => 'required',
+        ], [
+            'required' => ':attribute harus diisi'
+        ]);
+        if ($validator->fails()) {
+            return redirect('/tipe_absensi_insert');
+        }
         $tipe_absensi = TipeAbsensi::where('IdTipe', $IdTipe)->first();
-        $tipe_absensi->delete();
+        $tipe_absensi->JenisAbsensi = $request->JenisAbsensi;
+        $tipe_absensi->Keterangan = $request->Keterangan;
+        $tipe_absensi->Harga = $request->Harga;
+        $tipe_absensi->Durasi = $request->Durasi;
+        $tipe_absensi->save();
         return redirect('/tipe_absensi_insert');
     }
 }

@@ -41,9 +41,20 @@ class QuestionaireController extends Controller
         return redirect('/questionnaire_insert');
     }
 
-    public static function delete($IdQuestionaire){
-        $duestionnaire = Questionnaire::where('IdQuestionaire', $IdQuestionaire)->first();
-        $duestionnaire->delete();
+    public static function edit(Request $request, $IdQuestionaire){
+        $validator = Validator::make($request->all(), [
+            'IdJenis' => 'required',
+            'Pertanyaan' => 'required',
+        ], [
+            'required' => ':attribute harus diisi'
+        ]);
+        if ($validator->fails()) {
+            return redirect('/questionnaire_insert');
+        }
+        $questionnaire = Questionnaire::where('IdQuestionaire', $IdQuestionaire)->first();
+        $questionnaire->IdJenis = $request->IdJenis;
+        $questionnaire->Pertanyaan = $request->Pertanyaan;
+        $questionnaire->save();
         return redirect('/questionnaire_insert');
     }
 }

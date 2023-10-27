@@ -12,6 +12,7 @@ use App\Models\JadwalRolling;
 use App\Models\Absensi;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use DB;
 
 class JadwalRollingController extends Controller
 {
@@ -21,6 +22,49 @@ class JadwalRollingController extends Controller
         return view('jadwal_rolling_view')->with([
             'jadwal_rolling' => $jadwal_rolling,
         ]);
+    }
+
+    public static function view_table(){
+        $senin = JadwalRolling::where('Hari', 'Senin')->get();
+        // WITH RECURSIVE HourIntervals AS (
+        //     SELECT 8 AS start_hour, 9 AS end_hour
+        //     UNION ALL
+        //     SELECT end_hour, end_hour + 1
+        //     FROM HourIntervals
+        //     WHERE end_hour < 11
+        //   )
+        //   SELECT
+        //     LPAD(start_hour, 2, "0") AS interval_start,
+        //     LPAD(end_hour, 2, "0") AS interval_end
+        //   FROM HourIntervals;
+        
+        $senin = DB::select('
+            WITH RECURSIVE jadwal_interval as (
+                SELECT users.Nama as Terapis, biodata.Nama as Anak, HOUR(TIMEDIFF(WaktuSelesai, WaktuMulai)) as hour_diff, WaktuMulai, ADDTIME(WaktuMulai, "1:00:00") as WaktuSelesai
+                FROM jadwal_rolling
+                    JOIN users ON jadwal_rolling.NoIdentitas = users.NoIdentitas
+                    JOIN biodata ON jadwal_rolling.IdAnak = biodata.IdAnak
+                WHERE Hari = "Senin"
+                UNION ALL
+                SELECT Terapis, Anak, hour_diff-1, ADDTIME(WaktuMulai, "1:00:00"), ADDTIME(WaktuSelesai, "1:00:00")
+                FROM jadwal_interval
+                WHERE hour_diff > 1
+            )
+            select CONCAT(WaktuMulai, " - ", WaktuSelesai) as Waktu, Terapis, Anak from jadwal_interval
+            ORDER BY Waktu, Terapis
+        ');
+        $senin = collect($senin)->groupBy('Waktu');
+        // dd($senin);
+        foreach ($senin as $waktu => $group) {
+            echo "$waktu: ";
+        
+            foreach ($group as $item) {
+                echo $item->Anak.'|';
+            }
+            echo "\n";
+        }
+        dd($senin);
+        return $senin;
     }
 
     public static function crud_view(){

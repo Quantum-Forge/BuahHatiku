@@ -91,12 +91,15 @@
 											<span class="help-block">{{ $message }}</span>
 										@enderror
 									</div>
-									<div class="form-group col-md-6 {{ $errors->has('Role') ? 'has-error' : '' }}">
+									<div class="form-group col-md-6 {{ $errors->has('IdTipe') ? 'has-error' : '' }}">
 										<label class="control-label mb-10 text-left">Tipe Absensi (Khusus Terapis)</label>
-										<select class="form-control" name="" >
+										<select class="form-control" name="IdTipe" >
 											<option disabled selected>Choose...</option>
+											@foreach($tipe_absensi as $tipe)
+												<option value="{{$tipe->IdTipe}}" @if(old('IdTipe', $user->IdTipe)==$tipe->IdTipe) selected @endif)>{{$tipe->JenisAbsensi}}</option>
+											@endforeach
 										</select>
-										@error('Role')
+										@error('IdTipe')
 											<span class="help-block">{{ $message }}</span>
 										@enderror
 									</div>

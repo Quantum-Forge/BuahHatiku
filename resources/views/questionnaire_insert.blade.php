@@ -95,7 +95,7 @@
 														</td>
 													</tr>
 													<div id="responsive-modal{{$questionnaire->IdQuestionaire}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-														<form action="/questionnaire_delete/{{$questionnaire->IdQuestionaire}}" method="POST">
+														<form action="/questionnaire_edit/{{$questionnaire->IdQuestionaire}}" method="POST">
 														{{ csrf_field() }}
 														<div class="modal-dialog">
 															<div class="modal-content">
@@ -108,10 +108,9 @@
 																		<div class="">
 																			<div class="input-group">
 																				<div class="input-group-addon"><i class="icon-list"></i></div>
-																				<select type="text" class="form-control" id="Jenis" name="IdJenis">
-																					<option disabled selected>Pilih Jenis Questionnaire...</option>
+																				<select type="text" required class="form-control" id="Jenis" name="IdJenis">
 																					@foreach($jenis_questionaires as $jenis)
-																						<option value="{{$jenis->IdJenis}}" @if(old('IdJenis') == $jenis->IdJenis) selected @endif>{{$jenis->NamaJenis}}</option>
+																						<option value="{{$jenis->IdJenis}}" @if(old('IdJenis', $questionnaire->IdJenis) == $jenis->IdJenis) selected @endif>{{$jenis->NamaJenis}}</option>
 																					@endforeach
 																				</select>
 																			</div>
@@ -123,7 +122,7 @@
 																	<div class="form-group {{ $errors->has('Pertanyaan') ? 'has-error' : '' }}">
 																		<div class="">
 																			<div class="input-group">
-																				<textarea name="Pertanyaan" placeholder="Isi pertanyaan baru..." class="form-control" id="" cols="100" rows="10">{{old('Pertanyaan')}}</textarea>
+																				<textarea name="Pertanyaan" required placeholder="Isi pertanyaan baru..." class="form-control" id="" cols="100" rows="10">{{$questionnaire->Pertanyaan}}</textarea>
 																				@error('Pertanyaan')
 																					<span class="help-block">{{ $message }}</span>
 																				@enderror
