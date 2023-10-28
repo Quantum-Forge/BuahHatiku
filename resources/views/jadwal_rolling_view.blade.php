@@ -30,42 +30,236 @@
 			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
-					<div class="table-wrap">
-						<div class="table-responsive">
-							<table id="datable_1" class="table table-hover table-bordered display pb-30">
-								<thead>
-									<tr>
-										<th rowspan="2">Jam / Hari</th>
-										<th colspan="2">
-											<select name="" id="" class="form-control">
-												<option value="">Senin</option>
-												<option value="">Selasa</option>
-												<option value="">Rabu</option>
-												<option value="">Kamis</option>
-												<option value="">Jumat</option>
-												<option value="">Sabtu</option>
-											</select>
-										</th>
-									</tr>
-									<tr>
-										@foreach($senin->first() as $header)
-											<th>{{ $header->Terapis }}</th>
-										@endforeach
-									</tr>
-								</thead>
-								<tbody>
-									@foreach ($senin as $waktu => $group)
-										<tr>
-											<td>{{ $waktu }}</td>
-											@foreach($group as $item)
-												<td>{{ $item->Anak }}</td>
-											@endforeach
-										</tr>
-									@endforeach
-								</tbody>
-							</table>
+					<div  class="tab-struct custom-tab-1">
+						<ul role="tablist" class="nav nav-tabs" id="myTabs_7">
+							<li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab" role="tab" id="senin_tab" href="#senin">senin</a></li>
+							<li role="presentation" class=""><a  data-toggle="tab" id="selasa_tab" role="tab" href="#selasa" aria-expanded="false">selasa</a></li>
+							<li role="presentation" class=""><a  data-toggle="tab" id="rabu_tab" role="tab" href="#rabu" aria-expanded="false">rabu</a></li>
+							<li role="presentation" class=""><a  data-toggle="tab" id="kamis_tab" role="tab" href="#kamis" aria-expanded="false">kamis</a></li>
+							<li role="presentation" class=""><a  data-toggle="tab" id="jumat_tab" role="tab" href="#jumat" aria-expanded="false">jumat</a></li>
+							<li role="presentation" class=""><a  data-toggle="tab" id="sabtu_tab" role="tab" href="#sabtu" aria-expanded="false">sabtu</a></li>
+						</ul>
+						<div class="tab-content" id="myTabContent_7">
+							<div  id="senin" class="tab-pane fade active in" role="tabpanel">
+								<div class="text-nowrap">
+									<div class="table-responsive">
+										<table id="senin_table" class="table table-sm table-bordered display pb-30">
+											<thead>
+												<tr>
+													<th rowspan="2">Jam / Hari</th>
+													<th class="text-center" colspan="{{ count($senin->first()) }}">
+														Senin
+													</th>
+												</tr>
+												<tr>
+													@foreach($senin->first() as $header)
+														<th>{{ $header->Terapis }}</th>
+													@endforeach
+												</tr>
+											</thead>
+											<tbody>
+												@foreach ($senin as $waktu => $group)
+													<tr>
+														<td>{{ $waktu }}</td>
+														@foreach($group as $item)
+															<td>{{ $item->Anak }}</td>
+														@endforeach
+													</tr>
+												@endforeach
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div  id="selasa" class="tab-pane fade" role="tabpanel">
+								<div class="text-nowrap">
+									<div class="table-responsive">
+										<table id="selasa_table" class="table table-sm table-bordered display pb-30">
+											<thead>
+												<tr>
+													<th rowspan="2">Jam / Hari</th>
+													<th class="text-center" colspan="{{ count($senin->first()) }}">
+														Selasa
+													</th>
+												</tr>
+												<tr>
+													@foreach($senin->first() as $header)
+														<th>{{ $header->Terapis }}</th>
+													@endforeach
+												</tr>
+											</thead>
+											<tbody>
+												@foreach ($senin as $waktu => $group)
+													<tr>
+														<td>{{ $waktu }}</td>
+														@foreach($group as $item)
+															<td>{{ $item->Anak }}</td>
+														@endforeach
+													</tr>
+												@endforeach
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div  id="rabu" class="tab-pane fade" role="tabpanel">
+								<div class="text-nowrap">
+									<div class="table-responsive">
+										<table id="rabu_table" class="table table-sm table-bordered display pb-30">
+											<thead>
+												<tr>
+													<th rowspan="2">Jam / Hari</th>
+													<th class="text-center" colspan="{{ count($senin->first()) }}">
+														Rabu
+													</th>
+												</tr>
+												<tr>
+													@foreach($senin->first() as $header)
+														<th>{{ $header->Terapis }}</th>
+													@endforeach
+												</tr>
+											</thead>
+											<tbody>
+												@foreach ($senin as $waktu => $group)
+													<tr>
+														<td>{{ $waktu }}</td>
+														@foreach($group as $item)
+															<td>{{ $item->Anak }}</td>
+														@endforeach
+													</tr>
+												@endforeach
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div  id="kamis" class="tab-pane fade" role="tabpanel">
+								<div class="text-nowrap">
+									<div class="table-responsive">
+										<table id="kamis_table" class="table table-sm table-bordered display pb-30">
+											<thead>
+												<tr>
+													<th rowspan="2">Jam / Hari</th>
+													<th class="text-center" colspan="{{ count($senin->first()) }}">
+														Kamis
+													</th>
+												</tr>
+												<tr>
+													@foreach($senin->first() as $header)
+														<th>{{ $header->Terapis }}</th>
+													@endforeach
+												</tr>
+											</thead>
+											<tbody>
+												@foreach ($senin as $waktu => $group)
+													<tr>
+														<td>{{ $waktu }}</td>
+														@foreach($group as $item)
+															<td>{{ $item->Anak }}</td>
+														@endforeach
+													</tr>
+												@endforeach
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div  id="jumat" class="tab-pane fade" role="tabpanel">
+								<div class="text-nowrap">
+									<div class="table-responsive">
+										<table id="jumat_table" class="table table-sm table-bordered display pb-30">
+											<thead>
+												<tr>
+													<th rowspan="2">Jam / Hari</th>
+													<th class="text-center" colspan="{{ count($senin->first()) }}">
+														Jumat
+													</th>
+												</tr>
+												<tr>
+													@foreach($senin->first() as $header)
+														<th>{{ $header->Terapis }}</th>
+													@endforeach
+												</tr>
+											</thead>
+											<tbody>
+												@foreach ($senin as $waktu => $group)
+													<tr>
+														<td>{{ $waktu }}</td>
+														@foreach($group as $item)
+															<td>{{ $item->Anak }}</td>
+														@endforeach
+													</tr>
+												@endforeach
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div  id="sabtu" class="tab-pane fade" role="tabpanel">
+								<div class="text-nowrap">
+									<div class="table-responsive">
+										<table id="sabtu_table" class="table table-sm table-bordered display pb-30">
+											<thead>
+												<tr>
+													<th rowspan="2">Jam / Hari</th>
+													<th class="text-center" colspan="{{ count($senin->first()) }}">
+														Sabtu
+													</th>
+												</tr>
+												<tr>
+													@foreach($senin->first() as $header)
+														<th>{{ $header->Terapis }}</th>
+													@endforeach
+												</tr>
+											</thead>
+											<tbody>
+												@foreach ($senin as $waktu => $group)
+													<tr>
+														<td>{{ $waktu }}</td>
+														@foreach($group as $item)
+															<td>{{ $item->Anak }}</td>
+														@endforeach
+													</tr>
+												@endforeach
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div  id="rabu" class="tab-pane fade" role="tabpanel">
+								<div class="text-nowrap">
+									<div class="table-responsive">
+										<table id="rabu_table" class="table table-sm table-bordered display pb-30">
+											<thead>
+												<tr>
+													<th rowspan="2">Jam / Hari</th>
+													<th class="text-center" colspan="{{ count($senin->first()) }}">
+														Rabu
+													</th>
+												</tr>
+												<tr>
+													@foreach($senin->first() as $header)
+														<th>{{ $header->Terapis }}</th>
+													@endforeach
+												</tr>
+											</thead>
+											<tbody>
+												@foreach ($senin as $waktu => $group)
+													<tr>
+														<td>{{ $waktu }}</td>
+														@foreach($group as $item)
+															<td>{{ $item->Anak }}</td>
+														@endforeach
+													</tr>
+												@endforeach
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -82,7 +276,6 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
-<!-- Data table JavaScript -->
 <!-- Data table JavaScript -->
 <script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
