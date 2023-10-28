@@ -2,20 +2,33 @@
 
 $(document).ready(function() {
 	"use strict";
-	var today = new Date();
-	var lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0); // Menghitung akhir bulan
-	/* Datetimepicker Init */
-	$('#Tanggal').daterangepicker({
-		startDate: today,
-		endDate: lastDayOfMonth,
-		buttonClasses: ['btn', 'btn-sm'],
-		applyClass: 'btn-info',
-		cancelClass: 'btn-default',
-		locale: {
-			format: 'DD/MM/YYYY',
-			language: 'id'
-		}
-	});
+    var today = new Date();
+
+    var targetYear = today.getFullYear(); // Tahun target awal
+    var targetMonth = 5; // 5 merepresentasikan bulan Juni (mulai dari 0)
+    var targetDay = 30;
+
+    // Cek apakah tanggal hari ini sudah mencapai atau melampaui 30 Juni di tahun ini
+    if (today.getMonth() > targetMonth || (today.getMonth() === targetMonth && today.getDate() >= targetDay)) {
+        // Jika iya, tambahkan satu tahun
+        targetYear++;
+    }
+
+    var lastDayOfMonth = new Date(targetYear, targetMonth, targetDay);
+
+    /* Datetimepicker Init */
+    $('#Tanggal').daterangepicker({
+        startDate: today,
+        endDate: lastDayOfMonth,
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-info',
+        cancelClass: 'btn-default',
+        locale: {
+            format: 'DD/MM/YYYY',
+            language: 'id'
+        }
+    });
+
 
 
 	// Inisialisasi datetimepicker untuk elemen-elemen yang sesuai
@@ -45,71 +58,53 @@ $(document).ready(function() {
 		}
 	});
 
-	// Mengatur nilai awal input dengan waktu saat ini
-	// $('#SeninSelesai, #SelasaSelesai, #RabuSelesai, #KamisSelesai, #JumatSelesai, #SabtuSelesai').find('input').val(moment().format('LT'));
-	 
 	$(document).ready(function() {
-		var rowCounter = 1; // Mulai dari 1 karena baris awal sudah ada
-		var datetimepickerCounter = 2; // Mulai dari 2 karena ada 1 datetimepicker awal
-		var rowTemplate = '<tr>' +
-            '<td><div class="form-group mb-0"><select name="" id="" class="form-control"><option value="">Senin</option><option value="">Selasa</option><option value="">Rabu</option><option value="">Kamis</option><option value="">Jumat</option><option value="">Sabtu</option></select></div></td>' +
-            '<td><div class="form-group mb-0"><div class="input-group date" id="datetimepicker' + rowCounter + '"><span class="input-group-addon"><span class="fa fa-clock-o"></span></span><input type="text" class="form-control datetimepicker" placeholder="Isi Waktu Mulai..." name="WaktuMulai[]" value=""></div></div></td>' +
-            '<td><div class="form-group mb-0"><div class="input-group date" id="datetimepicker' + rowCounter + '"><span class="input-group-addon"><span class="fa fa-clock-o"></span></span><input type="text" class="form-control datetimepicker" placeholder="Isi Waktu Selesai..." name="WaktuSelesai[]" value=""></div></div></td>' +
-            '<td><div class="form-group mb-0"><select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex=""><option disabled selected>Choose..</option></select></div></td>' +
-            '<td><div class="form-group mb-0"><select class="form-control" name="IdAnak"><option disabled selected>Choose..</option></select></div></td>' +
-            '<td class="text-center vertical-align-middle"><a href="#" id="addrowClone" class="text-primary mr-10"><i class="fa fa-plus"></i></a><a href="#" class="text-danger text-center removeRow"><i class="fa fa-trash"></i></a></td>' +
-            '</tr>';
-		 // Fungsi untuk menambah baris
-		 function addRow() {
-			var newRow = $(rowTemplate);
-	
-			// Ganti ID yang dihasilkan dengan yang unik
-			var datetimepickers = newRow.find('.input-group.date');
-			datetimepickers.each(function(index) {
-				var newId = 'datetimepicker' + datetimepickerCounter++;
-				$(this).attr('id', newId);
-			});
-	
-			// Ganti class dan ikon aksi dengan yang benar
-			var actionRow = newRow.find('.text-center.removeRow');
-			actionRow.removeClass('text-primary').addClass('text-danger');
-			actionRow.find('i').removeClass('fa-plus').addClass('fa-trash');
-	
+		var rowCounter = 2; // Dimulai dari 2 karena baris pertama sudah ada
+
+		// Fungsi untuk menambah baris
+		$("#addrow").click(function(event) {
+			event.preventDefault();
+			var item = $(this).closest('.jadwal-item');
+			var newItem = item.clone(true, true);
+			var newRow = $(newItem);
+
 			// Inisialisasi DateTimePicker untuk elemen input dalam baris baru
-			newRow.find('.input-group.date').datetimepicker({
-				format: 'HH:mm',
-				useCurrent: false,
-				icons: {
-					time: "fa fa-clock-o",
-					date: "fa fa-calendar",
-					up: "fa fa-arrow-up",
-					down: "fa fa-arrow-down"
-				}
+			newRow.find('.input-group.date').each(function(index) {
+				var inputId = 'datetimepicker' + rowCounter + '-' + index;
+				$(this).attr('id', inputId);
+				$(this).find('input').datetimepicker({
+					format: 'HH:mm',
+					useCurrent: false,
+					icons: {
+						time: "fa fa-clock-o",
+						date: "fa fa-calendar",
+						up: "fa fa-arrow-up",
+						down: "fa fa-arrow-down"
+					}
+				});
 			});
-	
-			// Tambahkan baris baru ke dalam tabel
+
+			// Tambahkan ikon "fa-trash" untuk menghapus baris
+			var removeIcon = '<a href="#" class="text-danger text-center removeRow"><i class="fa fa-trash"></i></a>';
+			newRow.find('.text-center.vertical-align-middle').html(removeIcon);
+
+			// Hapus class 'addrow' pada elemen tindakan
+			newRow.find('.removeRow').removeClass('text-primary');
+
 			$("#rolling").append(newRow);
-		}
+
+			rowCounter++;
+		});
+
+
 	
 		// Fungsi untuk menghapus baris
 		$("#rolling").on("click", ".removeRow", function(event) {
 			event.preventDefault();
-			console.log($(this).closest("tr"));
 			$(this).closest("tr").remove();
 		});
-	
-		// Tambahkan event click ke elemen "#addrow"
-		$("#addrow").click(function(event) {
-			event.preventDefault();
-			addRow();
-		});
-	
-		// Tambahkan event click ke elemen "#addrow" di baris awal
-		$("#rolling").on("click", "#addrowClone", function(event) {
-			event.preventDefault();
-			addRow();
-		});
 	});
+	
 	
 
 	$(document).ready(function() {

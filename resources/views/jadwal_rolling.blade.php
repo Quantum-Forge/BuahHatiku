@@ -46,9 +46,9 @@
 											</div>
 										</div>
 										<div class="col-md-12">
-											<div class="table-wrap mt-10 mb-30">
-												<div class="">
-													<table id="rolling" class="table table-wrap table-bordered mb-0">
+											<div class="text-nowrap mt-10 mb-30">
+												<div class="table-responsive">
+													<table id="rolling" class="table table-bordered mb-0">
 														<thead>
 														  <tr>
 															<th>Hari</th>
@@ -126,7 +126,7 @@
 																	</div>
 																</td>
 																<td class="text-center vertical-align-middle">
-																	<a href="#" id="addrow" class="text-primary"><i class="fa fa-plus"></i></a>
+																	<a href="#" id="addrow" class="text-primary addrow"><i class="fa fa-plus"></i></a>
 																</td>
 															</tr>
 															@if(count(old('Hari')  ?? []) > 1)
@@ -430,6 +430,7 @@
 <!-- Bootstrap Daterangepicker JavaScript -->
 <script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
+
 <!-- Form Picker Init JavaScript -->
 <script src="{{ asset('dist/js/jadwal_rolling_picker.js') }}"></script>
 
@@ -445,4 +446,5 @@
 
 <!-- Init JavaScript -->
 <script src="{{ asset('dist/js/init.js') }}"></script>
+
 @endsection
