@@ -47,18 +47,23 @@
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
-													<th class="text-center" colspan="{{ count($senin->first()) }}">
+													<th class="text-center" colspan="{{ count($data[0]->first()) }}">
 														Senin
 													</th>
 												</tr>
 												<tr>
-													@foreach($senin->first() as $header)
-														<th>{{ $header->Terapis }}</th>
+													@foreach($data[0]->first() as $header)
+														@if($header->JenisAbsensi=="ABA") <th style="background-color:#add8e6;">
+														@elseif($header->JenisAbsensi=="TW") <th style="background-color:#efcc00;">
+														@elseif($header->JenisAbsensi=="OT") <th style="background-color:#90ee90;">
+														@else <th>
+														@endif
+														{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
 											<tbody>
-												@foreach ($senin as $waktu => $group)
+												@foreach ($data[0] as $waktu => $group)
 													<tr>
 														<td>{{ $waktu }}</td>
 														@foreach($group as $item)
@@ -78,18 +83,18 @@
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
-													<th class="text-center" colspan="{{ count($senin->first()) }}">
+													<th class="text-center" colspan="{{ count($data[1]->first()) }}">
 														Selasa
 													</th>
 												</tr>
 												<tr>
-													@foreach($senin->first() as $header)
+													@foreach($data[1]->first() as $header)
 														<th>{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
 											<tbody>
-												@foreach ($senin as $waktu => $group)
+												@foreach ($data[1] as $waktu => $group)
 													<tr>
 														<td>{{ $waktu }}</td>
 														@foreach($group as $item)
@@ -109,18 +114,18 @@
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
-													<th class="text-center" colspan="{{ count($senin->first()) }}">
+													<th class="text-center" colspan="{{ count($data[2]->first()) }}">
 														Rabu
 													</th>
 												</tr>
 												<tr>
-													@foreach($senin->first() as $header)
+													@foreach($data[2]->first() as $header)
 														<th>{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
 											<tbody>
-												@foreach ($senin as $waktu => $group)
+												@foreach ($data[2] as $waktu => $group)
 													<tr>
 														<td>{{ $waktu }}</td>
 														@foreach($group as $item)
@@ -140,18 +145,18 @@
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
-													<th class="text-center" colspan="{{ count($senin->first()) }}">
+													<th class="text-center" colspan="{{ count($data[3]->first()) }}">
 														Kamis
 													</th>
 												</tr>
 												<tr>
-													@foreach($senin->first() as $header)
+													@foreach($data[3]->first() as $header)
 														<th>{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
 											<tbody>
-												@foreach ($senin as $waktu => $group)
+												@foreach ($data[3] as $waktu => $group)
 													<tr>
 														<td>{{ $waktu }}</td>
 														@foreach($group as $item)
@@ -171,18 +176,18 @@
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
-													<th class="text-center" colspan="{{ count($senin->first()) }}">
+													<th class="text-center" colspan="{{ count($data[4]->first()) }}">
 														Jumat
 													</th>
 												</tr>
 												<tr>
-													@foreach($senin->first() as $header)
+													@foreach($data[4]->first() as $header)
 														<th>{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
 											<tbody>
-												@foreach ($senin as $waktu => $group)
+												@foreach ($data[4] as $waktu => $group)
 													<tr>
 														<td>{{ $waktu }}</td>
 														@foreach($group as $item)
@@ -202,49 +207,18 @@
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
-													<th class="text-center" colspan="{{ count($senin->first()) }}">
+													<th class="text-center" colspan="{{ count($data[5]->first()) }}">
 														Sabtu
 													</th>
 												</tr>
 												<tr>
-													@foreach($senin->first() as $header)
+													@foreach($data[5]->first() as $header)
 														<th>{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
 											<tbody>
-												@foreach ($senin as $waktu => $group)
-													<tr>
-														<td>{{ $waktu }}</td>
-														@foreach($group as $item)
-															<td>{{ $item->Anak }}</td>
-														@endforeach
-													</tr>
-												@endforeach
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-							<div  id="rabu" class="tab-pane fade" role="tabpanel">
-								<div class="text-nowrap">
-									<div class="table-responsive">
-										<table id="rabu_table" class="table table-sm table-bordered display pb-30">
-											<thead>
-												<tr>
-													<th rowspan="2">Jam / Hari</th>
-													<th class="text-center" colspan="{{ count($senin->first()) }}">
-														Rabu
-													</th>
-												</tr>
-												<tr>
-													@foreach($senin->first() as $header)
-														<th>{{ $header->Terapis }}</th>
-													@endforeach
-												</tr>
-											</thead>
-											<tbody>
-												@foreach ($senin as $waktu => $group)
+												@foreach ($data[5] as $waktu => $group)
 													<tr>
 														<td>{{ $waktu }}</td>
 														@foreach($group as $item)

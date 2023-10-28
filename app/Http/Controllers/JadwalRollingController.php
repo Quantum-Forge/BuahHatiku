@@ -25,47 +25,52 @@ class JadwalRollingController extends Controller
     }
 
     public static function view_table(){
-        $senin = JadwalRolling::where('Hari', 'Senin')->get();
-        $senin = DB::select('
-            WITH RECURSIVE jadwal_interval as (
-                SELECT users.Nama as Terapis, biodata.Nama as Anak, HOUR(TIMEDIFF(WaktuSelesai, WaktuMulai)) as hour_diff, WaktuMulai, ADDTIME(WaktuMulai, "1:00:00") as WaktuSelesai
-                FROM jadwal_rolling
-                    JOIN users ON jadwal_rolling.NoIdentitas = users.NoIdentitas
-                    JOIN biodata ON jadwal_rolling.IdAnak = biodata.IdAnak
-                WHERE Hari = "Senin"
-                UNION ALL
-                SELECT Terapis, Anak, hour_diff-1, ADDTIME(WaktuMulai, "1:00:00"), ADDTIME(WaktuSelesai, "1:00:00")
-                FROM jadwal_interval
-                WHERE hour_diff > 1
-            ), dim_time as (
-                SELECT "08:00:00" as WaktuMulai, "09:00:00" as WaktuSelesai UNION ALL
-                SELECT "09:00:00" as WaktuMulai, "10:00:00" as WaktuSelesai UNION ALL
-                SELECT "10:00:00" as WaktuMulai, "11:00:00" as WaktuSelesai UNION ALL
-                SELECT "11:00:00" as WaktuMulai, "12:00:00" as WaktuSelesai UNION ALL
-                SELECT "12:00:00" as WaktuMulai, "13:00:00" as WaktuSelesai UNION ALL
-                SELECT "13:00:00" as WaktuMulai, "14:00:00" as WaktuSelesai UNION ALL
-                SELECT "14:00:00" as WaktuMulai, "15:00:00" as WaktuSelesai UNION ALL
-                SELECT "15:00:00" as WaktuMulai, "16:00:00" as WaktuSelesai UNION ALL
-                SELECT "16:00:00" as WaktuMulai, "17:00:00" as WaktuSelesai
-            ), dim_terapis as (
-                SELECT users.Nama as Terapis
-                FROM users
-                WHERE Role = 3
-            ), dim as (
-                SELECT WaktuMulai, WaktuSelesai, Terapis
-                FROM dim_time
-                    CROSS JOIN dim_terapis
-            )
-            SELECT 
-                CONCAT(dim.WaktuMulai, " - ", dim.WaktuSelesai) as Waktu, dim.Terapis, Anak
-            FROM dim 
-                LEFT JOIN jadwal_interval
-                ON dim.WaktuMulai = jadwal_interval.WaktuMulai
-                    AND dim.WaktuSelesai = jadwal_interval.WaktuSelesai
-                    AND dim.Terapis = jadwal_interval.Terapis
-            ORDER BY Waktu, dim.Terapis
-        ');
-        $senin = collect($senin)->groupBy('Waktu');
+        $hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        $data = [];
+        foreach($hari as $hari_item){
+            $query = DB::select('
+                WITH RECURSIVE jadwal_interval as (
+                    SELECT DISTINCT users.Nama as Terapis, biodata.Nama as Anak, HOUR(TIMEDIFF(WaktuSelesai, WaktuMulai)) as hour_diff, WaktuMulai, ADDTIME(WaktuMulai, "1:00:00") as WaktuSelesai
+                    FROM jadwal_rolling
+                        JOIN users ON jadwal_rolling.NoIdentitas = users.NoIdentitas
+                        JOIN biodata ON jadwal_rolling.IdAnak = biodata.IdAnak
+                    WHERE Hari = "'.$hari_item.'"
+                    UNION ALL
+                    SELECT Terapis, Anak, hour_diff-1, ADDTIME(WaktuMulai, "1:00:00"), ADDTIME(WaktuSelesai, "1:00:00")
+                    FROM jadwal_interval
+                    WHERE hour_diff > 1
+                ), dim_time as (
+                    SELECT "08:00:00" as WaktuMulai, "09:00:00" as WaktuSelesai UNION ALL
+                    SELECT "09:00:00" as WaktuMulai, "10:00:00" as WaktuSelesai UNION ALL
+                    SELECT "10:00:00" as WaktuMulai, "11:00:00" as WaktuSelesai UNION ALL
+                    SELECT "11:00:00" as WaktuMulai, "12:00:00" as WaktuSelesai UNION ALL
+                    SELECT "12:00:00" as WaktuMulai, "13:00:00" as WaktuSelesai UNION ALL
+                    SELECT "13:00:00" as WaktuMulai, "14:00:00" as WaktuSelesai UNION ALL
+                    SELECT "14:00:00" as WaktuMulai, "15:00:00" as WaktuSelesai UNION ALL
+                    SELECT "15:00:00" as WaktuMulai, "16:00:00" as WaktuSelesai UNION ALL
+                    SELECT "16:00:00" as WaktuMulai, "17:00:00" as WaktuSelesai
+                ), dim_terapis as (
+                    SELECT users.Nama as Terapis, JenisAbsensi
+                    FROM users
+                        LEFT JOIN tipe_absensi ON users.IdTipe = tipe_absensi.IdTipe
+                    WHERE Role = 3
+                ), dim as (
+                    SELECT WaktuMulai, WaktuSelesai, Terapis, JenisAbsensi
+                    FROM dim_time
+                        CROSS JOIN dim_terapis
+                )
+                SELECT 
+                    CONCAT(dim.WaktuMulai, " - ", dim.WaktuSelesai) as Waktu, dim.Terapis, dim.JenisAbsensi, Anak
+                FROM dim 
+                    LEFT JOIN jadwal_interval
+                    ON dim.WaktuMulai = jadwal_interval.WaktuMulai
+                        AND dim.WaktuSelesai = jadwal_interval.WaktuSelesai
+                        AND dim.Terapis = jadwal_interval.Terapis
+                ORDER BY Waktu, FIELD(JenisAbsensi, "ABA", "TW", "OT"), dim.Terapis
+            ');
+            array_push($data, collect($query)->groupBy('Waktu'));
+        }
+        
         // foreach ($senin as $waktu => $group) {
         //     echo "$waktu: ";
         
@@ -75,7 +80,7 @@ class JadwalRollingController extends Controller
         //     echo "\n";
         // }
         return view('jadwal_rolling_view')->with([
-            'senin' => $senin
+            'data' => $data
         ]);
     }
 
