@@ -26,6 +26,13 @@
 				<div class="pull-left">
 					<h6 class="panel-title txt-dark">Penjadwalan</h6>
 				</div>
+				<div class="pull-right">
+					<div id="legend">
+						<span class="label label-primary">ABA</span>
+						<span class="label label-danger">OT</span>
+						<span class="label label-warning">TW</span>
+					  </div>
+				</div>
 				<div class="clearfix"></div>
 			</div>
 			<div class="panel-wrapper collapse in">
@@ -53,9 +60,9 @@
 												</tr>
 												<tr>
 													@foreach($data[0]->first() as $header)
-														@if($header->JenisAbsensi=="ABA") <th style="background-color:#add8e6;">
-														@elseif($header->JenisAbsensi=="TW") <th style="background-color:#efcc00;">
-														@elseif($header->JenisAbsensi=="OT") <th style="background-color:#90ee90;">
+														@if($header->JenisAbsensi=="ABA") <th class="bg-primary txt-light">
+														@elseif($header->JenisAbsensi=="TW") <th class="bg-yellow txt-dark">
+														@elseif($header->JenisAbsensi=="OT") <th class="bg-red txt-light">
 														@else <th>
 														@endif
 														{{ $header->Terapis }}</th>
@@ -89,7 +96,12 @@
 												</tr>
 												<tr>
 													@foreach($data[1]->first() as $header)
-														<th>{{ $header->Terapis }}</th>
+														@if($header->JenisAbsensi=="ABA") <th class="bg-primary txt-light">
+														@elseif($header->JenisAbsensi=="TW") <th class="bg-yellow txt-dark">
+														@elseif($header->JenisAbsensi=="OT") <th class="bg-red txt-light">
+														@else <th>
+														@endif
+														{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
@@ -120,7 +132,12 @@
 												</tr>
 												<tr>
 													@foreach($data[2]->first() as $header)
-														<th>{{ $header->Terapis }}</th>
+														@if($header->JenisAbsensi=="ABA") <th class="bg-primary txt-light">
+														@elseif($header->JenisAbsensi=="TW") <th class="bg-yellow txt-dark">
+														@elseif($header->JenisAbsensi=="OT") <th class="bg-red txt-light">
+														@else <th>
+														@endif
+														{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
@@ -151,7 +168,12 @@
 												</tr>
 												<tr>
 													@foreach($data[3]->first() as $header)
-														<th>{{ $header->Terapis }}</th>
+														@if($header->JenisAbsensi=="ABA") <th class="bg-primary txt-light">
+														@elseif($header->JenisAbsensi=="TW") <th class="bg-yellow txt-dark">
+														@elseif($header->JenisAbsensi=="OT") <th class="bg-red txt-light">
+														@else <th>
+														@endif
+														{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
@@ -182,7 +204,12 @@
 												</tr>
 												<tr>
 													@foreach($data[4]->first() as $header)
-														<th>{{ $header->Terapis }}</th>
+														@if($header->JenisAbsensi=="ABA") <th class="bg-primary txt-light">
+														@elseif($header->JenisAbsensi=="TW") <th class="bg-yellow txt-dark">
+														@elseif($header->JenisAbsensi=="OT") <th class="bg-red txt-light">
+														@else <th>
+														@endif
+														{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>
@@ -213,7 +240,12 @@
 												</tr>
 												<tr>
 													@foreach($data[5]->first() as $header)
-														<th>{{ $header->Terapis }}</th>
+														@if($header->JenisAbsensi=="ABA") <th class="bg-primary txt-light">
+														@elseif($header->JenisAbsensi=="TW") <th class="bg-yellow txt-dark">
+														@elseif($header->JenisAbsensi=="OT") <th class="bg-red txt-light">
+														@else <th>
+														@endif
+														{{ $header->Terapis }}</th>
 													@endforeach
 												</tr>
 											</thead>

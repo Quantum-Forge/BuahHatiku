@@ -47,7 +47,7 @@
 										</div>
 										<div class="col-md-12">
 											<div class="text-nowrap mt-10 mb-30">
-												<div class="">
+												<div class="table-responsive">
 													<table id="rolling" class="table table-bordered mb-0">
 														<thead>
 														  <tr>
