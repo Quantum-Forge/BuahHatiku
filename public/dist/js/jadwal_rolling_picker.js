@@ -75,9 +75,6 @@ $(document).ready(function() {
 
 			rowCounter++;
 		});
-
-
-	
 		// Fungsi untuk menghapus baris
 		$("#rolling").on("click", ".removeRow", function(event) {
 			event.preventDefault();
