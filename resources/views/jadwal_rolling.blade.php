@@ -47,7 +47,7 @@
 										</div>
 										<div class="col-md-12">
 											<div class="text-nowrap mt-10 mb-30">
-												<div class="table-responsive">
+												<div class="">
 													<table id="rolling" class="table table-bordered mb-0">
 														<thead>
 														  <tr>
@@ -75,10 +75,10 @@
 																</td>
 																<td>
 																	<div class="form-group mb-0 {{ $errors->has('WaktuMulai.0') ? 'has-error' : '' }}">
-																		<div class="input-group date" id="WaktuStart">
-																			<span class="input-group-addon">
+																		<div class="input-group date" id="datetimepicker1-0">
+																			<div class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
-																			</span>
+																			</div>
 																			<input type="text" class="form-control" placeholder="Isi Waktu Mulai..." name="WaktuMulai[]" value="{{old('WaktuMulai.0')}}">
 																		</div>
 																		@error('WaktuMulai.0')
@@ -88,10 +88,10 @@
 																</td>
 																<td>
 																	<div class="form-group {{ $errors->has('WaktuSelesai.0') ? 'has-error' : '' }} mb-0">
-																		<div class='input-group date' id="WaktuSelesai">
-																			<span class="input-group-addon">
+																		<div class='input-group date' id="datetimepicker1-1">
+																			<div class="input-group-addon">
 																				<span class="fa fa-clock-o"></span>
-																			</span>
+																			</div>
 																			<input type="text" class="form-control" placeholder="Isi Waktu Selesai..." name="WaktuSelesai[]" value="{{old('WaktuSelesai.0')}}">
 																		</div>
 																		@error('WaktuSelesai.0')
@@ -146,7 +146,7 @@
 																		</td>
 																		<td>
 																			<div class="form-group mb-0 {{ $errors->has('WaktuMulai.'.$i) ? 'has-error' : '' }}">
-																				<div class="input-group date" id="WaktuStart">
+																				<div class="input-group date" id="datetimepicker1-0">
 																					<span class="input-group-addon">
 																						<span class="fa fa-clock-o"></span>
 																					</span>
@@ -159,7 +159,7 @@
 																		</td>
 																		<td>
 																			<div class="form-group {{ $errors->has('WaktuSelesai.'.$i) ? 'has-error' : '' }} mb-0">
-																				<div class='input-group date' id="WaktuSelesai">
+																				<div class='input-group date' id="datetimepicker1-1">
 																					<span class="input-group-addon">
 																						<span class="fa fa-clock-o"></span>
 																					</span>

@@ -1,5 +1,4 @@
 /*FormPicker Init*/
-
 $(document).ready(function() {
 	"use strict";
     var today = new Date();
@@ -28,11 +27,8 @@ $(document).ready(function() {
             language: 'id'
         }
     });
-
-
-
 	// Inisialisasi datetimepicker untuk elemen-elemen yang sesuai
-	$('#WaktuStart').datetimepicker({
+	$('#datetimepicker1-0, #datetimepicker1-1').datetimepicker({
 		format: 'HH:mm',
 		useCurrent: false,
 		icons: {
@@ -42,22 +38,7 @@ $(document).ready(function() {
 			down: "fa fa-arrow-down"
 		}
 	});
-
-	// Mengatur nilai awal input dengan waktu saat ini
-	// $('#SeninStart, #SelasaStart, #RabuStart, #KamisStart, #JumatStart, #SabtuStart').find('input').val(moment().format('LT'));
-
 	
-	$('#WaktuSelesai').datetimepicker({
-		format: 'HH:mm',
-		useCurrent: false,
-		icons: {
-			time: "fa fa-clock-o",
-			date: "fa fa-calendar",
-			up: "fa fa-arrow-up",
-			down: "fa fa-arrow-down"
-		}
-	});
-
 	$(document).ready(function() {
 		var rowCounter = 2; // Dimulai dari 2 karena baris pertama sudah ada
 
@@ -67,7 +48,6 @@ $(document).ready(function() {
 			var item = $(this).closest('.jadwal-item');
 			var newItem = item.clone(true, true);
 			var newRow = $(newItem);
-
 			// Inisialisasi DateTimePicker untuk elemen input dalam baris baru
 			newRow.find('.input-group.date').each(function(index) {
 				var inputId = 'datetimepicker' + rowCounter + '-' + index;
