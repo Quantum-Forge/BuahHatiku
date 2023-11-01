@@ -142,7 +142,7 @@
 																		</div>
 																		<div class="form-group">
 																			<div class="">
-																				<input placeholder="Isi Sesi..." required name="Durasi" type="number" value="{{$tipe_absensi->Durasi}}">
+																				<input placeholder="Isi Sesi..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="{{$tipe_absensi->Durasi}}" style="display: block;">
 																				<span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
 																			</div>
 																		</div>
