@@ -81,16 +81,6 @@
 										@endforeach
 									</select>
 								</div>
-								<!-- <div class="form-group">
-									<label for="Jenis" class="control-label mb-10">Start Time*</label>
-									<div class="input-group date" id="WaktuMulai">
-										<input type="text" class="form-control" name="WaktuMulai" value="{{Request::input('WaktuMulai')}}">
-										<span class="input-group-addon">
-											<span class="fa fa-clock-o"></span>
-										</span>
-									</div>
-									{{-- <input type="time" class="form-control" name="WaktuMulai" value="{{Request::input('WaktuMulai')}}"> --}}
-								</div> -->
 								<button type="submit" class="btn btn-info btn-block"><i class="fa fa-filter"></i> Filter</button>
 						</form>
 					</div>
