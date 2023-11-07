@@ -104,6 +104,7 @@
 												<div class="form-group {{ $errors->has('Pendidikan') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan</label>
 													<select name="Pendidikan" class="form-control">
+														<option disabled selected>Choose...</option>
 														<option value="PAUD" @if(old('Pendidikan') == 'PAUD') selected @endif>Pendidikan Anak Usia Dini (PAUD)</option>
 														<option value="SD" @if(old('Pendidikan') == 'SD') selected @endif>Sekolah Dasar (SD)</option>
 														<option value="SMP" @if(old('Pendidikan') == 'SMP') selected @endif>Sekolah Menengah Pertama (SMP)</option>
@@ -211,6 +212,7 @@
 												<div class="form-group {{ $errors->has('PendBapak') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan Bapak</label>
 													<select name="PendBapak" class="form-control">
+														<option disabled selected>Choose...</option>
 														<option value="PAUD" @if(old('PendBapak') == 'PAUD') selected @endif>Pendidikan Anak Usia Dini (PAUD)</option>
 														<option value="SD" @if(old('PendBapak') == 'SD') selected @endif>Sekolah Dasar (SD)</option>
 														<option value="SMP" @if(old('PendBapak') == 'SMP') selected @endif>Sekolah Menengah Pertama (SMP)</option>
@@ -233,6 +235,7 @@
 												<div class="form-group {{ $errors->has('PendIbu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan Ibu</label>
 													<select name="PendIbu" class="form-control">
+														<option disabled selected>Choose...</option>
 														<option value="PAUD" @if(old('PendIbu') == 'PAUD') selected @endif>Pendidikan Anak Usia Dini (PAUD)</option>
 														<option value="SD" @if(old('PendIbu') == 'SD') selected @endif>Sekolah Dasar (SD)</option>
 														<option value="SMP" @if(old('PendIbu') == 'SMP') selected @endif>Sekolah Menengah Pertama (SMP)</option>
