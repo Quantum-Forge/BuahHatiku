@@ -31,6 +31,9 @@
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
 					<form action="/input_invoice" method="GET">
+						@error('message')
+						<div class="alert alert-danger mb-10">{{ $message }}</div>
+						@enderror
 						<div class="row">
 							<div class="col-xs-6">
 								<span class="txt-dark head-font inline-block capitalize-font mb-5">Billed to:</span>
@@ -72,10 +75,6 @@
 							</address>
 						</div>
 					</div>
-					@error('message')
-						<div class="alert alert-danger">{{ $message }}</div>
-					@enderror
-					
 					<div class="seprator-block"></div>
 
 					<div class="invoice-bill-table">
@@ -111,11 +110,17 @@
 												<input type="hidden" name="absensi.Total[]" value="{{$jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga}}">
 											</tr>
 										@endforeach
+										{{-- ini bisa ga di hilangin (Pengembalian) klo misalnya pengembalian belum ada datanya --}}
 										<thead>
 											<tr>
-												<th colspan="4" class="txt-dark">Pengembalian</th>
+												<th class="txt-dark">Pengembalian</th>
+												<th></th>
+												<th></th>
+												<th></th>	
+												<th></th>
 											</tr>
 										</thead>
+										{{-- ini bisa ga di hilangin (Pengembalian) klo misalnya pengembalian belum ada datanya --}}
 										<tbody>
 											@php( $pengembalian=0 )
 											@foreach( $jadwal_tidak_hadir as $jadwal)
@@ -137,36 +142,42 @@
 										<tr class="txt-dark">
 											<td></td>
 											<td></td>
-											<td></td>
-											<td>Subtotal</td>
+											<td colspan="2" class="text-right">Subtotal</td>
 											<td>Rp. {{number_format($subtotal, 0, ',', '.')}}</td>
-											<input type="hidden" name="SubTotal" value="{{$subtotal}}">
+											<input type="hidden" name="SubTotal" id="subtotal" value="{{$subtotal}}">
 										</tr>
 										<tr class="txt-dark">
 											<td></td>
 											<td></td>
-											<td></td>
-											<td>Pengembalian</td>
+											<td colspan="2" class="text-right">Pengembalian</td>
 											<td>Rp. {{number_format($pengembalian, 0, ',', '.')}}</td>
-											<input type="hidden" name="Pengembalian" value="{{$pengembalian}}">
+											<input type="hidden" name="Pengembalian" id="pengembalian" value="{{$pengembalian}}">
 										</tr>
 										<tr class="txt-dark">
 											<td></td>
 											<td></td>
-											<td></td>
-											<td>Potongan</td>
+											<td colspan="2" class="text-right">Potongan</td>
 											<td>
-												<div class="form-group mt-10">
-													<input id="tch2" type="number" value="0" name="Potongan" class=" form-control" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default">
+												<div class="form-group mt-10" style="">
+													<input id="inputPotongan" type="number" value="" min="0" placeholder="Isi Potongan..." name="Potongan" class="form-control">
 												</div>	
 											</td>
 										</tr>
 										<tr class="txt-dark">
 											<td></td>
 											<td></td>
+											<td colspan="2" class="text-right">Iuran</td>
+											<td>
+												<div class="form-group mt-10" style="">
+													<input id="inputIuran" type="number" value="" min="0" placeholder="Isi Iuran..." name="Iuran" class="form-control">
+												</div>	
+											</td>
+										</tr>
+										<tr class="txt-dark">
 											<td></td>
-											<td>Total</td>
-											<td>Rp. {{number_format($subtotal - $pengembalian, 0, ',', '.')}}</td>
+											<td></td>
+											<td colspan="2" class="text-right">Total</td>
+											<td id="GrandTotal">Rp. {{number_format($subtotal - $pengembalian, 0, ',', '.')}}</td>
 											<input type="hidden" name="GrandTotal" value="{{$subtotal - $pengembalian}}">
 										</tr>
 									</tbody>
@@ -190,7 +201,7 @@
 @endsection
 
 @section('scripts')
-    <!-- jQuery -->
+<!-- jQuery -->
 <script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
@@ -221,4 +232,5 @@
 <!-- Init JavaScript -->
 <script src="{{ asset('dist/js/init.js') }}"></script>
 
+<script src="{{ asset('dist/js/potongan.js') }}"></script>
 @endsection

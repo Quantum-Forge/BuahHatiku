@@ -27,7 +27,7 @@ if (vspinTrue) {
 	$('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove();
 }
 
-$("input[name='tch1']").TouchSpin({
+$("input[id='tch1']").TouchSpin({
 	min: 0,
 	max: 100,
 	step: 0.1,
@@ -43,9 +43,9 @@ $("input[id='tch2']").TouchSpin({
 	maxboostedstep: 10000000,
 	prefix: 'Rp.'
 });
-$("input[name='tch3']").TouchSpin();
+$("input[id='tch3']").TouchSpin();
 
-$("input[name='tch3_22']").TouchSpin({
+$("input[id='tch3_22']").TouchSpin({
 	initval: 40
 });
 
@@ -54,34 +54,49 @@ $("input[name='tch5']").TouchSpin({
 	postfix: "post"
 });
 
-// /* Multiselect Init*/
-// $('#pre-selected-options').multiSelect();      
-// $('#optgroup').multiSelect({ selectableOptgroup: true });
-// $('#public-methods').multiSelect();
-// $('#select-all').click(function(){
-// $('#public-methods').multiSelect('select_all');
-// return false;
-// });
-// $('#deselect-all').click(function(){
-// $('#public-methods').multiSelect('deselect_all');
-// return false;
-// });
-// $('#refresh').on('click', function(){
-// $('#public-methods').multiSelect('refresh');
-// return false;
-// });
-// $('#add-option').on('click', function(){
-// $('#public-methods').multiSelect('addOption', { value: 42, text: 'test 42', index: 0 });
-// return false;
-// });
-
-// /* Bootstrap switch Init*/
-// $('.bs-switch').bootstrapSwitch('state', true);
-// $('#check_box_value').text($("#check_box_switch").bootstrapSwitch('state'));
-
-// $('#check_box_switch').on('switchChange.bootstrapSwitch', function () {
-
-// 	$("#check_box_value").text($('#check_box_switch').bootstrapSwitch('state'));
-// });
-
 });
+
+
+
+// script.js
+$(document).ready(function() {
+    var subtotal = parseFloat($("#subtotal").val()) || 0;
+    var pengembalian = parseFloat($("#pengembalian").val()) || 0;
+
+    var potonganInput = $("#inputPotongan");
+    var iuranInput = $("#inputIuran");
+    var grandTotal = subtotal - pengembalian;
+
+    // Membuat fungsi untuk menghitung grandTotal
+    function calculateGrandTotal() {
+        var potongan = parseFloat(potonganInput.val()) || 0;
+        var iuran = parseFloat(iuranInput.val()) || 0;
+
+        // Memastikan bahwa potongan dan iuran tidak melebihi subtotal
+        if (potongan > subtotal) {
+            potongan = subtotal;
+            potonganInput.val(subtotal);
+        }
+      if (iuran > grandTotal) {
+            iuran = grandTotal;
+	  }
+
+        grandTotal = subtotal - pengembalian - potongan + iuran;
+        $("#GrandTotal").text("Rp. " + grandTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+        $("input[name='GrandTotal']").val(grandTotal);
+    }
+
+    // Memanggil fungsi calculateGrandTotal saat input Potongan berubah
+    potonganInput.on("input", calculateGrandTotal);
+
+    // Memanggil fungsi calculateGrandTotal saat input Iuran berubah
+    iuranInput.on("input", calculateGrandTotal);
+
+    // Memanggil calculateGrandTotal saat halaman dimuat
+    calculateGrandTotal();
+});
+
+
+
+
+
