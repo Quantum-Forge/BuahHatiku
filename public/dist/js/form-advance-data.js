@@ -77,10 +77,7 @@ $(document).ready(function() {
             potongan = subtotal;
             potonganInput.val(subtotal);
         }
-      if (iuran > grandTotal) {
-            iuran = grandTotal;
-	  }
-
+     
         grandTotal = subtotal - pengembalian - potongan + iuran;
         $("#GrandTotal").text("Rp. " + grandTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         $("input[name='GrandTotal']").val(grandTotal);
