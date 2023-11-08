@@ -65,6 +65,7 @@ class InvoiceController extends Controller
         $invoice->Tahun = $date->year;
         $invoice->SubTotal = $request->SubTotal;
         $invoice->Potongan = $request->Potongan;
+        $invoice->Iuran = $request->Iuran;
         $invoice->GrandTotal = $request->GrandTotal;
         $invoice->StatusPelunasan = 0;
         $invoice->save();

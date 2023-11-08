@@ -110,35 +110,35 @@
 												<input type="hidden" name="absensi.Total[]" value="{{$jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga}}">
 											</tr>
 										@endforeach
-										{{-- ini bisa ga di hilangin (Pengembalian) klo misalnya pengembalian belum ada datanya --}}
-										<thead>
-											<tr>
-												<th class="txt-dark">Pengembalian</th>
-												<th></th>
-												<th></th>
-												<th></th>	
-												<th></th>
-											</tr>
-										</thead>
-										{{-- ini bisa ga di hilangin (Pengembalian) klo misalnya pengembalian belum ada datanya --}}
-										<tbody>
-											@php( $pengembalian=0 )
-											@foreach( $jadwal_tidak_hadir as $jadwal)
+										@php( $pengembalian=0 )
+										@if(count($jadwal_tidak_hadir) > 0)
+											<thead>
 												<tr>
-													<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
-													<td>{{$jadwal->ListHari}}</td>
-													<td>{{$jadwal->JumlahPertemuan}}</td>
-													<td>Rp. {{number_format($jadwal->tipe_absensi->Harga, 0, ',', '.')}}</td>
-													<td>Rp. {{number_format($jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga, 0, ',', '.')}}</td>
-													@php( $pengembalian += $jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga )
-													<input type="hidden" name="pengembalian.IdTipe[]" value="{{$jadwal->IdTipe}}">
-													<input type="hidden" name="pengembalian.Hari[]" value="{{$jadwal->ListHari}}">
-													<input type="hidden" name="pengembalian.JmlhPertemuan[]" value="{{$jadwal->JumlahPertemuan}}">
-													<input type="hidden" name="pengembalian.Harga[]" value="{{$jadwal->tipe_absensi->Harga}}">
-													<input type="hidden" name="pengembalian.Total[]" value="{{$jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga}}">
+													<th class="txt-dark">Pengembalian</th>
+													<th></th>
+													<th></th>
+													<th></th>	
+													<th></th>
 												</tr>
-											@endforeach
-										</tbody>
+											</thead>
+											<tbody>
+												@foreach( $jadwal_tidak_hadir as $jadwal)
+													<tr>
+														<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
+														<td>{{$jadwal->ListHari}}</td>
+														<td>{{$jadwal->JumlahPertemuan}}</td>
+														<td>Rp. {{number_format($jadwal->tipe_absensi->Harga, 0, ',', '.')}}</td>
+														<td>Rp. {{number_format($jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga, 0, ',', '.')}}</td>
+														@php( $pengembalian += $jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga )
+														<input type="hidden" name="pengembalian.IdTipe[]" value="{{$jadwal->IdTipe}}">
+														<input type="hidden" name="pengembalian.Hari[]" value="{{$jadwal->ListHari}}">
+														<input type="hidden" name="pengembalian.JmlhPertemuan[]" value="{{$jadwal->JumlahPertemuan}}">
+														<input type="hidden" name="pengembalian.Harga[]" value="{{$jadwal->tipe_absensi->Harga}}">
+														<input type="hidden" name="pengembalian.Total[]" value="{{$jadwal->JumlahPertemuan * $jadwal->tipe_absensi->Harga}}">
+													</tr>
+												@endforeach
+											</tbody>
+										@endif
 										<tr class="txt-dark">
 											<td></td>
 											<td></td>

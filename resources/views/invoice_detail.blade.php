@@ -132,7 +132,7 @@
 											<td></td>
 											<td></td>
 											<td>Pengembalian</td>
-											<td>Rp. {{number_format($invoice->SubTotal - $invoice->GrandTotal, 0, ',', '.')}}</td>
+											<td>Rp. {{number_format($invoice->SubTotal - ($invoice->GrandTotal - $invoice->Iuran + $invoice->Potongan), 0, ',', '.')}}</td>
 										</tr>
 										<tr class="txt-dark">
 											<td></td>
@@ -140,6 +140,13 @@
 											<td></td>
 											<td>Potongan</td>
 											<td>Rp. {{number_format($invoice->Potongan, 0, ',', '.')}}</td>
+										</tr>
+										<tr class="txt-dark">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Iuran</td>
+											<td>Rp. {{number_format($invoice->Iuran, 0, ',', '.')}}</td>
 										</tr>
 										<tr class="txt-dark">
 											<td></td>
