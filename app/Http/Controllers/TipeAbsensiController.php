@@ -43,6 +43,8 @@ class TipeAbsensiController extends Controller
     }
 
     public static function update(Request $request, $IdTipe){
+        // dd($IdTipe);
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'JenisAbsensi' => 'required|unique:tipe_absensi',
             'Harga' => 'required|numeric',
@@ -51,6 +53,7 @@ class TipeAbsensiController extends Controller
         ], [
             'required' => ':attribute harus diisi'
         ]);
+        // dd($validator->errors());
         if ($validator->fails()) {
             return redirect('/tipe_absensi_insert');
         }

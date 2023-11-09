@@ -39,7 +39,7 @@
 													<h3 class="mb-20 txt-danger">Server Error</h3>
 													<p class="font-18 txt-dark mb-15">Looks like somthing went wrong!</p>
 													<p>We track these errors automatically.</p>
-													<a class="btn btn-success btn-icon right-icon btn-rounded mt-30" href="index.html"><span>back to home</span><i class="fa fa-space-shuttle"></i></a>
+													<a class="btn btn-success btn-icon right-icon btn-rounded mt-30" href="/home"><span>back to home</span><i class="fa fa-space-shuttle"></i></a>
 													<p class="font-12 mt-15">2016 &copy; Kenny. Pampered by Hencework</p>
 												</div>	
 											</div>
