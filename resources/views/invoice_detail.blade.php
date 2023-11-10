@@ -282,10 +282,6 @@
 																</tr>
 															@endif
 														@endforeach
-														<tr class="txt-dark">
-															<td class="text-right" colspan="3">Subtotal</td>
-															<td>Rp. {{number_format($invoice->SubTotal, 0, ',', '.')}}</td>
-														</tr>
 														
 														@foreach($invoice->rincian as $rincian)
 															@if($rincian->JenisTransaksi == 0)
@@ -307,12 +303,16 @@
 															@endif
 														@endforeach
 														<tr class="txt-dark">
-															<td class="text-right" colspan="3">Potongan</td>
-															<td>Rp. {{number_format($invoice->Potongan, 0, ',', '.')}}</td>
-														</tr>
-														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Iuran</td>
 															<td>Rp. {{number_format($invoice->Iuran, 0, ',', '.')}}</td>
+														</tr>
+														<tr class="txt-dark">
+															<td class="text-right" colspan="3">Subtotal</td>
+															<td>Rp. {{number_format($invoice->SubTotal, 0, ',', '.')}}</td>
+														</tr>
+														<tr class="txt-dark">
+															<td class="text-right" colspan="3">Potongan</td>
+															<td>Rp. {{number_format($invoice->Potongan, 0, ',', '.')}}</td>
 														</tr>
 														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Total</td>
