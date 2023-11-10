@@ -126,6 +126,7 @@
 																	<div class="modal-body">
 																		<div class="form-group ">
 																			<div class="">
+																			<label for="" class="control-label">JenisAbsensi*</label>
 																				<div class="input-group">
 																					<div class="input-group-addon"><i class="icon-list"></i></div>
 																					<input type="text" required placeholder="Isi Jenis..." name="JenisAbsensi" class="form-control" value="{{$tipe_absensi->JenisAbsensi}}">
@@ -134,6 +135,7 @@
 																		</div>
 																		<div class="form-group">
 																			<div class="">
+																				<label for="" class="control-label">Harga*</label>
 																				<div class="input-group">
 																					<div class="input-group-addon">Rp.</div>
 																					<input type="number" required name="Harga" placeholder="Isi Harga..." class="form-control"  value="{{$tipe_absensi->Harga}}">
@@ -142,12 +144,14 @@
 																		</div>
 																		<div class="form-group">
 																			<div class="">
+																				<label for="" class="control-label">Durasi*</label>
 																				<input placeholder="Isi Sesi..." name="Durasi" class="vertical-spin form-control" type="number" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" value="{{$tipe_absensi->Durasi}}" style="display: block;">
 																				<span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span>
 																			</div>
 																		</div>
 																		<div class="form-group">
 																			<div class="">
+																				<label for="" class="control-label">Keterangan*</label>
 																				<div class="input-group">
 																					<textarea name="Keterangan" required placeholder="Isi Keterangan..." class="form-control" id="" cols="100" rows="10">{{$tipe_absensi->Keterangan}}</textarea>
 																				</div>

@@ -55,7 +55,7 @@
 											<select type="text" name="NoIdentitas" class="form-control" id="Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
 											<option disabled selected>Choose...</option>
 												@foreach( $terapises as $terapis)
-													<option value="{{$terapis->NoIdentitas}}" @if(Request::input('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
+													<option value="{{$terapis->NoIdentitas}}" @if(Request::input('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama.'['.$terapis->tipe_absensi->JenisAbsensi.']'}}</option>
 												@endforeach
 											</select>
 										</div>
@@ -121,7 +121,7 @@
 											<td>{{$loop->index+1}}</td>
 											<td>{{$jadwal->Tanggal}}</td>
 											<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
-											<td>{{$jadwal->user->Nama}}</td>
+											<td>{{$jadwal->user->Nama.'['.$jadwal->user->tipe_absensi->JenisAbsensi.']'}}</td>
 											<td>{{$jadwal->biodata->Nama}}</td>
 											<td>
 												<div class="checkbox checkbox-success">
