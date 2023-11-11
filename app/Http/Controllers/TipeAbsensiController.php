@@ -46,7 +46,7 @@ class TipeAbsensiController extends Controller
         // dd($IdTipe);
         // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'JenisAbsensi' => 'required|unique:tipe_absensi',
+            'JenisAbsensi' => 'required',
             'Harga' => 'required|numeric',
             'Durasi' => 'required|numeric',
             'Keterangan' => 'required',
