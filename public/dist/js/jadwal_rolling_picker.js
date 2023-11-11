@@ -2,6 +2,8 @@
 $(document).ready(function() {
 	"use strict";
     var today = new Date();
+	// Set startDate berdasarkan bulan berjalan
+	var startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 
     var targetYear = today.getFullYear(); // Tahun target awal
     var targetMonth = 5; // 5 merepresentasikan bulan Juni (mulai dari 0)
@@ -17,7 +19,7 @@ $(document).ready(function() {
 
     /* Datetimepicker Init */
     $('#Tanggal').daterangepicker({
-        startDate: today,
+        startDate: startOfMonth,
         endDate: lastDayOfMonth,
         buttonClasses: ['btn', 'btn-sm'],
         applyClass: 'btn-info',
@@ -28,60 +30,70 @@ $(document).ready(function() {
         }
     });
 	// Inisialisasi datetimepicker untuk elemen-elemen yang sesuai
-	$('#datetimepicker1-0, #datetimepicker1-1').datetimepicker({
-		format: 'HH:mm',
-		useCurrent: false,
-		icons: {
+	$(document).ready(function() {
+		// Inisialisasi datetimepicker pada card pertama
+		$('#WaktuStart, #WaktuSelesai').datetimepicker({
+		  format: 'HH:mm',
+		  useCurrent: false,
+		  icons: {
 			time: "fa fa-clock-o",
 			date: "fa fa-calendar",
 			up: "fa fa-arrow-up",
 			down: "fa fa-arrow-down"
-		}
-	});
-	
-	$(document).ready(function() {
-		var rowCounter = 2; // Dimulai dari 2 karena baris pertama sudah ada
-
-		// Fungsi untuk menambah baris
-		$("#addrow").click(function(event) {
-			event.preventDefault();
-			var item = $(this).closest('.jadwal-item');
-			var newItem = item.clone(true, true);
-			var newRow = $(newItem);
-			// Inisialisasi DateTimePicker untuk elemen input dalam baris baru
-			newRow.find('.input-group.date').each(function(index) {
-				var inputId = 'datetimepicker' + rowCounter + '-' + index;
-				$(this).attr('id', inputId);
-				$(this).find('input').datetimepicker({
-					format: 'HH:mm',
-					useCurrent: false,
-					icons: {
-						time: "fa fa-clock-o",
-						date: "fa fa-calendar",
-						up: "fa fa-arrow-up",
-						down: "fa fa-arrow-down"
-					}
-				});
-			});
-
-			// Tambahkan ikon "fa-trash" untuk menghapus baris
-			var removeIcon = '<a href="#" class="text-danger text-center removeRow"><i class="fa fa-trash"></i></a>';
-			newRow.find('.text-center.vertical-align-middle').html(removeIcon);
-
-			// Hapus class 'addrow' pada elemen tindakan
-			newRow.find('.removeRow').removeClass('text-primary');
-
-			$("#rolling").append(newRow);
-
-			rowCounter++;
+		  }
 		});
-		// Fungsi untuk menghapus baris
-		$("#rolling").on("click", ".removeRow", function(event) {
-			event.preventDefault();
-			$(this).closest("tr").remove();
+	  
+		var cardCount = 1; // Inisialisasi jumlah card
+	  
+		// Add card when the "Add" button is clicked
+		$(document).on('click', '.add-card', function(e) {
+		  e.preventDefault(); // Prevent the default form submission
+		  var clonedCard = $('#jadwal-rolling').clone(); // Clone the original card
+		  clonedCard.find('input, select').val(''); // Clear input and select values in the cloned card
+	  
+		  // Update datetimepicker IDs
+		  clonedCard.find('[id^="WaktuStart"]').each(function() {
+			var currentId = $(this).attr('id');
+			var newId = currentId.replace('WaktuStart', 'datetimepicker' + cardCount + '-0');
+			$(this).attr('id', newId);
+		  });
+	  
+		  clonedCard.find('[id^="WaktuSelesai"]').each(function() {
+			var currentId = $(this).attr('id');
+			var newId = currentId.replace('WaktuSelesai', 'datetimepicker' + cardCount + '-1');
+			$(this).attr('id', newId);
+		  });
+	  
+		  // Set display to - for both buttons
+		  clonedCard.find('.add-card, .remove-card').css('display', '');
+		  $('#jadwal-container').append(clonedCard); // Append the cloned card to the container
+	  
+		  // Inisialisasi datetimepicker pada card yang baru ditambahkan
+		  $('#jadwal-container').find('[id^="datetimepicker' + cardCount + '"]').datetimepicker({
+			format: 'HH:mm',
+			useCurrent: false,
+			icons: {
+			  time: "fa fa-clock-o",
+			  date: "fa fa-calendar",
+			  up: "fa fa-arrow-up",
+			  down: "fa fa-arrow-down"
+			}
+		  });
+	  
+		  cardCount++; // Increment the card count
 		});
-	});
-	
+	  
+		// Remove card when the "Remove" button is clicked
+		$(document).on('click', '.remove-card', function(e) {
+		  e.preventDefault(); // Prevent the default form submission
+		  $(this).closest('.panel').remove(); // Remove the closest ancestor with class "panel"
+		});
+	  });
+	  
+	  
+	  
+	  
+	  
 	
 
 	$(document).ready(function() {

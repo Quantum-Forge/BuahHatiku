@@ -5,13 +5,13 @@
 <!-- Title -->
 <div class="row heading-bg  bg-red">
 	<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-		<h5 class="txt-light">Jadwal Rolling</h5>
+		<h5 class="txt-light">Jadwal Terapis</h5>
 	</div>
 	<!-- Breadcrumb -->
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
 			<li><a href="/dashboard">Dashboard</a></li>
-			<li class="active"><span>Jadwal rolling</span></li>
+			<li class="active"><span>Jadwal Terapis</span></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->
