@@ -18,13 +18,15 @@ class TerapisSeeder extends Seeder
     {
         //
         $faker = Faker::create('id_ID');
+        $name = ['PAK HABEL'];
  
-    	for($i = 1; $i <= 5; $i++){
+    	for($i = 0; $i <= 0; $i++){
             DB::table('users')->insert([
                 'NoIdentitas' => $faker->randomNumber(9,true),
                 'role' => 3,
                 'IdTipe' => 1,
-                'Nama' => $faker->name,
+                // 'Nama' => $faker->name,
+                'Nama' => $name[$i],
                 'Alamat' => $faker->address,
                 'NoHP' => $faker->phoneNumber,
                 'StatusAktif' => 1, // Sesuaikan dengan status aktif yang sesuai

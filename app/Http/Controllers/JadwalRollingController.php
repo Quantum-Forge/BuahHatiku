@@ -66,7 +66,10 @@ class JadwalRollingController extends Controller
                     ON dim.WaktuMulai = jadwal_interval.WaktuMulai
                         AND dim.WaktuSelesai = jadwal_interval.WaktuSelesai
                         AND dim.Terapis = jadwal_interval.Terapis
-                ORDER BY Waktu, JenisAbsensi ASC, FIELD(JenisAbsensi, "ABA", "TW", "OT"), dim.Terapis
+                ORDER BY Waktu, JenisAbsensi ASC, 
+                    FIELD(JenisAbsensi, "ABA", "TW", "OT"),
+                    FIELD(dim.Terapis, "BU ICHA", "BU DEWI", "PAK RAIS", "PAK KHALIK", "BU LINA", "PAK HABEL"),
+                    dim.Terapis
             ');
             array_push($data, collect($query)->groupBy('Waktu'));
         }
