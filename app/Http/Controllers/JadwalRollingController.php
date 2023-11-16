@@ -30,11 +30,12 @@ class JadwalRollingController extends Controller
         foreach($hari as $hari_item){
             $query = DB::select('
                 WITH RECURSIVE jadwal_interval as (
-                    SELECT DISTINCT users.Nama as Terapis, biodata.Nama as Anak, HOUR(TIMEDIFF(WaktuSelesai, WaktuMulai)) as hour_diff, WaktuMulai, ADDTIME(WaktuMulai, "1:00:00") as WaktuSelesai
+                    SELECT users.Nama as Terapis, GROUP_CONCAT(DISTINCT biodata.Nama SEPARATOR "/") as Anak, HOUR(TIMEDIFF(WaktuSelesai, WaktuMulai)) as hour_diff, WaktuMulai, ADDTIME(WaktuMulai, "1:00:00") as WaktuSelesai
                     FROM jadwal_rolling
                         JOIN users ON jadwal_rolling.NoIdentitas = users.NoIdentitas
                         JOIN biodata ON jadwal_rolling.IdAnak = biodata.IdAnak
                     WHERE Hari = "'.$hari_item.'"
+                    GROUP BY users.Nama, WaktuSelesai, WaktuMulai
                     UNION ALL
                     SELECT Terapis, Anak, hour_diff-1, ADDTIME(WaktuMulai, "1:00:00"), ADDTIME(WaktuSelesai, "1:00:00")
                     FROM jadwal_interval
@@ -74,7 +75,7 @@ class JadwalRollingController extends Controller
             array_push($data, collect($query)->groupBy('Waktu'));
         }
         
-        // foreach ($senin as $waktu => $group) {
+        // foreach ($data[5] as $waktu => $group) {
         //     echo "$waktu: ";
         
         //     foreach ($group as $item) {
@@ -82,6 +83,7 @@ class JadwalRollingController extends Controller
         //     }
         //     echo "\n";
         // }
+        // dd($data[5]);
         return view('jadwal_rolling_view')->with([
             'data' => $data
         ]);
