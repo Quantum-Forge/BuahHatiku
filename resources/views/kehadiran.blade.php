@@ -31,9 +31,6 @@
 			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
-					<div class="table-wrap">
-						
-					</div>
 					<div class="table-responsive">
 						<table id="datable_1" class="table table-sm table-hover display text-wrap">
 							<thead>

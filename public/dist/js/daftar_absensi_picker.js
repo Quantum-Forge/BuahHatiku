@@ -2,8 +2,9 @@
 
 $(document).ready(function() {
 	"use strict";
-	"use strict";
-    var today = new Date();
+	var today = new Date();
+	// Set startDate berdasarkan bulan berjalan
+	var startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
 
     var targetYear = today.getFullYear(); // Tahun target awal
     var targetMonth = 5; // 5 merepresentasikan bulan Juni (mulai dari 0)
@@ -18,7 +19,7 @@ $(document).ready(function() {
     var lastDayOfMonth = new Date(targetYear, targetMonth, targetDay);
 		/* Daterange picker Init*/
 		$('#Tanggal').daterangepicker({
-			startDate: today,
+			startDate: startOfMonth,
 			endDate: lastDayOfMonth,
 			buttonClasses: ['btn', 'btn-sm'],
 				   applyClass: 'btn-info',
