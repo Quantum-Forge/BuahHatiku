@@ -97,9 +97,14 @@ class JadwalRollingController extends Controller
             $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
         }
         $tipe_absensies = TipeAbsensi::all();
-        $jadwal_rolling = JadwalRolling::whereHas('absensi',function($q) {
-            $q->whereColumn('created_at', '>=', 'updated_at');
-        })->get();
+        $jadwal_rolling = DB::table('jadwal_rolling')
+            ->join('biodata', 'jadwal_rolling.IdAnak', '=', 'biodata.IdAnak')
+            ->join('users', 'jadwal_rolling.NoIdentitas', '=', 'users.NoIdentitas')
+            ->join('tipe_absensi', 'jadwal_rolling.IdTipe', '=', 'tipe_absensi.IdTipe')
+            ->select('jadwal_rolling.*', 'users.Nama as Terapis', 'biodata.Nama as Anak', 'tipe_absensi.JenisAbsensi')
+            ->whereMonth('Tanggal', '>', 10)->whereYear('Tanggal', 2023)
+            ->get();
+        // $jadwal_rolling = JadwalRolling::whereMonth('Tanggal', 11)->whereYear('Tanggal', 2023)->get();
         return view('jadwal_rolling')->with([
             'biodatas' => $biodatas,
             'terapises' => $terapises,

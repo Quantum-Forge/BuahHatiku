@@ -24,7 +24,7 @@
 		<div class="panel panel-default card-view">
 			<div class="panel-heading">
 				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Invoice</h6>
+					<h6 class="panel-title txt-dark">Invoice {{$today->format('F-Y')}}</h6>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -71,7 +71,7 @@
 						<div class="col-xs-6 text-right">
 							<address>
 								<span class="txt-dark head-font capitalize-font mb-5">Invoice date:</span><br>
-								{{$today}}<br><br>
+								{{$today->format('d-m-Y')}}<br><br>
 							</address>
 						</div>
 					</div>

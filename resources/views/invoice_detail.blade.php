@@ -53,7 +53,8 @@
 												<table class="table table-bordered">
 													<thead>
 														<tr>
-															<th colspan="4" class="text-center">Nota Penagihan {{$invoice->TglInvoice}}</th>
+															{{$invoice->TglInvoice}}
+															<th colspan="4" class="text-center">Nota Penagihan {{\Carbon\Carbon::parse($invoice->TglInvoice)->format('F-Y')}}</th>
 														</tr>
 														<tr>
 															<th colspan="4">{{$invoice->biodata->Nama}}</th>

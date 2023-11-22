@@ -39,7 +39,7 @@ class InvoiceController extends Controller
         if($first_jadwal){
             $first_jadwal = $first_jadwal->NoIdentitas;
         }
-        $today = Carbon::now()->format('d-m-Y');
+        $today = Carbon::now();
         return view('invoice_input')->with([
             'biodatas' => $biodatas,
             'first_jadwal' => $first_jadwal,

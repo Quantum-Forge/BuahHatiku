@@ -371,9 +371,9 @@
 												</div>
 											</td>
 											<td>{{$jadwal->Hari.', '.$jadwal->Tanggal}}</td>
-											<td>{{$jadwal->user->Nama}}</td>
-											<td>{{$jadwal->biodata->Nama}}</td>
-											<td>{{$jadwal->tipe_absensi->JenisAbsensi}}</td>
+											<td>{{$jadwal->Terapis}}</td>
+											<td>{{$jadwal->Anak}}</td>
+											<td>{{$jadwal->JenisAbsensi}}</td>
 											<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
 											<td>
 												<button type="button" class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/jadwal_rolling_edit/{{$jadwal->IdJadwal}}';"><i class="fa fa-pencil"></i></button>
