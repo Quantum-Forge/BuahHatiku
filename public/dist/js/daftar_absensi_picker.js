@@ -2,7 +2,6 @@
 
 $(document).ready(function() {
 	"use strict";
-	var today = new Date();
 	// Set startDate berdasarkan bulan berjalan
 	var today = new Date();
 	var startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
