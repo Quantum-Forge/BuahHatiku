@@ -23,6 +23,7 @@ class CreateInvoiceTable extends Migration
             $table->double('SubTotal');
             $table->double('Potongan')->nullable();
             $table->double('Iuran')->nullable();
+            $table->double('SPP')->nullable();
             $table->double('GrandTotal');
             $table->double('JmlhPembayaran')->nullable();
             $table->date('TglExpire')->nullable();

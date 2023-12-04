@@ -62,36 +62,36 @@ $("input[name='tch5']").TouchSpin({
 $(document).ready(function() {
     var subtotal = parseFloat($("#subtotal").val()) || 0;
     var pengembalian = parseFloat($("#pengembalian").val()) || 0;
-
     var potonganInput = $("#inputPotongan");
     var iuranInput = $("#inputIuran");
-    var grandTotal = subtotal - pengembalian;
+    var inputSPP = $("#inputSPP");
 
     // Membuat fungsi untuk menghitung grandTotal
     function calculateGrandTotal() {
         var potongan = parseFloat(potonganInput.val()) || 0;
         var iuran = parseFloat(iuranInput.val()) || 0;
+        var spp = parseFloat(inputSPP.val()) || 0;
 
-        // Memastikan bahwa potongan dan iuran tidak melebihi subtotal
         if (potongan > subtotal) {
             potongan = subtotal;
             potonganInput.val(subtotal);
         }
-     
-        grandTotal = subtotal - pengembalian - potongan + iuran;
+
+        var potonganTotal = subtotal - potongan;
+        var grandTotal = potonganTotal - pengembalian + iuran + spp;
+
         $("#GrandTotal").text("Rp. " + grandTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         $("input[name='GrandTotal']").val(grandTotal);
     }
 
-    // Memanggil fungsi calculateGrandTotal saat input Potongan berubah
     potonganInput.on("input", calculateGrandTotal);
-
-    // Memanggil fungsi calculateGrandTotal saat input Iuran berubah
     iuranInput.on("input", calculateGrandTotal);
+    inputSPP.on("input", calculateGrandTotal);
 
-    // Memanggil calculateGrandTotal saat halaman dimuat
+
     calculateGrandTotal();
 });
+
 
 
 

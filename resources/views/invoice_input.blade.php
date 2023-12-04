@@ -11,7 +11,7 @@
 	<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
 		<ol class="breadcrumb">
 			<li><a href="/dashboard">Dashboard</a></li>
-			<li><a href="#"><span>Faktur</span></a></li>
+			<li class="active"><span>Faktur</span></li>
 		</ol>
 	</div>
 	<!-- /Breadcrumb -->
@@ -139,7 +139,7 @@
 												@endforeach
 											</tbody>
 										@endif
-										<tr class="txt-dark">
+										<tr class="txt-dark" >
 											<td></td>
 											<td></td>
 											<td colspan="2" class="text-right">Subtotal</td>
@@ -158,8 +158,18 @@
 											<td></td>
 											<td colspan="2" class="text-right">Potongan</td>
 											<td>
-												<div class="form-group mt-10" style="">
+												<div class="form-group mt-10">
 													<input id="inputPotongan" type="number" value="" min="0" placeholder="Isi Potongan..." name="Potongan" class="form-control">
+												</div>	
+											</td>
+										</tr>
+										<tr class="txt-dark">
+											<td></td>
+											<td></td>
+											<td colspan="2" class="text-right">SPP</td>
+											<td>
+												<div class="form-group mt-10">
+													<input id="inputSPP" type="number" value="1500000" min="0" placeholder="Isi SPP..." name="SPP" class="form-control">
 												</div>	
 											</td>
 										</tr>
@@ -168,8 +178,8 @@
 											<td></td>
 											<td colspan="2" class="text-right">Iuran</td>
 											<td>
-												<div class="form-group mt-10" style="">
-													<input id="inputIuran" type="number" value="" min="0" placeholder="Isi Iuran..." name="Iuran" class="form-control">
+												<div class="form-group mt-10">
+													<input id="inputIuran" type="number" value="500000" min="0" placeholder="Isi Iuran..." name="Iuran" class="form-control">
 												</div>	
 											</td>
 										</tr>
@@ -232,5 +242,4 @@
 <!-- Init JavaScript -->
 <script src="{{ asset('dist/js/init.js') }}"></script>
 
-<script src="{{ asset('dist/js/potongan.js') }}"></script>
 @endsection
