@@ -1,64 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Jika Anda ingin menginstal Laravel di folder yang sudah berisi repo GitHub di server, Anda dapat mengikuti langkah-langkah berikut:
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Catatan:** Pastikan server Anda memenuhi persyaratan Laravel sebelum memulai. Ini termasuk PHP, Composer, dan ekstensi yang diperlukan. Anda juga perlu mengatur akses ke database jika aplikasi Anda menggunakan database.
 
-## About Laravel
+1. **Clone Repositori GitHub:**
+   Clone repositori GitHub yang sudah ada ke folder yang diinginkan di server. Misalnya, jika Anda ingin menginstal Laravel di folder `mylaravelapp`, gunakan perintah berikut:
+   ```bash
+   git clone https://github.com/username/repo.git mylaravelapp
+   ```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2. **Masuk ke Direktori:**
+   Pindah ke direktori aplikasi Laravel yang baru dibuat:
+   ```bash
+   cd mylaravelapp
+   ```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+3. **Instal Dependensi dengan Composer:**
+   Laravel menggunakan Composer untuk mengelola dependensi. Jalankan perintah Composer untuk menginstal paket-paket yang diperlukan:
+   ```bash
+   composer install
+   ```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+4. **Buat Salinan File Konfigurasi:**
+   Salin file `.env.example` menjadi `.env`:
+   ```bash
+   cp .env.example .env
+   ```
 
-## Learning Laravel
+5. **Konfigurasi .env:**
+   Edit file `.env` sesuai dengan pengaturan database dan konfigurasi lainnya yang diperlukan:
+   ```bash
+   nano .env
+   ```
+   Simpan perubahan dan keluar dari editor.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+6. **Generate Key Aplikasi:**
+   Jalankan perintah Artisan untuk menghasilkan kunci aplikasi:
+   ```bash
+   php artisan key:generate
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+7. **Migrasi Database:**
+   Jalankan migrasi untuk membuat tabel-tabel database:
+   ```bash
+   php artisan migrate
+   ```
 
-## Laravel Sponsors
+8. **Buat Simlink untuk Storage:**
+   Buat simlink dari direktori `storage` ke `public/storage` agar file-file yang diunggah dapat diakses secara publik:
+   ```bash
+   php artisan storage:linkJika Anda ingin menginstal Laravel di folder yang sudah berisi repo GitHub di server, Anda dapat mengikuti langkah-langkah berikut:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Catatan:** Pastikan server Anda memenuhi persyaratan Laravel sebelum memulai. Ini termasuk PHP, Composer, dan ekstensi yang diperlukan. Anda juga perlu mengatur akses ke database jika aplikasi Anda menggunakan database.
 
-### Premium Partners
+1. **Clone Repositori GitHub:**
+   Clone repositori GitHub yang sudah ada ke folder yang diinginkan di server. Misalnya, jika Anda ingin menginstal Laravel di folder `mylaravelapp`, gunakan perintah berikut:
+   ```bash
+   git clone https://github.com/rumahpintarinovasi/BuahHatiku.git BuahHatiku
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+2. **Masuk ke Direktori:**
+   Pindah ke direktori aplikasi Laravel yang baru dibuat:
+   ```bash
+   cd BuahHatiku
+   ```
 
-## Contributing
+3. **Instal Dependensi dengan Composer:**
+   Laravel menggunakan Composer untuk mengelola dependensi. Jalankan perintah Composer untuk menginstal paket-paket yang diperlukan:
+   ```bash
+   composer install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. **Buat Salinan File Konfigurasi:**
+   Salin file `.env.example` menjadi `.env`:
+   ```bash
+   cp .env.example .env
+   ```
 
-## Code of Conduct
+5. **Konfigurasi .env:**
+   Edit file `.env` sesuai dengan pengaturan database dan konfigurasi lainnya yang diperlukan:
+   ```bash
+   nano .env
+   ```
+   Simpan perubahan dan keluar dari editor.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+6. **Generate Key Aplikasi:**
+   Jalankan perintah Artisan untuk menghasilkan kunci aplikasi:
+   ```bash
+   php artisan key:generate
+   ```
 
-## Security Vulnerabilities
+7. **Migrasi Database:**
+   Jalankan migrasi untuk membuat tabel-tabel database:
+   ```bash
+   php artisan migrate
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+8. **Buat Simlink untuk Storage:**
+   Buat simlink dari direktori `storage` ke `public/storage` agar file-file yang diunggah dapat diakses secara publik:
+   ```bash
+   php artisan storage:link
+   composer require guzzlehttp/guzzle
+   ```
 
-## License
+9. **Atur Permissions:**
+   Pastikan server memiliki izin yang cukup untuk menulis ke direktori `bootstrap/cache` dan `storage`. Ini dapat memerlukan perubahan izin file dan direktori:
+   ```bash
+   chmod -R 775 bootstrap/cache
+   chmod -R 775 storage
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+10. **Selesai:**
+    Aplikasi Laravel sekarang seharusnya terinstal dan siap digunakan di folder yang sudah ada di server.
+
+Pastikan untuk membaca dokumentasi Laravel dan menyesuaikan langkah-langkah ini sesuai kebutuhan aplikasi Anda. Jika Anda mengalami masalah atau perlu konfigurasi khusus, periksa dokumentasi resmi Laravel di [laravel.com](https://laravel.com/docs).
+   ```
