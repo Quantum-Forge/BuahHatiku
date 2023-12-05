@@ -234,6 +234,36 @@
 		<div class="panel panel-default card-view">
 			<div class="panel-heading">
 				<div class="pull-left">
+					<h6 class="panel-title txt-dark"><i class="fa fa-filter mr-10"></i>Filter Penjadwalan</h6>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="panel-wrapper collapse in">
+				<div class="panel-body">
+					<form action="" method="">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group ">
+									<label class="control-label mb-10">Tanggal</label>
+									<div class="input-group date">
+										<input type="text" id="TanggalFilter" name="" class="form-control" value="">
+										<span class="input-group-addon">
+											<span class="fa fa-calendar"></span>
+										</span>
+									</div> 
+								</div>
+							</div>
+						</div>
+						<div class="form-actions mt-10">
+							<button type="submit" class="btn btn-success btn-block"><i class="fa fa-filter"></i> Filter</button>
+						</div>		
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default card-view">
+			<div class="panel-heading">
+				<div class="pull-left">
 					<h6 class="panel-title txt-dark">Remove Penjadwalan</h6>
 				</div>
 				<div class="clearfix"></div>
@@ -423,8 +453,8 @@
 <script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
 
 <!-- Bootstrap-table JavaScript -->
-	<script src="vendors/bower_components/bootstrap-table/dist/bootstrap-table.min.js"></script>
-	<script src="dist/js/bootstrap-table-data.js"></script>
+<script src="vendors/bower_components/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="dist/js/bootstrap-table-data.js"></script>
 
 <!-- Data table JavaScript -->
 <script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
@@ -432,30 +462,22 @@
 
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
-		
 <!-- Bootstrap Colorpicker JavaScript -->
 <script src="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
-		
 <!-- Bootstrap Datetimepicker JavaScript -->
 <script type="text/javascript" src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-
 <!-- Bootstrap Daterangepicker JavaScript -->
 <script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-
-
 <!-- Form Picker Init JavaScript -->
 <script src="{{ asset('dist/js/jadwal_rolling_picker.js') }}"></script>
-
 <!-- Slimscroll JavaScript -->
 <script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
-
 <!-- Fancy Dropdown JS -->
 <script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
 <!-- Bootstrap Dropify JavaScript -->
 <script src="{{ asset('vendors/bower_components/dropify/dist/js/dropify.min.js') }}"></script>
 <!-- Form Flie Upload Data JavaScript -->
 <script src="{{ asset('dist/js/form-file-upload-data.js') }}"></script>
-
 <!-- Init JavaScript -->
 <script src="{{ asset('dist/js/init.js') }}"></script>
 

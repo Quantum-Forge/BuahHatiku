@@ -18,7 +18,7 @@ $(document).ready(function() {
     var lastDayOfMonth = new Date(targetYear, targetMonth, targetDay);
 
     /* Datetimepicker Init */
-    $('#Tanggal').daterangepicker({
+    $('#Tanggal, #TanggalFilter').daterangepicker({
         startDate: startOfMonth,
         endDate: lastDayOfMonth,
         buttonClasses: ['btn', 'btn-sm'],
@@ -44,7 +44,7 @@ $(document).ready(function() {
 		});
 	  
 		var cardCount = 1; // Inisialisasi jumlah card
-	  
+	
 		// Add card when the "Add" button is clicked
 		$(document).on('click', '.add-card', function(e) {
 		  e.preventDefault(); // Prevent the default form submission

@@ -49,8 +49,8 @@
 						<div class="tab-content" id="myTabContent_7">
 							<div  id="senin" class="tab-pane fade active in" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive">
-										<table id="senin_table" class="table table-sm table-bordered display pb-30">
+									<div class="table-responsive" style="zoom: 50%">
+										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
@@ -85,8 +85,8 @@
 							</div>
 							<div  id="selasa" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive">
-										<table id="selasa_table" class="table table-sm table-bordered display pb-30">
+									<div class="table-responsive" style="zoom: 50%">
+										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
@@ -121,8 +121,8 @@
 							</div>
 							<div  id="rabu" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive">
-										<table id="rabu_table" class="table table-sm table-bordered display pb-30">
+									<div class="table-responsive" style="zoom: 50%">
+										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
@@ -157,8 +157,8 @@
 							</div>
 							<div  id="kamis" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive">
-										<table id="kamis_table" class="table table-sm table-bordered display pb-30">
+									<div class="table-responsive" style="zoom: 50%">
+										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
@@ -193,8 +193,8 @@
 							</div>
 							<div  id="jumat" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive">
-										<table id="jumat_table" class="table table-sm table-bordered display pb-30">
+									<div class="table-responsive" style="zoom: 50%">
+										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
@@ -229,8 +229,8 @@
 							</div>
 							<div  id="sabtu" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive">
-										<table id="sabtu_table" class="table table-sm table-bordered display pb-30">
+									<div class="table-responsive" style="zoom: 50%">
+										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
 													<th rowspan="2">Jam / Hari</th>
