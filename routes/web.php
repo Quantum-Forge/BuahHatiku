@@ -87,8 +87,8 @@ Route::middleware(['auth'])->group(function () {
             return TipeAbsensiController::update($request, $IdTipe);
         });
         // Schedulling
-        Route::get('/jadwal_rolling',function(){
-            return JadwalRollingController::crud_view();
+        Route::get('/jadwal_rolling',function(Request $request){
+            return JadwalRollingController::crud_view($request);
         });
         Route::post('/jadwal_rolling',function(Request $request){
             return JadwalRollingController::insert($request);

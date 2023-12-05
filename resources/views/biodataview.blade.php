@@ -54,7 +54,7 @@
 										<td>{{$biodata->Email}}</td>
 										<td width="80">
 											<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/biodata_edit/{{$biodata->IdAnak}}';"><i class="fa fa-pencil"></i></button>
-											<button data-toggle="modal" data-target="#responsive-modal{{$biodata->IdAnak}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+											<!-- <button data-toggle="modal" data-target="#responsive-modal{{$biodata->IdAnak}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button> -->
 										</td>
 									</tr>
 									<div id="responsive-modal{{$biodata->IdAnak}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

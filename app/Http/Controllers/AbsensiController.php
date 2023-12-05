@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\TipeAbsensi;
 use App\Models\JadwalRolling;
 use Carbon\Carbon;
+use DB;
 
 class AbsensiController extends Controller
 {
@@ -29,7 +30,12 @@ class AbsensiController extends Controller
             $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
         }
         $tipe_absensies = TipeAbsensi::all();
-        $jadwal_rolling = JadwalRolling::query();
+        $jadwal_rolling = DB::table('jadwal_rolling')
+            ->join('biodata', 'jadwal_rolling.IdAnak', '=', 'biodata.IdAnak')
+            ->join('users', 'jadwal_rolling.NoIdentitas', '=', 'users.NoIdentitas')
+            ->join('tipe_absensi', 'jadwal_rolling.IdTipe', '=', 'tipe_absensi.IdTipe')
+            ->join('absensi', 'jadwal_rolling.IdJadwal', '=', 'absensi.IdJadwal')
+            ->select('jadwal_rolling.*', 'users.Nama as Terapis', 'biodata.Nama as Anak', 'tipe_absensi.JenisAbsensi', 'IdAbsensi', 'Hadir', 'Alasan');
         if($request->Tanggal || $request->IdAnak || $request->NoIdentitas || $request->IdTipe){
             if($request->Tanggal){
                 $tanggal = explode(" - ", $request->Tanggal);
@@ -40,13 +46,13 @@ class AbsensiController extends Controller
                 // $jadwal_rolling->whereDate('Tanggal', Carbon::createFromFormat('d/m/Y',$request->Tanggal)->toDateString());
             }
             if($request->IdAnak){
-                $jadwal_rolling->where('IdAnak', $request->IdAnak);
+                $jadwal_rolling->where('jadwal_rolling.IdAnak', $request->IdAnak);
             }
             if($request->NoIdentitas){
-                $jadwal_rolling->where('NoIdentitas', $request->NoIdentitas);
+                $jadwal_rolling->where('jadwal_rolling.NoIdentitas', $request->NoIdentitas);
             }
             if($request->IdTipe){
-                $jadwal_rolling->where('IdTipe', $request->IdTipe);
+                $jadwal_rolling->where('jadwal_rolling.IdTipe', $request->IdTipe);
             }
             if($request->WaktuMulai){
                 $waktu = Carbon::createFromFormat('g:i a',$request->WaktuMulai)->format('H:i');
@@ -67,9 +73,15 @@ class AbsensiController extends Controller
         $user = Auth::user();
         $today = Carbon::now();
         $threeDaysAgo = $today->copy()->subDays(3);
-        $jadwal_rolling = JadwalRolling::whereBetween('Tanggal', [$threeDaysAgo, $today])
-                                        ->where('NoIdentitas', $user->NoIdentitas)
-                                        ->get();
+        $jadwal_rolling = DB::table('jadwal_rolling')
+            ->join('biodata', 'jadwal_rolling.IdAnak', '=', 'biodata.IdAnak')
+            ->join('users', 'jadwal_rolling.NoIdentitas', '=', 'users.NoIdentitas')
+            ->join('tipe_absensi', 'jadwal_rolling.IdTipe', '=', 'tipe_absensi.IdTipe')
+            ->join('absensi', 'jadwal_rolling.IdJadwal', '=', 'absensi.IdJadwal')
+            ->select('jadwal_rolling.*', 'users.Nama as Terapis', 'biodata.Nama as Anak', 'tipe_absensi.JenisAbsensi', 'IdAbsensi', 'Hadir', 'Alasan')
+            ->whereBetween('Tanggal', [$threeDaysAgo, $today])
+            ->where('jadwal_rolling.NoIdentitas', $user->NoIdentitas)
+            ->get();
         return view('daftar_absensi_terapis')->with([
             'jadwal_rolling' => $jadwal_rolling
         ]);

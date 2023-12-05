@@ -89,7 +89,7 @@ class JadwalRollingController extends Controller
         ]);
     }
 
-    public static function crud_view(){
+    public static function crud_view(Request $request){
         $biodatas = Biodata::all();
         $terapises = User::where('Role', 3)->get();
         $user = Auth::user();
@@ -97,12 +97,21 @@ class JadwalRollingController extends Controller
             $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
         }
         $tipe_absensies = TipeAbsensi::all();
+        if($request->Tanggal){
+            $tanggal = explode(" - ", $request->Tanggal);
+            $startDate = Carbon::createFromFormat('d/m/Y',$tanggal[0]); 
+            $endDate = Carbon::createFromFormat('d/m/Y',$tanggal[1]);
+        }else{
+            $startDate = Carbon::now()->startOfMonth();
+            $endDate = Carbon::now()->endOfMonth();
+        }
         $jadwal_rolling = DB::table('jadwal_rolling')
             ->join('biodata', 'jadwal_rolling.IdAnak', '=', 'biodata.IdAnak')
             ->join('users', 'jadwal_rolling.NoIdentitas', '=', 'users.NoIdentitas')
             ->join('tipe_absensi', 'jadwal_rolling.IdTipe', '=', 'tipe_absensi.IdTipe')
             ->select('jadwal_rolling.*', 'users.Nama as Terapis', 'biodata.Nama as Anak', 'tipe_absensi.JenisAbsensi')
-            ->whereMonth('Tanggal', '>', 10)->whereYear('Tanggal', 2023)
+            // ->whereMonth('Tanggal', '>', 10)->whereYear('Tanggal', 2023)
+            ->whereBetween('Tanggal', [$startDate->toDateString(), $endDate->toDateString()])
             ->get();
         // $jadwal_rolling = JadwalRolling::whereMonth('Tanggal', 11)->whereYear('Tanggal', 2023)->get();
         return view('jadwal_rolling')->with([
@@ -357,6 +366,10 @@ class JadwalRollingController extends Controller
             ->where('IdAnak', $request->IdAnakDelete)
             ->where('NoIdentitas', $request->NoIdentitasDelete)
             ->where('IdTipe', $request->IdTipeDelete);
+        if($request->HariDelete != 'Semua Hari'){
+            dd('test');
+            $jadwal_rolling->where('Hari', $request->HariDelete);
+        }
 
         Absensi::whereIn('IdJadwal', $jadwal_rolling->get()->modelKeys())->delete();
         $jadwal_rolling->delete();

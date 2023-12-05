@@ -82,7 +82,7 @@
 																</tr>
 															@endif
 														@endforeach
-														
+														@php( $pengembalian=0 )
 														@foreach($invoice->rincian as $rincian)
 															@if($rincian->JenisTransaksi == 0)
 															<thead>
@@ -99,20 +99,30 @@
 																	<th>{{$rincian->JmlhPertemuan}}</th>
 																	<th>Rp. {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</th>
 																	<th>Rp. {{number_format($rincian->Total, 0, ',', '.')}}</th>
+																	@php($pengembalian += $rincian->Total)
 																</tr>
 															@endif
 														@endforeach
-														<tr class="txt-dark">
-															<td class="text-right" colspan="3">Iuran</td>
-															<td>Rp. {{number_format($invoice->Iuran, 0, ',', '.')}}</td>
-														</tr>
+														
 														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Subtotal</td>
 															<td>Rp. {{number_format($invoice->SubTotal, 0, ',', '.')}}</td>
 														</tr>
 														<tr class="txt-dark">
+															<td class="text-right" colspan="3">Pengembalian</td>
+															<td>Rp. {{number_format($invoice->Pengembalian, 0, ',', '.')}}</td>
+														</tr>
+														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Potongan</td>
 															<td>Rp. {{number_format($invoice->Potongan, 0, ',', '.')}}</td>
+														</tr>
+														<tr class="txt-dark">
+															<td class="text-right" colspan="3">SPP</td>
+															<td>Rp. {{number_format($invoice->SPP, 0, ',', '.')}}</td>
+														</tr>
+														<tr class="txt-dark">
+															<td class="text-right" colspan="3">Iuran</td>
+															<td>Rp. {{number_format($invoice->Iuran, 0, ',', '.')}}</td>
 														</tr>
 														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Total</td>

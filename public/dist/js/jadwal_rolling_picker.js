@@ -18,7 +18,7 @@ $(document).ready(function() {
     var lastDayOfMonth = new Date(targetYear, targetMonth, targetDay);
 
     /* Datetimepicker Init */
-    $('#Tanggal, #TanggalFilter').daterangepicker({
+    $('#Tanggal').daterangepicker({
         startDate: startOfMonth,
         endDate: lastDayOfMonth,
         buttonClasses: ['btn', 'btn-sm'],
@@ -29,6 +29,24 @@ $(document).ready(function() {
             language: 'id'
         }
     });
+	var filterStartDate = startOfMonth;
+	var filterEndDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);;
+	if($('#TanggalFilter').val()){
+		var tanggal = $('#TanggalFilter').val().split(' - ');
+		filterStartDate = tanggal[0];
+		filterEndDate = tanggal[1];
+	}
+	$('#TanggalFilter').daterangepicker({
+		startDate: filterStartDate,
+		endDate: filterEndDate,
+		buttonClasses: ['btn', 'btn-sm'],
+		applyClass: 'btn-info',
+		cancelClass: 'btn-default',
+		locale: {
+			format: 'DD/MM/YYYY',
+			language: 'id'
+		}
+	});
 	// Inisialisasi datetimepicker untuk elemen-elemen yang sesuai
 	$(document).ready(function() {
 		// Inisialisasi datetimepicker pada card pertama

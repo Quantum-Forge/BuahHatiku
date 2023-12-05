@@ -121,20 +121,20 @@
 											<td>{{$loop->index+1}}</td>
 											<td>{{$jadwal->Tanggal}}</td>
 											<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
-											<td>{{$jadwal->user->Nama.'['.$jadwal->user->tipe_absensi->JenisAbsensi.']'}}</td>
-											<td>{{$jadwal->biodata->Nama}}</td>
+											<td>{{$jadwal->Terapis.'['.$jadwal->JenisAbsensi.']'}}</td>
+											<td>{{$jadwal->Anak}}</td>
 											<td>
 												<div class="checkbox checkbox-success">
-													<input type="hidden" name="absensi[]" value="{{$jadwal->absensi->IdAbsensi}}">
-													<input type="hidden" name="hadir[{{$jadwal->absensi->IdAbsensi}}]" value="0">
-													<input id="status_kehadiran" type="checkbox" name="hadir[{{$jadwal->absensi->IdAbsensi}}]" @if($jadwal->absensi->Hadir == 1) checked @endif value="1">
+													<input type="hidden" name="absensi[]" value="{{$jadwal->IdAbsensi}}">
+													<input type="hidden" name="hadir[{{$jadwal->IdAbsensi}}]" value="0">
+													<input id="status_kehadiran" type="checkbox" name="hadir[{{$jadwal->IdAbsensi}}]" @if($jadwal->Hadir == 1) checked @endif value="1">
 													<label for="status_kehadiran">
 														Hadir
 													</label>
 												</div>
 											</td>
 											<td>
-												<textarea name="keterangan[{{$jadwal->absensi->IdAbsensi}}]" class="form-control" id="" cols="20" rows="3" placeholder="Isi Keterangan">{{$jadwal->absensi->Alasan}}</textarea>
+												<textarea name="keterangan[{{$jadwal->IdAbsensi}}]" class="form-control" id="" cols="20" rows="3" placeholder="Isi Keterangan">{{$jadwal->Alasan}}</textarea>
 											</td>
 										</tr>
 										@endforeach

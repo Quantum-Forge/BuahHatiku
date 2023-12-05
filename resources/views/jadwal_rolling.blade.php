@@ -240,13 +240,13 @@
 			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
-					<form action="" method="">
+					<form action="/jadwal_rolling" method="GET">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group ">
 									<label class="control-label mb-10">Tanggal</label>
 									<div class="input-group date">
-										<input type="text" id="TanggalFilter" name="" class="form-control" value="">
+										<input type="text" id="TanggalFilter" name="Tanggal" class="form-control" value="{{Request::input('Tanggal')}}">
 										<span class="input-group-addon">
 											<span class="fa fa-calendar"></span>
 										</span>
@@ -283,6 +283,23 @@
 										</span>
 									</div> 
 									@error('TanggalDelete')
+										<span class="help-block">{{ $message }}</span>
+									@enderror
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group {{ $errors->has('HariDelete') ? 'has-error' : '' }}">
+									<label class="control-label mb-10">Hari</label>
+									<select class="form-control" name="HariDelete" data-placeholder="Choose Hari">
+										<option value="Semua Hari" selected>Semua Hari</option>
+										<option value="Senin">Senin</option>
+										<option value="Selasa">Selasa</option>
+										<option value="Rabu">Rabu</option>
+										<option value="Kamis">Kamis</option>
+										<option value="Jumat">Jumat</option>
+										<option value="Sabtu">Sabtu</option>
+									</select>
+									@error('HariDelete')
 										<span class="help-block">{{ $message }}</span>
 									@enderror
 								</div>
