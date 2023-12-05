@@ -63,4 +63,3 @@ Catatan: Pastikan server Anda memenuhi persyaratan Laravel sebelum memulai. Ini 
     Aplikasi Laravel sekarang seharusnya terinstal dan siap digunakan di folder yang sudah ada di server.
 
 Pastikan untuk membaca dokumentasi Laravel dan menyesuaikan langkah-langkah ini sesuai kebutuhan aplikasi Anda. Jika Anda mengalami masalah atau perlu konfigurasi khusus, periksa dokumentasi resmi Laravel di [laravel.com](https://laravel.com/docs).
-   ```
