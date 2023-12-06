@@ -191,8 +191,8 @@ Route::middleware(['auth'])->group(function () {
             return AbsensiController::update($request);
         });
         // Kehadiran
-        Route::get('/kehadiran',function(){
-            return AbsensiController::view_kehadiran();
+        Route::get('/kehadiran',function(Request $request){
+            return AbsensiController::view_kehadiran($request);
         });
         Route::get('/search', function (Request $request) {
             return BiodataController::search($request);

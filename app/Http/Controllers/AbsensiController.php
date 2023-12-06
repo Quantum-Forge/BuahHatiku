@@ -15,14 +15,7 @@ use DB;
 class AbsensiController extends Controller
 {
     //
-    public static function view_kehadiran(){
-        $jadwal_rolling = JadwalRolling::all();
-        return view('kehadiran')->with([
-            'jadwal_rolling' => $jadwal_rolling
-        ]);
-    }
-
-    public static function view(Request $request){
+    public static function view_kehadiran(Request $request){
         $biodatas = Biodata::all();
         $terapises = User::where('Role', 3)->get();
         $user = Auth::user();
@@ -30,13 +23,14 @@ class AbsensiController extends Controller
             $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
         }
         $tipe_absensies = TipeAbsensi::all();
-        $jadwal_rolling = DB::table('jadwal_rolling')
-            ->join('biodata', 'jadwal_rolling.IdAnak', '=', 'biodata.IdAnak')
-            ->join('users', 'jadwal_rolling.NoIdentitas', '=', 'users.NoIdentitas')
-            ->join('tipe_absensi', 'jadwal_rolling.IdTipe', '=', 'tipe_absensi.IdTipe')
-            ->join('absensi', 'jadwal_rolling.IdJadwal', '=', 'absensi.IdJadwal')
-            ->select('jadwal_rolling.*', 'users.Nama as Terapis', 'biodata.Nama as Anak', 'tipe_absensi.JenisAbsensi', 'IdAbsensi', 'Hadir', 'Alasan');
+        $jadwal_rolling = null;
         if($request->Tanggal || $request->IdAnak || $request->NoIdentitas || $request->IdTipe){
+            $jadwal_rolling = DB::table('jadwal_rolling')
+                ->join('biodata', 'jadwal_rolling.IdAnak', '=', 'biodata.IdAnak')
+                ->join('users', 'jadwal_rolling.NoIdentitas', '=', 'users.NoIdentitas')
+                ->join('tipe_absensi', 'jadwal_rolling.IdTipe', '=', 'tipe_absensi.IdTipe')
+                ->join('absensi', 'jadwal_rolling.IdJadwal', '=', 'absensi.IdJadwal')
+                ->select('jadwal_rolling.*', 'users.Nama as Terapis', 'biodata.Nama as Anak', 'tipe_absensi.JenisAbsensi', 'IdAbsensi', 'Hadir', 'Alasan');
             if($request->Tanggal){
                 $tanggal = explode(" - ", $request->Tanggal);
                 $jadwal_rolling->whereBetween('Tanggal', [
@@ -60,6 +54,55 @@ class AbsensiController extends Controller
             }
             $jadwal_rolling = $jadwal_rolling->get();
         }
+        return view('kehadiran')->with([
+            'tanggal' => Carbon::now()->format('Y-m-d'),
+            'biodatas' => $biodatas,
+            'terapises' => $terapises,
+            'tipe_absensies' => $tipe_absensies,
+            'jadwal_rolling' => $jadwal_rolling
+        ]);
+    }
+
+    public static function view(Request $request){
+        $biodatas = Biodata::all();
+        $terapises = User::where('Role', 3)->get();
+        $user = Auth::user();
+        if($user->Role == 3){
+            $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
+        }
+        $tipe_absensies = TipeAbsensi::all();
+        $jadwal_rolling = null;
+        if($request->Tanggal || $request->IdAnak || $request->NoIdentitas || $request->IdTipe){
+            $jadwal_rolling = DB::table('jadwal_rolling')
+                ->join('biodata', 'jadwal_rolling.IdAnak', '=', 'biodata.IdAnak')
+                ->join('users', 'jadwal_rolling.NoIdentitas', '=', 'users.NoIdentitas')
+                ->join('tipe_absensi', 'jadwal_rolling.IdTipe', '=', 'tipe_absensi.IdTipe')
+                ->join('absensi', 'jadwal_rolling.IdJadwal', '=', 'absensi.IdJadwal')
+                ->select('jadwal_rolling.*', 'users.Nama as Terapis', 'biodata.Nama as Anak', 'tipe_absensi.JenisAbsensi', 'IdAbsensi', 'Hadir', 'Alasan');
+            if($request->Tanggal){
+                $tanggal = explode(" - ", $request->Tanggal);
+                $jadwal_rolling->whereBetween('Tanggal', [
+                    Carbon::createFromFormat('d/m/Y',$tanggal[0])->toDateString(), 
+                    Carbon::createFromFormat('d/m/Y',$tanggal[1])->toDateString()
+                ]);
+                // $jadwal_rolling->whereDate('Tanggal', Carbon::createFromFormat('d/m/Y',$request->Tanggal)->toDateString());
+            }
+            if($request->IdAnak){
+                $jadwal_rolling->where('jadwal_rolling.IdAnak', $request->IdAnak);
+            }
+            if($request->NoIdentitas){
+                $jadwal_rolling->where('jadwal_rolling.NoIdentitas', $request->NoIdentitas);
+            }
+            if($request->IdTipe){
+                $jadwal_rolling->where('jadwal_rolling.IdTipe', $request->IdTipe);
+            }
+            if($request->WaktuMulai){
+                $waktu = Carbon::createFromFormat('g:i a',$request->WaktuMulai)->format('H:i');
+                $jadwal_rolling->where('WaktuMulai', '>=', $waktu);
+            }
+            $jadwal_rolling = $jadwal_rolling->get();
+        }
+        
         return view('daftar_absensi')->with([
             'tanggal' => Carbon::now()->format('Y-m-d'),
             'biodatas' => $biodatas,

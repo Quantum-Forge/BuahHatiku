@@ -116,6 +116,7 @@
 									</thead>
 									{{-- ini looping jadwal rolling, di tambahkan juga status kehadiran, karena uang makan harus dihitung dari absensi awal - akhir --}}
 									<tbody>
+										@if($jadwal_rolling)
 										@foreach($jadwal_rolling as $jadwal)
 										<tr>
 											<td>{{$loop->index+1}}</td>
@@ -138,6 +139,7 @@
 											</td>
 										</tr>
 										@endforeach
+										@endif
 									</tbody>
 								</table>
 								<button type="submit" class="btn btn-info btn-block mt-10">Submit</button>
