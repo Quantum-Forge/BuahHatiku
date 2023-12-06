@@ -49,7 +49,7 @@
 						<div class="tab-content" id="myTabContent_7">
 							<div  id="senin" class="tab-pane fade active in" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive" style="zoom: 50%">
+									<div class="table-responsive">
 										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
@@ -72,9 +72,9 @@
 											<tbody>
 												@foreach ($data[0] as $waktu => $group)
 													<tr>
-														<td>{{ $waktu }}</td>
+														<td class="txt-dark">{{ $waktu }}</td>
 														@foreach($group as $item)
-															<td>{{ $item->Anak }}</td>
+															<td class="txt-dark">{{ $item->Anak }}</td>
 														@endforeach
 													</tr>
 												@endforeach
@@ -85,7 +85,7 @@
 							</div>
 							<div  id="selasa" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive" style="zoom: 50%">
+									<div class="table-responsive">
 										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
@@ -108,9 +108,9 @@
 											<tbody>
 												@foreach ($data[1] as $waktu => $group)
 													<tr>
-														<td>{{ $waktu }}</td>
+														<td class="txt-dark">{{ $waktu }}</td>
 														@foreach($group as $item)
-															<td>{{ $item->Anak }}</td>
+															<td class="txt-dark">{{ $item->Anak }}</td>
 														@endforeach
 													</tr>
 												@endforeach
@@ -121,7 +121,7 @@
 							</div>
 							<div  id="rabu" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive" style="zoom: 50%">
+									<div class="table-responsive">
 										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
@@ -144,9 +144,9 @@
 											<tbody>
 												@foreach ($data[2] as $waktu => $group)
 													<tr>
-														<td>{{ $waktu }}</td>
+														<td class="txt-dark">{{ $waktu }}</td>
 														@foreach($group as $item)
-															<td>{{ $item->Anak }}</td>
+															<td class="txt-dark">{{ $item->Anak }}</td>
 														@endforeach
 													</tr>
 												@endforeach
@@ -157,7 +157,7 @@
 							</div>
 							<div  id="kamis" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive" style="zoom: 50%">
+									<div class="table-responsive">
 										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
@@ -180,9 +180,9 @@
 											<tbody>
 												@foreach ($data[3] as $waktu => $group)
 													<tr>
-														<td>{{ $waktu }}</td>
+														<td class="txt-dark">{{ $waktu }}</td>
 														@foreach($group as $item)
-															<td>{{ $item->Anak }}</td>
+															<td class="txt-dark">{{ $item->Anak }}</td>
 														@endforeach
 													</tr>
 												@endforeach
@@ -193,7 +193,7 @@
 							</div>
 							<div  id="jumat" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive" style="zoom: 50%">
+									<div class="table-responsive">
 										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
@@ -216,9 +216,9 @@
 											<tbody>
 												@foreach ($data[4] as $waktu => $group)
 													<tr>
-														<td>{{ $waktu }}</td>
+														<td class="txt-dark">{{ $waktu }}</td>
 														@foreach($group as $item)
-															<td>{{ $item->Anak }}</td>
+															<td class="txt-dark">{{ $item->Anak }}</td>
 														@endforeach
 													</tr>
 												@endforeach
@@ -229,7 +229,7 @@
 							</div>
 							<div  id="sabtu" class="tab-pane fade" role="tabpanel">
 								<div class="text-nowrap">
-									<div class="table-responsive" style="zoom: 50%">
+									<div class="table-responsive">
 										<table class="table table-sm table-bordered display pb-30">
 											<thead>
 												<tr>
@@ -252,9 +252,9 @@
 											<tbody>
 												@foreach ($data[5] as $waktu => $group)
 													<tr>
-														<td>{{ $waktu }}</td>
+														<td class="txt-dark">{{ $waktu }}</td>
 														@foreach($group as $item)
-															<td>{{ $item->Anak }}</td>
+															<td class="txt-dark">{{ $item->Anak }}</td>
 														@endforeach
 													</tr>
 												@endforeach
