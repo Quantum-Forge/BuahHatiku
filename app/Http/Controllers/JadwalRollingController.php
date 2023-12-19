@@ -367,7 +367,6 @@ class JadwalRollingController extends Controller
             ->where('NoIdentitas', $request->NoIdentitasDelete)
             ->where('IdTipe', $request->IdTipeDelete);
         if($request->HariDelete != 'Semua Hari'){
-            dd('test');
             $jadwal_rolling->where('Hari', $request->HariDelete);
         }
 

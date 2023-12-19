@@ -429,22 +429,19 @@
 										</tr>
 										<div id="responsive-modal{{$jadwal->IdJadwal}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 											<div class="modal-dialog">
-												<!-- <form action="/jadwal_rolling_delete/{{$jadwal->IdJadwal}}" method="POST">
-													{{csrf_field()}} -->
-													<div class="modal-content">
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-															<h5 class="modal-title">Delete Schedule</h5>
-														</div>
-														<div class="modal-body">
-															Are you sure to delete this Schedule ?
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-															<button type="button" class="btn btn-danger" onclick="window.location.href='/jadwal_rolling_delete/{{$jadwal->IdJadwal}}';">Yes</button>
-														</div>
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+														<h5 class="modal-title">Delete Schedule</h5>
 													</div>
-												<!-- </form> -->
+													<div class="modal-body">
+														Are you sure to delete this Schedule ?
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+														<button type="button" class="btn btn-danger" onclick="window.location.href='/jadwal_rolling_delete/{{$jadwal->IdJadwal}}';">Yes</button>
+													</div>
+												</div>
 											</div>
 										</div>
 									@endforeach
