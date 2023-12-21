@@ -26,17 +26,17 @@ class Biodata extends Model
 
     public function getTglLahirAttribute()
     {
-        return Carbon::parse($this->attributes['TglLahir'])->format('d/m/Y');
+        return $this->attributes['TglLahir']? Carbon::parse($this->attributes['TglLahir'])->format('d/m/Y') : null;
     }
 
     public function getTglLahirOrtuAttribute()
     {
-        return Carbon::parse($this->attributes['TglLahirOrtu'])->format('d/m/Y');
+        return $this->attributes['TglLahirOrtu']? Carbon::parse($this->attributes['TglLahirOrtu'])->format('d/m/Y') : null;
     }
 
     public function getTglMasukAttribute()
     {
-        return Carbon::parse($this->attributes['TglMasuk'])->format('d/m/Y');
+        return $this->attributes['TglMasuk']? Carbon::parse($this->attributes['TglMasuk'])->format('d/m/Y') : null;
     }
 
     public function Diagnosa(): string
