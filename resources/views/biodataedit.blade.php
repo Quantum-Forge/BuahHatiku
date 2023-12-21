@@ -311,7 +311,6 @@
 															<span class="fa fa-calendar"></span>
 														</span>
 													</div>
-													<!-- <input type="date" class="form-control" name="TanggalMasuk" value="{{old('TanggalMasuk', $biodata->TglMasuk)}}"> -->
 													@error('TanggalMasuk')
 														<span class="help-block">{{ $message }}</span>
 													@enderror
