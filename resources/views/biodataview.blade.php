@@ -48,7 +48,7 @@
 									@foreach($biodatas as $biodata)
 									<tr>
 										<td style="width: 7%;">{{$loop->index+1}}</td>
-										<td style="width: 7%;"><img src="{{ asset('storage/'.$biodata->Photo) }}" alt="{{ $biodata->Nama }}" width="80"></td>
+										<td style="width: 7%;"><img src="{{ $biodata->Photo? asset('storage/'.$biodata->Photo) : 'dist/img/user.png'}}" alt="{{ $biodata->Nama }}" width="80"></td>
 										<td>{{$biodata->Nama}}</td>
 										<td>{{$biodata->TglLahir}}</td>
 										<td>{{$biodata->Email}}</td>
