@@ -3,7 +3,6 @@
 				<a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block mr-20 pull-left" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
 				<a href="/dashboard">
 					<img class="brand-img pull-left" src="{{ asset('dist/img/logo.png') }}" alt="brand"/>
-					{{-- <h4 class="brand-img pull-left txt-success" style="font-weight: bolder">Attendance Management System</h4> --}}
 				</a>
 				<ul class="nav navbar-right top-nav pull-right">
 					<li>
@@ -30,7 +29,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="/Scheduling" class="connection-item">
+										<a href="/jadwal_rolling_view" class="connection-item">
 										<i class="pe-7s-date txt-primary"></i>
 										<span class="block">Jadwal</span>
 										</a>
