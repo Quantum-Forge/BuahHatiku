@@ -16,8 +16,8 @@ class AbsensiController extends Controller
 {
     //
     public static function view_kehadiran(Request $request){
-        $biodatas = Biodata::all();
-        $terapises = User::where('Role', 3)->get();
+        $biodatas = Biodata::orderBy('Nama', 'asc')->get();
+        $terapises = User::where('Role', 3)->orderBy('Nama', 'asc')->get();
         $user = Auth::user();
         if($user->Role == 3){
             $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
@@ -64,8 +64,8 @@ class AbsensiController extends Controller
     }
 
     public static function view(Request $request){
-        $biodatas = Biodata::all();
-        $terapises = User::where('Role', 3)->get();
+        $biodatas = Biodata::orderBy('Nama', 'asc')->get();
+        $terapises = User::where('Role', 3)->orderBy('Nama', 'asc')->get();
         $user = Auth::user();
         if($user->Role == 3){
             $terapises = User::where('NoIdentitas', $user->NoIdentitas)->get();
