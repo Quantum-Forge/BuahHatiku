@@ -24,9 +24,17 @@ class JadwalRollingController extends Controller
         ]);
     }
 
-    public static function view_table(){
+    public static function view_table(Request $request){
         $hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
         $data = [];
+        if($request->Tanggal){
+            $tanggal = explode(" - ", $request->Tanggal);
+            $startDate = Carbon::createFromFormat('d/m/Y',$tanggal[0]); 
+            $endDate = Carbon::createFromFormat('d/m/Y',$tanggal[1]);
+        }else{
+            $startDate = Carbon::now()->startOfWeek();
+            $endDate = Carbon::now()->endOfWeek();
+        }
         foreach($hari as $hari_item){
             $query = DB::select('
                 WITH RECURSIVE jadwal_interval as (
@@ -35,6 +43,7 @@ class JadwalRollingController extends Controller
                         JOIN users ON jadwal_rolling.NoIdentitas = users.NoIdentitas
                         JOIN biodata ON jadwal_rolling.IdAnak = biodata.IdAnak
                     WHERE Hari = "'.$hari_item.'"
+                        AND Tanggal BETWEEN "'.$startDate->toDateString().'" AND "'.$endDate->toDateString().'"
                     GROUP BY users.Nama, WaktuSelesai, WaktuMulai
                     UNION ALL
                     SELECT Terapis, Anak, hour_diff-1, ADDTIME(WaktuMulai, "1:00:00"), ADDTIME(WaktuSelesai, "1:00:00")

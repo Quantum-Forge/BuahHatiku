@@ -199,8 +199,8 @@ Route::middleware(['auth'])->group(function () {
         });
     });
     Route::middleware(['role:staff,terapis,admin'])->group(function () {
-        Route::get('/jadwal_rolling_view', function () {
-            return JadwalRollingController::view_table();
+        Route::get('/jadwal_rolling_view', function (Request $request) {
+            return JadwalRollingController::view_table($request);
         });
         // Route::get('/jadwal_rolling_view_table', function () {
         //     return JadwalRollingController::view_table();
