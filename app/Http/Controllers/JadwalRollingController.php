@@ -76,8 +76,13 @@ class JadwalRollingController extends Controller
                     ON dim.WaktuMulai = jadwal_interval.WaktuMulai
                         AND dim.WaktuSelesai = jadwal_interval.WaktuSelesai
                         AND dim.Terapis = jadwal_interval.Terapis
-                ORDER BY Waktu, JenisAbsensi ASC, 
-                    FIELD(JenisAbsensi, "ABA", "TW", "OT"),
+                ORDER BY Waktu, 
+                    CASE JenisAbsensi 
+                        WHEN "ABA" THEN 1 
+                        WHEN "OT" THEN 2
+                        WHEN "TW" THEN 3
+                        ELSE 4
+                    END,
                     FIELD(dim.Terapis, "BU ICHA", "BU DEWI", "PAK RAIS", "PAK KHALIK", "BU LINA", "PAK HABEL"),
                     dim.Terapis
             ');
