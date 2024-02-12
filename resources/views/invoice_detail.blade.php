@@ -53,11 +53,12 @@
 												<table class="table table-bordered">
 													<thead>
 														<tr>
-															{{$invoice->TglInvoice}}
-															<th colspan="4" class="text-center">Nota Penagihan {{\Carbon\Carbon::parse($invoice->TglInvoice)->format('F-Y')}}</th>
+															
+															<th colspan="4" class="text-center">Nota Penagihan {{\Carbon\Carbon::parse($invoice->TglInvoice)->format('F Y')}}</th>
 														</tr>
 														<tr>
-															<th colspan="4">{{$invoice->biodata->Nama}}</th>
+															<th colspan="2">{{$invoice->biodata->Nama}}</th>
+															<th colspan="2" class="text-center">{{$invoice->TglInvoice}}</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -77,8 +78,8 @@
 																<tr>
 																	<td>{{$rincian->tipe_absensi->JenisAbsensi}}</td>
 																	<td>{{$rincian->JmlhPertemuan}}</td>
-																	<td>Rp. {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</td>
-																	<td>Rp. {{number_format($rincian->Total, 0, ',', '.')}}</td>
+																	<td> {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</td>
+																	<td> {{number_format($rincian->Total, 0, ',', '.')}}</td>
 																</tr>
 															@endif
 														@endforeach
@@ -97,8 +98,8 @@
 																<tr>
 																	<th>{{$rincian->tipe_absensi->JenisAbsensi}}</th>
 																	<th>{{$rincian->JmlhPertemuan}}</th>
-																	<th>Rp. {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</th>
-																	<th>Rp. {{number_format($rincian->Total, 0, ',', '.')}}</th>
+																	<th> {{number_format($rincian->tipe_absensi->Harga, 0, ',', '.')}}</th>
+																	<th> {{number_format($rincian->Total, 0, ',', '.')}}</th>
 																	@php($pengembalian += $rincian->Total)
 																</tr>
 															@endif
@@ -106,27 +107,27 @@
 														
 														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Subtotal</td>
-															<td>Rp. {{number_format($invoice->SubTotal, 0, ',', '.')}}</td>
+															<td> {{number_format($invoice->SubTotal, 0, ',', '.')}}</td>
 														</tr>
 														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Pengembalian</td>
-															<td>Rp. {{number_format($invoice->Pengembalian, 0, ',', '.')}}</td>
+															<td> {{number_format($invoice->Pengembalian, 0, ',', '.')}}</td>
 														</tr>
 														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Potongan</td>
-															<td>Rp. {{number_format($invoice->Potongan, 0, ',', '.')}}</td>
+															<td> {{number_format($invoice->Potongan, 0, ',', '.')}}</td>
 														</tr>
 														<tr class="txt-dark">
 															<td class="text-right" colspan="3">SPP</td>
-															<td>Rp. {{number_format($invoice->SPP, 0, ',', '.')}}</td>
+															<td> {{number_format($invoice->SPP, 0, ',', '.')}}</td>
 														</tr>
 														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Iuran</td>
-															<td>Rp. {{number_format($invoice->Iuran, 0, ',', '.')}}</td>
+															<td> {{number_format($invoice->Iuran, 0, ',', '.')}}</td>
 														</tr>
 														<tr class="txt-dark">
 															<td class="text-right" colspan="3">Total</td>
-															<td>Rp. {{number_format($invoice->GrandTotal, 0, ',', '.')}}</td>
+															<td> {{number_format($invoice->GrandTotal, 0, ',', '.')}}</td>
 														</tr>
 													</tbody>
 												</table>
