@@ -60,8 +60,8 @@
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('NamaLengkap') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Nama panggilan</label>
-													<input type="text" id="firstName" class="form-control" name="NamaLengkap" placeholder="Isi Nama Anak" value="{{old('NamaLengkap')}}">
+													<label class="control-label mb-10">Nama Lengkap</label>
+													<input type="text" id="firstName" class="form-control" name="NamaLengkap" placeholder="Isi Nama Anak" value="{{old('NamaLengkap', $biodata->NamaLengkap)}}">
 													@error('NamaLengkap')
 														<span class="help-block">{{ $message }}</span>
 													@enderror
