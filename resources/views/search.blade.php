@@ -22,7 +22,7 @@
 							<div class="options">
 								<a href="/biodata_edit/{{$biodata->IdAnak}}" class="btn btn-default btn-icon-anim btn-circle mr-5" type="submit"><i class="icon-pencil"></i></a>
 							</div>
-							<img src="{{ $biodata->Photo? asset('storage/'.$biodata->Photo) : 'dist/img/chair.jpg'}}" class="img-responsive" alt="{{$biodata->Nama}}"> 
+							<img src="{{ $biodata->Photo? asset('storage/'.$biodata->Photo) : 'dist/img/user.png'}}" class="img-responsive" alt="{{$biodata->Nama}}"> 
 						</div>
 						<div class="info text-center">
 							<h6>{{$biodata->Nama}}</h6>
