@@ -73,7 +73,7 @@
 															</div>
 															<div class="form-group mb-0">
 																<span class="inline-block pr-5">Don't have an account?</span>
-																<a class="inline-block txt-danger" href="">Contact me</a>
+																<a class="inline-block txt-danger" href="https://wa.me/6281393133016">Contact me</a>
 															</div>	
 														</form>
 													</div>
