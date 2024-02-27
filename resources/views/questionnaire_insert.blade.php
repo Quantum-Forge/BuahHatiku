@@ -100,7 +100,7 @@
 													<td>{{ $questionnaire->jenis->NamaJenis }}</td>
 													<td>{{ $questionnaire->Pertanyaan }}</td>
 													<td>
-														<button data-toggle="modal" data-target="#responsive-modal{{$questionnaire->IdQuestionaire}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
+														<button data-toggle="modal" data-target="#responsive-modal{{$questionnaire->IdQuestionaire}}" class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
 													</td>
 												</tr>
 												<div id="responsive-modal{{$questionnaire->IdQuestionaire}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
