@@ -31,7 +31,7 @@
 								<form action="/biodata_insert" method="POST" enctype="multipart/form-data">
 									{{ csrf_field() }}
 									<div class="form-body">
-										<h6 class="txt-dark capitalize-font"><i class="icon-user mr-10"></i>Informasi Anak</h6>
+										<h6 class="txt-dark capitalize-font"><i class="icon-user mr-10"></i>Data Anak</h6>
 										<hr>
 										<div class="row">
 											<div class="col-md-6">
@@ -43,20 +43,6 @@
 													@enderror
 												</div>
 											</div>
-											<!--/span-->
-											<div class="col-md-6">
-												<div class="form-group {{ $errors->has('AnakKe') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Anak Ke...</label>
-													<input type="number" id="lastName" class="form-control" name="AnakKe" placeholder="Anak ke..." value="{{old('AnakKe')}}">
-													@error('AnakKe')
-														<span class="help-block">{{ $message }}</span>
-													@enderror
-												</div>
-											</div>
-											<!--/span-->
-										</div>
-										<!-- /Row -->
-										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('JenisKelamin') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Jenis Kelamin</label>
@@ -70,7 +56,42 @@
 													@enderror
 												</div>
 											</div>
-											<!--/span-->
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group {{ $errors->has('Nickname') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">Nama panggilan</label>
+													<input type="text" id="firstName" class="form-control" name="Nickname" placeholder="Isi Nama Anak" value="{{old('Nickname')}}">
+													@error('Nickname')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group {{ $errors->has('NoHP') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">Phone Number</label>
+													<input type="number" class="form-control" name="NoHP" value="{{old('NoHP')}}">
+													@error('NoHP')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
+												</div>
+											</div>
+										</div>
+										<div class="seprator-block"></div>
+										<h6 class="txt-dark capitalize-font"><i class="icon-user mr-10"></i>Informasi Anak (Optional)</h6>
+										<hr>
+										<!-- /Row -->
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group {{ $errors->has('AnakKe') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">Anak Ke...</label>
+													<input type="number" id="lastName" class="form-control" name="AnakKe" placeholder="Anak ke..." value="{{old('AnakKe')}}">
+													@error('AnakKe')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
+												</div>
+											</div>
+											
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('TglLahir') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir</label>
@@ -88,7 +109,6 @@
 										</div>
 										<!-- /Row -->
 										<div class="row">
-											<!--/span-->
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('TempatLahir') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tempat Lahir</label>
@@ -98,8 +118,6 @@
 													@enderror
 												</div>
 											</div>
-											<!--/span-->
-											<!--/span-->
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('Pendidikan') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Pendidikan</label>
@@ -123,8 +141,6 @@
 													@enderror
 												</div>
 											</div>
-											<!--/span-->
-											<!--/span-->
 											<div class="col-md-12">
 												<div class="form-group {{ $errors->has('Diagnosa') ? 'has-error has-danger' : '' }}" id="diagnosa">
 													<label class="control-label mb-5">Diagnosa</label>
@@ -172,7 +188,6 @@
 													@enderror
 												</div>
 											</div>
-											<!--/span-->
 											<div class="col-md-12 ">
 												<div class="form-group {{ $errors->has('YangMendiagnosa') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Yang Mendiagnosa</label>
@@ -264,7 +279,17 @@
 												</div>
 											</div>
 										</div>
+										<!-- /Row -->
 										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group {{ $errors->has('Email') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">E-mail</label>
+													<input type="email" class="form-control" name="Email" value="{{old('Email')}}">
+													@error('Email')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
+												</div>
+											</div>
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Lahir Ibu</label>
@@ -279,29 +304,8 @@
 													@enderror
 												</div>
 											</div>
-											<!--/span-->
-											<div class="col-md-6">
-												<div class="form-group {{ $errors->has('NoHP') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Phone Number</label>
-													<input type="number" class="form-control" name="NoHP" value="{{old('NoHP')}}">
-													@error('NoHP')
-														<span class="help-block">{{ $message }}</span>
-													@enderror
-												</div>
-											</div>
-											<!--/span-->
 										</div>
-										<!-- /Row -->
 										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group {{ $errors->has('Email') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">E-mail</label>
-													<input type="email" class="form-control" name="Email" value="{{old('Email')}}">
-													@error('Email')
-														<span class="help-block">{{ $message }}</span>
-													@enderror
-												</div>
-											</div>
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="control-label mb-10">Foto</label>

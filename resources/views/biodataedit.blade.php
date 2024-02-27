@@ -23,12 +23,6 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="panel panel-default card-view">
-			<div class="panel-heading">
-				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Biodata Anak</h6>
-				</div>
-				<div class="clearfix"></div>
-			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
 					<div class="row">
@@ -38,7 +32,7 @@
 									{{ csrf_field() }}
 									<div class="form-body">
 										<input type="hidden" name="IdAnak" value="{{$biodata->IdAnak}}">
-										<h6 class="txt-dark capitalize-font"><i class="icon-user mr-10"></i>Informasi Anak</h6>
+										<h6 class="txt-dark capitalize-font"><i class="icon-user mr-10"></i>Data Anak</h6>
 										<hr>
 										<div class="row">
 											<div class="col-md-6">
@@ -50,20 +44,6 @@
 													@enderror
 												</div>
 											</div>
-											<!--/span-->
-											<div class="col-md-6">
-												<div class="form-group {{ $errors->has('AnakKe') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Anak Ke...</label>
-													<input type="number" id="lastName" class="form-control" name="AnakKe" placeholder="Anak ke..." value="{{old('AnakKe', $biodata->AnakKe)}}">
-													@error('AnakKe')
-														<span class="help-block">{{ $message }}</span>
-													@enderror
-												</div>
-											</div>
-											<!--/span-->
-										</div>
-										<!-- /Row -->
-										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('JenisKelamin') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Jenis Kelamin</label>
@@ -72,6 +52,41 @@
 														<option @if (old('JenisKelamin', $biodata->JenisKelamin) == "Perempuan") selected @endif value="Perempuan">Perempuan</option>
 													</select>
 													@error('JenisKelamin')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group {{ $errors->has('Nickname') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">Nama panggilan</label>
+													<input type="text" id="firstName" class="form-control" name="Nickname" placeholder="Isi Nama Anak" value="{{old('Nickname')}}">
+													@error('Nickname')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group {{ $errors->has('NoHP') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">Phone Number</label>
+													<input type="number" class="form-control" name="NoHP" value="{{old('NoHP', $biodata->NoHP)}}">
+													@error('NoHP')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
+												</div>
+											</div>
+										</div>
+										<!-- /Row -->
+										<div class="seprator-block"></div>
+										<h6 class="txt-dark capitalize-font"><i class="icon-user mr-10"></i>Informasi Anak (Optional)</h6>
+										<hr>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group {{ $errors->has('AnakKe') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">Anak Ke...</label>
+													<input type="number" id="lastName" class="form-control" name="AnakKe" placeholder="Anak ke..." value="{{old('AnakKe', $biodata->AnakKe)}}">
+													@error('AnakKe')
 														<span class="help-block">{{ $message }}</span>
 													@enderror
 												</div>
@@ -134,42 +149,46 @@
 											<div class="col-md-12">
 												<div class="form-group {{ $errors->has('Diagnosa') ? 'has-error' : '' }}">
 													<label class="control-label mb-5">Diagnosa</label>
-													<div class="radio-list">
-														<div class="radio-inline pl-0">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 1) checked @endif id="hiperaktif" value="1">
-																<label for="hiperaktif">Hiperaktif</label>
-															</span>
+													<div class="row">
+														<div class="col-md-6">
+															<textarea name="KeteranganDiagnosa" class="form-control" id="" cols="30" rows="10" placeholder="Keterangan Diagnosa...">{{old('KeteranganDiagnosa', $biodata->KeteranganDiagnosa)}}</textarea>
 														</div>
-														<div class="radio-inline">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 2) checked @endif id="autis" value="2">
-														<label for="autis">Autis</label>
-														</span>
+														<div class="col-md-6">
+															<div class="radio-list">
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																		<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 1) checked @endif id="hiperaktif" value="1">
+																		<label for="hiperaktif">Hiperaktif</label>
+																	</span>
+																</div>
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																	<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 2) checked @endif id="autis" value="2">
+																	<label for="autis">Autis</label>
+																</span>
+																</div>
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																	<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 3) checked @endif id="speech_delay" value="3">
+																	<label for="speech_delay">Speech Delay</label>
+																</span>
+																</div>
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																	<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 4) checked @endif id="adhd" value="4">
+																	<label for="adhd">ADHD</label>
+																</span>
+																</div>
+																<div class="pl-0">
+																	<span class="radio radio-info">
+																	<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 5) checked @endif id="lainnya" value="5">
+																	<label for="lainnya">Lainnya</label>
+																</span>
+																</div>
+																@error('Diagnosa')@enderror
+															</div>
 														</div>
-														<div class="radio-inline">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 3) checked @endif id="speech_delay" value="3">
-														<label for="speech_delay">Speech Delay</label>
-														</span>
-														</div>
-														<div class="radio-inline">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 4) checked @endif id="adhd" value="4">
-														<label for="adhd">ADHD</label>
-														</span>
-														</div>
-														<div class="radio-inline">
-															<span class="radio radio-info">
-																<input type="radio" name="Diagnosa" @if(old('IdDiagnosa', $biodata->IdDiagnosa) == 5) checked @endif id="lainnya" value="5">
-														<label for="lainnya">Lainnya</label>
-														</span>
-														</div>
-														@error('Diagnosa')
-															{{-- <span class="help-block">{{ $message }}</span> --}}
-														@enderror
 													</div>
-													<textarea name="KeteranganDiagnosa" class="form-control" id="" cols="30" rows="10" placeholder="Keterangan Diagnosa...">{{old('KeteranganDiagnosa', $biodata->KeteranganDiagnosa)}}</textarea>
 												</div>
 											</div>
 											<!--/span-->
@@ -262,34 +281,6 @@
 												</div>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Tanggal Lahir Ibu</label>
-													<div class="input-group date" id="TglLahirOrtu">
-														<input type="text" data-mask="99/99/9999" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu', $biodata->TglLahirOrtu)}}">
-														<span class="input-group-addon">
-															<span class="fa fa-calendar"></span>
-														</span>
-													</div>
-													<!-- <input type="date" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu', $biodata->TglLahirOrtu)}}"> -->
-													@error('TglLahirOrtu')
-														<span class="help-block">{{ $message }}</span>
-													@enderror
-												</div>
-											</div>
-											<!--/span-->
-											<div class="col-md-6">
-												<div class="form-group {{ $errors->has('NoHP') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Phone Number</label>
-													<input type="number" class="form-control" name="NoHP" value="{{old('NoHP', $biodata->NoHP)}}">
-													@error('NoHP')
-														<span class="help-block">{{ $message }}</span>
-													@enderror
-												</div>
-											</div>
-											<!--/span-->
-										</div>
 										<!-- /Row -->
 										<div class="row">
 											<div class="col-md-6">
@@ -301,8 +292,22 @@
 													@enderror
 												</div>
 											</div>
-											<!--/span-->
 											<div class="col-md-6">
+												<div class="form-group {{ $errors->has('TglLahirOrtu') ? 'has-error' : '' }}">
+													<label class="control-label mb-10">Tanggal Lahir Ibu</label>
+													<div class="input-group date" id="TglLahirOrtu">
+														<input type="text" data-mask="99/99/9999" class="form-control" name="TglLahirOrtu" value="{{old('TglLahirOrtu', $biodata->TglLahirOrtu)}}">
+														<span class="input-group-addon">
+															<span class="fa fa-calendar"></span>
+														</span>
+													</div>
+													@error('TglLahirOrtu')
+														<span class="help-block">{{ $message }}</span>
+													@enderror
+												</div>
+											</div>
+											<!--/span-->
+											<div class="col-md-12">
 												<div class="form-group {{ $errors->has('TanggalMasuk') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Tanggal Masuk</label>
 													<div class="input-group date" id="TanggalMasuk">

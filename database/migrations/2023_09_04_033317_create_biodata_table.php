@@ -12,6 +12,7 @@ class CreateBiodataTable extends Migration
             $table->bigIncrements('IdAnak');
             $table->string('NoIdentitas', 45)->nullable();
             $table->string('Nama', 150);
+            $table->string('Nickname', 150);
             $table->string('JenisKelamin', 10);
             $table->integer('AnakKe')->nullable();
             $table->string('TempatLahir', 100)->nullable();
