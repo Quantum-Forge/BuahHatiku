@@ -32,9 +32,8 @@
 				<div class="panel-body">
 					<form action="/jadwal_rolling_view" method="GET">
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-10">
 								<div class="form-group ">
-									<label class="control-label mb-10">Tanggal</label>
 									<div class="input-group date">
 										<input type="text" id="TanggalFilter" name="Tanggal" class="form-control" value="{{Request::input('Tanggal')}}">
 										<span class="input-group-addon">
@@ -43,10 +42,10 @@
 									</div> 
 								</div>
 							</div>
+							<div class="col-md-2">
+								<button type="submit" class="btn btn-success btn-block"><i class="fa fa-filter"></i> Filter</button>
+							</div>
 						</div>
-						<div class="form-actions mt-10">
-							<button type="submit" class="btn btn-success btn-block"><i class="fa fa-filter"></i> Filter</button>
-						</div>		
 					</form>
 				</div>
 			</div>
