@@ -86,6 +86,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/tipe_absensi_edit/{IdTipe}',function(Request $request, $IdTipe){
             return TipeAbsensiController::update($request, $IdTipe);
         });
+        Route::post('/tipe_absensi_delete/{IdTipe}',function($IdTipe){
+            return TipeAbsensiController::delete($IdTipe);
+        });
         // Schedulling
         Route::get('/jadwal_rolling',function(Request $request){
             return JadwalRollingController::crud_view($request);

@@ -62,4 +62,10 @@ class TipeAbsensiController extends Controller
         $tipe_absensi->save();
         return redirect('/tipe_absensi_insert');
     }
+
+    public static function delete($IdTipe){
+        $tipe_absensi = TipeAbsensi::where('IdTipe', $IdTipe)->first();
+        $tipe_absensi->delete();
+        return redirect('/tipe_absensi_insert');
+    }
 }

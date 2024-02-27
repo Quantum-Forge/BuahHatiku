@@ -60,7 +60,7 @@
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group {{ $errors->has('NamaLengkap') ? 'has-error' : '' }}">
-													<label class="control-label mb-10">Nama panggilan</label>
+													<label class="control-label mb-10">Nama Lengkap</label>
 													<input type="text" id="firstName" class="form-control" name="NamaLengkap" placeholder="Isi Nama Anak" value="{{old('NamaLengkap')}}">
 													@error('NamaLengkap')
 														<span class="help-block">{{ $message }}</span>

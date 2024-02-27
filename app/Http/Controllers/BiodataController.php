@@ -19,6 +19,7 @@ class BiodataController extends Controller
     public static function insert(Request $request){
         $validator = Validator::make($request->all(), [
             'Nama' => 'required',
+            'NamaLengkap' => 'required',
             'AnakKe' => 'nullable|numeric',
             'JenisKelamin' => 'required',
             'TglLahir' => 'nullable',
@@ -47,6 +48,7 @@ class BiodataController extends Controller
         $biodata = new Biodata;
 
         $biodata->Nama = $request->Nama;
+        $biodata->NamaLengkap = $request->NamaLengkap;
         $biodata->AnakKe = $request->AnakKe;
         $biodata->JenisKelamin = $request->JenisKelamin;
         $biodata->TglLahir = $request->TglLahir ? Carbon::createFromFormat('d/m/Y',$request->TglLahir) : null;
@@ -83,6 +85,7 @@ class BiodataController extends Controller
     public static function update(Request $request){
         $validator = Validator::make($request->all(), [
             'Nama' => 'required',
+            'NamaLengkap' => 'required',
             'AnakKe' => 'nullable|numeric',
             'JenisKelamin' => 'required',
             'TglLahir' => 'nullable',
@@ -111,6 +114,7 @@ class BiodataController extends Controller
         $biodata = Biodata::where('IdAnak', $request->IdAnak)->first();
 
         $biodata->Nama = $request->Nama;
+        $biodata->NamaLengkap = $request->NamaLengkap;
         $biodata->AnakKe = $request->AnakKe;
         $biodata->JenisKelamin = $request->JenisKelamin;
         $biodata->TglLahir = $request->TglLahir ? Carbon::createFromFormat('d/m/Y',$request->TglLahir) : null;

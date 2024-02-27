@@ -112,6 +112,7 @@
 														<td>{{$tipe_absensi->Durasi}} Jam</td>
 														<td width="100">
 															<button data-toggle="modal" data-target="#responsive-modal{{$tipe_absensi->IdTipe}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
+															<button data-toggle="modal" data-target="#responsive-modal-delete{{$tipe_absensi->IdTipe}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 														</td>
 													</tr>
 													<div id="responsive-modal{{$tipe_absensi->IdTipe}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -153,6 +154,26 @@
 																	</div>
 																	<div class="modal-footer">
 																		<button type="submit" class="btn btn-success btn-block">Submit</button>
+																	</div>
+																</div>
+															</form>
+														</div>
+													</div>
+													<div id="responsive-modal-delete{{$tipe_absensi->IdTipe}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+														<div class="modal-dialog">
+															<form action="/tipe_absensi_delete/{{$tipe_absensi->IdTipe}}" method="POST">
+																{{ csrf_field() }}
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																		<h5 class="modal-title">Delete Tipe Absensi</h5>
+																	</div>
+																	<div class="modal-body">
+																		Are you sure to delete {{$tipe_absensi->JenisAbsensi}} ?
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+																		<button type="submit" class="btn btn-danger">Yes</button>
 																	</div>
 																</div>
 															</form>
