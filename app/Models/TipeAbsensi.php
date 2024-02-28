@@ -20,4 +20,20 @@ class TipeAbsensi extends Model
      * @var string
      */
     protected $primaryKey = 'IdTipe';
+
+    public function jadwal_rolling()
+    {
+        return $this->hasMany(JadwalRolling::class, 'IdTipe', 'IdTipe');
+    }
+
+    public function user()
+    {
+        return $this->hasMany(User::class, 'IdTipe', 'IdTipe');
+    }
+
+    public function has_relation(): bool
+    {
+        if($this->jadwal_rolling()->count() > 0 || $this->user()->count() > 0) return true;
+        return false;
+    }
 }

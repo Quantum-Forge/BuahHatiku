@@ -121,7 +121,7 @@
 													<td>{{$tipe_absensi->Durasi}} Jam</td>
 													<td width="100">
 														<button data-toggle="modal" data-target="#responsive-modal{{$tipe_absensi->IdTipe}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
-														<button data-toggle="modal" data-target="#responsive-modal-delete{{$tipe_absensi->IdTipe}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+														<button @if($tipe_absensi->has_relation()) disabled @endif data-toggle="modal" data-target="#responsive-modal-delete{{$tipe_absensi->IdTipe}}" class="btn @if($tipe_absensi->has_relation()) btn-default @else btn-info @endif btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 													</td>
 												</tr>
 												<div id="responsive-modal{{$tipe_absensi->IdTipe}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

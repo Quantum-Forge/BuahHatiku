@@ -80,4 +80,10 @@ class Biodata extends Model
                         ->whereYear('TglInvoice', $year);
         });
     }
+
+    public function has_relation(): bool
+    {
+        if($this->jadwal_rolling()->count() > 0 || $this->invoice()->count() > 0 || $this->parental_questionnaires()->count() > 0) return true;
+        return false;
+    }
 }
