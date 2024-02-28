@@ -39,8 +39,7 @@
 										<th>No.</th>
 										<th>Gambar</th>
 										<th>Nama</th>
-										<th>DOB</th>
-										<th>Email</th>
+										<th>Jenis Kelamin</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
@@ -50,8 +49,7 @@
 										<td style="width: 7%;">{{$loop->index+1}}</td>
 										<td style="width: 7%;"><img src="{{ $biodata->Photo? asset('storage/'.$biodata->Photo) : 'dist/img/user.png'}}" alt="{{ $biodata->Nama }}" width="80"></td>
 										<td>{{$biodata->Nama}}</td>
-										<td>{{$biodata->TglLahir}}</td>
-										<td>{{$biodata->Email}}</td>
+										<td>{{$biodata->JenisKelamin}}</td>
 										<td width="80">
 											<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/biodata_edit/{{$biodata->IdAnak}}';"><i class="fa fa-pencil"></i></button>
 											<!-- <button data-toggle="modal" data-target="#responsive-modal{{$biodata->IdAnak}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button> -->
