@@ -26,8 +26,8 @@
 						</div>
 						<div class="info text-center">
 							<h6>{{$biodata->Nama}}</h6>
-							<span class="product-spec capitalize-font block mt-5 mb-5">{{$biodata->TglLahir}}</span>
-							<span class="head-font block text-success">{{$biodata->Diagnosa()}}</span>
+							<span class="product-spec capitalize-font block mt-5 mb-5">{{$biodata->JenisKelamin}}</span>
+							<span class="head-font block text-success">{{$biodata->NoHP}}</span>
 						</div>
 					</article>
 				</div>
