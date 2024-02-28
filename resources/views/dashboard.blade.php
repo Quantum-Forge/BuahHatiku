@@ -212,7 +212,7 @@
 											<img class="user-img img-circle" src="{{ $biodata->Photo? asset('storage/'.$biodata->Photo) : 'dist/img/user.png'}}" alt="user"/>
 											<div class="user-data">
 												<span class="name block capitalize-font">{{$biodata->Nama}}</span>
-												<span class="diagnosa block txt-grey">{{$biodata->Diagnosa()}}</span>
+												<span class="diagnosa block txt-grey">{{$biodata->JenisKelamin}}</span>
 											</div>
 											<div class="clearfix"></div>
 										</div>
