@@ -101,6 +101,7 @@
 													<td>{{ $questionnaire->Pertanyaan }}</td>
 													<td>
 														<button data-toggle="modal" data-target="#responsive-modal{{$questionnaire->IdQuestionaire}}" class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
+														<button @if($questionnaire->has_relation()) disabled @endif data-toggle="modal" data-target="#responsive-modal-delete{{$questionnaire->IdQuestionaire}}" class="btn @if($questionnaire->has_relation()) btn-default @else btn-info @endif btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 													</td>
 												</tr>
 												<div id="responsive-modal{{$questionnaire->IdQuestionaire}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -141,6 +142,26 @@
 															</div>
 															<div class="modal-footer">
 																<button type="submit" class="btn btn-success btn-block">Submit</button>
+															</div>
+														</div>
+													</div>
+													</form>
+												</div>
+												<div id="responsive-modal-delete{{$questionnaire->IdQuestionaire}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+													<form action="/questionnaire_delete/{{$questionnaire->IdQuestionaire}}" method="POST">
+													{{ csrf_field() }}
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																<h5 class="modal-title">Delete Questionnaire</h5>
+															</div>
+															<div class="modal-body">
+																Are you sure to delete Questionnaire#{{$questionnaire->IdQuestionaire}} {{$questionnaire->Pertanyaan}}?
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+																<button type="submit" class="btn btn-danger">Yes</button>
 															</div>
 														</div>
 													</div>

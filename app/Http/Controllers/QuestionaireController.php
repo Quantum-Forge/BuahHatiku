@@ -57,4 +57,10 @@ class QuestionaireController extends Controller
         $questionnaire->save();
         return redirect('/questionnaire_insert');
     }
+
+    public static function delete($IdQuestionaire){
+        $questionnaire = Questionnaire::where('IdQuestionaire', $IdQuestionaire)->first();
+        $questionnaire->delete();
+        return redirect('/questionnaire_insert');
+    }
 }

@@ -76,6 +76,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/questionnaire_edit/{IdQuestionaire}',function(Request $request, $IdQuestionaire){
             return QuestionaireController::edit($request, $IdQuestionaire);
         });
+        Route::post('/questionnaire_delete/{IdQuestionaire}',function($IdQuestionaire){
+            return QuestionaireController::delete($IdQuestionaire);
+        });
         // Tipe Absensi
         Route::get('/tipe_absensi_insert',function(){
             return TipeAbsensiController::view();

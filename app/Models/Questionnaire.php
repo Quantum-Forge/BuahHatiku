@@ -25,4 +25,15 @@ class Questionnaire extends Model
     {
         return $this->belongsTo(JenisQuestionaire::class, 'IdJenis', 'IdJenis');
     }
+
+    public function parental_questionnaires()
+    {
+        return $this->belongsTo(ParentalQuestionnaire::class, 'IdQuestionaire', 'IdQuestionaire');
+    }
+
+    public function has_relation(): bool
+    {
+        if($this->parental_questionnaires()->count() > 0) return true;
+        return false;
+    }
 }
