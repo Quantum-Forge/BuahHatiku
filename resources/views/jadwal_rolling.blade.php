@@ -391,7 +391,7 @@
 				<div class="panel-wrapper collapse in">
 					<div class="panel-body">
 						<div class="table-responsive">
-							<table id="jadwal_table" class="table table-hover display pb-30" >
+							<table id="jadwal_table" class="table table-hover display pb-30" style="zoom: 75%" >
 								<thead>
 									<tr>
 										<th>
