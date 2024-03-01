@@ -69,7 +69,7 @@
 											</td>
 											<td width="80">
 												<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/user_edit/{{$user->NoIdentitas}}';"><i class="fa fa-pencil"></i></button>
-												<button data-toggle="modal" data-target="#responsive-modal{{$user->NoIdentitas}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+												<button @if($user->has_relation()) disabled @endif data-toggle="modal" data-target="#responsive-modal{{$user->NoIdentitas}}" class="btn @if($user->has_relation()) btn-default @else btn-info @endif btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 											</td>
 										</tr>
 										<div id="responsive-modal{{$user->NoIdentitas}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

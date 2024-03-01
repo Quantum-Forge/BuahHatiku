@@ -47,4 +47,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo(TipeAbsensi::class, 'IdTipe', 'IdTipe');
     }
+
+    public function jadwal_rolling()
+    {
+        return $this->hasMany(JadwalRolling::class, 'NoIdentitas', 'NoIdentitas');
+    }
+
+    public function has_relation(): bool
+    {
+        if($this->jadwal_rolling()->count() > 0) return true;
+        return false;
+    }
 }
