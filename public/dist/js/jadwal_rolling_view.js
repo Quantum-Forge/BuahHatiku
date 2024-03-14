@@ -6,7 +6,7 @@ $(document).ready(function() {
 	var startOfWeek = new Date(today);
 	startOfWeek.setDate(today.getDate() - today.getDay() + 1);
 	var endOfWeek = new Date(startOfWeek);
-	endOfWeek.setDate(endOfWeek.getDate() + 6);
+	endOfWeek.setDate(endOfWeek.getDate() + 14);
 
     /* Datetimepicker Init */
 	var filterStartDate = startOfWeek;
