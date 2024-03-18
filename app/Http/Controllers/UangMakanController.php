@@ -22,7 +22,7 @@ class UangMakanController extends Controller
                             ELSE 0
                         END as uang_makan
                     FROM
-                        (SELECT DISTINCT NoIdentitas, Tanggal, Hari, IdTipe, TIMESTAMPDIFF(MINUTE, WaktuMulai, WaktuSelesai)/60 as durasi
+                        (SELECT NoIdentitas, Tanggal, Hari, IdTipe, TIMESTAMPDIFF(MINUTE, WaktuMulai, WaktuSelesai)/60 as durasi
                         FROM jadwal_rolling) jadwal
                         JOIN users ON jadwal.NoIdentitas = users.NoIdentitas
                     GROUP BY users.Nama, Tanggal, Hari
