@@ -40,6 +40,7 @@
 										<th>Gambar</th>
 										<th>Nama</th>
 										<th>Jenis Kelamin</th>
+										<th>Nomor HP</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
@@ -50,6 +51,7 @@
 										<td style="width: 7%;"><img src="{{ $biodata->Photo? asset('storage/'.$biodata->Photo) : 'dist/img/user.png'}}" alt="{{ $biodata->Nama }}" width="80"></td>
 										<td>{{$biodata->Nama}}</td>
 										<td>{{$biodata->JenisKelamin}}</td>
+										<td>{{$biodata->NoHP}}</td>
 										<td width="80">
 											<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/biodata_edit/{{$biodata->IdAnak}}';"><i class="fa fa-pencil"></i></button>
 											<button @if($biodata->has_relation()) disabled @endif data-toggle="modal" data-target="#responsive-modal{{$biodata->IdAnak}}" class="btn @if($biodata->has_relation()) btn-default @else btn-info @endif btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
