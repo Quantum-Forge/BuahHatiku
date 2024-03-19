@@ -18,7 +18,7 @@ class InvoiceController extends Controller
     public static function input_view(Request $request){
         $biodatas = Biodata::hasJadwal(now()->month, now()->year)
                             ->doesntHaveInvoice(now()->month, now()->year)
-                            ->get();
+                            ->orderBy('Nama', 'asc')->get();
         $jadwal_hadir = JadwalRolling::where('IdAnak', $request->IdAnak)
                                         ->whereYear('Tanggal', now()->year)
                                         ->whereMonth('Tanggal', now()->month)
