@@ -3,10 +3,7 @@ Jika Anda ingin menginstal Laravel di folder yang sudah berisi repo GitHub di se
 
 Catatan: Pastikan server Anda memenuhi persyaratan Laravel sebelum memulai. Ini termasuk PHP, Composer, dan ekstensi yang diperlukan. Anda juga perlu mengatur akses ke database jika aplikasi Anda menggunakan database.
 1. **Clone Repositori GitHub:**
-   Clone repositori GitHub yang sudah ada ke folder yang diinginkan di server. Misalnya, jika Anda ingin menginstal Laravel di folder `BuahHatiku`, gunakan perintah berikut:
-   ```bash
-   git clone https://github.com/rumahpintarinovasi/BuahHatiku.git BuahHatiku
-   ```
+   Clone repositori GitHub yang sudah ada ke folder yang diinginkan di server. Misalnya, jika Anda ingin menginstal Laravel di folder `BuahHatiku`
 
 2. **Masuk ke Direktori:**
    Pindah ke direktori aplikasi Laravel yang baru dibuat:
