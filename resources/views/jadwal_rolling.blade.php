@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app') @section('title')Buahatiku - Management System @endsection
 
 @section('dashboard')
 
@@ -458,41 +458,3 @@
 
 @endsection
 
-@section('scripts')
-  <!-- jQuery -->
-<script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js') }}"></script>
-
-<!-- Bootstrap-table JavaScript -->
-<script src="vendors/bower_components/bootstrap-table/dist/bootstrap-table.min.js"></script>
-<script src="dist/js/bootstrap-table-data.js"></script>
-
-<!-- Data table JavaScript -->
-<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
-
-<!-- Moment JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
-<!-- Bootstrap Colorpicker JavaScript -->
-<script src="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
-<!-- Bootstrap Datetimepicker JavaScript -->
-<script type="text/javascript" src="{{ asset('vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-<!-- Bootstrap Daterangepicker JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-<!-- Form Picker Init JavaScript -->
-<script src="{{ asset('dist/js/jadwal_rolling_picker.js') }}"></script>
-<!-- Slimscroll JavaScript -->
-<script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
-<!-- Fancy Dropdown JS -->
-<script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
-<!-- Bootstrap Dropify JavaScript -->
-<script src="{{ asset('vendors/bower_components/dropify/dist/js/dropify.min.js') }}"></script>
-<!-- Form Flie Upload Data JavaScript -->
-<script src="{{ asset('dist/js/form-file-upload-data.js') }}"></script>
-<!-- Init JavaScript -->
-<script src="{{ asset('dist/js/init.js') }}"></script>
-
-@endsection

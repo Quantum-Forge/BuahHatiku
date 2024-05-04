@@ -58,39 +58,6 @@ $("input[name='tch5']").TouchSpin({
 
 
 
-// script.js
-$(document).ready(function() {
-    var subtotal = parseFloat($("#subtotal").val()) || 0;
-    var pengembalian = parseFloat($("#pengembalian").val()) || 0;
-    var potonganInput = $("#inputPotongan");
-    var iuranInput = $("#inputIuran");
-    var inputSPP = $("#inputSPP");
-
-    // Membuat fungsi untuk menghitung grandTotal
-    function calculateGrandTotal() {
-        var potongan = parseFloat(potonganInput.val()) || 0;
-        var iuran = parseFloat(iuranInput.val()) || 0;
-        var spp = parseFloat(inputSPP.val()) || 0;
-
-        if (potongan > subtotal) {
-            potongan = subtotal;
-            potonganInput.val(subtotal);
-        }
-
-        var potonganTotal = subtotal - potongan;
-        var grandTotal = potonganTotal - pengembalian + iuran + spp;
-
-        $("#GrandTotal").text("Rp. " + grandTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-        $("input[name='GrandTotal']").val(grandTotal);
-    }
-
-    potonganInput.on("input", calculateGrandTotal);
-    iuranInput.on("input", calculateGrandTotal);
-    inputSPP.on("input", calculateGrandTotal);
-
-
-    calculateGrandTotal();
-});
 
 
 

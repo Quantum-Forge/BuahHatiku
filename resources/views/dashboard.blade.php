@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app') @section('title')Buahatiku - Management System @endsection
 
 @section('dashboard')
 
@@ -230,17 +230,6 @@
 @endsection
 
 @section('scripts')
-<!-- jQuery -->
-<script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-
-<!-- Data table JavaScript -->
-<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-
-<!-- Slimscroll JavaScript -->
-<script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
 
 <!-- simpleWeather JavaScript -->
 <script src="{{ asset('vendors/bower_components/moment/min/moment.min.js') }}"></script>
@@ -270,10 +259,8 @@
 <script src="{{ asset('vendors/bower_components/raphael/raphael.min.js') }}"></script>
 <script src="{{ asset('vendors/bower_components/morris.js/morris.min.js') }}"></script>
 <script src="{{ asset('dist/js/morris-data.js') }}"></script>
-
 <script src="{{ asset('vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js') }}"></script>
 
 <!-- Init JavaScript -->
-<script src="{{ asset('dist/js/init.js') }}"></script>
 <script src="{{ asset('dist/js/dashboard-data.js') }}"></script>
 @endsection

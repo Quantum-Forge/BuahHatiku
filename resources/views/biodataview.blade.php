@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app') @section('title')Buahatiku - Management System @endsection
 
 @section('dashboard')
 
@@ -90,24 +90,3 @@
 <!-- /Row -->
 @endsection
 
-@section('scripts')
-<!-- jQuery -->
-<script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-
-<!-- Data table JavaScript -->
-<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
-
-<!-- Slimscroll JavaScript -->
-<script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
-
-<!-- Init JavaScript -->
-<script src="{{ asset('dist/js/init.js') }}"></script>
-
-@endsection

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app') @section('title')Buahatiku - Management System @endsection
 
 @section('dashboard')
 
@@ -211,35 +211,42 @@
 @endsection
 
 @section('scripts')
-<!-- jQuery -->
-<script src="{{ asset('vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script>
+	// script.js
+$(document).ready(function() {
+    var subtotal = parseFloat($("#subtotal").val()) || 0;
+    var pengembalian = parseFloat($("#pengembalian").val()) || 0;
+    var potonganInput = $("#inputPotongan");
+    var iuranInput = $("#inputIuran");
+    var inputSPP = $("#inputSPP");
 
-<!-- Data table JavaScript -->
-<script src="{{ asset('vendors/bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('dist/js/dataTables-data.js') }}"></script>
+    // Membuat fungsi untuk menghitung grandTotal
+    function calculateGrandTotal() {
+        var potongan = parseFloat(potonganInput.val()) || 0;
+        var iuran = parseFloat(iuranInput.val()) || 0;
+        var spp = parseFloat(inputSPP.val()) || 0;
 
-<!-- Select2 JavaScript -->
-<script src="{{ asset('vendors/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+        if (potongan > subtotal) {
+            potongan = subtotal;
+            potonganInput.val(subtotal);
+        }
 
-<!-- Bootstrap Select JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+        var potonganTotal = subtotal - potongan;
+        var grandTotal = potonganTotal - pengembalian + iuran + spp;
 
-<!-- Bootstrap Touchspin JavaScript -->
-<script src="{{ asset('vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
+        $("#GrandTotal").text("Rp. " + grandTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+        $("input[name='GrandTotal']").val(grandTotal);
+    }
 
-<!-- Form Advance Init JavaScript -->
-<script src="{{ asset('dist/js/form-advance-data.js') }}"></script>
+    potonganInput.on("input", calculateGrandTotal);
+    iuranInput.on("input", calculateGrandTotal);
+    inputSPP.on("input", calculateGrandTotal);
 
-<!-- Slimscroll JavaScript -->
-<script src="{{ asset('dist/js/jquery.slimscroll.js') }}"></script>
 
-<!-- Fancy Dropdown JS -->
-<script src="{{ asset('dist/js/dropdown-bootstrap-extended.js') }}"></script>
+    calculateGrandTotal();
+});
 
-<!-- Init JavaScript -->
-<script src="{{ asset('dist/js/init.js') }}"></script>
+</script>
 
 @endsection
