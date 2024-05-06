@@ -325,7 +325,8 @@
 											<div class="col-md-12">
 												<div class="form-group {{ $errors->has('NoHP') ? 'has-error' : '' }}">
 													<label class="control-label mb-10">Foto</label>
-													<input type="file" id="input-file-now" class="dropify" name="photo" data-allowed-file-extensions="jpg png jpeg" />
+													<input type="file" id="input-file-now" class="dropify" name="photo" data-allowed-file-extensions="jpg png jpeg" accept=".jpg, .png, .jpeg" size="5000000" />
+
 													@error('photo')
 														<span class="help-block">{{ $message }}</span>
 													@enderror

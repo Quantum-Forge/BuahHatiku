@@ -5,7 +5,7 @@
             <a href="/dashboard" class="brand mr-30"><img src="{{ asset('dist/img/logo-sm.png') }}" style="width: 110px" alt="logo"/></a>
         </div>
         <div class="col-sm-7 text-right">
-            <p>{{ date('Y') }} &copy; Buahatiku. Developed by Rumah Pintar Inovasi</p>
+            <p>{{ date('Y') }} &copy; Buahatiku. Version 1.0</p>
         </div>
     </div>
 </footer>
