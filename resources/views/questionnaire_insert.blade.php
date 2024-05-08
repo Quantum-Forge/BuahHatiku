@@ -84,7 +84,7 @@
 							<div class="form-wrap row">
 								<div class="table-wrap">
 									<div class="table-responsive">
-										<table id="datable_1" class="table table-sm display text-wrap">
+										<table id="Questionnaire_table" class="table table-sm display text-wrap">
 											<thead>
 												<tr>
 													<th>No</th>

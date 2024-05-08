@@ -102,7 +102,7 @@
 							<div class="form-wrap row">
 								<div class="table-wrap">
 									<div class="table-responsive">
-										<table id="datable_1" class="table table-sm table-hover display text-wrap">
+										<table id="tipe_absensi_table" class="table table-sm table-hover display text-wrap">
 											<thead>
 												<tr>
 													<th>No</th>
@@ -120,7 +120,7 @@
 													<td>Rp. {{$tipe_absensi->Harga}}</td>
 													<td>{{$tipe_absensi->Durasi}} Jam</td>
 													<td width="100">
-														<button data-toggle="modal" data-target="#responsive-modal{{$tipe_absensi->IdTipe}}" class="btn btn-info btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
+														<button data-toggle="modal" data-target="#responsive-modal{{$tipe_absensi->IdTipe}}" class="btn btn-default btn-icon-anim btn-circle btn-sm"><i class="fa fa-pencil"></i></button>
 														<button @if($tipe_absensi->has_relation()) disabled @endif data-toggle="modal" data-target="#responsive-modal-delete{{$tipe_absensi->IdTipe}}" class="btn @if($tipe_absensi->has_relation()) btn-default @else btn-info @endif btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>
 													</td>
 												</tr>
