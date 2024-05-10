@@ -42,17 +42,13 @@
 										<th>Email</th>
 										<th>Handphone</th>
 										<th>Role</th>
+										<th>Status</th>
 										<th>Action</th>
 									</tr>
 									<tbody>
 										@foreach ($users as $user)
-										<tr>	
-											<td width="50">
-												<div class="checkbox checkbox-primary">
-													<input id="checkbox_{{ $loop->index + 1 }}" onchange="window.location.href='/user_toggle_status/{{$user->NoIdentitas}}';" @if($user->StatusAktif ==  1) checked @else '' @endif type="checkbox">
-													<label for="checkbox_{{ $loop->index + 1 }}"></label>
-												</div>
-											</td>
+										<tr>
+											<td width="50">{{ $loop->index + 1 }}</td>
 											<td>{{ $user->Nama }}</td>
 											<td>{{ $user->Email }}</td>
 											<td>{{ $user->NoHP }}</td>
@@ -67,6 +63,7 @@
 													<span class="label label-danger ">Staff</span>
 												@endif
 											</td>
+											<td class="text-center"><input type="checkbox" onchange="window.location.href='/user_toggle_status/{{$user->NoIdentitas}}';" @if($user->StatusAktif ==  1) checked @else '' @endif class="js-switch" data-color="#FAAB15" data-size="small"></td>
 											<td width="80">
 												<button class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/user_edit/{{$user->NoIdentitas}}';"><i class="fa fa-pencil"></i></button>
 												<button @if($user->has_relation()) disabled @endif data-toggle="modal" data-target="#responsive-modal{{$user->NoIdentitas}}" class="btn @if($user->has_relation()) btn-default @else btn-info @endif btn-icon-anim btn-circle btn-sm"><i class="fa fa-trash"></i></button>

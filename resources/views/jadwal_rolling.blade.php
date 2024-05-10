@@ -368,7 +368,9 @@
 						<h6 class="panel-title txt-dark">Data Penjadwalan</h6>
 					</div>
 					<div class="pull-right">
-						<a href="#" class="label label-danger" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-trash mr-5"></i>Hapus Semua</a>
+						<a href="#" class="label label-danger" data-toggle="modal" data-target="#responsive-modal">
+							<i class="fa fa-trash mr-5"></i>Hapus (<span id="checkedCount">0</span>)
+						</a>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -380,7 +382,7 @@
 								<h5 class="modal-title">Delete Schedule</h5>
 							</div>
 							<div class="modal-body">
-								Are you sure to delete this Checks ?
+								Are you sure to delete <span id="checkedCount">0</span> checks?
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
@@ -392,7 +394,7 @@
 				<div class="panel-wrapper collapse in">
 					<div class="panel-body">
 						<div class="table-responsive">
-							<table id="jadwal_table" class="table table-hover display pb-30" style="zoom: 75%" >
+							<table id="jadwal_table" class="table table-hover display pb-30 text-nowrap">
 								<thead>
 									<tr>
 										<th>
@@ -421,7 +423,7 @@
 											<td>{{$jadwal->Hari.', '.$jadwal->Tanggal}}</td>
 											<td>{{$jadwal->Terapis}}</td>
 											<td>{{$jadwal->Anak}}</td>
-											<td>{{$jadwal->JenisAbsensi}}</td>
+											<td><span class="label label-success">{{$jadwal->JenisAbsensi}}</span></td>
 											<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
 											<td>
 												<button type="button" class="btn btn-default btn-icon-anim btn-circle btn-sm" onclick="window.location.href='/jadwal_rolling_edit/{{$jadwal->IdJadwal}}';"><i class="fa fa-pencil"></i></button>

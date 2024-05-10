@@ -130,7 +130,12 @@ $(document).ready(function() {
 			});
 			// Mengatur status kotak centang "Check All" berdasarkan kotak centang anak
 			$('#checkAllPenjadwalan').prop('checked', allChecked);
+			// Menghitung jumlah kotak centang yang tercentang, kecuali kotak centang "checkAllPenjadwalan"
+			var checkedCount = $('.checkbox.penjadwalan input[type="checkbox"]:checked:not(#checkAllPenjadwalan)').length;
+			// Memperbarui teks di dalam tag <span> dengan ID "checkedCount"
+			$('#checkedCount').text('' + checkedCount + '');
 		});
+		
 	});
 
 	// options untuk delete

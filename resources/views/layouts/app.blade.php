@@ -81,7 +81,9 @@
 <!-- Init JavaScript -->
 <script src="{{ asset('dist/js/init.js') }}"></script>
 <!-- Moment JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>	
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+<!-- Switchery JavaScript -->
+<script src="{{ asset('vendors/bower_components/switchery/dist/switchery.min.js') }}"></script>
 <!-- Bootstrap Colorpicker JavaScript -->
 <script src="{{ asset('vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>	
 <!-- Bootstrap Datetimepicker JavaScript -->
