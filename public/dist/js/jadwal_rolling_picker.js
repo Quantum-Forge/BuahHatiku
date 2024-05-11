@@ -133,7 +133,7 @@ $(document).ready(function() {
 			// Menghitung jumlah kotak centang yang tercentang, kecuali kotak centang "checkAllPenjadwalan"
 			var checkedCount = $('.checkbox.penjadwalan input[type="checkbox"]:checked:not(#checkAllPenjadwalan)').length;
 			// Memperbarui teks di dalam tag <span> dengan ID "checkedCount"
-			$('#checkedCount').text('' + checkedCount + '');
+			$('#checkedCount, #checkedCountModal').text('' + checkedCount + '');
 		});
 		
 	});

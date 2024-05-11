@@ -382,7 +382,7 @@
 								<h5 class="modal-title">Delete Schedule</h5>
 							</div>
 							<div class="modal-body">
-								Are you sure to delete <span id="checkedCount">0</span> checks?
+								Are you sure to delete <span id="checkedCountModal">0</span> checks?
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
