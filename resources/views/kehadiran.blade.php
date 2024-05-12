@@ -74,7 +74,7 @@
 								</div>
 								<div class="form-group">
 									<label  for="Pertanyaan" class="control-label mb-10">Tipe Absensi*</label>
-									<select type="text" name="IdTipe" class="form-control" id="Terapis">
+									<select type="text" name="IdTipe" class="form-control" id="IdTipe">
 										<option disabled selected>Choose...</option>
 										@foreach($tipe_absensies as $tipe_absensi)
 											<option value="{{$tipe_absensi->IdTipe}}" @if(Request::input('IdTipe') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>

@@ -4,7 +4,7 @@
 
 $(document).ready(function() {
 	"use strict";
-	$('#jadwal_table').DataTable({"lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],"pageLength": 10,ordering: false});
+	$('#jadwal_table').DataTable({"lengthMenu": [ [3, 25, 50, -1], [3, 25, 50, "All"] ],"pageLength": 3,ordering: false});
 	$('#user_view').DataTable({paging: false,ordering: true,searching: false});
 	$('#tipe_absensi_table, #Questionnaire_table').DataTable({"lengthMenu": [ [5, 25, 50, -1], [5, 25, 50, "All"] ],"pageLength": 5,ordering: false});
 	$('#datable_1').DataTable();

@@ -140,16 +140,16 @@ $(document).ready(function() {
 
 	// options untuk delete
 	/* delete Init*/
-	$('#TanggalDelete').datetimepicker({
-		format: 'DD/MM/YYYY',
-		useCurrent: true,
-		icons: {
-			time: "fa fa-clock-o",
-			date: "fa fa-calendar",
-			up: "fa fa-arrow-up",
-			down: "fa fa-arrow-down"
-		}
-	}).data("DateTimePicker").date(moment());
+	// $('#TanggalDelete').datetimepicker({
+	// 	format: 'DD/MM/YYYY',
+	// 	useCurrent: true,
+	// 	icons: {
+	// 		time: "fa fa-clock-o",
+	// 		date: "fa fa-calendar",
+	// 		up: "fa fa-arrow-up",
+	// 		down: "fa fa-arrow-down"
+	// 	}
+	// }).data("DateTimePicker").date(moment());
 
 });
 // Clear null di waktu
