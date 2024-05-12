@@ -254,105 +254,34 @@
 									</div> 
 								</div>
 							</div>
+							<!--/span-->
+							<div class="col-md-12">
+								<div class="form-group">
+									<label class="control-label mb-10">Terapis</label>
+									<select class="form-control" name="NoIdentitas" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
+										<option disabled selected>Choose...</option>
+												@foreach( $terapises as $terapis)
+													<option value="{{$terapis->NoIdentitas}}" @if(Request::input('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama.' ['.$terapis->tipe_absensi->JenisAbsensi.']'}}</option>
+												@endforeach
+											</select>
+									</select>
+								</div>
+							</div>
+							<!--/span-->
+							<div class="col-md-12">
+								<div class="form-group">
+									<label class="control-label mb-10">Anak</label>
+									<select class="form-control" name="IdAnak">
+										<option disabled selected>Choose...</option>
+											@foreach($biodatas as $biodata)
+												<option value="{{$biodata->IdAnak}}" @if(Request::input('IdAnak') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
+											@endforeach
+									</select>
+								</div>
+							</div>
 						</div>
 						<div class="form-actions mt-10">
 							<button type="submit" class="btn btn-success btn-block"><i class="fa fa-filter"></i> Filter</button>
-						</div>		
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="panel panel-default card-view">
-			<div class="panel-heading">
-				<div class="pull-left">
-					<h6 class="panel-title txt-dark">Remove Penjadwalan</h6>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="panel-wrapper collapse in">
-				<div class="panel-body">
-					<form action="/jadwal_rolling_delete" method="POST">
-						{{csrf_field()}}
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group {{ $errors->has('TanggalDelete') ? 'has-error' : '' }}">
-									<label class="control-label mb-10">Tanggal Berhenti</label>
-									<div class="input-group date">
-										<input type="text" id="TanggalDelete" name="TanggalDelete" class="form-control" value="{{old('TanggalDelete')}}">
-										<span class="input-group-addon">
-											<span class="fa fa-calendar"></span>
-										</span>
-									</div> 
-									@error('TanggalDelete')
-										<span class="help-block">{{ $message }}</span>
-									@enderror
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group {{ $errors->has('HariDelete') ? 'has-error' : '' }}">
-									<label class="control-label mb-10">Hari</label>
-									<select class="form-control" name="HariDelete" data-placeholder="Choose Hari">
-										<option value="Semua Hari" selected>Semua Hari</option>
-										<option value="Senin">Senin</option>
-										<option value="Selasa">Selasa</option>
-										<option value="Rabu">Rabu</option>
-										<option value="Kamis">Kamis</option>
-										<option value="Jumat">Jumat</option>
-										<option value="Sabtu">Sabtu</option>
-									</select>
-									@error('HariDelete')
-										<span class="help-block">{{ $message }}</span>
-									@enderror
-								</div>
-							</div>
-							<!--/span-->
-							<div class="col-md-12">
-								<div class="form-group {{ $errors->has('NoIdentitasDelete') ? 'has-error' : '' }}">
-									<label class="control-label mb-10">Terapis</label>
-									<select class="form-control" name="NoIdentitasDelete" data-placeholder="Choose Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
-										<option disabled selected>Choose..</option>
-										@foreach( $terapises as $terapis)
-											<option value="{{$terapis->NoIdentitas}}" @if(old('NoIdentitasDelete') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama}}</option>
-										@endforeach
-									</select>
-									@error('NoIdentitasDelete')
-										<span class="help-block">{{ $message }}</span>
-									@enderror
-								</div>
-							</div>
-							<!--/span-->
-							<div class="col-md-12">
-								<div class="form-group {{ $errors->has('IdAnakDelete') ? 'has-error' : '' }}">
-									<label class="control-label mb-10">Anak</label>
-									<select class="form-control" name="IdAnakDelete">
-										<option disabled selected>Choose..</option>
-										@foreach($biodatas as $biodata)
-											<option value="{{$biodata->IdAnak}}" @if(old('IdAnakDelete') == $biodata->IdAnak) selected @endif>{{$biodata->Nama}}</option>
-										@endforeach
-									</select>
-									@error('IdAnakDelete')
-										<span class="help-block">{{ $message }}</span>
-									@enderror
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group {{ $errors->has('IdTipeDelete') ? 'has-error' : '' }}">
-									<label class="control-label mb-10">Tipe Absensi</label>
-									<select class="form-control" name="IdTipeDelete">
-										<option disabled selected>Choose..</option>
-										@foreach($tipe_absensies as $tipe_absensi)
-											<option value="{{$tipe_absensi->IdTipe}}" @if(old('IdTipeDelete') == $tipe_absensi->IdTipe) selected @endif>{{$tipe_absensi->JenisAbsensi}}</option>
-										@endforeach
-									</select>
-									@error('IdTipeDelete')
-										<span class="help-block">{{ $message }}</span>
-									@enderror
-								</div>
-							</div>
-							<!--/span-->
-						</div>
-						<div class="form-actions mt-10">
-							<button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash"></i> Delete</button>
 						</div>		
 					</form>
 				</div>
