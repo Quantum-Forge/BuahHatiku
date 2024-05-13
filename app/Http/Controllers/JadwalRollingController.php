@@ -118,7 +118,6 @@ class JadwalRollingController extends Controller
             ->join('users', 'jadwal_rolling.NoIdentitas', '=', 'users.NoIdentitas')
             ->join('tipe_absensi', 'jadwal_rolling.IdTipe', '=', 'tipe_absensi.IdTipe')
             ->select('jadwal_rolling.*', 'users.Nama as Terapis', 'biodata.Nama as Anak', 'tipe_absensi.JenisAbsensi');
-            
     
         // Filter berdasarkan tanggal
         if($request->Tanggal){
@@ -130,16 +129,17 @@ class JadwalRollingController extends Controller
             $startDate = Carbon::now()->startOfMonth();
             $endDate = Carbon::now()->endOfMonth();
         }
-
+    
+        // Tambahkan kondisi whereBetween di sini
         $jadwal_rolling_query->whereBetween('Tanggal', [$startDate->toDateString(), $endDate->toDateString()]);
     
         // Filter berdasarkan terapis
-        if($request->NoIdentitas){
+        if($request->NoIdentitas && strtolower($request->NoIdentitas) != 'all'){
             $jadwal_rolling_query->where('jadwal_rolling.NoIdentitas', $request->NoIdentitas);
         }
     
         // Filter berdasarkan anak
-        if($request->IdAnak){
+        if($request->IdAnak && strtolower($request->IdAnak) != 'all'){
             $jadwal_rolling_query->where('jadwal_rolling.IdAnak', $request->IdAnak);
         }
     
@@ -153,6 +153,8 @@ class JadwalRollingController extends Controller
             'jadwal_rolling' => $jadwal_rolling,
         ]);
     }
+    
+
     
 
     public static function filterHolidays($dates)
