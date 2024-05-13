@@ -53,7 +53,11 @@
 										<div class="input-group">
 											<div class="input-group-addon"><i class="fa fa-user"></i></div>
 											<select type="text" name="NoIdentitas" class="form-control" id="Terapis" tabindex="{{Auth::user()->Role==3? -1 : 1}}" @if(Auth::user()->Role==3) readonly @endif>
+<<<<<<< HEAD
 											<option disabled>Choose...</option>
+=======
+											<option>Choose...</option>
+>>>>>>> dev-brian
 												@foreach( $terapises as $terapis)
 													<option value="{{$terapis->NoIdentitas}}" @if(Request::input('NoIdentitas') == $terapis->NoIdentitas || (Auth::user()->Role==3 && Auth::user()->NoIdentitas==$terapis->NoIdentitas)) selected @endif>{{$terapis->Nama.'['.$terapis->tipe_absensi->JenisAbsensi.']'}}</option>
 												@endforeach
