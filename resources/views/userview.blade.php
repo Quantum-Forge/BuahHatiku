@@ -51,7 +51,7 @@
 											<td width="50">{{ $loop->index + 1 }}</td>
 											<td>{{ $user->Nama }}</td>
 											<td>{{ $user->Email }}</td>
-											<td>{{ $user->NoHP }}</td>
+											<td>{{ substr($user->NoHP, 0, 1) == '0' ? $user->NoHP : '0' . $user->NoHP }}</td>
 											<td>
 												@if($user->Role == 1 )
 													<span class="label label-primary ">Owner</span>
