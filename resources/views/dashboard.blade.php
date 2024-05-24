@@ -134,28 +134,17 @@
 										<th>status</th>
 									</tr>
 								</thead>
-								{{-- looping 4x sesuai urutan upload --}}
 								<tbody>
 									@foreach($jadwals as $jadwal)
-									<tr>
-										<td>{{$jadwal->Tanggal}}</td>
-										<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
-										<td>
-											@if($jadwal->user)
-												{{$jadwal->user->Nama}}
-											@else
-												<span class="label label-danger">Not Found</span>
-											@endif	
-										</td>
-										<td>
-											@if($jadwal->biodata)
-												{{$jadwal->biodata->Nama}}
-											@else
-												<span class="label label-danger">Not Found</span>
-											@endif
-										</td>										
-										<td><span class="label {{$jadwal->absensi->Hadir == 1 ? 'label-success' : 'label-danger'}} font-weight-100">{{$jadwal->absensi->Hadir == 1 ? 'Hadir' : 'Tidak Hadir'}}</span></td>
-									</tr>
+										@if($jadwal->user && $jadwal->biodata)
+											<tr>
+												<td>{{$jadwal->Tanggal}}</td>
+												<td>{{$jadwal->WaktuMulai.' - '.$jadwal->WaktuSelesai}}</td>
+												<td>{{$jadwal->user->Nama}}</td>
+												<td>{{$jadwal->biodata->Nama}}</td>                                        
+												<td><span class="label {{$jadwal->absensi->Hadir == 1 ? 'label-success' : 'label-danger'}} font-weight-100">{{$jadwal->absensi->Hadir == 1 ? 'Hadir' : 'Tidak Hadir'}}</span></td>
+											</tr>
+										@endif
 									@endforeach
 								</tbody>
 							</table>
